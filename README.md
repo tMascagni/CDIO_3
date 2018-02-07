@@ -12,7 +12,7 @@ s165201 Thomas Mascagni    SWT
 
 s151641 Daniel Larsen	     SWT
 
-s165235 Seyed Ali Ghodrat  SWT
+s165235 Ali Ghodrat  SWT
 
 s161791 Troels Lund        SWT
 
