@@ -1,17 +1,15 @@
-package main;
+package video;
 
 import com.codeminders.ardrone.ARDrone;
 import com.codeminders.ardrone.DroneVideoListener;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class VideoPanel extends javax.swing.JPanel implements DroneVideoListener{
+public final class VideoPanel extends JPanel implements DroneVideoListener {
 
     private AtomicReference<BufferedImage> image = new AtomicReference<BufferedImage>();
     private AtomicBoolean preserveAspect = new AtomicBoolean(true);
@@ -50,11 +48,13 @@ public class VideoPanel extends javax.swing.JPanel implements DroneVideoListener
 
     private void drawDroneImage(Graphics2D g2d, int width, int height) {
         BufferedImage im = image.get();
-        if (im == null) {
+
+        if (im == null)
             return;
-        }
+
         int xPos = 0;
         int yPos = 0;
+
         if (preserveAspect.get()) {
             g2d.setColor(Color.BLACK);
             g2d.fill3DRect(0, 0, width, height, false);
@@ -71,12 +71,15 @@ public class VideoPanel extends javax.swing.JPanel implements DroneVideoListener
                 height = (int) (widthUnit * 3);
             }
         }
+
         if (im != null) {
             g2d.drawImage(im, xPos, yPos, width, height, null);
         }
+
     }
 
     public void frameReceived(int i, int i1, int i2, int i3, int[] ints, int i4, int i5) {
 
     }
+
 }
