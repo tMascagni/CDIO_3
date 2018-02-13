@@ -31,7 +31,6 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
     }
 
     private Server() {
-
     }
 
     public synchronized static Server getInstance() {
