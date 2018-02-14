@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="Push test.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/IController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/server/IServer.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CDIO_3.iml" afterPath="$PROJECT_DIR$/CDIO_3.iml" />
-      <change beforePath="$PROJECT_DIR$/controlcenter.properties" afterPath="$PROJECT_DIR$/controlcenter.properties" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/CCPropertyManager.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/CCPropertyManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/ICCPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/ICCPlugin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChartPanel.java" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChartPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DroneController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -373,7 +357,7 @@
       <workItem from="1518630401625" duration="10000" />
       <workItem from="1518630426232" duration="1060000" />
       <workItem from="1518632315548" duration="100000" />
-      <workItem from="1518642851389" duration="3841000" />
+      <workItem from="1518642851389" duration="3876000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -431,11 +415,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518632390349</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added test for YaDrone.">
+      <created>1518646723668</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1518646723668</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23534000" />
+    <option name="totallyTimeSpent" value="23569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1408" extended-state="6" />
@@ -516,7 +507,8 @@
     <MESSAGE value="Correction of Trolle." />
     <MESSAGE value="Attempting to fix merge conflict." />
     <MESSAGE value="Push test." />
-    <option name="LAST_COMMIT_MESSAGE" value="Push test." />
+    <MESSAGE value="Added test for YaDrone." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test for YaDrone." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
