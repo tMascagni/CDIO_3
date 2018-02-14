@@ -2,60 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="Attempting to fix merge conflict.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_72.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jai_imageio_jai_imageio_core_1_3_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_zxing_core_3_3_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_zxing_javase_3_3_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jcommon_1_0_16.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jfreechart_1_0_13.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_0_9_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/xuggle_xuggler_5_4.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/yadrone_032.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controlcenter.properties" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/xuggle-xuggler-5.4.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/yadrone_032.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/CCPropertyManager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/ICCPlugin.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/img/desktop.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChartPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/attitudechart/AttitudeChart.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/attitudechart/AttitudeChartPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/battery/BatteryPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/configuration/ConfigurationPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/connection/ConnectionState.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/connection/dot_green.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/connection/dot_red.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/console/ConsolePanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/keyboard/KeyboardCommandManager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/keyboard/KeyboardLayoutPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/keyboard/keyboard_control.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/keyboard/keyboard_control_alternative.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/pluginmanager/PluginManager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/qrcode/QRCodeScannerPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/speed/SpeedPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/state/StatePanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/statistics/StatisticsPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/VideoCanvas.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/VideoPanel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/hourglass.png" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javadrone_api_1_3.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/log4j_log4j_1_2_17.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/CDIO_3.iml" afterPath="$PROJECT_DIR$/CDIO_3.iml" />
-      <change beforePath="$PROJECT_DIR$/lib/javadrone-api-1.3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DroneController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestDriverWeek3.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/video/VideoPanel.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/controlcenter.properties" afterPath="$PROJECT_DIR$/controlcenter.properties" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCPropertyManager.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/ICCPlugin.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/YADroneControlCenter.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$6.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/DroneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,28 +35,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AltitudeChart.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
-              <caret line="42" column="24" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCFrame.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="35" column="89" lean-forward="false" selection-start-line="35" selection-start-column="89" selection-end-line="35" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -181,7 +128,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="921" />
     <option name="y" value="57" />
     <option name="width" value="974" />
@@ -202,7 +149,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,9 +221,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -442,6 +389,7 @@
       <workItem from="1518603917898" duration="2858000" />
       <workItem from="1518630401625" duration="10000" />
       <workItem from="1518630426232" duration="1060000" />
+      <workItem from="1518632315548" duration="61000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -496,10 +444,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19593000" />
+    <option name="totallyTimeSpent" value="19654000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="2578" height="1408" extended-state="7" />
+    <frame x="-9" y="-9" width="2578" height="1408" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -509,20 +457,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36758894" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36758894" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30117187" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -600,10 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1518604112412" expanded="true" signature="0:104" ph="/.../" />
-            <marker date="1518604112412" expanded="true" signature="153:255" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -619,7 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="63" lean-forward="true" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -632,10 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1518604112412" expanded="true" signature="0:104" ph="/.../" />
-            <marker date="1518604112412" expanded="true" signature="153:255" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -687,10 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1518604112412" expanded="true" signature="0:104" ph="/.../" />
-            <marker date="1518604112412" expanded="true" signature="153:255" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -711,7 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-756">
           <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -735,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -753,7 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1231">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,7 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1919">
           <caret line="104" column="4" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
           <caret line="129" column="4" lean-forward="false" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,7 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3906">
           <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3006">
           <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,7 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1481">
           <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-838">
           <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="47" lean-forward="false" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,14 +826,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/TestDriverWeek3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/TestDriverWeek3.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/plugins/attitudechart/AttitudeChart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -934,7 +845,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
+        <state relative-caret-position="1050">
           <caret line="42" column="24" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
           <folding />
         </state>
