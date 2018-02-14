@@ -9,6 +9,10 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
+/*
+ *
+ * INSERT REFERENCE FOR THIS CODE!!!!!
+ */
 public final class VideoPanel extends JPanel implements DroneVideoListener {
 
     private AtomicReference<BufferedImage> image = new AtomicReference<BufferedImage>();
