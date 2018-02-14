@@ -13,8 +13,7 @@ public class TestDriverWeek3 {
                 try {
                     Server server = Server.getInstance();
 
-                    System.err.println("test starts");
-
+                    System.out.println("Test starts-->");
                     server.initDrone();
                     System.out.println("battery: " + server.getNavData().getBattery());
                     server.hoverAndWait(200);
