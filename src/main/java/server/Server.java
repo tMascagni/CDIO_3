@@ -97,6 +97,9 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
         System.out.println("isVideoEnabled: " + navData.isVideoEnabled());
         System.out.println("isMotorsDown: " + navData.isMotorsDown());
         System.out.println("isBatteryTooLow: " + navData.isBatteryTooLow());
+        System.out.println("isCommunicationProblemOccurred: " + navData.isCommunicationProblemOccurred());
+        System.out.println("isEmergency: " + navData.isEmergency());
+        System.out.println("isGyrometersDown(): " + navData.isGyrometersDown());
 
         System.out.println("Sequence: " + navData.getSequence());
         System.out.println("VisionTags: " + navData.getVisionTags());
