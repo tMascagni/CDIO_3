@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class CCPropertyManager extends Properties {
+
     private String FILENAME = "controlcenter.properties";
 
     private static CCPropertyManager instance;
@@ -130,4 +131,5 @@ public class CCPropertyManager extends Properties {
             e.printStackTrace();
         }
     }
+
 }

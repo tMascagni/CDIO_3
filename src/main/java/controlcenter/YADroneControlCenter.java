@@ -3,6 +3,7 @@ package controlcenter;
 import de.yadrone.base.ARDrone;
 
 public class YADroneControlCenter {
+
     private ARDrone ardrone = null;
 
     public YADroneControlCenter() {
@@ -21,6 +22,7 @@ public class YADroneControlCenter {
 
             if (ardrone != null)
                 ardrone.stop();
+
             System.exit(-1);
         }
     }
@@ -28,4 +30,5 @@ public class YADroneControlCenter {
     public static void main(String args[]) {
         new YADroneControlCenter();
     }
+
 }

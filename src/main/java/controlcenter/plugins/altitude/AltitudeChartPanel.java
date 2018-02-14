@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AltitudeChartPanel extends JPanel implements ICCPlugin {
+
     private IARDrone drone;
 
     private AltitudeChart chart;
@@ -31,13 +32,13 @@ public class AltitudeChartPanel extends JPanel implements ICCPlugin {
         }
 
         public void receivedExtendedAltitude(Altitude altitude) {
+
         }
 
     };
 
     public void activate(IARDrone drone) {
         this.drone = drone;
-
         drone.getNavDataManager().addAltitudeListener(altitudeListener);
     }
 
@@ -68,4 +69,5 @@ public class AltitudeChartPanel extends JPanel implements ICCPlugin {
     public JPanel getPanel() {
         return this;
     }
+
 }

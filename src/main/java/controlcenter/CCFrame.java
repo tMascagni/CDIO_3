@@ -9,18 +9,18 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class CCFrame extends JFrame {
+
     private ARDrone drone;
 
     public CCFrame(ARDrone ardrone) {
         super("Group 3 - Drone Control Center");
-
         setSize(1024, 768);
-
         this.drone = ardrone;
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+        } catch (Exception ignored) {
+
         }
 
         JDesktopPane desktop = new JDesktopPane() {
@@ -33,7 +33,7 @@ public class CCFrame extends JFrame {
                 super.paintComponent(g);
 
                 if (originalImage == null) { // called only once
-                    ImageIcon icon = new ImageIcon(CCFrame.class.getResource("controlcenter/img/desktop.jpg"));
+                    ImageIcon icon = new ImageIcon("controlcenter/img/desktop.jpg");
                     originalImage = icon.getImage();
                     scaledImage = originalImage;
                 }
@@ -69,18 +69,23 @@ public class CCFrame extends JFrame {
         addWindowListener(new WindowListener() {
 
             public void windowOpened(WindowEvent e) {
+
             }
 
             public void windowIconified(WindowEvent e) {
+
             }
 
             public void windowDeiconified(WindowEvent e) {
+
             }
 
             public void windowActivated(WindowEvent e) {
+
             }
 
             public void windowDeactivated(WindowEvent e) {
+
             }
 
             public void windowClosing(WindowEvent e) {
@@ -90,6 +95,7 @@ public class CCFrame extends JFrame {
             }
 
             public void windowClosed(WindowEvent e) {
+
             }
         });
 

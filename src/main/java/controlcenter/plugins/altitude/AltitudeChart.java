@@ -20,6 +20,7 @@ import java.util.Date;
  * Domain = x-axis, range = y-axis
  */
 public class AltitudeChart {
+
     protected JFreeChart chart;
     protected TimeSeriesCollection dataset;
 
@@ -84,4 +85,5 @@ public class AltitudeChart {
     public JFreeChart getChart() {
         return chart;
     }
+
 }
