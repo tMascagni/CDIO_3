@@ -31,6 +31,7 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
     }
 
     private Server() {
+
     }
 
     public synchronized static Server getInstance() {
@@ -43,6 +44,7 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
         navData = new NavData();
         drone.playLED(10, 10, 10);
 
+        // TODO: Should .connect not be one of the first things that is called?
         drone.connect();
         drone.clearEmergencySignal();
 
@@ -88,6 +90,9 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
         drone.hover();
 
         /* Time off hovering */
+        /*
+         * TODO: Is it really safe to use Thread.sleep()? Maybe we should reevaluate this.
+         */
         Thread.sleep(millisecToWait);
     }
 

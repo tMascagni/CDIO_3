@@ -1,12 +1,10 @@
-package Test;
+package test;
 
 import server.Server;
 
 import java.io.IOException;
 
 public class TestRunWeek3 {
-
-
 
     public static void main(String[] args) {
 
@@ -25,6 +23,6 @@ public class TestRunWeek3 {
             e.printStackTrace();
         }
 
-
     }
+
 }
