@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javadrone-api-1.3">
+  <library name="yadrone_03">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javadrone-api-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/yadrone_03.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
