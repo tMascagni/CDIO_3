@@ -18,7 +18,7 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
     private ARDrone.VideoChannel camH;
     private ARDrone.VideoChannel camV;
 
-    private final VideoPanel video = new VideoPanel();
+    private final VideoPanel videoPanel = new VideoPanel();
 
     private static Server instance;
 
@@ -54,8 +54,8 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
 
         drone.trim(); // calibrate ??
 
-        System.err.println("Connected to drone.");
-        System.out.println("Drone Battery Level: " + navData.getBattery());
+        System.err.println("Successfully connected to drone.");
+        System.out.println("DATA: Drone Battery Level: " + navData.getBattery());
 
         drone.addStatusChangeListener(this);
         drone.addNavDataListener(this);
@@ -76,30 +76,30 @@ public final class Server implements DroneStatusChangeListener, NavDataListener 
 
     public void navDataReceived(NavData navData) {
         this.navData = navData;
-        System.out.println("##### Done data ######");
+        System.out.println("##### Drone Data ######");
         System.out.println("Battery: " + navData.getBattery());
-        System.out.println("Controle state: " + navData.getControlState());
+        System.out.println("Control State: " + navData.getControlState());
         System.out.println("Altitude: " + navData.getAltitude());
-        System.out.println("Control algorithm: " + navData.getControlAlgorithm());
-        System.out.println("Flying state: " + navData.getFlyingState());
+        System.out.println("Control Algorithm: " + navData.getControlAlgorithm());
+        System.out.println("Flying State: " + navData.getFlyingState());
         System.out.println("Mode: " + navData.getMode());
         System.out.println("Pitch: " + navData.getPitch());
         System.out.println("Roll: " + navData.getRoll());
-        System.out.println("VX: " + navData.getVx());
-        System.out.println("VY: " + navData.getVz());
+        System.out.println("Vx: " + navData.getVx());
+        System.out.println("Vy: " + navData.getVz());
         System.out.println("Yaw: " + navData.getYaw());
 
-        System.out.println("Is acquisition thread on: " + navData.isAcquisitionThreadOn());
-        System.out.println("Watch dog delayed: " + navData.isADCWatchdogDelayed());
-        System.out.println("Is Altitude Control Active: " + navData.isAltitudeControlActive());
-        System.out.println("Is AngelsOutOufRange: " + navData.isAngelsOutOufRange());
-        System.out.println("Is TrimSucceeded: " + navData.isTrimSucceeded());
-        System.out.println("Is video enabled: " + navData.isVideoEnabled());
+        System.out.println("isAcquisitionThreadOn: " + navData.isAcquisitionThreadOn());
+        System.out.println("isADCWatchDogDelayed: " + navData.isADCWatchdogDelayed());
+        System.out.println("isAltitudeControlActive: " + navData.isAltitudeControlActive());
+        System.out.println("isAngelsOutOufRange: " + navData.isAngelsOutOufRange());
+        System.out.println("isTrimSucceeded: " + navData.isTrimSucceeded());
+        System.out.println("isVideoEnabled: " + navData.isVideoEnabled());
         System.out.println("isMotorsDown: " + navData.isMotorsDown());
         System.out.println("isBatteryTooLow: " + navData.isBatteryTooLow());
 
         System.out.println("Sequence: " + navData.getSequence());
-        System.out.println("Vision tags: " + navData.getVisionTags());
+        System.out.println("VisionTags: " + navData.getVisionTags());
         System.out.println("######################");
     }
 
