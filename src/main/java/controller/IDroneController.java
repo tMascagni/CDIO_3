@@ -12,5 +12,6 @@ public interface IDroneController {
 
     void hoverDrone(int timeMillis) throws DroneControllerException;
 
+    void resetDrone() throws DroneControllerException;
     IARDrone getDrone() throws DroneControllerException;
 }

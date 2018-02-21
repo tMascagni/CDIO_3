@@ -53,7 +53,9 @@ public final class DroneController implements IDroneController {
     public void startDrone() throws DroneControllerException {
         console.log(this, "Starting drone...");
         drone.start();
+        sleep(500);
         commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
+        drone.reset(); // TEST
     }
 
     /**
@@ -86,11 +88,7 @@ public final class DroneController implements IDroneController {
         commandManager.setOutdoor(false, true); // Flyver indendørs, med beskyttelse på
         commandManager.flatTrim();
 
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-
-        }
+        sleep(500);
 
         drone.getCommandManager().setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
         commandManager.takeOff();
@@ -102,7 +100,7 @@ public final class DroneController implements IDroneController {
     @Override
     public void landDrone() throws DroneControllerException {
         console.log(this, "Landing drone...");
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
+        commandManager.setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
         drone.setSpeed(38);
         commandManager.landing().waitFor(3000);
     }
@@ -117,11 +115,30 @@ public final class DroneController implements IDroneController {
     }
 
     /**
+     * Method to reset the drone. (??)
+     */
+    @Override
+    public void resetDrone() throws DroneControllerException {
+        drone.reset();
+    }
+
+    /**
      * Method to get the controllers internal drone object.
      */
     @Override
     public IARDrone getDrone() throws DroneControllerException {
         return drone;
+    }
+
+    /**
+     * Helper method used to sleep when neccessary.
+     */
+    private void sleep(int timeMillis) {
+        try {
+            Thread.sleep(timeMillis);
+        } catch (InterruptedException e) {
+
+        }
     }
 
 }
