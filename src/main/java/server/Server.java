@@ -33,7 +33,7 @@ public final class Server {
         /* #### #### #### #### #### #### #### */
 
         droneController.startDrone();
-        //droneController.takeOffDrone();
+        droneController.takeOffDrone();
 
         //droneController.hoverDrone(10000);
 

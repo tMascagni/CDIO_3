@@ -52,8 +52,8 @@ public final class DroneController implements IDroneController {
     @Override
     public void startDrone() throws DroneControllerException {
         console.log(this, "Starting drone...");
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
         drone.start();
+        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
     }
 
     /**
@@ -82,9 +82,20 @@ public final class DroneController implements IDroneController {
     @Override
     public void takeOffDrone() throws DroneControllerException {
         console.log(this, "Taking off drone...");
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
-        drone.setSpeed(35);
-        commandManager.takeOff().waitFor(5000);
+
+        // Flyver indendørs, med beskyttelse på
+        commandManager.setOutdoor(false, true);
+
+        commandManager.flatTrim();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+
+        }
+
+        drone.getCommandManager().setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
+        commandManager.takeOff();
     }
 
     /**
