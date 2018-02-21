@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="Added test for YaDrone.">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__Group_3_YaDrone_032.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/CDIO_3.iml" afterPath="$PROJECT_DIR$/CDIO_3.iml" />
+      <change beforePath="$PROJECT_DIR$/controlcenter.properties" afterPath="$PROJECT_DIR$/controlcenter.properties" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCPropertyManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCPropertyManager.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/ICCPlugin.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/ICCPlugin.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/YADroneControlCenter.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/YADroneControlCenter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChart.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChart.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChart.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChart.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManager.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/statistics/StatisticsPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/statistics/StatisticsPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$4.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$4.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$6.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$6.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/DroneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,7 +86,58 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="95" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/IController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -49,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/main/java/test/TestRunWeek3.java" />
         <option value="$PROJECT_DIR$/src/main/java/exception/ServerException.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/TestDriverWeek3.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/VideoPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/attitudechart/AttitudeChartPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/battery/BatteryPanel.java" />
@@ -78,8 +199,9 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/IController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/IServer.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/server/Server.java" />
       </list>
     </option>
   </component>
@@ -133,16 +255,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
               <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
@@ -190,6 +313,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,7 +343,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Run ControlCenter">
+  <component name="RunManager" selected="Application.Run Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -357,7 +484,10 @@
       <workItem from="1518630401625" duration="10000" />
       <workItem from="1518630426232" duration="1060000" />
       <workItem from="1518632315548" duration="100000" />
-      <workItem from="1518642851389" duration="3876000" />
+      <workItem from="1518642851389" duration="3894000" />
+      <workItem from="1518786302765" duration="82000" />
+      <workItem from="1518986824758" duration="93000" />
+      <workItem from="1519198451636" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -422,43 +552,50 @@
       <option name="project" value="LOCAL" />
       <updated>1518646723668</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added test for YaDrone.">
+      <created>1518646733154</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1518646733154</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23569000" />
+    <option name="totallyTimeSpent" value="24941000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="2578" height="1408" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19367589" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19300106" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.03952569" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39660656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3085896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19179687" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19114584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32964426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32964426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -494,6 +631,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -527,7 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1025">
           <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -701,7 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,17 +890,8 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,7 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,7 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3350">
           <caret line="134" column="1" lean-forward="true" selection-start-line="134" selection-start-column="1" selection-end-line="134" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1007">
           <caret line="88" column="1" lean-forward="false" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -781,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1007">
           <caret line="72" column="1" lean-forward="false" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -789,7 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1168">
           <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -797,39 +941,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/video/Video.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/video/Video.java" />
     <entry file="jar://$PROJECT_DIR$/lib/yadrone_032.jar!/de/yadrone/base/ARDrone.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="175" column="16" lean-forward="false" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -841,18 +960,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/IController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        <state relative-caret-position="80">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -921,7 +1064,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>xuggle-xuggler-5.4</last-edited>
+          <last-edited>Maven: Group_3:YaDrone:032</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

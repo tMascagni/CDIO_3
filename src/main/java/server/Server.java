@@ -42,6 +42,8 @@ public final class Server implements IServer {
         /* and start the drone */
         drone.start();
 
+
+
         /*
          * Skal serveren eller controlleren have de forskellige managers?
          * Såsom NavDataManager, CommandManager, etc etc.
@@ -75,8 +77,20 @@ public final class Server implements IServer {
         /* Take off */
         drone.takeOff();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         /* Hover the drone */
         drone.hover();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         drone.getNavDataManager().addAttitudeListener(new AttitudeListener() {
             @Override

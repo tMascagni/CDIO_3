@@ -64,8 +64,7 @@
             <artifactId>YaDrone</artifactId>
             <version>032</version>
         </dependency>
-
-
+        
     </dependencies>
 
 </project>
