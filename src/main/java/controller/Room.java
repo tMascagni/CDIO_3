@@ -33,4 +33,27 @@ public class Room {
         return singleton;
     }
 
+    public double getWith() {
+        return with;
+    }
+
+    public void setWith(double with) {
+        this.with = with;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public List<WallMarking> getWallMarkingList() {
+        return wallMarkingList;
+    }
+
+    public void setWallMarkingList(List<WallMarking> wallMarkingList) {
+        this.wallMarkingList = wallMarkingList;
+    }
 }

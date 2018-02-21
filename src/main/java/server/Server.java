@@ -35,6 +35,7 @@ public final class Server {
         droneController.startDrone();
         droneController.takeOffDrone();
 
+
         //droneController.hoverDrone(10000);
 
         droneController.landDrone();
