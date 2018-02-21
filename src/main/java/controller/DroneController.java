@@ -52,7 +52,7 @@ public final class DroneController implements IDroneController {
     @Override
     public void startDrone() throws DroneControllerException {
         console.log(this, "Starting drone...");
-        commandManager.setLedsAnimation(LEDAnimation.GREEN, 3, 10);
+        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
         drone.start();
     }
 
@@ -72,7 +72,7 @@ public final class DroneController implements IDroneController {
     @Override
     public void stopDrone() throws DroneControllerException {
         console.log(this, "Stopping drone...");
-        commandManager.setLedsAnimation(LEDAnimation.RED, 3, 10);
+        commandManager.setLedsAnimation(LEDAnimation.BLINK_RED, 3, 10);
         drone.stop();
     }
 
@@ -94,7 +94,7 @@ public final class DroneController implements IDroneController {
     public void landDrone() throws DroneControllerException {
         console.log(this, "Landing drone...");
         commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
-        drone.setSpeed(40);
+        drone.setSpeed(38);
         commandManager.landing().waitFor(3000);
     }
 
