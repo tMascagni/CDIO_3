@@ -1,5 +1,6 @@
 package controller;
 
+import controlcenter.console.Console;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
@@ -16,6 +17,8 @@ public final class DroneController implements IDroneController {
     private final VideoManager videoManager;
     private final NavDataManager navDataManager;
     private final ConfigurationManager configManager;
+
+    private final Console console = Console.getInstance();
 
     private static IDroneController instance;
 
@@ -44,45 +47,72 @@ public final class DroneController implements IDroneController {
 
     /**
      * Method to start the drone.
-     * NOTICE: This method should not make the drone fly.
+     * NOTICE: This method does not make the drone fly, only turns it on.
      */
     @Override
     public void startDrone() throws DroneControllerException {
+        console.log(this, "Starting drone...");
         commandManager.setLedsAnimation(LEDAnimation.GREEN, 3, 10);
         drone.start();
     }
 
+    /**
+     * Method to initialize the drone.
+     * This method should be called before flying. (??)
+     */
     @Override
     public void initDrone() throws DroneControllerException {
-
+        console.log(this, "Initializing drone.");
     }
 
+    /**
+     * Method to stop the drone.
+     * NOTICE: This method does NOT land the drone. It only stops it/turns it off.
+     */
     @Override
     public void stopDrone() throws DroneControllerException {
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
-
+        console.log(this, "Stopping drone...");
+        commandManager.setLedsAnimation(LEDAnimation.RED, 3, 10);
+        drone.stop();
     }
 
+    /**
+     * Method to make the drone take off.
+     */
     @Override
     public void takeOffDrone() throws DroneControllerException {
+        console.log(this, "Taking off drone...");
         commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
+        drone.setSpeed(35);
+        commandManager.takeOff().waitFor(5000);
     }
 
+    /**
+     * Method to make the drone land.
+     */
     @Override
     public void landDrone() throws DroneControllerException {
-
+        console.log(this, "Landing drone...");
+        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
+        drone.setSpeed(40);
+        commandManager.landing().waitFor(3000);
     }
 
+    /**
+     * Method to make the drone hover.
+     */
     @Override
-    public void hoverDrone(int time) throws DroneControllerException {
-
+    public void hoverDrone(int timeMillis) throws DroneControllerException {
+        console.log(this, "Hovering drone for " + timeMillis + " milliseconds...");
+        commandManager.hover().waitFor(timeMillis);
     }
 
+    /**
+     * Method to get the controllers internal drone object.
+     */
     @Override
     public IARDrone getDrone() throws DroneControllerException {
         return drone;
     }
-
-
 
 }

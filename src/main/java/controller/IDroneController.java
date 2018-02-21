@@ -10,7 +10,7 @@ public interface IDroneController {
     void takeOffDrone() throws DroneControllerException;
     void landDrone() throws DroneControllerException;
 
-    void hoverDrone(int time) throws DroneControllerException;
+    void hoverDrone(int timeMillis) throws DroneControllerException;
 
     IARDrone getDrone() throws DroneControllerException;
 }
