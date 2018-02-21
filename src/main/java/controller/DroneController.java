@@ -83,9 +83,7 @@ public final class DroneController implements IDroneController {
     public void takeOffDrone() throws DroneControllerException {
         console.log(this, "Taking off drone...");
 
-        // Flyver indendørs, med beskyttelse på
-        commandManager.setOutdoor(false, true);
-
+        commandManager.setOutdoor(false, true); // Flyver indendørs, med beskyttelse på
         commandManager.flatTrim();
 
         try {
