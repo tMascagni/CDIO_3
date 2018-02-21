@@ -80,7 +80,7 @@ public final class DroneController implements IDroneController {
 
     @Override
     public IARDrone getDrone() throws DroneControllerException {
-        return null;
+        return drone;
     }
 
 
