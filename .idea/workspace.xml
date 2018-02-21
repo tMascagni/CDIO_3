@@ -1,80 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="Added test for YaDrone.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__Group_3_YaDrone_032.xml" />
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/DroneControllerException.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/IDroneController.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CDIO_3.iml" afterPath="$PROJECT_DIR$/CDIO_3.iml" />
-      <change beforePath="$PROJECT_DIR$/controlcenter.properties" afterPath="$PROJECT_DIR$/controlcenter.properties" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCFrame.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/CCPropertyManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/CCPropertyManager.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/ICCPlugin.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/ICCPlugin.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/YADroneControlCenter.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/YADroneControlCenter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChart.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChart.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/altitude/AltitudeChartPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChart.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChart.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/attitudechart/AttitudeChartPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/battery/BatteryPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel$4.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/configuration/ConfigurationPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/connection/ConnectionState.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/console/ConsolePanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManager.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/keyboard/KeyboardLayoutPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/pluginmanager/PluginManager.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/QRCodeScannerPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/qrcode/generator/QRCodeGeneratorPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/speed/SpeedPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/state/StatePanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/statistics/StatisticsPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/statistics/StatisticsPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoCanvas.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$2.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$4.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$4.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$5.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$6.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel$6.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel.class" afterPath="$PROJECT_DIR$/target/classes/controlcenter/plugins/video/VideoPanel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/DroneController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,37 +18,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
+      <file leaf-file-name="IDroneController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDroneController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
+      <file leaf-file-name="DroneController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/DroneController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="95" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="401">
+              <caret line="61" column="68" lean-forward="false" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/IController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
@@ -127,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="-540">
+              <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="37" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -142,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -197,11 +118,13 @@
         <option value="$PROJECT_DIR$/src/main/java/video/Video.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/IController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/IServer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/DroneControllerException.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/IDroneController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
       </list>
     </option>
   </component>
@@ -487,7 +410,7 @@
       <workItem from="1518642851389" duration="3894000" />
       <workItem from="1518786302765" duration="82000" />
       <workItem from="1518986824758" duration="93000" />
-      <workItem from="1519198451636" duration="1179000" />
+      <workItem from="1519198451636" duration="3247000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -559,14 +482,22 @@
       <option name="project" value="LOCAL" />
       <updated>1518646733154</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Trying to get test code to work.">
+      <created>1519199647698</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1519199647699</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24941000" />
+    <option name="totallyTimeSpent" value="27009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -576,7 +507,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39660656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39660656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3085896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -671,45 +602,14 @@
     <MESSAGE value="Attempting to fix merge conflict." />
     <MESSAGE value="Push test." />
     <MESSAGE value="Added test for YaDrone." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test for YaDrone." />
+    <MESSAGE value="Trying to get test code to work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to get test code to work." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javadrone-api-1.3.jar!/com/codeminders/ardrone/ARDrone.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -930,20 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1168">
-          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/video/Video.java" />
     <entry file="jar://$PROJECT_DIR$/lib/yadrone_032.jar!/de/yadrone/base/ARDrone.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -968,22 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -992,10 +862,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/xuggle-xuggler-5.4.jar!/com/xuggle/ferry/JNILibrary.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/yadrone_032.jar!/de/yadrone/base/video/VideoManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1540">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/DroneControllerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDroneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="-540">
+          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="37" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/DroneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="61" column="68" lean-forward="false" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding />
         </state>
       </provider>
