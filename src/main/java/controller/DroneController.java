@@ -129,6 +129,11 @@ public final class DroneController implements IDroneController {
     }
 
     @Override
+    public void circleAroundObject() throws DroneControllerException {
+
+    }
+
+    @Override
     public void flyForward(int distanceMilli) throws DroneControllerException {
 
     }

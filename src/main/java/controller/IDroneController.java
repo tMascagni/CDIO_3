@@ -13,6 +13,7 @@ public interface IDroneController {
     void hoverDrone(int timeMillis) throws DroneControllerException;
 
     void searchRotation() throws DroneControllerException;
+    void circleAroundObject() throws DroneControllerException;
 
     void flyForward(int distanceMilli) throws DroneControllerException;
     void flyBackward(int distanceMilli) throws DroneControllerException;
