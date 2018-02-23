@@ -1,5 +1,6 @@
 package controller;
 
+import Listeners.VideoListener;
 import controlcenter.console.Console;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
@@ -125,7 +126,8 @@ public final class DroneController implements IDroneController {
 
     @Override
     public void searchRotation() throws DroneControllerException {
-
+        commandManager.spinLeft(10).doFor(2000);
+        commandManager.hover();
     }
 
     @Override
@@ -135,32 +137,38 @@ public final class DroneController implements IDroneController {
 
     @Override
     public void flyForward(int distanceMilli) throws DroneControllerException {
-
+        commandManager.forward(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     @Override
     public void flyBackward(int distanceMilli) throws DroneControllerException {
-
+        commandManager.backward(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     @Override
     public void flyUp(int distanceMilli) throws DroneControllerException {
-
+        commandManager.up(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     @Override
     public void flyRight(int distanceMilli) throws DroneControllerException {
-
+        commandManager.goRight(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     @Override
     public void flyLeft(int distanceMilli) throws DroneControllerException {
-
+        commandManager.goLeft(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     @Override
     public void flyDown(int distanceMilli) throws DroneControllerException {
-
+        commandManager.down(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.hover();
     }
 
     /**

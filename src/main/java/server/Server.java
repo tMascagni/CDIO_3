@@ -3,6 +3,10 @@ package server;
 import controller.DroneController;
 import controller.DroneControllerException;
 import controller.IDroneController;
+import de.yadrone.base.video.ImageListener;
+
+import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public final class Server {
 
@@ -44,6 +48,10 @@ public final class Server {
 
         /* #### #### #### #### #### #### #### */
         /* #### #### #### #### #### #### #### */
+
+
+
     }
+
 
 }
