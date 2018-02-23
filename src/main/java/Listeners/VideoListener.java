@@ -16,7 +16,7 @@ public class VideoListener extends JFrame {
     private IDroneController controller = DroneController.getInstance();
     private BufferedImage image = null;
 
-    public VideoListener(final IARDrone drone)
+    public VideoListener(final ARDrone drone)
     {
         super("Videofeed");
 
@@ -49,6 +49,8 @@ public class VideoListener extends JFrame {
         if (image != null)
             g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
     }
+
+    
 
 
 

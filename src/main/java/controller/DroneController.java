@@ -126,6 +126,7 @@ public final class DroneController implements IDroneController {
 
     @Override
     public void searchRotation() throws DroneControllerException {
+        console.log(this, "Search Rotation");
         commandManager.spinLeft(10).doFor(2000);
         commandManager.hover();
     }
@@ -137,36 +138,42 @@ public final class DroneController implements IDroneController {
 
     @Override
     public void flyForward(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying forward for " + distanceMilli + " milliseconds...");
         commandManager.forward(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public void flyBackward(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying backward for " + distanceMilli + " milliseconds...");
         commandManager.backward(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public void flyUp(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying Up for " + distanceMilli + " milliseconds...");
         commandManager.up(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public void flyRight(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying right for " + distanceMilli + " milliseconds...");
         commandManager.goRight(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public void flyLeft(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying left for " + distanceMilli + " milliseconds...");
         commandManager.goLeft(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public void flyDown(int distanceMilli) throws DroneControllerException {
+        console.log(this, "Flying down for " + distanceMilli + " milliseconds...");
         commandManager.down(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
@@ -176,6 +183,7 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public void resetDrone() throws DroneControllerException {
+        console.log(this, "Drone reset!");
         drone.reset();
     }
 
