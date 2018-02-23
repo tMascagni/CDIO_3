@@ -32,10 +32,6 @@ public final class Server {
         /* #### #### #### TEST #### #### #### */
         /* #### #### #### #### #### #### #### */
 
-        droneController.startDrone();
-        droneController.takeOffDrone();
-
-        droneController.hoverDrone(25000);
 
         droneController.landDrone();
         droneController.stopDrone();

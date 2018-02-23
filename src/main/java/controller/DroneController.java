@@ -11,6 +11,12 @@ import de.yadrone.base.video.VideoManager;
 
 public final class DroneController implements IDroneController {
 
+    private final int MIN_ALTITUDE = 1000; /* mm */
+    private final int MAX_ALTITUDE = 2500; /* mm */
+
+    private final int INITIAL_SPEED = 30;
+    private final int LANDING_SPEED = 15;
+
     private final IARDrone drone;
 
     private final CommandManager commandManager;
@@ -53,9 +59,9 @@ public final class DroneController implements IDroneController {
     public void startDrone() throws DroneControllerException {
         console.log(this, "Starting drone...");
         drone.start();
-        sleep(500);
+        sleep(1000);
         commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
-        drone.reset(); // TEST
+        drone.reset();
     }
 
     /**
@@ -65,6 +71,9 @@ public final class DroneController implements IDroneController {
     @Override
     public void initDrone() throws DroneControllerException {
         console.log(this, "Initializing drone.");
+        drone.setSpeed(INITIAL_SPEED);
+        commandManager.setMinAltitude(MIN_ALTITUDE);
+        commandManager.setMaxAltitude(MAX_ALTITUDE);
     }
 
     /**
@@ -85,7 +94,7 @@ public final class DroneController implements IDroneController {
     public void takeOffDrone() throws DroneControllerException {
         console.log(this, "Taking off drone...");
 
-        commandManager.setOutdoor(false, true); // Flyver indendørs, med beskyttelse på
+        commandManager.setOutdoor(false, true);
         commandManager.flatTrim();
 
         sleep(500);
@@ -101,8 +110,8 @@ public final class DroneController implements IDroneController {
     public void landDrone() throws DroneControllerException {
         console.log(this, "Landing drone...");
         commandManager.setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
-        drone.setSpeed(38);
-        commandManager.landing().waitFor(3000);
+        drone.setSpeed(LANDING_SPEED);
+        commandManager.landing();
     }
 
     /**
@@ -112,6 +121,46 @@ public final class DroneController implements IDroneController {
     public void hoverDrone(int timeMillis) throws DroneControllerException {
         console.log(this, "Hovering drone for " + timeMillis + " milliseconds...");
         commandManager.hover().waitFor(timeMillis);
+    }
+
+    @Override
+    public void searchRotation() throws DroneControllerException {
+
+    }
+
+    @Override
+    public void circleAroundObject() throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyForward(int distanceMilli) throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyBackward(int distanceMilli) throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyUp(int distanceMilli) throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyRight(int distanceMilli) throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyLeft(int distanceMilli) throws DroneControllerException {
+
+    }
+
+    @Override
+    public void flyDown(int distanceMilli) throws DroneControllerException {
+
     }
 
     /**
@@ -136,7 +185,7 @@ public final class DroneController implements IDroneController {
     private void sleep(int timeMillis) {
         try {
             Thread.sleep(timeMillis);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ignored) {
 
         }
     }
