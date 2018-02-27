@@ -1,26 +1,26 @@
-package cdio.controller;
+package cdio.handler;
 
-import cdio.controller.interfaces.IKeyController;
+import cdio.handler.interfaces.IKeyHandler;
 
 import java.awt.event.KeyEvent;
 
-public final class KeyController implements IKeyController {
+public final class KeyHandler implements IKeyHandler {
 
-    private static IKeyController instance;
+    private static IKeyHandler instance;
 
     static {
         try {
-            instance = new KeyController();
+            instance = new KeyHandler();
         } catch (Exception e) {
             throw new RuntimeException("Failed to instantiate Single KeyController instance!");
         }
     }
 
-    private KeyController() {
+    private KeyHandler() {
 
     }
 
-    public static synchronized IKeyController getInstance() {
+    public static synchronized IKeyHandler getInstance() {
         return instance;
     }
 
