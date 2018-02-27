@@ -19,9 +19,9 @@ public interface IDroneController {
     void flyBackward(int distanceMilli) throws DroneControllerException;
 
     void flyUp(int distanceMilli) throws DroneControllerException;
-    void flyRight(int distanceMilli) throws DroneControllerException;
-    void flyLeft(int distanceMilli) throws DroneControllerException;
     void flyDown(int distanceMilli) throws DroneControllerException;
+    void flyLeft(int distanceMilli) throws DroneControllerException;
+    void flyRight(int distanceMilli) throws DroneControllerException;
 
     void resetDrone() throws DroneControllerException;
     IARDrone getDrone() throws DroneControllerException;

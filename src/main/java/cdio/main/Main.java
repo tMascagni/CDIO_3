@@ -2,14 +2,16 @@ package cdio.main;
 
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
+import cdio.ui.jconsole.MainFrame;
 
 public final class Main {
 
-    private final static IDroneController droneController = DroneController.getInstance();
+    //private final static IDroneController droneController = DroneController.getInstance();
 
-    public static void main(String[] args) throws IDroneController.DroneControllerException {
+    public static void main(String[] args) {
 
         /* ######### TEST ######### */
+        /*
         droneController.startDrone();
         droneController.takeOffDrone();
 
@@ -17,8 +19,10 @@ public final class Main {
 
         droneController.landDrone();
         droneController.stopDrone();
+        */
         /* ######### TEST ######### */
 
+        MainFrame main = new MainFrame();
     }
 
 }

@@ -158,9 +158,9 @@ public final class DroneController implements IDroneController {
     }
 
     @Override
-    public final void flyRight(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying right for " + distanceMilli + " milliseconds...");
-        commandManager.goRight(INITIAL_SPEED).doFor(distanceMilli);
+    public final void flyDown(int distanceMilli) throws DroneControllerException {
+        tui.log(this, "Flying down for " + distanceMilli + " milliseconds...");
+        commandManager.down(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
@@ -172,9 +172,9 @@ public final class DroneController implements IDroneController {
     }
 
     @Override
-    public final void flyDown(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying down for " + distanceMilli + " milliseconds...");
-        commandManager.down(INITIAL_SPEED).doFor(distanceMilli);
+    public final void flyRight(int distanceMilli) throws DroneControllerException {
+        tui.log(this, "Flying right for " + distanceMilli + " milliseconds...");
+        commandManager.goRight(INITIAL_SPEED).doFor(distanceMilli);
         commandManager.hover();
     }
 
