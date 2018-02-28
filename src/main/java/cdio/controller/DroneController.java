@@ -127,7 +127,8 @@ public final class DroneController implements IDroneController {
     @Override
     public final void searchRotation() throws DroneControllerException {
         tui.log(this, "Search Rotation");
-        commandManager.spinLeft(10).doFor(2000);
+        commandManager.freeze();
+        commandManager.spinLeft(40).waitFor(3000);
         commandManager.hover();
     }
 
