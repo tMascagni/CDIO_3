@@ -2,9 +2,8 @@ package cdio.main;
 
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
-import cdio.ui.jconsole.MainFrame;
-import de.yadrone.base.ARDrone;
-import de.yadrone.base.IARDrone;
+import cdio.ui.MainFrame;
+import cdio.ui.interfaces.MessageListener;
 
 import java.awt.*;
 
@@ -12,30 +11,34 @@ public final class Main {
 
     private final static IDroneController droneController = DroneController.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IDroneController.DroneControllerException {
 
-        EventQueue.invokeLater(() -> {
-            try {
+       // MainFrame mainFrame = new MainFrame(droneController);
+        droneController.setMessageListener(new MessageListener() {
+            @Override
+            public void messageEventOccurred(Object obj, String text) {
 
-                droneController.startDrone();
-                droneController.initDrone();
-
-                droneController.takeOffDrone();
-
-                droneController.hoverDrone(2000);
-
-                droneController.searchRotation();
-
-                droneController.landDrone();
-                droneController.stopDrone();
-            } catch (IDroneController.DroneControllerException e) {
-                e.printStackTrace();
             }
         });
 
+        droneController.startDrone();
+        droneController.initDrone();
+
+        droneController.takeOffDrone();
+
+        droneController.hoverDrone(10000);
+
+        //droneController.searchRotation();
+
+        droneController.landDrone();
+        droneController.stopDrone();
+
+        /* ######### TEST ######### */
+        EventQueue.invokeLater(() -> {
+
+        });
         /* ######### TEST ######### */
 
-        //MainFrame main = new MainFrame();
     }
 
 }

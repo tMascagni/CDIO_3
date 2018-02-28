@@ -1,4 +1,4 @@
-package cdio.ui.jconsole;
+package cdio.ui;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -6,24 +6,26 @@ import java.awt.*;
 
 public final class StatusPanel extends JPanel {
 
-    private JLabel lblIsArrows, lblIsAutonomous, lblIsStarted, lblIsStopped;
+    private JLabel lblIsAutonomous, lblIsStarted, lblIsStopped;
 
-    private JRadioButton isArrows;
     private JRadioButton isAutonomous;
     private JRadioButton isStarted, isStopped;
 
     public StatusPanel() {
-        lblIsArrows = new JLabel("WADS/Arrow keys: ");
-        lblIsAutonomous = new JLabel("Autonomous Mode: ");
+        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Status", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
+
+        lblIsAutonomous = new JLabel("Autonomous: ");
         lblIsStarted = new JLabel("Started: ");
         lblIsStopped = new JLabel("Stopped: ");
 
-        isArrows = new JRadioButton();
         isAutonomous = new JRadioButton();
         isStarted = new JRadioButton();
         isStopped = new JRadioButton();
 
-        setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Status", TitledBorder.CENTER, TitledBorder.CENTER));
+        isAutonomous.setBackground(Color.WHITE);
+        isStarted.setBackground(Color.WHITE);
+        isStopped.setBackground(Color.WHITE);
 
         initComponents();
     }
@@ -34,21 +36,6 @@ public final class StatusPanel extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridy = 0;
-
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-
-        /* ---------------------------- First Row ---------------------------- */
-        gbc.gridx = 0;
-        gbc.fill = GridBagConstraints.CENTER;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        add(lblIsArrows, gbc);
-
-        gbc.gridx = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.LINE_START;
-        add(isArrows, gbc);
 
         /* ---------------------------- Next Row ---------------------------- */
         gbc.gridy++;

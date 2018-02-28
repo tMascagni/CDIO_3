@@ -1,28 +1,26 @@
 package cdio.controller;
 
 import cdio.controller.interfaces.IDroneController;
-import cdio.ui.Tui;
+import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
-import de.yadrone.base.navdata.Altitude;
-import de.yadrone.base.navdata.AltitudeListener;
-import de.yadrone.base.navdata.AttitudeListener;
-import de.yadrone.base.navdata.NavDataManager;
+import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.VideoManager;
 
 public final class DroneController implements IDroneController {
 
-    private final int MIN_ALTITUDE = 1000; /* mm */
-    private final int MAX_ALTITUDE = 2500; /* mm */
+    private final int MAX_ALTITUDE = 2500; /* millimeters. */
+    private final int MIN_ALTITUDE = 1000; /* millimeters. */
 
-    private final int INITIAL_SPEED = 20;
+    private final int INITIAL_SPEED = 30; /* In %, speed goes from 0 to 100. */
     private final int LANDING_SPEED = 15;
 
     private float pitch, roll, yaw;
     private float altitude;
+    private int battery;
 
     private final IARDrone drone;
 
@@ -31,7 +29,7 @@ public final class DroneController implements IDroneController {
     private final NavDataManager navDataManager;
     private final ConfigurationManager configManager;
 
-    private final Tui tui = Tui.getInstance();
+    private MessageListener messageListener;
 
     private static IDroneController instance;
 
@@ -39,7 +37,7 @@ public final class DroneController implements IDroneController {
         try {
             instance = new DroneController();
         } catch (Exception e) {
-            throw new RuntimeException("Failed to initialize DroneController Singleton instance!");
+            throw new RuntimeException("Failed to initialize Singleton DroneController instance!");
         }
     }
 
@@ -56,9 +54,12 @@ public final class DroneController implements IDroneController {
         /* Start listeners */
         startAttitudeListener();
         startAltitudeListener();
-        //startBatteryListener();
+        startBatteryListener();
     }
 
+    /**
+     * Singleton instance getter method.
+     */
     public static synchronized IDroneController getInstance() {
         return instance;
     }
@@ -69,23 +70,28 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void startDrone() throws DroneControllerException {
-        tui.log(this, "Starting drone...");
+        messageListener.messageEventOccurred(this, "Drone starting...");
+        setLEDAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
+        /* Start the drone */
         drone.start();
-        sleep(1000);
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
-        drone.reset();
+        /* Wait to settle for commands... */
+        sleep(2000);
+        messageListener.messageEventOccurred(this, "Drone started!");
     }
 
     /**
      * Method to initialize the drone.
-     * This method should be called before flying. (??)
+     * This method should be called before flying.
      */
     @Override
     public final void initDrone() throws DroneControllerException {
-        tui.log(this, "Initializing drone.");
+        messageListener.messageEventOccurred(this, "Drone initializing...");
         drone.setSpeed(INITIAL_SPEED);
         commandManager.setMinAltitude(MIN_ALTITUDE);
         commandManager.setMaxAltitude(MAX_ALTITUDE);
+        /* Wait to settle for commands... */
+        sleep(2000);
+        messageListener.messageEventOccurred(this, "Drone initialized!");
     }
 
     /**
@@ -94,9 +100,10 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void stopDrone() throws DroneControllerException {
-        tui.log(this, "Stopping drone...");
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_RED, 3, 10);
+        messageListener.messageEventOccurred(this, "Drone stopping...");
+        setLEDAnimation(LEDAnimation.BLINK_RED, 3, 10);
         drone.stop();
+        messageListener.messageEventOccurred(this, "Drone stopped!");
     }
 
     /**
@@ -104,15 +111,14 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void takeOffDrone() throws DroneControllerException {
-        tui.log(this, "Taking off drone...");
-
+        messageListener.messageEventOccurred(this, "Drone taking off...");
+        setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
         commandManager.setOutdoor(false, true);
         commandManager.flatTrim();
-
-        sleep(500);
-
-        drone.getCommandManager().setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
+        /* Wait to settle for commands... */
+        sleep(1000);
         commandManager.takeOff();
+        messageListener.messageEventOccurred(this, "Drone taken off!");
     }
 
     /**
@@ -120,10 +126,11 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void landDrone() throws DroneControllerException {
-        tui.log(this, "Landing drone...");
-        commandManager.setLedsAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
+        messageListener.messageEventOccurred(this, "Drone landing...");
+        setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
         drone.setSpeed(LANDING_SPEED);
         commandManager.landing();
+        messageListener.messageEventOccurred(this, "Drone landed!");
     }
 
     /**
@@ -131,18 +138,20 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void hoverDrone(int timeMillis) throws DroneControllerException {
-        tui.log(this, "Hovering drone for " + timeMillis + " milliseconds...");
+        messageListener.messageEventOccurred(this, "Drone hovering for " + timeMillis + " milliseconds...");
         commandManager.hover().waitFor(timeMillis);
+        messageListener.messageEventOccurred(this, "Drone finished hovering!");
     }
 
+    /**
+     * Method to make the drone rotate to a target yaw.
+     */
     @Override
     public final void searchRotation() throws DroneControllerException {
-        tui.log(this, "Search Rotation");
-
         int targetYaw = 300;
         float yaw = this.yaw - targetYaw;
 
-        tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
+        //tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
         while ((yaw = (yaw - targetYaw)) < -10 || yaw > 10) {
             if (yaw > 179) {
                 yaw = targetYaw - yaw;
@@ -159,9 +168,11 @@ public final class DroneController implements IDroneController {
             commandManager.hover();
             try {
                 Thread.sleep(500);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
+
             }
         }
+
     }
 
     @Override
@@ -169,55 +180,80 @@ public final class DroneController implements IDroneController {
 
     }
 
+    /**
+     * Method to make the drone fly forwards.
+     */
     @Override
     public final void flyForward(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying forward for " + distanceMilli + " milliseconds...");
+        messageListener.messageEventOccurred(this, "Drone flying forward...");
         commandManager.forward(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
-    }
-
-    @Override
-    public final void flyBackward(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying backward for " + distanceMilli + " milliseconds...");
-        commandManager.backward(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
-    }
-
-    @Override
-    public final void flyUp(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying Up for " + distanceMilli + " milliseconds...");
-        commandManager.up(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
-    }
-
-    @Override
-    public final void flyDown(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying down for " + distanceMilli + " milliseconds...");
-        commandManager.down(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
-    }
-
-    @Override
-    public final void flyLeft(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying left for " + distanceMilli + " milliseconds...");
-        commandManager.goLeft(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
-    }
-
-    @Override
-    public final void flyRight(int distanceMilli) throws DroneControllerException {
-        tui.log(this, "Flying right for " + distanceMilli + " milliseconds...");
-        commandManager.goRight(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying forward!");
     }
 
     /**
-     * Method to reset the drone. (??)
+     * Method to make the drone fly backwards.
+     */
+    @Override
+    public final void flyBackward(int distanceMilli) throws DroneControllerException {
+        messageListener.messageEventOccurred(this, "Drone flying backward...");
+        commandManager.backward(INITIAL_SPEED).waitFor(distanceMilli);
+        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying backward!");
+    }
+
+    /**
+     * Method to make the drone fly upwards.
+     */
+    @Override
+    public final void flyUp(int distanceMilli) throws DroneControllerException {
+        messageListener.messageEventOccurred(this, "Drone flying up...");
+        commandManager.up(INITIAL_SPEED).waitFor(distanceMilli);
+        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying up!");
+    }
+
+    /**
+     * Method to make the drone fly downwards.
+     */
+    @Override
+    public final void flyDown(int distanceMilli) throws DroneControllerException {
+        messageListener.messageEventOccurred(this, "Drone flying down...");
+        commandManager.down(INITIAL_SPEED).waitFor(distanceMilli);
+        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying down!");
+    }
+
+    /**
+     * Method to make the drone fly left.
+     */
+    @Override
+    public final void flyLeft(int distanceMilli) throws DroneControllerException {
+        messageListener.messageEventOccurred(this, "Drone flying left...");
+        commandManager.goLeft(INITIAL_SPEED).waitFor(distanceMilli);
+        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying left!");
+    }
+
+    /**
+     * Method to make the drone fly right.
+     */
+    @Override
+    public final void flyRight(int distanceMilli) throws DroneControllerException {
+        messageListener.messageEventOccurred(this, "Drone flying right...");
+        commandManager.goRight(INITIAL_SPEED).waitFor(distanceMilli);
+        commandManager.hover();
+        messageListener.messageEventOccurred(this, "Drone finished flying right!");
+    }
+
+    /**
+     * Method to reset the drone.
      */
     @Override
     public final void resetDrone() throws DroneControllerException {
-        tui.log(this, "Drone reset!");
+        messageListener.messageEventOccurred(this, "Resetting drone...");
         drone.reset();
+        messageListener.messageEventOccurred(this, "Drone has been reset!");
     }
 
     /**
@@ -228,6 +264,14 @@ public final class DroneController implements IDroneController {
         return drone;
     }
 
+    @Override
+    public void setMessageListener(MessageListener messageListener) {
+        this.messageListener = messageListener;
+    }
+
+    /**
+     * Method to start the attitude listener.
+     */
     private void startAttitudeListener() {
         navDataManager.addAttitudeListener(new AttitudeListener() {
             @Override
@@ -235,13 +279,13 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
+                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
             public void attitudeUpdated(float pitch, float roll) {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
-                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
@@ -251,17 +295,50 @@ public final class DroneController implements IDroneController {
         });
     }
 
+    /**
+     * Method to start the altitude listener.
+     */
     private void startAltitudeListener() {
         navDataManager.addAltitudeListener(new AltitudeListener() {
             @Override
-            public void receivedAltitude(int i) {
-                DroneController.this.altitude = i;
+            public void receivedAltitude(int altitude) {
+                DroneController.this.altitude = altitude;
             }
 
             @Override
             public void receivedExtendedAltitude(Altitude altitude) {
                 DroneController.this.altitude = altitude.getRaw();
             }
+        });
+    }
+
+    /**
+     * Method to start the battery listener.
+     */
+    private void startBatteryListener() {
+        navDataManager.addBatteryListener(new BatteryListener() {
+            @Override
+            public void batteryLevelChanged(int battery) {
+                DroneController.this.battery = battery;
+                System.out.println("Battery: " + battery);
+            }
+
+            @Override
+            public void voltageChanged(int voltage) {
+
+            }
+        });
+    }
+
+    private void startMagnetoListener() {
+        navDataManager.addMagnetoListener(magnetoData -> {
+
+        });
+    }
+
+    private void startVideoListener() {
+        videoManager.addImageListener(bufferedImage -> {
+
         });
     }
 
@@ -274,6 +351,13 @@ public final class DroneController implements IDroneController {
         } catch (InterruptedException ignored) {
 
         }
+    }
+
+    /**
+     * Helper method to set a LED animation of the drone.
+     */
+    private void setLEDAnimation(LEDAnimation ledAnimation, int freq, int duration) {
+        commandManager.setLedsAnimation(ledAnimation, freq, duration);
     }
 
 }

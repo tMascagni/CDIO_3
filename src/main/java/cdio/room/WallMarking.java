@@ -35,4 +35,5 @@ public class WallMarking {
         this.x = x;
         this.y = y;
     }
+
 }
