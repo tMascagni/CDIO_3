@@ -139,42 +139,42 @@ public final class DroneController implements IDroneController {
     @Override
     public final void flyForward(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying forward for " + distanceMilli + " milliseconds...");
-        commandManager.forward(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.forward(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public final void flyBackward(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying backward for " + distanceMilli + " milliseconds...");
-        commandManager.backward(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.backward(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public final void flyUp(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying Up for " + distanceMilli + " milliseconds...");
-        commandManager.up(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.up(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public final void flyDown(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying down for " + distanceMilli + " milliseconds...");
-        commandManager.down(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.down(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public final void flyLeft(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying left for " + distanceMilli + " milliseconds...");
-        commandManager.goLeft(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.goLeft(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 
     @Override
     public final void flyRight(int distanceMilli) throws DroneControllerException {
         tui.log(this, "Flying right for " + distanceMilli + " milliseconds...");
-        commandManager.goRight(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.goRight(INITIAL_SPEED).waitFor(distanceMilli);
         commandManager.hover();
     }
 

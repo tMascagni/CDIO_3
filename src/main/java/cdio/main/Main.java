@@ -12,13 +12,21 @@ public final class Main {
 
         /* ######### TEST ######### */
         /*
-        droneController.startDrone();
-        droneController.takeOffDrone();
+        EventQueue.invokeLater(() -> {
+            try {
+                droneController.startDrone();
+                droneController.initDrone();
 
-        droneController.hoverDrone(10000);
+                droneController.takeOffDrone();
 
-        droneController.landDrone();
-        droneController.stopDrone();
+                droneController.hoverDrone(10000);
+
+                droneController.landDrone();
+                droneController.stopDrone();
+            } catch (IDroneController.DroneControllerException e) {
+                e.printStackTrace();
+            }
+        });
         */
         /* ######### TEST ######### */
 

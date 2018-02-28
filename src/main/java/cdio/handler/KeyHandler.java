@@ -12,12 +12,12 @@ public final class KeyHandler implements IKeyHandler {
      * KEY INFORMATION:
      *
      * -- FLYING CONTROL --
-     * flyForward:   W / arrow up
-     * flyBackward:  S / arrow down
-     * flyUp:        Q
-     * flyDown:      E
-     * flyLeft:      A / arrow left
-     * flyRight:     D / arrow right
+     * flyForward:    W / arrow up
+     * flyBackward:   S / arrow down
+     * flyUp:         Q
+     * flyDown:       E
+     * flyLeft:       A / arrow left
+     * flyRight:      D / arrow right
      *
      * -- ACTION CONTROL --
      * isArrows:      P (Switches between using WASD or arrow keys for flying the drone.)
