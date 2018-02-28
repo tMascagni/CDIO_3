@@ -7,6 +7,9 @@ import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
+import de.yadrone.base.navdata.Altitude;
+import de.yadrone.base.navdata.AltitudeListener;
+import de.yadrone.base.navdata.AttitudeListener;
 import de.yadrone.base.navdata.NavDataManager;
 import de.yadrone.base.video.VideoManager;
 
@@ -15,8 +18,11 @@ public final class DroneController implements IDroneController {
     private final int MIN_ALTITUDE = 1000; /* mm */
     private final int MAX_ALTITUDE = 2500; /* mm */
 
-    private final int INITIAL_SPEED = 30;
+    private final int INITIAL_SPEED = 20;
     private final int LANDING_SPEED = 15;
+
+    private float pitch, roll, yaw;
+    private float altitude;
 
     private final IARDrone drone;
 
@@ -46,6 +52,11 @@ public final class DroneController implements IDroneController {
         videoManager = drone.getVideoManager();
         navDataManager = drone.getNavDataManager();
         configManager = drone.getConfigurationManager();
+
+        /* Start listeners */
+        startAttitudeListener();
+        startAltitudeListener();
+        //startBatteryListener();
     }
 
     public static synchronized IDroneController getInstance() {
@@ -127,9 +138,30 @@ public final class DroneController implements IDroneController {
     @Override
     public final void searchRotation() throws DroneControllerException {
         tui.log(this, "Search Rotation");
-        commandManager.freeze();
-        commandManager.spinLeft(40).waitFor(3000);
-        commandManager.hover();
+
+        int targetYaw = 300;
+        float yaw = this.yaw - targetYaw;
+
+        tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
+        while ((yaw = (yaw - targetYaw)) < -10 || yaw > 10) {
+            if (yaw > 179) {
+                yaw = targetYaw - yaw;
+            } else if (yaw < -179) {
+                yaw = targetYaw + yaw;
+            }
+            if (yaw > 0) {
+                commandManager.spinLeft(80).doFor(40);
+                commandManager.spinRight(80).doFor(10);
+            } else {
+                commandManager.spinRight(80).doFor(40);
+                commandManager.spinLeft(80).doFor(10);
+            }
+            commandManager.hover();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
     @Override
@@ -194,6 +226,43 @@ public final class DroneController implements IDroneController {
     @Override
     public final IARDrone getDrone() throws DroneControllerException {
         return drone;
+    }
+
+    private void startAttitudeListener() {
+        navDataManager.addAttitudeListener(new AttitudeListener() {
+            @Override
+            public void attitudeUpdated(float pitch, float roll, float yaw) {
+                DroneController.this.pitch = pitch;
+                DroneController.this.roll = roll;
+                DroneController.this.yaw = (int) yaw / 1000;
+            }
+
+            @Override
+            public void attitudeUpdated(float pitch, float roll) {
+                DroneController.this.pitch = pitch;
+                DroneController.this.roll = roll;
+                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+            }
+
+            @Override
+            public void windCompensation(float v, float v1) {
+
+            }
+        });
+    }
+
+    private void startAltitudeListener() {
+        navDataManager.addAltitudeListener(new AltitudeListener() {
+            @Override
+            public void receivedAltitude(int i) {
+                DroneController.this.altitude = i;
+            }
+
+            @Override
+            public void receivedExtendedAltitude(Altitude altitude) {
+                DroneController.this.altitude = altitude.getRaw();
+            }
+        });
     }
 
     /**
