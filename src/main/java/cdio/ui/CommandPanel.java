@@ -15,6 +15,7 @@ public final class CommandPanel extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Command Log", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
         textArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        textArea.setCaretPosition(textArea.getDocument().getLength());
 
         setLayout(new BorderLayout());
 

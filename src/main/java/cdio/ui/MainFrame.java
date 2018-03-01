@@ -60,6 +60,8 @@ public final class MainFrame extends JFrame implements MessageListener {
 
         initComponents();
         initFrame();
+        requestFocus();
+        requestFocusInWindow();
     }
 
     private void initComponents() {
