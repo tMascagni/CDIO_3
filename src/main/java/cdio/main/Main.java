@@ -2,6 +2,7 @@ package cdio.main;
 
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
+import cdio.ui.interfaces.MessageListener;
 
 import java.awt.*;
 
@@ -11,8 +12,21 @@ public final class Main {
 
     public static void main(String[] args) {
 
-        droneController.setMessageListener((obj, text) -> {
+        droneController.setMessageListener(new MessageListener() {
+            @Override
+            public void messageCommandStartEventOccurred(String title) {
 
+            }
+
+            @Override
+            public void messageCommandEventOccurred(Object obj, String msg) {
+
+            }
+
+            @Override
+            public void messageCommandEndEventOccurred() {
+
+            }
         });
 
         /* ######### TEST ######### */

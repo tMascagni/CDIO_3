@@ -16,9 +16,8 @@ public final class MainFrame extends JFrame implements MessageListener {
     private int width = 1280;
     private int height = 720;
 
-    private CommandPanel commandPanel;
+    private CommandPanel commandPanel, c1, c2;
     private StatusPanel statusPanel;
-    private VideoPanel frontVideoPanel, bottomVideoPanel;
 
     private final IDroneController droneController;
     private final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
@@ -37,24 +36,34 @@ public final class MainFrame extends JFrame implements MessageListener {
             e.printStackTrace();
         }
 
-        commandPanel = new CommandPanel();
-        statusPanel = new StatusPanel();
+        Dimension preferredPanelSize = new Dimension(width / 2, height / 2);
 
-        try {
-            frontVideoPanel = new VideoPanel(droneController.getDrone(), true);
-            bottomVideoPanel = new VideoPanel(droneController.getDrone(), false);
-        } catch (IDroneController.DroneControllerException e) {
-            e.printStackTrace();
-        }
+        statusPanel = new StatusPanel();
+        statusPanel.setPreferredSize(new Dimension((width / 2) / 3, height / 2));
+        statusPanel.setSize(new Dimension((width / 2) / 3, height / 2));
+
+        commandPanel = new CommandPanel();
+        commandPanel.setPreferredSize(preferredPanelSize);
+        commandPanel.setSize(preferredPanelSize);
+
+        c1 = new CommandPanel();
+        c1.setPreferredSize(preferredPanelSize);
+        c1.setSize(preferredPanelSize);
+
+        c2 = new CommandPanel();
+        c2.setPreferredSize(preferredPanelSize);
+        c2.setSize(preferredPanelSize);
 
         keyHandler.setMessageListener(this);
         addKeyListener(keyHandler);
+        getRootPane().addKeyListener(keyHandler);
         commandPanel.addKeyListener(keyHandler);
+        c1.addKeyListener(keyHandler);
+        c2.addKeyListener(keyHandler);
         statusPanel.addKeyListener(keyHandler);
-        frontVideoPanel.addKeyListener(keyHandler);
-        bottomVideoPanel.addKeyListener(keyHandler);
 
         setSize(width, height);
+        setMinimumSize(preferredPanelSize);
         setPreferredSize(new Dimension(width, height));
         setMaximumSize(new Dimension(width, height));
 
@@ -66,13 +75,12 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     private void initComponents() {
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridy = 0;
 
         gbc.weightx = 1.0;
-        gbc.weighty = 0.1;
+        gbc.weighty = 1.0;
 
         /* ---------------------------- First Row ---------------------------- */
         gbc.gridx = 0;
@@ -87,16 +95,13 @@ public final class MainFrame extends JFrame implements MessageListener {
         /* ---------------------------- Next Row ---------------------------- */
         gbc.gridy++;
 
-        gbc.weightx = 1.0;
-        gbc.weighty = 0.1;
-
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        add(frontVideoPanel, gbc);
+        add(c1, gbc);
 
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.LINE_START;
-        add(bottomVideoPanel, gbc);
+        add(c2, gbc);
     }
 
     private void initFrame() {
@@ -109,9 +114,19 @@ public final class MainFrame extends JFrame implements MessageListener {
     }
 
     @Override
-    public void messageEventOccurred(Object obj, String text) {
+    public void messageCommandStartEventOccurred(String title) {
+        commandPanel.appendText("────────────────[ " + title + " ]────────────────");
+    }
+
+    @Override
+    public void messageCommandEventOccurred(Object obj, String msg) {
         String formattedDate = df.format(new Date());
-        commandPanel.appendText("[" + obj.getClass().getSimpleName() + ": " + formattedDate + "] " + text);
+        commandPanel.appendText("[" + obj.getClass().getSimpleName() + ": " + formattedDate + "] " + msg);
+    }
+
+    @Override
+    public void messageCommandEndEventOccurred() {
+        commandPanel.appendText("────────────────────────────────────");
     }
 
 }

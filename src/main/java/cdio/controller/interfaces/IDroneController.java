@@ -11,6 +11,7 @@ public interface IDroneController {
     void takeOffDrone() throws DroneControllerException;
     void landDrone() throws DroneControllerException;
     void hoverDrone(int timeMillis) throws DroneControllerException;
+    void hoverDrone() throws DroneControllerException;
 
     void searchRotation() throws DroneControllerException;
     void circleAroundObject() throws DroneControllerException;
