@@ -5,9 +5,16 @@ import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
 import cdio.ui.interfaces.MessageListener;
+import cdio.ui.panel.CVPanel;
+import cdio.ui.panel.CameraPanel;
+import cdio.ui.panel.CommandPanel;
+import cdio.ui.panel.StatusPanel;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,8 +23,10 @@ public final class MainFrame extends JFrame implements MessageListener {
     private int width = 1280;
     private int height = 720;
 
-    private CommandPanel commandPanel, c1, c2;
+    private CommandPanel commandPanel;
     private StatusPanel statusPanel;
+    private CameraPanel cameraPanel;
+    private CVPanel cvPanel;
 
     private final IDroneController droneController;
     private final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
@@ -38,29 +47,43 @@ public final class MainFrame extends JFrame implements MessageListener {
 
         Dimension preferredPanelSize = new Dimension(width / 2, height / 2);
 
-        statusPanel = new StatusPanel();
-        statusPanel.setPreferredSize(new Dimension((width / 2) / 3, height / 2));
-        statusPanel.setSize(new Dimension((width / 2) / 3, height / 2));
-
         commandPanel = new CommandPanel();
         commandPanel.setPreferredSize(preferredPanelSize);
         commandPanel.setSize(preferredPanelSize);
 
-        c1 = new CommandPanel();
-        c1.setPreferredSize(preferredPanelSize);
-        c1.setSize(preferredPanelSize);
+        statusPanel = new StatusPanel();
+        statusPanel.setPreferredSize(new Dimension((width / 2) / 3, height / 2));
+        statusPanel.setSize(new Dimension(width / 2, height / 2));
 
-        c2 = new CommandPanel();
-        c2.setPreferredSize(preferredPanelSize);
-        c2.setSize(preferredPanelSize);
+        try {
+            cameraPanel = new CameraPanel(droneController.getDrone());
+            cameraPanel.setPreferredSize(preferredPanelSize);
+            cameraPanel.setSize(preferredPanelSize);
+
+            cvPanel = new CVPanel(droneController.getDrone());
+            cvPanel.setPreferredSize(preferredPanelSize);
+            cvPanel.setSize(preferredPanelSize);
+        } catch (IDroneController.DroneControllerException e) {
+            e.printStackTrace();
+        }
 
         keyHandler.setMessageListener(this);
         addKeyListener(keyHandler);
         getRootPane().addKeyListener(keyHandler);
-        commandPanel.addKeyListener(keyHandler);
-        c1.addKeyListener(keyHandler);
-        c2.addKeyListener(keyHandler);
-        statusPanel.addKeyListener(keyHandler);
+        commandPanel.setFocusable(false);
+        statusPanel.setFocusable(false);
+        setFocusable(true);
+
+        addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                System.out.println("Focus GAINED:");
+            }
+
+            public void focusLost(FocusEvent e) {
+                System.out.println("Focus LOST:");
+                e.getComponent().requestFocus();
+            }
+        });
 
         setSize(width, height);
         setMinimumSize(preferredPanelSize);
@@ -97,11 +120,11 @@ public final class MainFrame extends JFrame implements MessageListener {
 
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        add(c1, gbc);
+        add(cameraPanel, gbc);
 
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.LINE_START;
-        add(c2, gbc);
+        add(cvPanel, gbc);
     }
 
     private void initFrame() {
@@ -115,7 +138,10 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     @Override
     public void messageCommandStartEventOccurred(String title) {
-        commandPanel.appendText("────────────────[ " + title + " ]────────────────");
+        title = StringUtils.center(title, 14, " ");
+        //String msg = "───────────[ " + title + " ]───────────";
+        String msg = "--------------------------[ " + title + " ]--------------------------";
+        commandPanel.appendText(msg);
     }
 
     @Override
@@ -126,7 +152,7 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     @Override
     public void messageCommandEndEventOccurred() {
-        commandPanel.appendText("────────────────────────────────────");
+        commandPanel.appendText("----------------------------------------------------------------------");
     }
 
 }

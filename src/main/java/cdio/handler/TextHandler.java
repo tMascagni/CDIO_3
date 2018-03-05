@@ -4,7 +4,7 @@ public final class TextHandler {
 
     private static TextHandler instance;
 
-    public static String GUI_TITLE = "Group 3 - Drone Control Center";
+    public static String GUI_TITLE = "Group 3 - DroneX Control Center";
 
     static {
         try {

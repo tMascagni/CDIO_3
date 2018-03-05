@@ -55,6 +55,7 @@ public final class DroneController implements IDroneController {
         startAttitudeListener();
         startAltitudeListener();
         startBatteryListener();
+        startImageListener();
     }
 
     /**
@@ -304,6 +305,27 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandEndEventOccurred();
     }
 
+    @Override
+    public void setSpeed(int speed) throws DroneControllerException {
+        messageListener.messageCommandStartEventOccurred("Speed");
+
+        if (speed > 100 || speed < 10) {
+            messageListener.messageCommandEventOccurred(this, "Illegal speed: " + speed);
+            messageListener.messageCommandEndEventOccurred();
+            return;
+        }
+
+        drone.setSpeed(speed);
+
+        messageListener.messageCommandEventOccurred(this, "Setting drone speed: " + speed);
+        messageListener.messageCommandEndEventOccurred();
+    }
+
+    @Override
+    public int getSpeed() throws DroneControllerException {
+        return drone.getSpeed();
+    }
+
     /**
      * Method to reset the drone.
      */
@@ -392,14 +414,28 @@ public final class DroneController implements IDroneController {
         });
     }
 
-    private void startMagnetoListener() {
-        navDataManager.addMagnetoListener(magnetoData -> {
-
+    private void startImageListener() {
+        videoManager.addImageListener(bufferedImage -> {
+            messageListener.messageCommandEventOccurred(this, "ImageUpdated!");
         });
     }
 
     private void startVideoListener() {
-        videoManager.addImageListener(bufferedImage -> {
+        drone.getNavDataManager().addVideoListener(new VideoListener() {
+            @Override
+            public void receivedHDVideoStreamData(HDVideoStreamData hdVideoStreamData) {
+
+            }
+
+            @Override
+            public void receivedVideoStreamData(VideoStreamData videoStreamData) {
+
+            }
+        });
+    }
+
+    private void startMagnetoListener() {
+        navDataManager.addMagnetoListener(magnetoData -> {
 
         });
     }
