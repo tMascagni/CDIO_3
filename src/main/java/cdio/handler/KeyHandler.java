@@ -33,8 +33,11 @@ public final class KeyHandler implements IKeyHandler {
      * rotate:        R (Rotates the drone 360 degrees, and the drone scans stuff (?))
      * circleObject:  C (Circles around the nearest object (?))
      * flip:          F (Flips like cray.)
+     * dance:         G (Do the mixed theta-omega dance thingy.)
      * incSpeed:      N (Increase speed by 1.)
      * decSpeed:      M (Decrease speed by 1.)
+     *
+     * 19 keys.
      */
 
     /* Flying control keys */

@@ -5,6 +5,7 @@ import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
 import cdio.ui.interfaces.MessageListener;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,7 +116,10 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     @Override
     public void messageCommandStartEventOccurred(String title) {
-        commandPanel.appendText("────────────────[ " + title + " ]────────────────");
+        title = StringUtils.center(title, 14, " ");
+        //String msg = "───────────[ " + title + " ]───────────";
+        String msg = "--------------------------[ " + title + " ]--------------------------";
+        commandPanel.appendText(msg);
     }
 
     @Override
@@ -126,7 +130,7 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     @Override
     public void messageCommandEndEventOccurred() {
-        commandPanel.appendText("────────────────────────────────────");
+        commandPanel.appendText("----------------------------------------------------------------------");
     }
 
 }

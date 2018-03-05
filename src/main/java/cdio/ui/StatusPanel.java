@@ -8,10 +8,22 @@ public class StatusPanel extends JPanel {
 
     private DroneStatusPanel droneStatusPanel;
     private HoopStatusPanel hoopStatusPanel;
+    private DroneDataPanel droneDataPanel;
+    private KeyPanel keyPanel;
+
+    private JPanel droneStatusHoopStatusPanel;
 
     public StatusPanel() {
         droneStatusPanel = new DroneStatusPanel();
         hoopStatusPanel = new HoopStatusPanel();
+        droneDataPanel = new DroneDataPanel();
+
+        droneStatusHoopStatusPanel = new JPanel();
+        droneStatusHoopStatusPanel.setLayout(new BorderLayout());
+        droneStatusHoopStatusPanel.add(droneStatusPanel, BorderLayout.NORTH);
+        droneStatusHoopStatusPanel.add(hoopStatusPanel, BorderLayout.SOUTH);
+
+        keyPanel = new KeyPanel();
 
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Status", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
         setBackground(Color.WHITE);
@@ -26,13 +38,17 @@ public class StatusPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        /* ---------------------------- Next Row ---------------------------- */
+        /* ---------------------------- Next Col ---------------------------- */
         gbc.fill = GridBagConstraints.BOTH;
-        add(droneStatusPanel, gbc);
+        add(droneStatusHoopStatusPanel, gbc);
 
-        /* ---------------------------- Next Row ---------------------------- */
-        gbc.gridy++;
-        add(hoopStatusPanel, gbc);
+        /* ---------------------------- Next Col ---------------------------- */
+        gbc.gridx++;
+        add(droneDataPanel, gbc);
+
+        /* ---------------------------- Next Col ---------------------------- */
+        gbc.gridx++;
+        add(keyPanel, gbc);
     }
 
 }
