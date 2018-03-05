@@ -124,37 +124,51 @@ public final class KeyHandler implements IKeyHandler {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_W:
+                messageListener.messageCommandStartEventOccurred("Forward");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying forward...");
                 droneController.getDrone().forward();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying forward!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_S:
+                messageListener.messageCommandStartEventOccurred("Backward");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying backward...");
                 droneController.getDrone().backward();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying backward!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_Q:
+                messageListener.messageCommandStartEventOccurred("Up");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying up...");
                 droneController.getDrone().up();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying up!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_E:
+                messageListener.messageCommandStartEventOccurred("Down");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying down...");
                 droneController.getDrone().down();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying down!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_A:
+                messageListener.messageCommandStartEventOccurred("Left");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying left...");
                 droneController.getDrone().goLeft();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying left!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_D:
+                messageListener.messageCommandStartEventOccurred("Right");
                 messageListener.messageCommandEventOccurred(droneController, "Drone flying right...");
                 droneController.getDrone().goRight();
                 messageListener.messageCommandEventOccurred(droneController, "Drone finished flying right!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_P:
-                // What do we do here...
+                messageListener.messageCommandStartEventOccurred("Autonomous");
+                messageListener.messageCommandEventOccurred(droneController, "Autonomous clicked!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_O:
                 droneController.startDrone();
@@ -169,7 +183,7 @@ public final class KeyHandler implements IKeyHandler {
                 droneController.landDrone();
                 break;
             case KeyEvent.VK_H:
-                droneController.getDrone().hover();
+                droneController.hoverDrone();
                 break;
             case KeyEvent.VK_R:
                 droneController.searchRotation();
@@ -178,20 +192,29 @@ public final class KeyHandler implements IKeyHandler {
                 droneController.circleAroundObject();
                 break;
             case KeyEvent.VK_F:
+                messageListener.messageCommandStartEventOccurred("Flip");
                 messageListener.messageCommandEventOccurred(droneController, "Drone taking a flip...");
                 droneController.getDrone().getCommandManager().animate(FlightAnimation.FLIP_BEHIND);
                 messageListener.messageCommandEventOccurred(droneController, "Drone done flipping!");
+                messageListener.messageCommandEndEventOccurred();
+                break;
+            case KeyEvent.VK_G:
+                messageListener.messageCommandStartEventOccurred("Dance");
+                messageListener.messageCommandEventOccurred(droneController, "Drone dancing...");
+                droneController.getDrone().getCommandManager().animate(FlightAnimation.FLIP_BEHIND);
+                messageListener.messageCommandEventOccurred(droneController, "Drone done dancing!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
             case KeyEvent.VK_N:
-                droneController.getDrone().setSpeed(droneController.getDrone().getSpeed() + 1);
-                messageListener.messageCommandEventOccurred(droneController, "Increased speed: " + droneController.getDrone().getSpeed());
+                droneController.setSpeed(droneController.getSpeed() + 1);
                 break;
             case KeyEvent.VK_M:
-                droneController.getDrone().setSpeed(droneController.getDrone().getSpeed() - 1);
-                messageListener.messageCommandEventOccurred(droneController, "Decreased speed: " + droneController.getDrone().getSpeed());
+                droneController.setSpeed(droneController.getSpeed() - 1);
                 break;
             default:
+                messageListener.messageCommandStartEventOccurred("Error");
                 messageListener.messageCommandEventOccurred(this, "Unknown command '" + e.getKeyChar() + "'!");
+                messageListener.messageCommandEndEventOccurred();
                 break;
         }
 

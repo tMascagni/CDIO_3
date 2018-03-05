@@ -8,10 +8,7 @@ import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
-import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
-
-import java.awt.image.BufferedImage;
 
 public final class DroneController implements IDroneController {
 
@@ -306,6 +303,27 @@ public final class DroneController implements IDroneController {
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying right!");
         messageListener.messageCommandEndEventOccurred();
+    }
+
+    @Override
+    public void setSpeed(int speed) throws DroneControllerException {
+        messageListener.messageCommandStartEventOccurred("Speed");
+
+        if (speed > 100 || speed < 10) {
+            messageListener.messageCommandEventOccurred(this, "Illegal speed: " + speed);
+            messageListener.messageCommandEndEventOccurred();
+            return;
+        }
+
+        drone.setSpeed(speed);
+
+        messageListener.messageCommandEventOccurred(this, "Setting drone speed: " + speed);
+        messageListener.messageCommandEndEventOccurred();
+    }
+
+    @Override
+    public int getSpeed() throws DroneControllerException {
+        return drone.getSpeed();
     }
 
     /**
