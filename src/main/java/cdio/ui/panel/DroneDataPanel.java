@@ -1,4 +1,4 @@
-package cdio.ui;
+package cdio.ui.panel;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -116,6 +116,14 @@ public class DroneDataPanel extends JPanel {
         gbc.gridx = 1;
         gbc.insets = new Insets(0, leftOffset, 0, rightBorderOffset);
         add(lblAltitudeValue, gbc);
+    }
+
+    public void updateBattery(int battery) {
+        lblBatteryValue.setText(battery + "%");
+    }
+
+    public void updateSpeed(int speed) {
+        lblSpeedValue.setText(speed + "%");
     }
 
 }

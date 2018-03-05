@@ -4,6 +4,7 @@ import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.IARDrone;
 
 public interface IDroneController {
+    /** BASIC DRONE FUNCTIONALITY **/
     void startDrone() throws DroneControllerException;
     void initDrone() throws DroneControllerException;
     void stopDrone() throws DroneControllerException;

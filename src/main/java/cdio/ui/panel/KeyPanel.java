@@ -1,4 +1,4 @@
-package cdio.ui;
+package cdio.ui.panel;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

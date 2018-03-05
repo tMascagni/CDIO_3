@@ -8,7 +8,10 @@ import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
+import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
+
+import java.awt.image.BufferedImage;
 
 public final class DroneController implements IDroneController {
 
@@ -55,6 +58,7 @@ public final class DroneController implements IDroneController {
         startAttitudeListener();
         startAltitudeListener();
         startBatteryListener();
+        startImageListener();
     }
 
     /**
@@ -392,14 +396,28 @@ public final class DroneController implements IDroneController {
         });
     }
 
-    private void startMagnetoListener() {
-        navDataManager.addMagnetoListener(magnetoData -> {
-
+    private void startImageListener() {
+        videoManager.addImageListener(bufferedImage -> {
+            messageListener.messageCommandEventOccurred(this, "ImageUpdated!");
         });
     }
 
     private void startVideoListener() {
-        videoManager.addImageListener(bufferedImage -> {
+        drone.getNavDataManager().addVideoListener(new VideoListener() {
+            @Override
+            public void receivedHDVideoStreamData(HDVideoStreamData hdVideoStreamData) {
+
+            }
+
+            @Override
+            public void receivedVideoStreamData(VideoStreamData videoStreamData) {
+
+            }
+        });
+    }
+
+    private void startMagnetoListener() {
+        navDataManager.addMagnetoListener(magnetoData -> {
 
         });
     }
