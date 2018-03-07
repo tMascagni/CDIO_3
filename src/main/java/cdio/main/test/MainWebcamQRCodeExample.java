@@ -1,4 +1,4 @@
-package cdio.controller;
+package cdio.main.test;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,7 +18,7 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 
-public class WebcamQRCodeExample extends JFrame implements Runnable, ThreadFactory {
+public class MainWebcamQRCodeExample extends JFrame implements Runnable, ThreadFactory {
 
     private static final long serialVersionUID = 6441489157408381878L;
 
@@ -28,7 +28,7 @@ public class WebcamQRCodeExample extends JFrame implements Runnable, ThreadFacto
     private WebcamPanel panel = null;
     private JTextArea textarea = null;
 
-    public WebcamQRCodeExample() {
+    public MainWebcamQRCodeExample() {
         super();
 
         setLayout(new FlowLayout());
@@ -37,7 +37,7 @@ public class WebcamQRCodeExample extends JFrame implements Runnable, ThreadFacto
 
         Dimension size = WebcamResolution.QVGA.getSize();
 
-        webcam = Webcam.getWebcams().get(0);
+        webcam = Webcam.getWebcams().get(1);
         webcam.setViewSize(size);
 
         panel = new WebcamPanel(webcam);
@@ -105,7 +105,7 @@ public class WebcamQRCodeExample extends JFrame implements Runnable, ThreadFacto
     }
 
     public static void main(String[] args) {
-        new WebcamQRCodeExample();
+        new MainWebcamQRCodeExample();
     }
 }
 

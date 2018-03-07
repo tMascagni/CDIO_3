@@ -1,4 +1,4 @@
-package cdio.controller;
+package cdio.ui.panel;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -12,7 +12,8 @@ import java.awt.*;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
-public class QRCode extends JPanel implements ICCPlugin {
+public class QRCodePanel extends JPanel implements ICCPlugin {
+
     private IARDrone drone;
     private String code;
     private String orientation;
@@ -20,7 +21,7 @@ public class QRCode extends JPanel implements ICCPlugin {
     private BufferedImage image = null;
     private Result detectionResult;
 
-    public QRCode() {
+    public QRCodePanel() {
         setBackground(Color.BLACK);
     }
 

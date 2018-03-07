@@ -1,10 +1,9 @@
-package cdio.main;
+package cdio.room;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.opencv.core.*;
-import org.opencv.imgproc.Imgproc;
 
 class Line {
     public Point offset;

@@ -1,4 +1,4 @@
-package cdio.main;
+package cdio.main.test;
 
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
