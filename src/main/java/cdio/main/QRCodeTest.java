@@ -3,10 +3,20 @@ package cdio.main;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+import org.opencv.utils.Converters;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class QRCodeTest {
 
@@ -17,18 +27,19 @@ public class QRCodeTest {
     public static void main(String[] args) {
 
         QRCodeTest testObj = new QRCodeTest();
-        BufferedImage img1 = testObj.getImg("qr_2.jpg");
-        testObj.scanImageForQR(img1);
+      //  BufferedImage img1 = testObj.getImg("qr_2.jpg");
+      //  testObj.scanImageForQR(img1);
 
-        /*
-        testObj.startIMG("https://www.qrstuff.com/images/sample.png");
-        testObj.startIMG("http://static.jeffbullas.com/wp-content/uploads/2012/05/Jeff-Bullas-scantogram1.jpg");
-        testObj.startIMG("https://thumbor.forbes.com/thumbor/960x0/smart/https%3A%2F%2Fb-i.forbesimg.com%2Frogerdooley%2Ffiles%2F2013%2F10%2Fqr-kittens.jpg");
-        testObj.startIMG("https://lh3.googleusercontent.com/-zp1P6fiT9F80i7uTbnWO84h4fWmoFXOxFavpqq63MKLzJzUeVwpIzz29G8drleQlg=h310");
-        testObj.startIMG("https://i2.wp.com/farm6.static.flickr.com/5051/5535825483_ce9c8fc321_z.jpg?resize=480%2C640&ssl=1");
-        testObj.startIMG("http://www.labeljoy.com/images/how-to/best-practices/image009.png");
-        testObj.startIMG("https://richmediadp.files.wordpress.com/2011/08/qr-code.jpg");
+        testObj.scanImageForQR( testObj.getImg("https://www.qrstuff.com/images/sample.png"));
+       /*
+        testObj.getImg("http://static.jeffbullas.com/wp-content/uploads/2012/05/Jeff-Bullas-scantogram1.jpg");
+        testObj.getImg("https://thumbor.forbes.com/thumbor/960x0/smart/https%3A%2F%2Fb-i.forbesimg.com%2Frogerdooley%2Ffiles%2F2013%2F10%2Fqr-kittens.jpg");
+        testObj.getImg("https://lh3.googleusercontent.com/-zp1P6fiT9F80i7uTbnWO84h4fWmoFXOxFavpqq63MKLzJzUeVwpIzz29G8drleQlg=h310");
+        testObj.getImg("https://i2.wp.com/farm6.static.flickr.com/5051/5535825483_ce9c8fc321_z.jpg?resize=480%2C640&ssl=1");
+        testObj.getImg("http://www.labeljoy.com/images/how-to/best-practices/image009.png");
+        testObj.getImg("https://richmediadp.files.wordpress.com/2011/08/qr-code.jpg");
         */
+
     }
 
     public BufferedImage getImg(String path) {
@@ -123,6 +134,8 @@ public class QRCodeTest {
         os.close();
     }
     */
+
+
 
 }
 

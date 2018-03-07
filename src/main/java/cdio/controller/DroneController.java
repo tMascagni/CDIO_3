@@ -1,6 +1,7 @@
 package cdio.controller;
 
 import cdio.controller.interfaces.IDroneController;
+import cdio.main.QRCodeTest;
 import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
@@ -212,7 +213,6 @@ public final class DroneController implements IDroneController {
 
     @Override
     public final void circleAroundObject() throws DroneControllerException {
-
     }
 
     /**
@@ -417,6 +417,8 @@ public final class DroneController implements IDroneController {
     private void startImageListener() {
         videoManager.addImageListener(bufferedImage -> {
             messageListener.messageCommandEventOccurred(this, "ImageUpdated!");
+            QRCodeTest testObj = new QRCodeTest();
+            testObj.scanImageForQR(bufferedImage);
         });
     }
 
@@ -429,6 +431,8 @@ public final class DroneController implements IDroneController {
 
             @Override
             public void receivedVideoStreamData(VideoStreamData videoStreamData) {
+
+
 
             }
         });
