@@ -4,8 +4,6 @@ import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
 import cdio.ui.MainFrame;
 
-import java.awt.*;
-
 public final class MainGUI {
 
     private static final IDroneController droneController = DroneController.getInstance();
@@ -14,7 +12,14 @@ public final class MainGUI {
         MainFrame mainFrame = new MainFrame(droneController);
         droneController.setMessageListener(mainFrame);
 
+        try {
+            droneController.startDrone();
+        } catch (IDroneController.DroneControllerException e) {
+            e.printStackTrace();
+        }
+
         /* ######### TEST ######### */
+        /*
         EventQueue.invokeLater(() -> {
             try {
                 droneController.startDrone();
@@ -30,6 +35,7 @@ public final class MainGUI {
                 e.printStackTrace();
             }
         });
+        */
         /* ######### TEST ######### */
     }
 

@@ -68,8 +68,10 @@ public final class MainFrame extends JFrame implements MessageListener {
         }
 
         keyHandler.setMessageListener(this);
+        /*
         addKeyListener(keyHandler);
         getRootPane().addKeyListener(keyHandler);
+        */
         commandPanel.setFocusable(false);
         statusPanel.setFocusable(false);
         setFocusable(true);

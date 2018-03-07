@@ -1,41 +1,24 @@
-package cdio.controller;
+package cdio.main;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import de.yadrone.base.ARDrone;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
-
-import com.google.zxing.*;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.video.ImageListener;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
 
 public class QRCodeTest {
 
-    private IARDrone drone;
-    private String code;
+    private String qrCodeValue;
     private String orientation;
-
-    private BufferedImage image = null;
     private Result detectionResult;
-
 
     public static void main(String[] args) {
 
         QRCodeTest testObj = new QRCodeTest();
+        BufferedImage img1 = testObj.getImg("qr_2.jpg");
+        testObj.scanImageForQR(img1);
 
         /*
         testObj.startIMG("https://www.qrstuff.com/images/sample.png");
@@ -46,40 +29,22 @@ public class QRCodeTest {
         testObj.startIMG("http://www.labeljoy.com/images/how-to/best-practices/image009.png");
         testObj.startIMG("https://richmediadp.files.wordpress.com/2011/08/qr-code.jpg");
         */
-
-        try {
-            BufferedImage image = ImageIO.read(new File("qr_2.jpg"));
-            testObj.setImage(image);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void startIMG(String url){
-        String imageUrl = url;
-        String destinationFile = "image.jpg";
-
-        try {
-            saveImage(imageUrl, destinationFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public BufferedImage getImg(String path) {
 
         BufferedImage img = null;
+
         try {
-            img = ImageIO.read(new File(destinationFile));
-        } catch (IOException e) {
+            img = ImageIO.read(new File(path));
+        } catch (IOException ignored) {
+
         }
 
-        QRCodeTest codeTest = new QRCodeTest();
-
-        codeTest.setImage(img);
+        return img;
     }
 
-
-    private long imageCount = 0;
-
-    public void setImage(final BufferedImage image) {
+    public String scanImageForQR(final BufferedImage image) {
         // try to detect QR code
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -90,7 +55,7 @@ public class QRCodeTest {
         try {
             detectionResult = reader.decode(bitmap);
 
-            code = detectionResult.getText();
+            qrCodeValue = detectionResult.getText();
 
             // System.out.println("QRCode Text: " + result.getText());
 
@@ -124,24 +89,24 @@ public class QRCodeTest {
 
             orientation = (int) theta + " grader";
 
-            int withOfCode = (int) b.getX() - (int) a.getX();
+            int qrCodeWidth = (int) b.getX() - (int) a.getX();
 
             System.out.println("###############################################");
-            System.out.println("qr code width:  " + withOfCode);
-
+            System.out.println("QR Code Width: " + qrCodeWidth);
         } catch (ReaderException e) {
             // no code found.
             detectionResult = null;
             orientation = "n/a";
-            code = "n/a";
+            qrCodeValue = "n/a";
         }
 
-        System.out.println("detectionResult: " + detectionResult + " orientation: " + orientation + " code: " + code);
-
+        System.out.println("DetectionResult: " + detectionResult + ", Orientation: " + orientation + ", QrCodeValue: " + qrCodeValue);
         System.out.println("###############################################");
 
+        return qrCodeValue;
     }
 
+    /*
     public static void saveImage(String imageUrl, String destinationFile) throws IOException {
         URL url = new URL(imageUrl);
         InputStream is = url.openStream();
@@ -157,5 +122,7 @@ public class QRCodeTest {
         is.close();
         os.close();
     }
+    */
+
 }
 

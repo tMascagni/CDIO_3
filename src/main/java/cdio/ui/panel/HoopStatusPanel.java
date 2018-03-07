@@ -6,11 +6,11 @@ import java.awt.*;
 
 public final class HoopStatusPanel extends JPanel {
 
-    private JRadioButton btnHoop1, btnHoop2, btnHoop3, btnHoop4, btnHoop5, btnHoop6, btnHoop7, btnHoop8;
+    private JRadioButton btnHoop1, btnHoop2, btnHoop3, btnHoop4, btnHoop5, btnHoop6, btnHoop7;
     private JLabel lblFound, lblHoop, lblLocation, lblIsPassed;
-    private JLabel lblHoop1, lblHoop2, lblHoop3, lblHoop4, lblHoop5, lblHoop6, lblHoop7, lblHoop8;
-    private JLabel lblHoopLoc1, lblHoopLoc2, lblHoopLoc3, lblHoopLoc4, lblHoopLoc5, lblHoopLoc6, lblHoopLoc7, lblHoopLoc8;
-    private JRadioButton btnIsPassed1, btnIsPassed2, btnIsPassed3, btnIsPassed4, btnIsPassed5, btnIsPassed6, btnIsPassed7, btnIsPassed8;
+    private JLabel lblHoop1, lblHoop2, lblHoop3, lblHoop4, lblHoop5, lblHoop6, lblHoop7;
+    private JLabel lblHoopLoc1, lblHoopLoc2, lblHoopLoc3, lblHoopLoc4, lblHoopLoc5, lblHoopLoc6, lblHoopLoc7;
+    private JRadioButton btnIsPassed1, btnIsPassed2, btnIsPassed3, btnIsPassed4, btnIsPassed5, btnIsPassed6, btnIsPassed7;
 
     public HoopStatusPanel() {
         setBackground(Color.WHITE);
@@ -32,7 +32,6 @@ public final class HoopStatusPanel extends JPanel {
         btnHoop5 = new JRadioButton();
         btnHoop6 = new JRadioButton();
         btnHoop7 = new JRadioButton();
-        btnHoop8 = new JRadioButton();
 
         btnHoop1.setBackground(Color.WHITE);
         btnHoop2.setBackground(Color.WHITE);
@@ -41,7 +40,6 @@ public final class HoopStatusPanel extends JPanel {
         btnHoop5.setBackground(Color.WHITE);
         btnHoop6.setBackground(Color.WHITE);
         btnHoop7.setBackground(Color.WHITE);
-        btnHoop8.setBackground(Color.WHITE);
 
         lblHoop1 = new JLabel("1");
         lblHoop2 = new JLabel("2");
@@ -50,7 +48,6 @@ public final class HoopStatusPanel extends JPanel {
         lblHoop5 = new JLabel("5");
         lblHoop6 = new JLabel("6");
         lblHoop7 = new JLabel("7");
-        lblHoop8 = new JLabel("8");
 
         lblHoopLoc1 = new JLabel("(0, 1)");
         lblHoopLoc2 = new JLabel("(2, 3)");
@@ -59,7 +56,6 @@ public final class HoopStatusPanel extends JPanel {
         lblHoopLoc5 = new JLabel("(8, 9)");
         lblHoopLoc6 = new JLabel("(10, 11)");
         lblHoopLoc7 = new JLabel("(12, 13)");
-        lblHoopLoc8 = new JLabel("(14, 15)");
 
         btnIsPassed1 = new JRadioButton();
         btnIsPassed2 = new JRadioButton();
@@ -68,7 +64,6 @@ public final class HoopStatusPanel extends JPanel {
         btnIsPassed5 = new JRadioButton();
         btnIsPassed6 = new JRadioButton();
         btnIsPassed7 = new JRadioButton();
-        btnIsPassed8 = new JRadioButton();
 
         btnIsPassed1.setBackground(Color.WHITE);
         btnIsPassed2.setBackground(Color.WHITE);
@@ -77,7 +72,6 @@ public final class HoopStatusPanel extends JPanel {
         btnIsPassed5.setBackground(Color.WHITE);
         btnIsPassed6.setBackground(Color.WHITE);
         btnIsPassed7.setBackground(Color.WHITE);
-        btnIsPassed8.setBackground(Color.WHITE);
 
         initComponents();
     }
@@ -242,25 +236,6 @@ public final class HoopStatusPanel extends JPanel {
         gbc.gridx = 3;
         gbc.insets = new Insets(0, leftOffset + 10, 0, 0);
         add(btnIsPassed7, gbc);
-
-        /* ---------------------------- Next Row ---------------------------- */
-        gbc.gridy++;
-
-        gbc.gridx = 0;
-        gbc.insets = new Insets(0, 6, 0, 0);
-        add(btnHoop8, gbc);
-
-        gbc.gridx = 1;
-        gbc.insets = new Insets(4, leftOffset + 10, 0, 0);
-        add(lblHoop8, gbc);
-
-        gbc.gridx = 2;
-        gbc.insets = new Insets(4, leftOffset + 10, 0, 0);
-        add(lblHoopLoc8, gbc);
-
-        gbc.gridx = 3;
-        gbc.insets = new Insets(0, leftOffset + 10, 0, 0);
-        add(btnIsPassed8, gbc);
     }
 
 }
