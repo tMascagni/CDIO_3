@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_sarxos_webcam_capture_0_3_12.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_nativelibs4java_bridj_0_7_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nu_pattern_opencv_2_4_9_5.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_5_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openpnp_opencv_3_2_0_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/opencv_3_2_0_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/WebcamQRCodeExample.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/Quadrangle.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CDIO_3.iml" afterPath="$PROJECT_DIR$/CDIO_3.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/QRCodeTest.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/QRCodeTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -914,7 +901,7 @@
       <workItem from="1520268102831" duration="7071000" />
       <workItem from="1520368923940" duration="874000" />
       <workItem from="1520418044301" duration="3891000" />
-      <workItem from="1520452931481" duration="182000" />
+      <workItem from="1520452931481" duration="450000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1084,11 +1071,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520277844412</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="QR code scanner test. samt vudering af størelse af QR code beregning">
+      <created>1520453290319</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1520453290320</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61536000" />
+    <option name="totallyTimeSpent" value="61804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="23" width="1200" height="877" extended-state="0" />
@@ -1410,6 +1404,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="39" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
