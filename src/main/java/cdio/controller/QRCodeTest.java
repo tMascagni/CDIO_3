@@ -37,6 +37,7 @@ public class QRCodeTest {
 
         QRCodeTest testObj = new QRCodeTest();
 
+        /*
         testObj.startIMG("https://www.qrstuff.com/images/sample.png");
         testObj.startIMG("http://static.jeffbullas.com/wp-content/uploads/2012/05/Jeff-Bullas-scantogram1.jpg");
         testObj.startIMG("https://thumbor.forbes.com/thumbor/960x0/smart/https%3A%2F%2Fb-i.forbesimg.com%2Frogerdooley%2Ffiles%2F2013%2F10%2Fqr-kittens.jpg");
@@ -44,6 +45,14 @@ public class QRCodeTest {
         testObj.startIMG("https://i2.wp.com/farm6.static.flickr.com/5051/5535825483_ce9c8fc321_z.jpg?resize=480%2C640&ssl=1");
         testObj.startIMG("http://www.labeljoy.com/images/how-to/best-practices/image009.png");
         testObj.startIMG("https://richmediadp.files.wordpress.com/2011/08/qr-code.jpg");
+        */
+
+        try {
+            BufferedImage image = ImageIO.read(new File("qr_2.jpg"));
+            testObj.setImage(image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void startIMG(String url){
@@ -118,12 +127,12 @@ public class QRCodeTest {
             int withOfCode = (int) b.getX() - (int) a.getX();
 
             System.out.println("###############################################");
-            System.out.println("qr code with:  " + withOfCode);
+            System.out.println("qr code width:  " + withOfCode);
 
         } catch (ReaderException e) {
             // no code found.
             detectionResult = null;
-            orientation = "n/a �";
+            orientation = "n/a";
             code = "n/a";
         }
 

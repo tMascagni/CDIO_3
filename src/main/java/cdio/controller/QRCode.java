@@ -22,37 +22,20 @@ public class QRCode extends JPanel implements ICCPlugin {
 
     public QRCode() {
         setBackground(Color.BLACK);
-//		// might also be (1280*720)
-//		Dimension dim = new Dimension(640, 360);
-//
-//		setMinimumSize(dim);
-//		setMaximumSize(dim);
-//		setSize(dim);
-
-//		addMouseListener(new MouseAdapter() {
-//			public void mouseClicked(MouseEvent e)
-//			{
-//				// toggle camera view from horizontal to vertical
-//				drone.toggleCamera();
-//			}
-//		});
     }
 
     private long imageCount = 0;
 
     private void setImage(final BufferedImage image) {
         this.image = image;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                repaint();
-            }
-        });
+        SwingUtilities.invokeLater(() -> repaint());
 
         // try to detect QR code
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
         // decode the barcode (if only QR codes are used, the QRCodeReader might be a better choice)
+        // QRCodeReader reader = new QRCodeReader();
         MultiFormatReader reader = new MultiFormatReader();
 
         try {
