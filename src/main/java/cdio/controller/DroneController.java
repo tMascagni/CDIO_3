@@ -1,7 +1,9 @@
 package cdio.controller;
 
 import cdio.controller.interfaces.IDroneController;
+import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
+import cdio.model.QRCodeData;
 import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
@@ -9,7 +11,10 @@ import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
+import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
+
+import java.awt.image.BufferedImage;
 
 public final class DroneController implements IDroneController {
 
@@ -31,6 +36,7 @@ public final class DroneController implements IDroneController {
     private final ConfigurationManager configManager;
 
     private MessageListener messageListener;
+    private final QRCodeHandler qrCodeHandler;
 
     private static IDroneController instance;
 
@@ -51,6 +57,8 @@ public final class DroneController implements IDroneController {
         videoManager = drone.getVideoManager();
         navDataManager = drone.getNavDataManager();
         configManager = drone.getConfigurationManager();
+
+        qrCodeHandler = new QRCodeHandler();
 
         /* Start listeners */
         startAttitudeListener();
@@ -363,7 +371,7 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                //System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
@@ -404,7 +412,7 @@ public final class DroneController implements IDroneController {
             @Override
             public void batteryLevelChanged(int battery) {
                 DroneController.this.battery = battery;
-                System.out.println("Battery: " + battery);
+                //System.out.println("Battery: " + battery);
             }
 
             @Override
@@ -415,11 +423,34 @@ public final class DroneController implements IDroneController {
     }
 
     private void startImageListener() {
-        videoManager.addImageListener(bufferedImage -> {
-            messageListener.messageCommandEventOccurred(this, "ImageUpdated!");
-            QRCodeHandler qr = new QRCodeHandler();
-            qr.scanImage(bufferedImage);
+        videoManager.addImageListener(new ImageListener() {
+            final int INITIAL_QR_SCAN_TIMER = 50;
+            int qrScanTimer = INITIAL_QR_SCAN_TIMER;
+
+            BufferedImage imageToScan = null;
+
+            @Override
+            public void imageUpdated(BufferedImage bufferedImage) {
+                qrScanTimer--;
+                if (qrScanTimer == 0) {
+                    qrScanTimer = INITIAL_QR_SCAN_TIMER;
+                    imageToScan = bufferedImage;
+
+                    messageListener.messageCommandStartEventOccurred("QR Code Scanning");
+
+                    try {
+                        QRCodeData qrData = qrCodeHandler.scanImage(imageToScan);
+                        messageListener.messageCommandEventOccurred(this, qrData.toString());
+                    } catch (QRCodeException e) {
+                        messageListener.messageCommandEventOccurred(this, "Failed to scan QR code!");
+                        e.printStackTrace();
+                    }
+
+                    messageListener.messageCommandEndEventOccurred();
+                }
+            }
         });
+
     }
 
     private void startVideoListener() {

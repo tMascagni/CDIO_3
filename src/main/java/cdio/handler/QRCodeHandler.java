@@ -25,7 +25,7 @@ public class QRCodeHandler {
         reader = new QRCodeReader();
     }
 
-    public QRCodeData scanImage(final BufferedImage image) {
+    public QRCodeData scanImage(final BufferedImage image) throws QRCodeException {
         /* Try to detect QR code */
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -62,12 +62,7 @@ public class QRCodeHandler {
             qrCodeHeight = (int) d.getX() - (int) c.getX();
 
         } catch (ReaderException e) {
-            // no code found.
-            qrCodeValue = "n/a";
-            orientation = -1;
-            detectionResult = null;
-            qrCodeWidth = -1;
-            qrCodeHeight = -1;
+            throw new QRCodeException("Failed to scan QR Code!");
         }
 
         return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);

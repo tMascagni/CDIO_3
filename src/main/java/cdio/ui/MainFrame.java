@@ -5,7 +5,6 @@ import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
 import cdio.ui.interfaces.MessageListener;
-import cdio.ui.panel.CVPanel;
 import cdio.ui.panel.CameraPanel;
 import cdio.ui.panel.CommandPanel;
 import cdio.ui.panel.StatusPanel;
@@ -25,8 +24,7 @@ public final class MainFrame extends JFrame implements MessageListener {
 
     private CommandPanel commandPanel;
     private StatusPanel statusPanel;
-    private CameraPanel cameraPanel;
-    private CVPanel cvPanel;
+    private CameraPanel frontCamPanel;
 
     private final IDroneController droneController;
     private final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
@@ -56,13 +54,9 @@ public final class MainFrame extends JFrame implements MessageListener {
         statusPanel.setSize(new Dimension(width / 2, height / 2));
 
         try {
-            cameraPanel = new CameraPanel(droneController.getDrone());
-            cameraPanel.setPreferredSize(preferredPanelSize);
-            cameraPanel.setSize(preferredPanelSize);
-
-            cvPanel = new CVPanel(droneController.getDrone());
-            cvPanel.setPreferredSize(preferredPanelSize);
-            cvPanel.setSize(preferredPanelSize);
+            frontCamPanel = new CameraPanel(droneController.getDrone());
+            frontCamPanel.setPreferredSize(preferredPanelSize);
+            frontCamPanel.setSize(preferredPanelSize);
         } catch (IDroneController.DroneControllerException e) {
             e.printStackTrace();
         }
@@ -122,11 +116,13 @@ public final class MainFrame extends JFrame implements MessageListener {
 
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        add(cameraPanel, gbc);
+        add(frontCamPanel, gbc);
 
+        /*
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.LINE_START;
-        add(cvPanel, gbc);
+        add(bottomCamPanel, gbc);
+        */
     }
 
     private void initFrame() {

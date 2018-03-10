@@ -1,12 +1,13 @@
 package cdio.main.test;
 
+import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
 
 import java.awt.image.BufferedImage;
 
 public class MainQRCodeTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws QRCodeException {
         QRCodeHandler handler = new QRCodeHandler();
 
         /* REAL IMAGE */
@@ -25,6 +26,7 @@ public class MainQRCodeTest {
 
         System.out.println("Starting QRCode TEST!\n");
 
+
         System.out.println("REAL IMAGES:");
         System.out.println(handler.scanImage(imgLocal0));
         System.out.println(handler.scanImage(imgLocal1));
@@ -38,6 +40,7 @@ public class MainQRCodeTest {
         System.out.println(handler.scanImage(imgRemote3));
         System.out.println(handler.scanImage(imgRemote4));
         System.out.println(handler.scanImage(imgRemote5));
+
     }
 
 }

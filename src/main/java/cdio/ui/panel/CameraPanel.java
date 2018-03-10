@@ -2,6 +2,7 @@ package cdio.ui.panel;
 
 import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.VideoCodec;
+import de.yadrone.base.video.ImageListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-public class CameraPanel extends JPanel {
+public class CameraPanel extends JPanel implements ImageListener {
 
     private BufferedImage image = null;
     private long timestampLastUpdate = 0;
@@ -21,12 +22,13 @@ public class CameraPanel extends JPanel {
         this.drone = drone;
         setBackground(Color.WHITE);
 
-        drone.getCommandManager().setVideoCodecFps(15);
+        drone.getVideoManager().addImageListener(this);
+
+        drone.getCommandManager().setVideoCodecFps(30);
         drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
 
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                // toggle camera view from horizontal to vertical
                 drone.toggleCamera();
             }
         });
@@ -35,7 +37,7 @@ public class CameraPanel extends JPanel {
         new Thread(() -> {
             while (true) {
                 showWaiting = System.currentTimeMillis() - timestampLastUpdate > 1000;
-                SwingUtilities.invokeLater(() -> repaint());
+                SwingUtilities.invokeLater(this::repaint);
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -73,3 +75,4 @@ public class CameraPanel extends JPanel {
     }
 
 }
+
