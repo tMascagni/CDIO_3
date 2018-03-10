@@ -21,8 +21,8 @@ public final class DroneController implements IDroneController {
     private final int MAX_ALTITUDE = 2500; /* millimeters. */
     private final int MIN_ALTITUDE = 1000; /* millimeters. */
 
-    private final int INITIAL_SPEED = 30; /* In %, speed goes from 0 to 100. */
-    private final int LANDING_SPEED = 15;
+    private final int INITIAL_SPEED = 40; /* In %, speed goes from 0 to 100. */
+    private final int LANDING_SPEED = 20;
 
     private float pitch, roll, yaw;
     private float altitude;
@@ -51,6 +51,7 @@ public final class DroneController implements IDroneController {
     private DroneController() {
         /* Instantiate Drone object */
         drone = new ARDrone();
+        drone.reset();
 
         /* Instantiate manager objects */
         commandManager = drone.getCommandManager();
@@ -233,7 +234,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
 
         commandManager.forward(INITIAL_SPEED).waitFor(distanceMilli);
-        //commandManager.hover();
+        commandManager.hover();
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
         messageListener.messageCommandEndEventOccurred();
@@ -409,9 +410,7 @@ public final class DroneController implements IDroneController {
         navDataManager.addStateListener(new StateListener() {
             @Override
             public void stateChanged(DroneState droneState) {
-
                 System.out.println("Drone State: " + droneState);
-
             }
 
             @Override
