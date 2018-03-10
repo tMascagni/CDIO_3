@@ -21,6 +21,13 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
@@ -99,6 +106,18 @@
             <groupId>Group_3</groupId>
             <artifactId>YaDrone</artifactId>
             <version>032</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version></version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.4.0</version>
         </dependency>
         
     </dependencies>
