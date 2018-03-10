@@ -107,18 +107,6 @@
             <artifactId>YaDrone</artifactId>
             <version>032</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.opencv</groupId>
-            <artifactId>opencv</artifactId>
-            <version></version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.opencv</groupId>
-            <artifactId>opencv</artifactId>
-            <version>3.4.0</version>
-        </dependency>
         
     </dependencies>
 
