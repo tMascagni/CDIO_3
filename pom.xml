@@ -21,12 +21,7 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
+
 
     <dependencies>
 
@@ -43,13 +38,6 @@
             <groupId>nu.pattern</groupId>
             <artifactId>opencv</artifactId>
             <version>2.4.9-5</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
-        <dependency>
-            <groupId>org.openpnp</groupId>
-            <artifactId>opencv</artifactId>
-            <version>3.2.0-0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.sarxos/webcam-capture -->
@@ -107,19 +95,7 @@
             <artifactId>YaDrone</artifactId>
             <version>032</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.opencv</groupId>
-            <artifactId>opencv</artifactId>
-            <version></version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.opencv</groupId>
-            <artifactId>opencv</artifactId>
-            <version>3.4.0</version>
-        </dependency>
-        
     </dependencies>
+
 
 </project>
