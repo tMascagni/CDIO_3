@@ -714,7 +714,7 @@
       <workItem from="1520608103515" duration="89000" />
       <workItem from="1520672978099" duration="11748000" />
       <workItem from="1520684790298" duration="19000" />
-      <workItem from="1520685197865" duration="8736000" />
+      <workItem from="1520685197865" duration="8745000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -975,11 +975,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520693897850</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="troels">
+      <created>1520693947411</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1520693947411</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137037000" />
+    <option name="totallyTimeSpent" value="137046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
