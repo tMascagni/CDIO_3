@@ -123,7 +123,6 @@ public final class DroneController implements IDroneController {
 
         setLEDAnimation(LEDAnimation.BLINK_RED, 3, 10);
         drone.stop();
-
         messageListener.messageCommandEventOccurred(this, "Drone stopped!");
         messageListener.messageCommandEndEventOccurred();
     }
@@ -233,7 +232,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Forward");
         messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
 
-        commandManager.forward(INITIAL_SPEED).doFor(distanceMilli);
+        commandManager.forward(INITIAL_SPEED).waitFor(distanceMilli);
         //commandManager.hover();
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
@@ -373,7 +372,7 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-               // System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                // System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
@@ -430,7 +429,7 @@ public final class DroneController implements IDroneController {
             @Override
             public void batteryLevelChanged(int battery) {
                 DroneController.this.battery = battery;
-               // System.out.println("Battery: " + battery);
+                // System.out.println("Battery: " + battery);
             }
 
             @Override
