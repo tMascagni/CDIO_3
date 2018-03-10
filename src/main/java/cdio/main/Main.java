@@ -27,6 +27,36 @@ public final class Main {
             public void messageCommandEndEventOccurred() {
 
             }
+
+            @Override
+            public void setBattery(int battery) {
+
+            }
+
+            @Override
+            public void setSpeed(int speed) {
+
+            }
+
+            @Override
+            public void setPitch(int pitch) {
+
+            }
+
+            @Override
+            public void setRoll(int roll) {
+
+            }
+
+            @Override
+            public void setYaw(int yaw) {
+
+            }
+
+            @Override
+            public void setAltitude(int altitude) {
+
+            }
         });
 
         /* ######### TEST ######### */
@@ -37,9 +67,10 @@ public final class Main {
 
                 droneController.takeOffDrone();
 
-                droneController.hoverDrone(10000);
+                droneController.hoverDrone(1000);
 
-                //droneController.searchRotation();
+                droneController.flyForward(200);
+
 
                 droneController.landDrone();
                 droneController.stopDrone();

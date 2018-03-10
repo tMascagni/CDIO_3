@@ -38,7 +38,10 @@ public class QRCodeHandler {
             ResultPoint a = points[1]; // top-left
             ResultPoint b = points[2]; // top-right
             ResultPoint c = points[0]; // bottom-left
-            ResultPoint d = points[3]; // alignment point (bottom-right)
+            ResultPoint d = null;
+
+            if (points.length == 4)
+                d = points[3]; // alignment point (bottom-right) // THIS CAUSES MASSIEV
 
             // Find the degree of the rotation that is needed
 
@@ -59,13 +62,21 @@ public class QRCodeHandler {
             orientation = (int) theta;
 
             qrCodeWidth = (int) b.getX() - (int) a.getX();
-            qrCodeHeight = (int) d.getX() - (int) c.getX();
+
+            if (d != null)
+                qrCodeHeight = (int) d.getX() - (int) c.getX();
+            else
+                qrCodeHeight = -1;
 
         } catch (ReaderException e) {
             throw new QRCodeException("Failed to scan QR Code!");
         }
 
-        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
+        QRCodeData data = new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
+
+        System.out.println("Data: " + data);
+
+        return data;
     }
 
     private static void saveImage(String imageUrl, String destinationFile) throws IOException {

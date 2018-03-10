@@ -118,11 +118,11 @@ public class DroneDataPanel extends JPanel {
         add(lblAltitudeValue, gbc);
     }
 
-    public void updateBattery(int battery) {
+    public void setBattery(int battery) {
         lblBatteryValue.setText(battery + "%");
     }
 
-    public void updateSpeed(int speed) {
+    public void setSpeed(int speed) {
         lblSpeedValue.setText(speed + "%");
     }
 

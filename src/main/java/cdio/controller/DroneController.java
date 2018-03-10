@@ -141,7 +141,9 @@ public final class DroneController implements IDroneController {
         commandManager.flatTrim();
         /* Wait to settle for commands... */
         sleep(1000);
+        //setSpeed(50);
         commandManager.takeOff();
+        //setSpeed(INITIAL_SPEED);
 
         messageListener.messageCommandEventOccurred(this, "Drone taken off!");
         messageListener.messageCommandEndEventOccurred();
@@ -231,8 +233,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Forward");
         messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
 
-        commandManager.forward(INITIAL_SPEED).waitFor(distanceMilli);
-        commandManager.hover();
+        commandManager.forward(INITIAL_SPEED).doFor(distanceMilli);
+        //commandManager.hover();
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
         messageListener.messageCommandEndEventOccurred();
@@ -371,7 +373,7 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                //System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+               // System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
@@ -404,6 +406,22 @@ public final class DroneController implements IDroneController {
         });
     }
 
+    private void startStateListener() {
+        navDataManager.addStateListener(new StateListener() {
+            @Override
+            public void stateChanged(DroneState droneState) {
+
+                System.out.println("Drone State: " + droneState);
+
+            }
+
+            @Override
+            public void controlStateChanged(ControlState controlState) {
+                System.out.println("Control State: " + controlState);
+            }
+        });
+    }
+
     /**
      * Method to start the battery listener.
      */
@@ -412,7 +430,7 @@ public final class DroneController implements IDroneController {
             @Override
             public void batteryLevelChanged(int battery) {
                 DroneController.this.battery = battery;
-                //System.out.println("Battery: " + battery);
+               // System.out.println("Battery: " + battery);
             }
 
             @Override
@@ -424,33 +442,30 @@ public final class DroneController implements IDroneController {
 
     private void startImageListener() {
         videoManager.addImageListener(new ImageListener() {
-            final int INITIAL_QR_SCAN_TIMER = 50;
+            final int INITIAL_QR_SCAN_TIMER = 30;
             int qrScanTimer = INITIAL_QR_SCAN_TIMER;
-
-            BufferedImage imageToScan = null;
 
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
                 qrScanTimer--;
                 if (qrScanTimer == 0) {
                     qrScanTimer = INITIAL_QR_SCAN_TIMER;
-                    imageToScan = bufferedImage;
-
-                    messageListener.messageCommandStartEventOccurred("QR Code Scanning");
-
-                    try {
-                        QRCodeData qrData = qrCodeHandler.scanImage(imageToScan);
-                        messageListener.messageCommandEventOccurred(this, qrData.toString());
-                    } catch (QRCodeException e) {
-                        messageListener.messageCommandEventOccurred(this, "Failed to scan QR code!");
-                        e.printStackTrace();
-                    }
-
-                    messageListener.messageCommandEndEventOccurred();
+                    scanImageForQRCode(bufferedImage);
                 }
             }
         });
 
+    }
+
+    private void scanImageForQRCode(BufferedImage bufferedImage) {
+        try {
+            QRCodeData qrData = qrCodeHandler.scanImage(bufferedImage);
+            messageListener.messageCommandStartEventOccurred("QR Code Scanned");
+            messageListener.messageCommandEventOccurred(this, "Result: " + qrData.getResult() + ", Width: " + qrData.getWidth() + ", Height: " + qrData.getHeight() + ", Orientation: " + qrData.getOrientation());
+            messageListener.messageCommandEndEventOccurred();
+        } catch (QRCodeException ignored) {
+
+        }
     }
 
     private void startVideoListener() {

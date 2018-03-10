@@ -72,11 +72,10 @@ public final class MainFrame extends JFrame implements MessageListener {
 
         addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {
-                System.out.println("Focus GAINED:");
+
             }
 
             public void focusLost(FocusEvent e) {
-                System.out.println("Focus LOST:");
                 e.getComponent().requestFocus();
             }
         });
@@ -151,6 +150,36 @@ public final class MainFrame extends JFrame implements MessageListener {
     @Override
     public void messageCommandEndEventOccurred() {
         commandPanel.appendText("----------------------------------------------------------------------");
+    }
+
+    @Override
+    public void setBattery(int battery) {
+
+    }
+
+    @Override
+    public void setSpeed(int speed) {
+
+    }
+
+    @Override
+    public void setPitch(int pitch) {
+
+    }
+
+    @Override
+    public void setRoll(int roll) {
+
+    }
+
+    @Override
+    public void setYaw(int yaw) {
+
+    }
+
+    @Override
+    public void setAltitude(int altitude) {
+
     }
 
 }
