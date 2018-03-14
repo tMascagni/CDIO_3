@@ -138,7 +138,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Take Off");
         messageListener.messageCommandEventOccurred(this, "Drone taking off...");
 
-        setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
+        setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
         commandManager.setOutdoor(false, true);
         commandManager.flatTrim();
         /* Wait to settle for commands... */
@@ -159,7 +159,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Land");
         messageListener.messageCommandEventOccurred(this, "Drone landing...");
 
-        setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 10);
+        setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
         drone.setSpeed(LANDING_SPEED);
         commandManager.landing();
 
