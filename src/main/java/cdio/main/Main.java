@@ -62,17 +62,17 @@ public final class Main {
         /* ######### TEST ######### */
         EventQueue.invokeLater(() -> {
             try {
+
                 droneController.startDrone();
                 droneController.initDrone();
 
                 droneController.takeOffDrone();
 
-                droneController.hoverDrone(7000);
-                droneController.flyUp(1000);
-
-                droneController.searchRotation();
-
-                droneController.hoverDrone(2000);
+                droneController.hoverDrone(5000);
+                droneController.flyDroneTest(200);
+                droneController.hoverDrone(1000);
+                droneController.flyDroneTest(200);
+                droneController.hoverDrone(5000);
 
                 droneController.landDrone();
                 droneController.stopDrone();
@@ -80,6 +80,17 @@ public final class Main {
                 e.printStackTrace();
             }
         });
+
+
+        /*
+        try {
+            droneController.startDrone();
+            droneController.initDrone();
+        } catch (IDroneController.DroneControllerException e) {
+            e.printStackTrace();
+        }
+
+        */
         /* ######### TEST ######### */
 
     }

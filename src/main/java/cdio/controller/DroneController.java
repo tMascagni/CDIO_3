@@ -21,7 +21,7 @@ public final class DroneController implements IDroneController {
     private final int MAX_ALTITUDE = 2500; /* millimeters. */
     private final int MIN_ALTITUDE = 1000; /* millimeters. */
 
-    private final int INITIAL_SPEED = 30; /* In %, speed goes from 0 to 100. */
+    private final int INITIAL_SPEED = 20; /* In %, speed goes from 0 to 100. */
     private final int LANDING_SPEED = 20;
 
     private float pitch, roll, yaw;
@@ -62,10 +62,25 @@ public final class DroneController implements IDroneController {
         qrCodeHandler = new QRCodeHandler();
 
         /* Start listeners */
+        startAcceleroListener();
         startAttitudeListener();
         startAltitudeListener();
         startBatteryListener();
         startImageListener();
+    }
+
+    private void startAcceleroListener() {
+        navDataManager.addAcceleroListener(new AcceleroListener() {
+            @Override
+            public void receivedRawData(AcceleroRawData acceleroRawData) {
+                System.out.println("Accelero data: " + acceleroRawData.getRawAccs().toString());
+            }
+
+            @Override
+            public void receivedPhysData(AcceleroPhysData acceleroPhysData) {
+                System.out.println("Accelero data: " + acceleroPhysData.getPhysAccs().toString());
+            }
+        });
     }
 
     /**
@@ -202,15 +217,17 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void searchRotation() throws DroneControllerException {
-        int targetYaw = 300;
+        int targetYaw = 360;
+
+
         float yaw = this.yaw - targetYaw;
 
         //tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
-        while ((yaw = (yaw - targetYaw)) < -10 || yaw > 10) {
+        while ((yaw = (this.yaw - targetYaw)) < -8 || yaw > 8) {
             if (yaw > 179) {
-                yaw = targetYaw - yaw;
+                yaw = 360 - yaw;
             } else if (yaw < -179) {
-                yaw = targetYaw + yaw;
+                yaw = 360 + yaw;
             }
             if (yaw > 0) {
                 commandManager.spinLeft(80).doFor(40);
@@ -219,7 +236,7 @@ public final class DroneController implements IDroneController {
                 commandManager.spinRight(80).doFor(40);
                 commandManager.spinLeft(80).doFor(10);
             }
-            commandManager.hover();
+            commandManager.hover().doFor(100);
             sleep(500);
         }
 
@@ -234,14 +251,14 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void flyForward(int timeMillis) throws DroneControllerException {
-         messageListener.messageCommandStartEventOccurred("Forward");
-         messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
+        messageListener.messageCommandStartEventOccurred("Forward");
+        messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
 
         commandManager.forward(INITIAL_SPEED).doFor(timeMillis);
         sleep(100);
 
-         messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
-         messageListener.messageCommandEndEventOccurred();
+        messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
+        messageListener.messageCommandEndEventOccurred();
     }
 
     /**
@@ -378,7 +395,8 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                // System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                DroneController.this.yaw = getCorrectedYaw();
+                //System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
             }
 
             @Override
@@ -508,6 +526,28 @@ public final class DroneController implements IDroneController {
      */
     private void setLEDAnimation(LEDAnimation ledAnimation, int freq, int duration) {
         commandManager.setLedsAnimation(ledAnimation, freq, duration);
+    }
+
+    private float getCorrectedYaw() {
+        float yawCorrected = yaw; // + yawCorrection;
+
+        if (yawCorrected >= 180)
+            yawCorrected = 359 - yawCorrected;
+        else if (yawCorrected <= -180)
+            yawCorrected = 359 + yawCorrected;
+
+        return yawCorrected;
+    }
+
+    public void flyDroneTest(double dist) {
+        while (dist > 50) {
+            try {
+                commandManager.forward(INITIAL_SPEED);
+                dist = dist - 100; // Dronen er flyttet ca. 1 meter
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
 }

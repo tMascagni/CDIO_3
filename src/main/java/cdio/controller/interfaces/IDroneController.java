@@ -32,6 +32,8 @@ public interface IDroneController {
 
     IARDrone getDrone() throws DroneControllerException;
 
+    public void flyDroneTest(double dist);
+
     class DroneControllerException extends Exception {
 
         public DroneControllerException(String msg) {
