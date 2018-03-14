@@ -9,38 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/yadrone_032.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/xuggle-xuggler-5.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../opencv/build/java/opencv-341.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <NATIVE>
-          <root url="file://$MODULE_DIR$/../opencv/build/java/x64" />
-        </NATIVE>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/../opencv/build/java/opencv-341.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: nu.pattern:opencv:2.4.9-5" level="project" />
     <orderEntry type="library" name="Maven: com.github.sarxos:webcam-capture:0.3.12" level="project" />
@@ -56,6 +24,7 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.0" level="project" />
-    <orderEntry type="library" name="Maven: Group_3:YaDrone:032" level="project" />
+    <orderEntry type="library" name="yadrone_032" level="project" />
+    <orderEntry type="library" name="xuggle-xuggler-5.4" level="project" />
   </component>
 </module>

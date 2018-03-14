@@ -21,7 +21,7 @@ public final class DroneController implements IDroneController {
     private final int MAX_ALTITUDE = 2500; /* millimeters. */
     private final int MIN_ALTITUDE = 1000; /* millimeters. */
 
-    private final int INITIAL_SPEED = 25; /* In %, speed goes from 0 to 100. */
+    private final int INITIAL_SPEED = 30; /* In %, speed goes from 0 to 100. */
     private final int LANDING_SPEED = 20;
 
     private float pitch, roll, yaw;
@@ -161,7 +161,9 @@ public final class DroneController implements IDroneController {
 
         setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
         drone.setSpeed(LANDING_SPEED);
-        commandManager.landing();
+        sleep(500);
+
+        commandManager.landing().doFor(200);
 
         messageListener.messageCommandEventOccurred(this, "Drone landed!");
         messageListener.messageCommandEndEventOccurred();
@@ -232,14 +234,14 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void flyForward(int timeMillis) throws DroneControllerException {
-        // messageListener.messageCommandStartEventOccurred("Forward");
-        // messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
+         messageListener.messageCommandStartEventOccurred("Forward");
+         messageListener.messageCommandEventOccurred(this, "Drone flying forward...");
 
         commandManager.forward(INITIAL_SPEED).doFor(timeMillis);
-        //commandManager.hover();
+        sleep(100);
 
-        // messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
-        // messageListener.messageCommandEndEventOccurred();
+         messageListener.messageCommandEventOccurred(this, "Drone finished flying forward!");
+         messageListener.messageCommandEndEventOccurred();
     }
 
     /**
@@ -250,8 +252,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Backward");
         messageListener.messageCommandEventOccurred(this, "Drone flying backward...");
 
-        commandManager.backward(INITIAL_SPEED).waitFor(timeMillis);
-        commandManager.hover();
+        commandManager.backward(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying backward!");
         messageListener.messageCommandEndEventOccurred();
@@ -265,8 +267,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Up");
         messageListener.messageCommandEventOccurred(this, "Drone flying up...");
 
-        commandManager.up(INITIAL_SPEED).waitFor(timeMillis);
-        commandManager.hover();
+        commandManager.up(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying up!");
         messageListener.messageCommandEndEventOccurred();
@@ -280,8 +282,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Down");
         messageListener.messageCommandEventOccurred(this, "Drone flying down...");
 
-        commandManager.down(INITIAL_SPEED).waitFor(timeMillis);
-        commandManager.hover();
+        commandManager.down(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying down!");
         messageListener.messageCommandEndEventOccurred();
@@ -295,8 +297,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Left");
         messageListener.messageCommandEventOccurred(this, "Drone flying left...");
 
-        commandManager.goLeft(INITIAL_SPEED).waitFor(timeMillis);
-        commandManager.hover();
+        commandManager.goLeft(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying left!");
         messageListener.messageCommandEndEventOccurred();
@@ -310,8 +312,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Right");
         messageListener.messageCommandEventOccurred(this, "Drone flying right...");
 
-        commandManager.goRight(INITIAL_SPEED).waitFor(timeMillis);
-        commandManager.hover();
+        commandManager.goRight(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
 
         messageListener.messageCommandEventOccurred(this, "Drone finished flying right!");
         messageListener.messageCommandEndEventOccurred();
