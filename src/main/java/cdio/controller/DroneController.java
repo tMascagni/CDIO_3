@@ -144,7 +144,7 @@ public final class DroneController implements IDroneController {
         /* Wait to settle for commands... */
         sleep(1000);
         //setSpeed(50);
-        commandManager.takeOff();
+        commandManager.takeOff().doFor(200);
         //setSpeed(INITIAL_SPEED);
 
         messageListener.messageCommandEventOccurred(this, "Drone taken off!");

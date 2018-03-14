@@ -68,9 +68,7 @@ public final class Main {
                 droneController.takeOffDrone();
 
                 droneController.hoverDrone(7000);
-                droneController.flyForward(500);
-                droneController.flyForward(500);
-
+                droneController.flyForward(700);
 
                 droneController.landDrone();
                 droneController.stopDrone();
