@@ -22,6 +22,8 @@ public final class MainFrame extends JFrame implements MessageListener {
     private int width = 1280;
     private int height = 720;
 
+    private final boolean IS_KEYS_ENABLED = false;
+
     private CommandPanel commandPanel;
     private StatusPanel statusPanel;
     private CameraPanel frontCamPanel;
@@ -62,10 +64,12 @@ public final class MainFrame extends JFrame implements MessageListener {
         }
 
         keyHandler.setMessageListener(this);
-        /*
-        addKeyListener(keyHandler);
-        getRootPane().addKeyListener(keyHandler);
-        */
+        if (IS_KEYS_ENABLED) {
+            addKeyListener(keyHandler);
+            getRootPane().addKeyListener(keyHandler);
+        } else {
+            System.out.println("INPUT: KEY INPUT IS DISABLED!");
+        }
         commandPanel.setFocusable(false);
         statusPanel.setFocusable(false);
         setFocusable(true);

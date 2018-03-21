@@ -158,9 +158,7 @@ public final class DroneController implements IDroneController {
         commandManager.flatTrim();
         /* Wait to settle for commands... */
         sleep(1000);
-        //setSpeed(50);
         commandManager.takeOff().doFor(200);
-        //setSpeed(INITIAL_SPEED);
 
         messageListener.messageCommandEventOccurred(this, "Drone taken off!");
         messageListener.messageCommandEndEventOccurred();
@@ -217,18 +215,36 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void searchRotation() throws DroneControllerException {
-        int targetYaw = 360;
+        /*
+         * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
+         * hvor meget den skal dreje. Det er den vinkel den skal opnå.
+         *
+         * Vi plusser dronens nuværende yaw med 180, for altid at dreje 180 grader
+         * når denne metode bliver kørt.
+         */
+        int targetYaw = (int) (getCorrectedYaw() + 200);
 
+        /* pls work */
+        if (getCorrectedYaw() > 0) {
+            if (targetYaw > 179) {
+                targetYaw = targetYaw - 360;
+                System.out.println("CALCULATED TargetYaw: " + targetYaw);
+            }
+            targetYaw = 360 - targetYaw;
+        } else if (targetYaw < -179) {
+            targetYaw = 360 + targetYaw;
+        }
 
-        float yaw = this.yaw - targetYaw;
+        int negativeBound = -8;
+        int positiveBound = 8;
 
         //tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
-        while ((yaw = (this.yaw - targetYaw)) < -8 || yaw > 8) {
-            if (yaw > 179) {
+        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+            if (yaw > 179)
                 yaw = 360 - yaw;
-            } else if (yaw < -179) {
+            else if (yaw < -179)
                 yaw = 360 + yaw;
-            }
+
             if (yaw > 0) {
                 commandManager.spinLeft(80).doFor(40);
                 commandManager.spinRight(80).doFor(10);
@@ -395,8 +411,10 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                DroneController.this.yaw = getCorrectedYaw();
-                //System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                //DroneController.this.yaw = getCorrectedYaw();
+                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                //messageListener.messageCommandEventOccurred(this, "Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
+                getCorrectedYaw();
             }
 
             @Override
@@ -535,6 +553,8 @@ public final class DroneController implements IDroneController {
             yawCorrected = 359 - yawCorrected;
         else if (yawCorrected <= -180)
             yawCorrected = 359 + yawCorrected;
+
+        System.out.println("yawCorrect: " + yawCorrected);
 
         return yawCorrected;
     }

@@ -18,25 +18,6 @@ public final class MainGUI {
             e.printStackTrace();
         }
 
-        /* ######### TEST ######### */
-        /*
-        EventQueue.invokeLater(() -> {
-            try {
-                droneController.startDrone();
-                droneController.initDrone();
-
-                droneController.takeOffDrone();
-
-                droneController.hoverDrone(8000);
-
-                droneController.landDrone();
-                droneController.stopDrone();
-            } catch (IDroneController.DroneControllerException e) {
-                e.printStackTrace();
-            }
-        });
-        */
-        /* ######### TEST ######### */
     }
 
 }
