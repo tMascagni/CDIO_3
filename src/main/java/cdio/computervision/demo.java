@@ -25,6 +25,9 @@ public class demo {
                if(fileEntry.getName().toLowerCase().contains(".jpg")) {
                    QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
                    qr.processAll();
+
+                   System.out.println("Bin img: " + qr.binImg.type());
+                   System.out.println("Org img: " + qr.orgImg.type());
                }
            }
     }
