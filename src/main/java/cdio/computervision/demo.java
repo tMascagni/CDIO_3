@@ -6,11 +6,11 @@ import java.io.File;
 
 
 /*
-    This main classed is only for reference.
+    This demo classed is only for reference.
     For picking out QR-codes from images, used QRDetector.java
  */
 
-public class Main {
+public class demo {
 
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
