@@ -8,6 +8,7 @@ import org.opencv.imgproc.LineSegmentDetector;
 import java.util.ArrayList;
 
 public class QRDetector {
+
     private static final double CV_PI = 3.14159;
     private Mat orgImg, grayImg, binImg;
 

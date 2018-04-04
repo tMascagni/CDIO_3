@@ -225,22 +225,24 @@ public final class DroneController implements IDroneController {
         int targetYaw = (int) (getCorrectedYaw() + 180);
 
         /* pls work */
-        if (targetYaw > 179) {
+        if (targetYaw > 180) {
             if (getCorrectedYaw() > 0) {
                 targetYaw = targetYaw - 360;
                 System.out.println("CALCULATED TargetYaw: " + targetYaw);
             }
-        } else if (targetYaw < -179) {
+        } else if (targetYaw < -180) {
             targetYaw = 360 + targetYaw;
+            System.out.println("CALCULATED TargetYaw: " + targetYaw);
         }
 
         int negativeBound = -8;
         int positiveBound = 8;
 
         while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
-            if (yaw > 179)
+
+            if (yaw > 180)
                 yaw = 360 - yaw;
-            else if (yaw < -179)
+            else if (yaw < -180)
                 yaw = 360 + yaw;
 
             if (yaw > 0) {
