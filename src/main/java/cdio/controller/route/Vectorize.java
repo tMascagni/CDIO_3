@@ -1,4 +1,4 @@
-package cdio.controller.routeController;
+package cdio.controller.route;
 
 import java.io.Serializable;
 
