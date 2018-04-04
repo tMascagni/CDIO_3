@@ -126,4 +126,20 @@ public class DroneDataPanel extends JPanel {
         lblSpeedValue.setText(speed + "%");
     }
 
+    public void setPitch(int pitch) {
+        lblPitchValue.setText(pitch + " ");
+    }
+
+    public void setRoll(int roll) {
+        lblRollValue.setText(roll + " ");
+    }
+
+    public void setYaw(int yaw) {
+        lblRollValue.setText(yaw + " ");
+    }
+
+    public void setAltitude(int altitude) {
+        lblAltitudeValue.setText(altitude + " ");
+    }
+
 }

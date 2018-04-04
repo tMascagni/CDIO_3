@@ -51,4 +51,28 @@ public class StatusPanel extends JPanel {
         add(keyPanel, gbc);
     }
 
+    public void setBattery(int battery) {
+        droneDataPanel.setBattery(battery);
+    }
+
+    public void setSpeed(int speed) {
+        droneDataPanel.setSpeed(speed);
+    }
+
+    public void setPitch(int pitch) {
+        droneDataPanel.setPitch(pitch);
+    }
+
+    public void setRoll(int roll) {
+        droneDataPanel.setRoll(roll);
+    }
+
+    public void setYaw(int yaw) {
+        droneDataPanel.setYaw(yaw);
+    }
+
+    public void setAltitude(int altitude) {
+        droneDataPanel.setAltitude(altitude);
+    }
+
 }
