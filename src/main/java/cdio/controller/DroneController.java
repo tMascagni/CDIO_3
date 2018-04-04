@@ -219,18 +219,17 @@ public final class DroneController implements IDroneController {
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
          * hvor meget den skal dreje. Det er den vinkel den skal opnå.
          *
-         * Vi plusser dronens nuværende yaw med 180, for altid at dreje 180 grader
+         * Vi plusser dronens nuværende yaw med 180 (200?), for altid at dreje 180 grader
          * når denne metode bliver kørt.
          */
-        int targetYaw = (int) (getCorrectedYaw() + 200);
+        int targetYaw = (int) (getCorrectedYaw() + 180);
 
         /* pls work */
-        if (getCorrectedYaw() > 0) {
-            if (targetYaw > 179) {
+        if (targetYaw > 179) {
+            if (getCorrectedYaw() > 0) {
                 targetYaw = targetYaw - 360;
                 System.out.println("CALCULATED TargetYaw: " + targetYaw);
             }
-            targetYaw = 360 - targetYaw;
         } else if (targetYaw < -179) {
             targetYaw = 360 + targetYaw;
         }
@@ -238,7 +237,6 @@ public final class DroneController implements IDroneController {
         int negativeBound = -8;
         int positiveBound = 8;
 
-        //tui.log(this, "Dronen drejes: " + yaw + " grader. Target Yaw: " + targetYaw);
         while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
             if (yaw > 179)
                 yaw = 360 - yaw;
@@ -252,6 +250,7 @@ public final class DroneController implements IDroneController {
                 commandManager.spinRight(80).doFor(40);
                 commandManager.spinLeft(80).doFor(10);
             }
+
             commandManager.hover().doFor(100);
             sleep(500);
         }
@@ -260,6 +259,7 @@ public final class DroneController implements IDroneController {
 
     @Override
     public final void circleAroundObject() throws DroneControllerException {
+
     }
 
     /**

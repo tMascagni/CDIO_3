@@ -23,11 +23,10 @@ public final class Main {
                 droneController.takeOffDrone();
 
                 droneController.hoverDrone(5000);
+
                 droneController.searchRotation();
                 droneController.hoverDrone(7000);
                 droneController.searchRotation();
-
-
 
 
                 droneController.hoverDrone(10000);
