@@ -1,8 +1,10 @@
 package cdio.computervision;
 
 import org.opencv.core.*;
+import org.opencv.imgcodecs.Imgcodecs;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 /*
@@ -18,17 +20,24 @@ public class demo {
     public static void main(String[] args) {
 	// write your code here
        //init();
-           String path = "/home/pil/Desktop/ringe/daniel";
+           String path = "/home/pil/Desktop/ringe/mine";
            File folder = new File(path);
-
+            int j = 0;
            for(File fileEntry : folder.listFiles()) {
                if(fileEntry.getName().toLowerCase().contains(".jpg")) {
                    QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
-                   qr.processAll();
+                   ArrayList<Double> var = new ArrayList<>();
+                   ArrayList<Mat> res = qr.processAll(var);
 
-                   System.out.println("Bin img: " + qr.binImg.type());
-                   System.out.println("Org img: " + qr.orgImg.type());
+
+                    int i = 0;
+                   for(Mat r : res) {
+                       System.out.println(j + "" + i + ", " + var.get(i) );
+                       Imgcodecs.imwrite("/home/pil/Desktop/ringe/daniel/output/"+ j + i + ".jpeg", r);
+                       i++;
+                   }
                }
+               j++;
            }
     }
 }

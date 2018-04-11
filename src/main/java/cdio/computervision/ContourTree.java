@@ -124,9 +124,7 @@ public class ContourTree {
                RotatedRect rotatedRect = Imgproc.minAreaRect(newContour);
                Point[] points = new Point[4];
                rotatedRect.points(points);
-               System.out.println(points.length);
                points = orderPoints(points);
-               System.out.println(points.length);
                l.add(new MatOfPoint2f(points));
                l.addAll(current.Child.findRectIfChildren(reqDepth));
            }

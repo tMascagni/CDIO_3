@@ -21,14 +21,18 @@ public class QRDetector {
     }
 
     // Do everything and return the qr codes as images
-    public ArrayList<Mat> processAll() {
+    public ArrayList<Mat> processAll(ArrayList<Double> variance) {
         getGray();
         thresholding();
         ContourTree con = getContours();
 
         ArrayList<Mat> qr_codes = new ArrayList<>();
         findQR(qr_codes, orgImg, con);
+        sortQR(qr_codes, variance);
+
+
         return qr_codes;
+        //return qr_codes;
     }
 
 
@@ -127,6 +131,37 @@ public class QRDetector {
 
            dst.add(new_img);
        }
+    }
+
+    public void sortQR(ArrayList<Mat> src, ArrayList<Double> deviations) {
+        int maxCount = 20000;
+        int channel = 1;
+        double deviation = 0.1;
+        for(int count = 0; count < src.size(); count ++) {
+            Mat img = src.get(count).clone();
+            Imgproc.cvtColor(src.get(count), img, Imgproc.COLOR_BGR2HSV);
+            double avg = 0;
+            for (int i = 0; i < maxCount; i++) {
+                int x = (int) (Math.random() * img.width());
+                int y = (int) (Math.random() * img.height());
+                double[] p = img.get(y,x);
+                avg += p[channel];
+            }
+
+            avg /= maxCount;
+
+            double sum = 0;
+            for (int i = 0; i < maxCount; i++) {
+                int x = (int) (Math.random() * img.width());
+                int y = (int) (Math.random() * img.height());
+                double[] p = img.get(y,x);
+
+                sum += (p[channel] - avg) * (p[channel] - avg);
+            }
+
+            deviations.add(sum/maxCount);
+
+        }
     }
 
 }
