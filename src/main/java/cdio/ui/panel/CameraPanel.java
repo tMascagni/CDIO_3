@@ -10,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-public class CameraPanel extends JPanel implements ImageListener {
+public final class CameraPanel extends JPanel implements ImageListener {
 
     private BufferedImage image = null;
     private long timestampLastUpdate = 0;
@@ -24,7 +24,7 @@ public class CameraPanel extends JPanel implements ImageListener {
 
         drone.getVideoManager().addImageListener(this);
 
-        drone.getCommandManager().setVideoCodecFps(30);
+        drone.getCommandManager().setVideoCodecFps(10);
         drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
 
         addMouseListener(new MouseAdapter() {

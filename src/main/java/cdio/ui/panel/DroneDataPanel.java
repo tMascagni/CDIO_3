@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class DroneDataPanel extends JPanel {
+public final class DroneDataPanel extends JPanel {
 
     private JLabel lblBattery, lblSpeed, lblPitch, lblRoll, lblYaw, lblAltitude;
     private JLabel lblBatteryValue, lblSpeedValue, lblPitchValue, lblRollValue, lblYawValue, lblAltitudeValue;

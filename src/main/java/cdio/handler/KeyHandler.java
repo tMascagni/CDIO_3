@@ -186,7 +186,7 @@ public final class KeyHandler implements IKeyHandler {
                 droneController.hoverDrone();
                 break;
             case KeyEvent.VK_R:
-                droneController.searchRotation();
+                droneController.doSearchRotation();
                 break;
             case KeyEvent.VK_C:
                 droneController.circleAroundObject();

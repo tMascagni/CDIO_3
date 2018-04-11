@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
-public class QRCodePanel extends JPanel implements ICCPlugin {
+public final class QRCodePanel extends JPanel implements ICCPlugin {
 
     private IARDrone drone;
     private String code;

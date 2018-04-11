@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class StatusPanel extends JPanel {
+public final class StatusPanel extends JPanel {
 
     private DroneStatusPanel droneStatusPanel;
     private HoopStatusPanel hoopStatusPanel;
