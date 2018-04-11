@@ -217,20 +217,22 @@ public final class DroneController implements IDroneController {
     public final void searchRotation() throws DroneControllerException {
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
-         * hvor meget den skal dreje. Det er den vinkel den skal opnå.
+         * hvor meget den skal dreje. Det er den vinkel den skal opnå at pege
+         * hen til med dens front.
          *
-         * Vi plusser dronens nuværende yaw med 180 (200?), for altid at dreje 180 grader
+         * Vi adderer dronens nuværende yaw med 180 (grader), for altid at dreje 180 grader
          * når denne metode bliver kørt.
+         *
+         * Måske burde dette laves om til at den altid drejer 360 heletiden?
          */
         int targetYaw = (int) (getCorrectedYaw() + 180);
 
-        /* pls work */
-        if (targetYaw > 180) {
+        if (targetYaw > 179) {
             if (getCorrectedYaw() > 0) {
                 targetYaw = targetYaw - 360;
                 System.out.println("CALCULATED TargetYaw: " + targetYaw);
             }
-        } else if (targetYaw < -180) {
+        } else if (targetYaw < -179) {
             targetYaw = 360 + targetYaw;
             System.out.println("CALCULATED TargetYaw: " + targetYaw);
         }
@@ -240,9 +242,9 @@ public final class DroneController implements IDroneController {
 
         while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
-            if (yaw > 180)
+            if (yaw > 179)
                 yaw = 360 - yaw;
-            else if (yaw < -180)
+            else if (yaw < -179)
                 yaw = 360 + yaw;
 
             if (yaw > 0) {

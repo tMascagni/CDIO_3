@@ -179,4 +179,5 @@ public final class MainFrame extends JFrame implements MessageListener {
     public void setAltitude(int altitude) {
         statusPanel.setAltitude(altitude);
     }
+
 }
