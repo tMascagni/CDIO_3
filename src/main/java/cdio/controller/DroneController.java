@@ -1,5 +1,6 @@
 package cdio.controller;
 
+import cdio.computervision.QRDetector;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
@@ -14,6 +15,8 @@ import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public final class DroneController implements IDroneController {
@@ -214,17 +217,19 @@ public final class DroneController implements IDroneController {
      * Method to make the drone rotate to a target yaw.
      */
     @Override
-    public final void searchRotation() throws DroneControllerException {
+    public final void doSearchRotation() throws DroneControllerException {
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
-         * hvor meget den skal dreje. Det er den vinkel den skal opnå.
+         * hvor meget den skal dreje. Det er den vinkel den skal opnå at pege
+         * hen til med dens front.
          *
-         * Vi plusser dronens nuværende yaw med 180 (200?), for altid at dreje 180 grader
+         * Vi adderer dronens nuværende yaw med 180 (grader), for altid at dreje 180 grader
          * når denne metode bliver kørt.
+         *
+         * Måske burde dette laves om til at den altid drejer 360 heletiden?
          */
         int targetYaw = (int) (getCorrectedYaw() + 180);
 
-        /* pls work */
         if (targetYaw > 179) {
             if (getCorrectedYaw() > 0) {
                 targetYaw = targetYaw - 360;
@@ -232,12 +237,14 @@ public final class DroneController implements IDroneController {
             }
         } else if (targetYaw < -179) {
             targetYaw = 360 + targetYaw;
+            System.out.println("CALCULATED TargetYaw: " + targetYaw);
         }
 
         int negativeBound = -8;
         int positiveBound = 8;
 
         while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+
             if (yaw > 179)
                 yaw = 360 - yaw;
             else if (yaw < -179)
@@ -393,6 +400,8 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final IARDrone getDrone() throws DroneControllerException {
+        if (drone == null)
+            throw new DroneControllerException("Drone object is null!");
         return drone;
     }
 
@@ -411,9 +420,7 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                //DroneController.this.yaw = getCorrectedYaw();
                 System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
-                //messageListener.messageCommandEventOccurred(this, "Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
                 getCorrectedYaw();
             }
 
@@ -443,20 +450,6 @@ public final class DroneController implements IDroneController {
             @Override
             public void receivedExtendedAltitude(Altitude altitude) {
                 DroneController.this.altitude = altitude.getRaw();
-            }
-        });
-    }
-
-    private void startStateListener() {
-        navDataManager.addStateListener(new StateListener() {
-            @Override
-            public void stateChanged(DroneState droneState) {
-                System.out.println("Drone State: " + droneState);
-            }
-
-            @Override
-            public void controlStateChanged(ControlState controlState) {
-                System.out.println("Control State: " + controlState);
             }
         });
     }
@@ -507,25 +500,17 @@ public final class DroneController implements IDroneController {
         }
     }
 
-    private void startVideoListener() {
-        drone.getNavDataManager().addVideoListener(new VideoListener() {
-            @Override
-            public void receivedHDVideoStreamData(HDVideoStreamData hdVideoStreamData) {
-
-            }
-
-            @Override
-            public void receivedVideoStreamData(VideoStreamData videoStreamData) {
-
-
-            }
-        });
-    }
-
-    private void startMagnetoListener() {
-        navDataManager.addMagnetoListener(magnetoData -> {
-
-        });
+    public static void displayImage(Image img2) {
+        //BufferedImage img=ImageIO.read(new File("/HelloOpenCV/lena.png"));
+        ImageIcon icon = new ImageIcon(img2);
+        JFrame frame = new JFrame();
+        frame.setLayout(new FlowLayout());
+        frame.setSize(img2.getWidth(null) + 50, img2.getHeight(null) + 50);
+        JLabel lbl = new JLabel();
+        lbl.setIcon(icon);
+        frame.add(lbl);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     /**
@@ -565,7 +550,8 @@ public final class DroneController implements IDroneController {
                 commandManager.forward(INITIAL_SPEED);
                 dist = dist - 100; // Dronen er flyttet ca. 1 meter
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
+
             }
         }
     }

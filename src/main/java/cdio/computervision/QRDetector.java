@@ -1,23 +1,33 @@
 package cdio.computervision;
 
 import org.opencv.core.*;
+import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.LineSegmentDetector;
 
-
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class QRDetector {
+
     private static final double CV_PI = 3.14159;
+
+    private CVHelper cvHelper = new CVHelper();
+
     public Mat orgImg, grayImg, binImg;
 
-    public  QRDetector(String filePath) {
+    public QRDetector(String filePath) {
         orgImg = Imgcodecs.imread(filePath);
     }
 
-    public  QRDetector(Mat inputImage) {
+    public QRDetector(Mat inputImage) {
         orgImg = inputImage.clone();
+    }
+
+    public QRDetector(BufferedImage inputImage) {
+        orgImg = cvHelper.buf2mat(inputImage);
     }
 
     // Do everything and return the qr codes as images
@@ -35,6 +45,15 @@ public class QRDetector {
         //return qr_codes;
     }
 
+    // Do everything and return the qr codes as images (USED FOR THE GUI)
+    public BufferedImage processSingleImg(Image dstImg) {
+        getGray();
+        thresholding();
+        ContourTree con = getContours();
+
+        findQRDraw(orgImg, con);
+        return cvHelper.mat2buf(orgImg);
+    }
 
 /*
     HighGUI no longer exists in java, and we need to use swing instead to display
@@ -67,12 +86,13 @@ public class QRDetector {
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
-        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE );
-        if(contours.size() > 0) {
+        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE);
+
+        if (contours.size() > 0) {
             ct = new ContourTree(hir, contours, 0);
         }
 
-       return ct;
+        return ct;
     }
 
     public void getGray() {
@@ -95,14 +115,14 @@ public class QRDetector {
         int ratio = 3;
         int blurAmout = 2;
         binImg = grayImg.clone();
-        Imgproc.blur(grayImg, binImg, new Size(blurAmout,blurAmout));
-        Imgproc.Canny(binImg, binImg, threshold, threshold*ratio);
+        Imgproc.blur(grayImg, binImg, new Size(blurAmout, blurAmout));
+        Imgproc.Canny(binImg, binImg, threshold, threshold * ratio);
     }
 
     public void thresholding() {
         binImg = new Mat();
         int thres = 190;
-        Imgproc.threshold(grayImg, binImg, thres, 255,Imgproc.THRESH_BINARY);
+        Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
     public void addLines(Mat dst, Mat scr) {
@@ -116,21 +136,31 @@ public class QRDetector {
     // These are not guaranteed to be QR codes, but they are likely.
     // The images are then transformed to a rectangle for further processing.
     public void findQR(ArrayList<Mat> dst, Mat scr, ContourTree ct) {
-       ArrayList<MatOfPoint2f> points = ct.findRectIfChildren(3);
-       for(MatOfPoint2f scr_point : points) {
-           Mat new_img = scr.clone();
+        ArrayList<MatOfPoint2f> points = ct.findRectIfChildren(3);
+
+        for (MatOfPoint2f scr_point : points) {
+            Mat new_img = scr.clone();
             Point p[] = {
                     new Point(0, 0),
                     new Point(new_img.width(), 0),
                     new Point(new_img.width(), new_img.height()),
                     new Point(0, new_img.height())
             };
-           MatOfPoint2f dest_points = new MatOfPoint2f(p);
-           Mat perspectiveTransform = Imgproc.getPerspectiveTransform(scr_point, dest_points);
-           Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
 
-           dst.add(new_img);
-       }
+            MatOfPoint2f dest_points = new MatOfPoint2f(p);
+            Mat perspectiveTransform = Imgproc.getPerspectiveTransform(scr_point, dest_points);
+            Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
+
+            dst.add(new_img);
+        }
+    }
+
+    // Find the QR codes in the image.
+    // We use the contour tree, and select all with a certain depth.
+    // These are not guaranteed to be QR codes, but they are likely.
+    // The images are then transformed to a rectangle for further processing.
+    public void findQRDraw(Mat scr, ContourTree ct) {
+        ct.drawRectIfChildren(scr, 3);
     }
 
     public void sortQR(ArrayList<Mat> src, ArrayList<Double> deviations) {

@@ -156,34 +156,28 @@ public final class MainFrame extends JFrame implements MessageListener {
         commandPanel.appendText("----------------------------------------------------------------------");
     }
 
-    @Override
     public void setBattery(int battery) {
-
+        statusPanel.setBattery(battery);
     }
 
-    @Override
     public void setSpeed(int speed) {
-
+        statusPanel.setSpeed(speed);
     }
 
-    @Override
     public void setPitch(int pitch) {
-
+        statusPanel.setPitch(pitch);
     }
 
-    @Override
     public void setRoll(int roll) {
-
+        statusPanel.setRoll(roll);
     }
 
-    @Override
     public void setYaw(int yaw) {
-
+        statusPanel.setYaw(yaw);
     }
 
-    @Override
     public void setAltitude(int altitude) {
-
+        statusPanel.setAltitude(altitude);
     }
 
 }

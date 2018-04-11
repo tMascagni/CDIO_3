@@ -24,14 +24,14 @@ public final class Main {
 
                 droneController.hoverDrone(5000);
 
-                droneController.searchRotation();
+                droneController.doSearchRotation();
                 droneController.hoverDrone(7000);
-                droneController.searchRotation();
-
+                droneController.doSearchRotation();
 
                 droneController.hoverDrone(10000);
                 droneController.landDrone();
                 droneController.stopDrone();
+
             } catch (IDroneController.DroneControllerException e) {
                 e.printStackTrace();
             }

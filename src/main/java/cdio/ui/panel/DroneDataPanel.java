@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class DroneDataPanel extends JPanel {
+public final class DroneDataPanel extends JPanel {
 
     private JLabel lblBattery, lblSpeed, lblPitch, lblRoll, lblYaw, lblAltitude;
     private JLabel lblBatteryValue, lblSpeedValue, lblPitchValue, lblRollValue, lblYawValue, lblAltitudeValue;
@@ -124,6 +124,22 @@ public class DroneDataPanel extends JPanel {
 
     public void setSpeed(int speed) {
         lblSpeedValue.setText(speed + "%");
+    }
+
+    public void setPitch(int pitch) {
+        lblPitchValue.setText(pitch + " ");
+    }
+
+    public void setRoll(int roll) {
+        lblRollValue.setText(roll + " ");
+    }
+
+    public void setYaw(int yaw) {
+        lblRollValue.setText(yaw + " ");
+    }
+
+    public void setAltitude(int altitude) {
+        lblAltitudeValue.setText(altitude + " ");
     }
 
 }
