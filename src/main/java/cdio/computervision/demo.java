@@ -6,11 +6,11 @@ import java.io.File;
 
 
 /*
-    This main classed is only for reference.
+    This demo classed is only for reference.
     For picking out QR-codes from images, used QRDetector.java
  */
 
-public class Main {
+public class demo {
 
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
@@ -25,6 +25,9 @@ public class Main {
                if(fileEntry.getName().toLowerCase().contains(".jpg")) {
                    QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
                    qr.processAll();
+
+                   System.out.println("Bin img: " + qr.binImg.type());
+                   System.out.println("Org img: " + qr.orgImg.type());
                }
            }
     }
