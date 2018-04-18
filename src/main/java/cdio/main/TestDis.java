@@ -1,6 +1,5 @@
 package cdio.main;
 
-import cdio.computervision.QRDetector;
 import cdio.controller.DisCal;
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
@@ -39,9 +38,7 @@ public final class TestDis {
                while (droneController.getQrData().getWidth() < 10){
                     droneController.flyDroneTest(200);
                     droneController.hoverDrone(200);
-                    droneController.addMSG("brede af QRkode:" + droneController.getQrData().getWidth());
-
-
+                    droneController.addMessage("brede af QRkode:" + droneController.getQrData().getWidth());
                 }
 
 

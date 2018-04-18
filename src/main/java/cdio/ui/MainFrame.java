@@ -1,6 +1,5 @@
 package cdio.ui;
 
-import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
@@ -13,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,8 +26,6 @@ public final class MainFrame extends JFrame {
     private CommandPanel commandPanel;
     private StatusPanel statusPanel;
     private CameraPanel frontCamPanel;
-
-
 
     private final IDroneController droneController;
 
@@ -64,13 +61,13 @@ public final class MainFrame extends JFrame {
             e.printStackTrace();
         }
 
-        //keyHandler.setMessageListener(this);
         if (IS_KEYS_ENABLED) {
             addKeyListener(keyHandler);
             getRootPane().addKeyListener(keyHandler);
         } else {
-            commandPanel.appendText("KEY INPUT IS DISABLED!");
+            droneController.addMessage("KEYBOARD DISABLED!");
         }
+
         commandPanel.setFocusable(false);
         statusPanel.setFocusable(false);
         setFocusable(true);
@@ -123,12 +120,6 @@ public final class MainFrame extends JFrame {
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
         add(frontCamPanel, gbc);
-
-        /*
-        gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        add(bottomCamPanel, gbc);
-        */
     }
 
     private void initFrame() {
@@ -140,21 +131,7 @@ public final class MainFrame extends JFrame {
         requestFocus();
     }
 
-
-
     private void updateStatusPanel() {
-        /*
-        new Thread(() -> {
-            final Timer timer = new Timer(500, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    statusPanel.setYaw((int) droneController.getYaw());
-                    System.out.println((int) droneController.getYaw());
-                }
-            });
-        }).start();
-        */
-
         final Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -167,21 +144,19 @@ public final class MainFrame extends JFrame {
                     statusPanel.setBattery(droneController.getBattery());
                     statusPanel.setSpeed(droneController.getSpeed());
 
-                    ArrayList<String> msgs = droneController.getNewMSG();
+                    List<String> messages = droneController.getNewMessages();
 
-                    for (String s: msgs){
-                        commandPanel.appendText("##### drone comande #####");
-                        commandPanel.appendText(s);
+                    for (String str : messages) {
+                        commandPanel.appendText("############### Drone Command ###############");
+                        commandPanel.appendText(str);
                     }
 
-                    msgs.clear();
+                    messages.clear();
                 } catch (IDroneController.DroneControllerException e) {
                     e.printStackTrace();
                 }
-
-
             }
-        }, 0, 500);
+        }, 0, 100);
     }
 
 }

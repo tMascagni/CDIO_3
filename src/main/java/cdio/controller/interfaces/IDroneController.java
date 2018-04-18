@@ -1,10 +1,8 @@
 package cdio.controller.interfaces;
 
 import cdio.model.QRCodeData;
-import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.IARDrone;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IDroneController {
     /** BASIC DRONE FUNCTIONALITY **/
@@ -31,7 +29,10 @@ public interface IDroneController {
     int getSpeed() throws DroneControllerException;
     void resetDrone() throws DroneControllerException;
 
-    void setMessageListener(MessageListener messageListener);
+    void addMessage(String msg);
+    List<String> getNewMessages();
+
+    void flyDroneTest(double distance);
 
     IARDrone getDrone() throws DroneControllerException;
 
@@ -41,11 +42,6 @@ public interface IDroneController {
     float getCorrectedYaw();
     float getAltitude();
     int getBattery();
-
-    public void addMSG(String s);
-    public ArrayList<String> getNewMSG();
-
-    public void flyDroneTest(double dist);
 
     QRCodeData getQrData();
 

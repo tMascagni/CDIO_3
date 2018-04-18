@@ -10,10 +10,8 @@ import java.awt.image.BufferedImage;
 
 public class RoutePlanner implements ImageListener {
 
-
-
-private final static IDroneController droneControl = DroneController.getInstance();
-private final static ImageListener cameraControl = null;
+    private final static IDroneController droneControl = DroneController.getInstance();
+    private final static ImageListener cameraControl = null;
 
     private long imageCount = 0;
 
@@ -21,31 +19,32 @@ private final static ImageListener cameraControl = null;
     public void imageUpdated(BufferedImage bufferedImage) {
 
         try {
-            if(droneControl.getDrone().getNavDataManager().isConnected() == true){
+            if (droneControl.getDrone().getNavDataManager().isConnected()) {
+
                 droneControl.startDrone();
                 droneControl.takeOffDrone();
                 droneControl.doSearchRotation();
-                if (cameraControl.equals(true)){
+
+                if (cameraControl.equals(true)) {
                     System.out.println("found it");
                     droneControl.stopDrone();
-                }else{
+                } else {
                     droneControl.stopDrone();
                 }
-
-
 
             }
         } catch (IDroneController.DroneControllerException e) {
             e.printStackTrace();
         }
+
         if ((++imageCount % 2) == 0)
             return;
-        int[] realDimension = new int[]{297,420,297,420};
+        int[] realDimension = new int[]{297, 420, 297, 420};
         //measure image
         LuminanceSource dimension = new BufferedImageLuminanceSource(bufferedImage);
         //dimension.crop(0,0,0,0).toString();
-        if (dimension.crop(0,0,0,0).toString().equals(realDimension)){
-            System.out.println(dimension.crop(0,0,0,0));
+        if (dimension.crop(0, 0, 0, 0).toString().equals(realDimension)) {
+            System.out.println(dimension.crop(0, 0, 0, 0));
         }
     }
 }
