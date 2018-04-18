@@ -4,17 +4,12 @@ import cdio.model.QRCodeData;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.multi.MultipleBarcodeReader;
 import com.google.zxing.qrcode.QRCodeReader;
-
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-import java.util.EnumMap;
-import java.util.Map;
 
 public class QRCodeHandler {
 
@@ -34,14 +29,8 @@ public class QRCodeHandler {
         /* Try to detect QR code */
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-        Map<DecodeHintType, Object> hintTypeMap = new EnumMap<DecodeHintType, Object>(DecodeHintType.class);
-
-        hintTypeMap.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-     //   hintTypeMap.put(DecodeHintType.POSSIBLE_FORMATS, BarcodeFormat.QR_CODE);
-   //     hintTypeMap.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
 
         try {
-            //reader.setHints(hintTypeMap);
             detectionResult = reader.decode(bitmap);
             qrCodeValue = detectionResult.getText();
 
@@ -55,7 +44,6 @@ public class QRCodeHandler {
                 d = points[3]; // alignment point (bottom-right) // THIS CAUSES MASSIEV
 
             // Find the degree of the rotation that is needed
-
             double z = Math.abs(a.getX() - b.getX());
             double x = Math.abs(a.getY() - b.getY());
             double theta = Math.atan(x / z); // degree in rad (+- PI/2)
@@ -111,7 +99,7 @@ public class QRCodeHandler {
         try {
             img = ImageIO.read(new File(path));
         } catch (IOException e) {
-           // e.printStackTrace();
+            // e.printStackTrace();
             System.err.println("some shit");
         }
 

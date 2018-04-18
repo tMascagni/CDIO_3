@@ -32,6 +32,13 @@ public interface IDroneController {
 
     IARDrone getDrone() throws DroneControllerException;
 
+    float getPitch();
+    float getRoll();
+    float getYaw();
+    float getCorrectedYaw();
+    float getAltitude();
+    int getBattery();
+
     public void flyDroneTest(double dist);
 
     class DroneControllerException extends Exception {

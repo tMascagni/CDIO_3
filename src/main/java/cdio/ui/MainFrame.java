@@ -4,20 +4,18 @@ import cdio.controller.interfaces.IDroneController;
 import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
-import cdio.ui.interfaces.MessageListener;
 import cdio.ui.panel.CameraPanel;
 import cdio.ui.panel.CommandPanel;
 import cdio.ui.panel.StatusPanel;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public final class MainFrame extends JFrame implements MessageListener {
+public final class MainFrame extends JFrame {
 
     private int width = 1280;
     private int height = 720;
@@ -29,7 +27,6 @@ public final class MainFrame extends JFrame implements MessageListener {
     private CameraPanel frontCamPanel;
 
     private final IDroneController droneController;
-    private final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
 
     private final IKeyHandler keyHandler = KeyHandler.getInstance();
 
@@ -63,12 +60,12 @@ public final class MainFrame extends JFrame implements MessageListener {
             e.printStackTrace();
         }
 
-        keyHandler.setMessageListener(this);
+        //keyHandler.setMessageListener(this);
         if (IS_KEYS_ENABLED) {
             addKeyListener(keyHandler);
             getRootPane().addKeyListener(keyHandler);
         } else {
-            System.out.println("INPUT: KEY INPUT IS DISABLED!");
+            commandPanel.appendText("KEY INPUT IS DISABLED!");
         }
         commandPanel.setFocusable(false);
         statusPanel.setFocusable(false);
@@ -93,6 +90,8 @@ public final class MainFrame extends JFrame implements MessageListener {
         initFrame();
         requestFocus();
         requestFocusInWindow();
+
+        updateStatusPanel();
     }
 
     private void initComponents() {
@@ -137,47 +136,35 @@ public final class MainFrame extends JFrame implements MessageListener {
         requestFocus();
     }
 
-    @Override
-    public void messageCommandStartEventOccurred(String title) {
-        title = StringUtils.center(title, 14, " ");
-        //String msg = "───────────[ " + title + " ]───────────";
-        String msg = "--------------------------[ " + title + " ]--------------------------";
-        commandPanel.appendText(msg);
-    }
+    private void updateStatusPanel() {
+        /*
+        new Thread(() -> {
+            final Timer timer = new Timer(500, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    statusPanel.setYaw((int) droneController.getYaw());
+                    System.out.println((int) droneController.getYaw());
+                }
+            });
+        }).start();
+        */
 
-    @Override
-    public void messageCommandEventOccurred(Object obj, String msg) {
-        String formattedDate = df.format(new Date());
-        commandPanel.appendText("[" + obj.getClass().getSimpleName() + ": " + formattedDate + "] " + msg);
-    }
-
-    @Override
-    public void messageCommandEndEventOccurred() {
-        commandPanel.appendText("----------------------------------------------------------------------");
-    }
-
-    public void setBattery(int battery) {
-        statusPanel.setBattery(battery);
-    }
-
-    public void setSpeed(int speed) {
-        statusPanel.setSpeed(speed);
-    }
-
-    public void setPitch(int pitch) {
-        statusPanel.setPitch(pitch);
-    }
-
-    public void setRoll(int roll) {
-        statusPanel.setRoll(roll);
-    }
-
-    public void setYaw(int yaw) {
-        statusPanel.setYaw(yaw);
-    }
-
-    public void setAltitude(int altitude) {
-        statusPanel.setAltitude(altitude);
+        final Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    statusPanel.setPitch((int) droneController.getPitch());
+                    statusPanel.setRoll((int) droneController.getRoll());
+                    statusPanel.setYaw((int) droneController.getYaw());
+                    statusPanel.setAltitude((int) droneController.getAltitude());
+                    statusPanel.setBattery(droneController.getBattery());
+                    statusPanel.setSpeed(droneController.getSpeed());
+                } catch (IDroneController.DroneControllerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 500);
     }
 
 }
