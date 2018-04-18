@@ -292,8 +292,12 @@ public final class DroneController implements IDroneController {
             commandManager.hover().doFor(50);
 
             try {
-                setQrCodeData(qrCodeHandler.scanImage(latestReceivedImage));
+
+                QRCodeData newQRDATA = qrCodeHandler.scanImage(latestReceivedImage);
+                setQrCodeData(newQRDATA);
                 // qr detected
+
+
 
                 /*
                  * Vi skal have en hjælpefunktion der tager gennemsnittet
@@ -304,6 +308,13 @@ public final class DroneController implements IDroneController {
                 map.put(qrCodeData.getResult(), getCorrectedYaw());
                 System.out.println("#############  QR CODE DETECTED #############");
                 System.out.println(map);
+
+                if(newQRDATA != null){
+                    commandManager.up(200);
+                    commandManager.forward(100);
+                    stopDrone();
+                }
+
 
             } catch (QRCodeException ignored) {
                 // no qr detected

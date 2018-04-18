@@ -34,10 +34,13 @@ public final class TestDis {
                     e.printStackTrace();
                 }
 
+                while (droneController.getQrData() == null);
+
                while (droneController.getQrData().getWidth() < 10){
-                    droneController.flyDroneTest(100);
-                    droneController.hoverDrone(100);
-                    System.out.println(disCal.disCal(droneController.getQrData().getWidth()) + "cm");
+                    droneController.flyDroneTest(200);
+                    droneController.hoverDrone(200);
+                    droneController.addMSG("brede af QRkode:" + droneController.getQrData().getWidth());
+
 
                 }
 
