@@ -1,5 +1,6 @@
 package cdio.ui;
 
+import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
@@ -12,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,6 +27,8 @@ public final class MainFrame extends JFrame {
     private CommandPanel commandPanel;
     private StatusPanel statusPanel;
     private CameraPanel frontCamPanel;
+
+
 
     private final IDroneController droneController;
 
@@ -136,6 +140,8 @@ public final class MainFrame extends JFrame {
         requestFocus();
     }
 
+
+
     private void updateStatusPanel() {
         /*
         new Thread(() -> {
@@ -160,9 +166,20 @@ public final class MainFrame extends JFrame {
                     statusPanel.setAltitude((int) droneController.getAltitude());
                     statusPanel.setBattery(droneController.getBattery());
                     statusPanel.setSpeed(droneController.getSpeed());
+
+                    ArrayList<String> msgs = droneController.getNewMSG();
+
+                    for (String s: msgs){
+                        commandPanel.appendText("##### drone comande #####");
+                        commandPanel.appendText(s);
+                    }
+
+                    msgs.clear();
                 } catch (IDroneController.DroneControllerException e) {
                     e.printStackTrace();
                 }
+
+
             }
         }, 0, 500);
     }

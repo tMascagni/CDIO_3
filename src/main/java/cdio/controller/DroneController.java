@@ -4,6 +4,7 @@ import cdio.controller.interfaces.IDroneController;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
 import cdio.model.QRCodeData;
+import cdio.ui.MainFrame;
 import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
@@ -15,6 +16,7 @@ import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,8 @@ public final class DroneController implements IDroneController {
 
     private final IARDrone drone;
 
+    private ArrayList<String> newMSG = new ArrayList<>();
+
     private final CommandManager commandManager;
     private final VideoManager videoManager;
     private final NavDataManager navDataManager;
@@ -44,12 +48,27 @@ public final class DroneController implements IDroneController {
 
     private static IDroneController instance;
 
+    private QRCodeData qrCodeData;
+
+    public void setQrCodeData(QRCodeData qrCodeData) {
+        addMSG("QRCode res: " + qrCodeData.getResult());
+        this.qrCodeData = qrCodeData;
+    }
+
     static {
         try {
             instance = new DroneController();
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize Singleton DroneController instance!");
         }
+    }
+
+    public void addMSG(String s){
+        newMSG.add(s);
+    }
+
+    public ArrayList<String> getNewMSG() {
+        return newMSG;
     }
 
     private DroneController() {
@@ -128,6 +147,7 @@ public final class DroneController implements IDroneController {
         /* Wait to settle for commands... */
         sleep(2000);
 
+        addMSG("Drone initialized!");
         //messageListener.messageCommandEventOccurred(this, "Drone initialized!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -145,6 +165,7 @@ public final class DroneController implements IDroneController {
         drone.stop();
         sleep(1000);
 
+        addMSG("Drone stopped!");
         //messageListener.messageCommandEventOccurred(this, "Drone stopped!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -164,6 +185,7 @@ public final class DroneController implements IDroneController {
         sleep(1000);
         commandManager.takeOff().doFor(200);
 
+        addMSG("Drone taken off!");
         //messageListener.messageCommandEventOccurred(this, "Drone taken off!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -182,6 +204,7 @@ public final class DroneController implements IDroneController {
 
         commandManager.landing().doFor(200);
 
+        addMSG("Drone landed!");
         //messageListener.messageCommandEventOccurred(this, "Drone landed!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -196,6 +219,7 @@ public final class DroneController implements IDroneController {
 
         commandManager.hover().waitFor(timeMillis);
 
+        addMSG("Drone finished hovering!");
         //messageListener.messageCommandEventOccurred(this, "Drone finished hovering!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -210,6 +234,7 @@ public final class DroneController implements IDroneController {
 
         commandManager.hover();
 
+        addMSG("Drone finished hovering!");
         //messageListener.messageCommandEventOccurred(this, "Drone finished hovering!");
         //messageListener.messageCommandEndEventOccurred();
     }
@@ -221,6 +246,8 @@ public final class DroneController implements IDroneController {
      */
     @Override
     public final void doSearchRotation() throws DroneControllerException {
+
+        addMSG("Doing a search rotation!");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
          * hvor meget den skal dreje. Det er den vinkel den skal opnå at pege
@@ -265,7 +292,7 @@ public final class DroneController implements IDroneController {
             commandManager.hover().doFor(50);
 
             try {
-                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage);
+                setQrCodeData(qrCodeHandler.scanImage(latestReceivedImage));
                 // qr detected
 
                 /*
@@ -521,7 +548,8 @@ public final class DroneController implements IDroneController {
 
     private void scanImageForQRCode(BufferedImage bufferedImage) {
         try {
-            QRCodeData qrData = qrCodeHandler.scanImage(bufferedImage);
+             setQrCodeData(qrCodeHandler.scanImage(bufferedImage));
+
             //messageListener.messageCommandStartEventOccurred("QR Code Scanned");
             //messageListener.messageCommandEventOccurred(this, "Result: " + qrData.getResult() + ", Width: " + qrData.getWidth() + ", Height: " + qrData.getHeight() + ", Orientation: " + qrData.getOrientation());
             //messageListener.messageCommandEndEventOccurred();
@@ -569,6 +597,11 @@ public final class DroneController implements IDroneController {
 
             }
         }
+    }
+
+    @Override
+    public QRCodeData getQrData() {
+        return qrCodeData;
     }
 
     @Override

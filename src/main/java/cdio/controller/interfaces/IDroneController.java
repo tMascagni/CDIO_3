@@ -1,7 +1,10 @@
 package cdio.controller.interfaces;
 
+import cdio.model.QRCodeData;
 import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.IARDrone;
+
+import java.util.ArrayList;
 
 public interface IDroneController {
     /** BASIC DRONE FUNCTIONALITY **/
@@ -39,7 +42,12 @@ public interface IDroneController {
     float getAltitude();
     int getBattery();
 
+    public void addMSG(String s);
+    public ArrayList<String> getNewMSG();
+
     public void flyDroneTest(double dist);
+
+    QRCodeData getQrData();
 
     class DroneControllerException extends Exception {
 

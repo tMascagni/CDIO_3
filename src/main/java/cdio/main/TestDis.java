@@ -15,7 +15,6 @@ public final class TestDis {
     public static void main(String[] args) {
 
         MainFrame mainFrame = new MainFrame(droneController);
-        droneController.setMessageListener(mainFrame);
 
         DisCal disCal = new DisCal();
 
@@ -35,16 +34,20 @@ public final class TestDis {
                     e.printStackTrace();
                 }
 
-                while (droneController.getQrData().getWidth() < 10){
+               while (droneController.getQrData().getWidth() < 10){
                     droneController.flyDroneTest(100);
                     droneController.hoverDrone(100);
                     System.out.println(disCal.disCal(droneController.getQrData().getWidth()) + "cm");
+
                 }
+
 
             } catch (IDroneController.DroneControllerException e) {
                 e.printStackTrace();
             }
         });
+
+
         /* ######### TEST ######### */
 
     }
