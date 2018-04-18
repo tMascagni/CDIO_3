@@ -519,9 +519,15 @@ public final class DroneController implements IDroneController {
 
     }
 
+    public QRCodeData qrData;
+
+    public QRCodeData getQrData() {
+        return qrData;
+    }
+
     private void scanImageForQRCode(BufferedImage bufferedImage) {
         try {
-            QRCodeData qrData = qrCodeHandler.scanImage(bufferedImage);
+            qrData = qrCodeHandler.scanImage(bufferedImage);
             messageListener.messageCommandStartEventOccurred("QR Code Scanned");
             messageListener.messageCommandEventOccurred(this, "Result: " + qrData.getResult() + ", Width: " + qrData.getWidth() + ", Height: " + qrData.getHeight() + ", Orientation: " + qrData.getOrientation());
             messageListener.messageCommandEndEventOccurred();

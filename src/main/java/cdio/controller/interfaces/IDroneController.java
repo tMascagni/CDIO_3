@@ -1,5 +1,6 @@
 package cdio.controller.interfaces;
 
+import cdio.model.QRCodeData;
 import cdio.ui.interfaces.MessageListener;
 import de.yadrone.base.IARDrone;
 
@@ -31,6 +32,8 @@ public interface IDroneController {
     void setMessageListener(MessageListener messageListener);
 
     IARDrone getDrone() throws DroneControllerException;
+
+    QRCodeData getQrData();
 
     public void flyDroneTest(double dist);
 
