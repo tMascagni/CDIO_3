@@ -11,8 +11,10 @@ public final class Main {
     private final static IDroneController droneController = DroneController.getInstance();
 
     public static void main(String[] args) {
+
         MainFrame mainFrame = new MainFrame(droneController);
         droneController.setMessageListener(mainFrame);
+
 
         /* ######### TEST ######### */
         EventQueue.invokeLater(() -> {

@@ -1,6 +1,5 @@
 package cdio.controller;
 
-import cdio.computervision.QRDetector;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
@@ -15,9 +14,9 @@ import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class DroneController implements IDroneController {
 
@@ -40,6 +39,8 @@ public final class DroneController implements IDroneController {
 
     private MessageListener messageListener;
     private final QRCodeHandler qrCodeHandler;
+
+    private BufferedImage latestReceivedImage;
 
     private static IDroneController instance;
 
@@ -121,7 +122,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandStartEventOccurred("Init");
         messageListener.messageCommandEventOccurred(this, "Drone initializing...");
 
-        drone.setSpeed(INITIAL_SPEED);
+        setSpeed(INITIAL_SPEED);
         commandManager.setMinAltitude(MIN_ALTITUDE);
         commandManager.setMaxAltitude(MAX_ALTITUDE);
         /* Wait to settle for commands... */
@@ -176,7 +177,7 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandEventOccurred(this, "Drone landing...");
 
         setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
-        drone.setSpeed(LANDING_SPEED);
+        setSpeed(LANDING_SPEED);
         sleep(500);
 
         commandManager.landing().doFor(200);
@@ -212,6 +213,8 @@ public final class DroneController implements IDroneController {
         messageListener.messageCommandEventOccurred(this, "Drone finished hovering!");
         messageListener.messageCommandEndEventOccurred();
     }
+
+    Map<String, Float> map = new HashMap<String, Float>();
 
     /**
      * Method to make the drone rotate to a target yaw.
@@ -258,7 +261,28 @@ public final class DroneController implements IDroneController {
                 commandManager.spinLeft(80).doFor(10);
             }
 
-            commandManager.hover().doFor(100);
+            // do some scanning for QRCode
+            commandManager.hover().doFor(50);
+
+            try {
+                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage);
+                // qr detected
+
+                /*
+                 * Vi skal have en hjælpefunktion der tager gennemsnittet
+                 * af alle i en pågældende gruppe.
+                 *
+                 * For at finde den rigtige path.
+                 */
+                map.put(qrCodeData.getResult(), getCorrectedYaw());
+                System.out.println("#############  QR CODE DETECTED #############");
+                System.out.println(map);
+
+            } catch (QRCodeException ignored) {
+                // no qr detected
+            }
+
+            commandManager.hover().doFor(50);
             sleep(500);
         }
 
@@ -370,6 +394,7 @@ public final class DroneController implements IDroneController {
         }
 
         drone.setSpeed(speed);
+        //DroneController.this.messageListener.setSpeed(speed);
 
         messageListener.messageCommandEventOccurred(this, "Setting drone speed: " + speed);
         messageListener.messageCommandEndEventOccurred();
@@ -420,8 +445,11 @@ public final class DroneController implements IDroneController {
                 DroneController.this.pitch = pitch;
                 DroneController.this.roll = roll;
                 DroneController.this.yaw = (int) yaw / 1000;
-                System.out.println("Pitch: " + pitch + ", Roll: " + roll + ", Yaw: " + yaw);
-                getCorrectedYaw();
+
+                //DroneController.this.messageListener.setRoll((int) roll);
+                //DroneController.this.messageListener.setPitch((int) pitch);
+                //DroneController.this.messageListener.setYaw((int) yaw);
+                //DroneController.this.messageListener.setCorrectedYaw(getCorrectedYaw());
             }
 
             @Override
@@ -445,6 +473,7 @@ public final class DroneController implements IDroneController {
             @Override
             public void receivedAltitude(int altitude) {
                 DroneController.this.altitude = altitude;
+                messageListener.setAltitude(altitude);
             }
 
             @Override
@@ -462,7 +491,7 @@ public final class DroneController implements IDroneController {
             @Override
             public void batteryLevelChanged(int battery) {
                 DroneController.this.battery = battery;
-                // System.out.println("Battery: " + battery);
+                //DroneController.this.messageListener.setBattery(battery);
             }
 
             @Override
@@ -479,6 +508,7 @@ public final class DroneController implements IDroneController {
 
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
+                latestReceivedImage = bufferedImage;
                 qrScanTimer--;
                 if (qrScanTimer == 0) {
                     qrScanTimer = INITIAL_QR_SCAN_TIMER;
@@ -498,19 +528,6 @@ public final class DroneController implements IDroneController {
         } catch (QRCodeException ignored) {
 
         }
-    }
-
-    public static void displayImage(Image img2) {
-        //BufferedImage img=ImageIO.read(new File("/HelloOpenCV/lena.png"));
-        ImageIcon icon = new ImageIcon(img2);
-        JFrame frame = new JFrame();
-        frame.setLayout(new FlowLayout());
-        frame.setSize(img2.getWidth(null) + 50, img2.getHeight(null) + 50);
-        JLabel lbl = new JLabel();
-        lbl.setIcon(icon);
-        frame.add(lbl);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     /**
@@ -538,8 +555,6 @@ public final class DroneController implements IDroneController {
             yawCorrected = 359 - yawCorrected;
         else if (yawCorrected <= -180)
             yawCorrected = 359 + yawCorrected;
-
-        System.out.println("yawCorrect: " + yawCorrected);
 
         return yawCorrected;
     }

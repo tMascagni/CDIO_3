@@ -135,7 +135,7 @@ public final class DroneDataPanel extends JPanel {
     }
 
     public void setYaw(int yaw) {
-        lblRollValue.setText(yaw + " ");
+        lblYawValue.setText(yaw + " ");
     }
 
     public void setAltitude(int altitude) {
