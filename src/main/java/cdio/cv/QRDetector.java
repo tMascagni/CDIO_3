@@ -1,4 +1,4 @@
-package cdio.computervision;
+package cdio.cv;
 
 import org.opencv.core.*;
 import org.opencv.core.Point;

@@ -2,7 +2,10 @@ package cdio.main.test;
 
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
-import org.opencv.core.*;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
@@ -11,9 +14,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-
-import static org.opencv.imgcodecs.Imgcodecs.imread;
-import static org.opencv.imgproc.Imgproc.cvtColor;
 
 public class MainQRCodeTest {
 
@@ -46,7 +46,6 @@ public class MainQRCodeTest {
         BufferedImage imgRemote4 = QRCodeHandler.getImageRemote("http://www.labeljoy.com/images/how-to/best-practices/image009.png");
         BufferedImage imgRemote5 = QRCodeHandler.getImageRemote("https://richmediadp.files.wordpress.com/2011/08/qr-code.jpg");
         */
-
 
 
         System.out.println("REAL IMAGES:");
@@ -145,7 +144,7 @@ public class MainQRCodeTest {
 
         int erosion_size = 5;
         Mat dis = new Mat();
-        Mat element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new  Size(2*erosion_size + 1, 2*erosion_size+1));
+        Mat element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2 * erosion_size + 1, 2 * erosion_size + 1));
         Imgproc.erode(con, dis, element);
 
         return Mat2BufferedImage(dis);
@@ -158,8 +157,8 @@ public class MainQRCodeTest {
         return mat;
     }
 
-    public static BufferedImage Mat2BufferedImage(Mat matrix)throws IOException {
-        MatOfByte mob=new MatOfByte();
+    public static BufferedImage Mat2BufferedImage(Mat matrix) throws IOException {
+        MatOfByte mob = new MatOfByte();
         Imgcodecs.imencode(".jpg", matrix, mob);
         return ImageIO.read(new ByteArrayInputStream(mob.toArray()));
     }

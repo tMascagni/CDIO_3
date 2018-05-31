@@ -1,4 +1,4 @@
-package cdio.controller.route;
+package cdio.routing;
 
 import cdio.controller.DroneController;
 import cdio.controller.interfaces.IDroneController;

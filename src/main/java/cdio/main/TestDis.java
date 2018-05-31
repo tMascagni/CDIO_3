@@ -27,17 +27,12 @@ public final class TestDis {
 
                 droneController.hoverDrone(100);
 
-                try {
-                    Thread.sleep(4000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-                while (droneController.getQrData() == null);
+                while (droneController.getQrData() == null) ;
 
-               while (droneController.getQrData().getWidth() < 10){
-                    droneController.flyDroneTest(200);
-                    droneController.hoverDrone(200);
+                while (droneController.getQrData().getWidth() < 245) {
+                    droneController.flyDroneTest(50);
+                    droneController.hoverDrone(50);
                     droneController.addMessage("brede af QRkode:" + droneController.getQrData().getWidth());
                 }
 
@@ -46,7 +41,6 @@ public final class TestDis {
                 e.printStackTrace();
             }
         });
-
 
         /* ######### TEST ######### */
 

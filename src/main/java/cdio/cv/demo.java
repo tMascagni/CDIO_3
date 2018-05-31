@@ -1,7 +1,6 @@
-package cdio.computervision;
+package cdio.cv;
 
 import org.opencv.core.*;
-import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.swing.*;
 import java.awt.*;
