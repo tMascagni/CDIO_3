@@ -1,7 +1,7 @@
-package cdio.main.test;
+package cdio.main;
 
-import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
+import cdio.handler.interfaces.IQRCodeHandler;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -17,17 +17,16 @@ import java.io.IOException;
 
 public class MainQRCodeTest {
 
-    public static void main(String[] args) {
-        QRCodeHandler handler = new QRCodeHandler();
+    private final static IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
 
-
+    public static void main(String[] args) throws IQRCodeHandler.QRCodeHandlerException {
         System.out.println("Starting QRCode TEST!\n");
 
         /* REAL IMAGE */
         //   BufferedImage imgLocal0 = QRCodeHandler.getImageLocal("qr_code_test/1.jpg0_fixed.jpg");
         BufferedImage imgLocal01 = null;
         try {
-            imgLocal01 = optimize(QRCodeHandler.getImageLocal("qr_code_test/1.jpg0.jpg"));
+            imgLocal01 = optimize(qrCodeHandler.getImageLocal("qr_code_test/qr_real_0.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,42 +48,38 @@ public class MainQRCodeTest {
 
 
         System.out.println("REAL IMAGES:");
-        try {
-            System.out.println(handler.scanImage(imgLocal01));
-        } catch (QRCodeException e) {
-            e.printStackTrace();
-        }
+        System.out.println(qrCodeHandler.scanImage(imgLocal01));
 /*
         try {
             System.out.println(handler.scanImage(imgLocal01));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
 
         try {
             System.out.println(handler.scanImage(imgLocal1));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
 
         try {
             System.out.println(handler.scanImage(imgLocal2));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
             System.out.println(handler.scanImage(imgLocal3));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
             System.out.println(handler.scanImage(imgLocal4));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
             System.out.println(handler.scanImage(imgLocal5));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         */
@@ -94,7 +89,7 @@ public class MainQRCodeTest {
         System.out.println("WEB IMAGES:");
         try {
             System.out.println(handler.scanImage(imgRemote0));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
@@ -102,7 +97,7 @@ public class MainQRCodeTest {
             System.out.println(handler.scanImage(imgRemote1));
             long end = System.currentTimeMillis();
             System.out.println("Time: " + (end - start));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
@@ -110,7 +105,7 @@ public class MainQRCodeTest {
             System.out.println(handler.scanImage(imgRemote2));
             long end = System.currentTimeMillis();
             System.out.println("Time: " + (end - start));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
@@ -120,17 +115,17 @@ public class MainQRCodeTest {
 
             System.out.println("Time: " + (end - start));
 
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
             System.out.println(handler.scanImage(imgRemote4));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
         try {
             System.out.println(handler.scanImage(imgRemote5));
-        } catch (QRCodeException e) {
+        } catch (QRCodeHandlerException e) {
             e.printStackTrace();
         }
 */

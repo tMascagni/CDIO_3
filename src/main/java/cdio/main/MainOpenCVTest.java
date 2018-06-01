@@ -1,4 +1,4 @@
-package cdio.main.test;
+package cdio.main;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;

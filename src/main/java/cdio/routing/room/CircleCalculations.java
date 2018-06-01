@@ -1,4 +1,4 @@
-package cdio.room;
+package cdio.routing.room;
 
 // References:
 // http://paulbourke.net/geometry/2circle/

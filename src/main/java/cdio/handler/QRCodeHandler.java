@@ -1,5 +1,6 @@
 package cdio.handler;
 
+import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -11,7 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 
-public class QRCodeHandler {
+public class QRCodeHandler implements IQRCodeHandler {
 
     private String qrCodeValue;
     private int orientation;
@@ -19,13 +20,28 @@ public class QRCodeHandler {
     private int qrCodeWidth;
     private int qrCodeHeight;
 
-    private final QRCodeReader reader;
+    private final QRCodeReader reader = new QRCodeReader();
 
-    public QRCodeHandler() {
-        reader = new QRCodeReader();
+    private static IQRCodeHandler instance;
+
+    private QRCodeHandler() {
+
     }
 
-    public QRCodeData scanImage(final BufferedImage image) throws QRCodeException {
+    static {
+        try {
+            instance = new QRCodeHandler();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to instantiate QRCodeHandler Singleton Instance!");
+        }
+    }
+
+    public static synchronized IQRCodeHandler getInstance() {
+        return instance;
+    }
+
+    @Override
+    public QRCodeData scanImage(final BufferedImage image) throws QRCodeHandlerException {
         /* Try to detect QR code */
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -68,31 +84,14 @@ public class QRCodeHandler {
                 qrCodeHeight = -1;
 
         } catch (ReaderException e) {
-            throw new QRCodeException("Failed to scan QR Code!");
+            throw new QRCodeHandlerException("Failed to scan QR Code!");
         }
 
-        QRCodeData data = new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
-
-
-        return data;
+        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
     }
 
-    private static void saveImage(String imageUrl, String destinationFile) throws IOException {
-        URL url = new URL(imageUrl);
-        InputStream is = url.openStream();
-        OutputStream os = new FileOutputStream(destinationFile);
-
-        byte[] b = new byte[2048];
-        int length;
-
-        while ((length = is.read(b)) != -1)
-            os.write(b, 0, length);
-
-        is.close();
-        os.close();
-    }
-
-    public static BufferedImage getImageLocal(String path) {
+    @Override
+    public BufferedImage getImageLocal(String path) throws QRCodeHandlerException {
         BufferedImage img = null;
 
         try {
@@ -105,14 +104,11 @@ public class QRCodeHandler {
         return img;
     }
 
-    public static BufferedImage getImageRemote(String url) {
+    @Override
+    public BufferedImage getImageRemote(String url) throws QRCodeHandlerException {
         String path = "qr_code_test/test.jpg";
 
-        try {
-            saveImage(url, path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        saveImage(url, path);
 
         BufferedImage img = null;
         try {
@@ -122,6 +118,26 @@ public class QRCodeHandler {
         }
 
         return img;
+    }
+
+    @Override
+    public void saveImage(String imageUrl, String destinationFile) throws QRCodeHandlerException {
+        try {
+            URL url = new URL(imageUrl);
+            InputStream is = url.openStream();
+            OutputStream os = new FileOutputStream(destinationFile);
+
+            byte[] b = new byte[2048];
+            int length;
+
+            while ((length = is.read(b)) != -1)
+                os.write(b, 0, length);
+
+            is.close();
+            os.close();
+        } catch (IOException e) {
+            throw new QRCodeHandlerException(e.getMessage());
+        }
     }
 
 }

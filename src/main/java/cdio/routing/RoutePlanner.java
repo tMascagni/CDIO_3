@@ -1,7 +1,7 @@
 package cdio.routing;
 
-import cdio.controller.DroneCommander;
-import cdio.controller.interfaces.IDroneCommander;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import de.yadrone.base.video.ImageListener;

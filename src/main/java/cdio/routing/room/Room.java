@@ -1,4 +1,4 @@
-package cdio.room;
+package cdio.routing.room;
 
 import java.util.ArrayList;
 import java.util.List;

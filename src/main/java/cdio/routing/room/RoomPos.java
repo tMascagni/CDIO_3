@@ -1,4 +1,4 @@
-package cdio.room;
+package cdio.routing.room;
 
 public class RoomPos {
 

@@ -1,4 +1,4 @@
-package cdio.controller.interfaces;
+package cdio.drone.interfaces;
 
 import cdio.model.QRCodeData;
 import de.yadrone.base.IARDrone;
@@ -42,8 +42,6 @@ public interface IDroneCommander {
     float getCorrectedYaw();
     float getAltitude();
     int getBattery();
-
-    QRCodeData getQrData();
 
     class DroneCommanderException extends Exception {
 

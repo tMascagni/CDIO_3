@@ -1,7 +1,7 @@
 package cdio.handler;
 
-import cdio.controller.DroneCommander;
-import cdio.controller.interfaces.IDroneCommander;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IKeyHandler;
 
 import java.awt.event.KeyEvent;

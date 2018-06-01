@@ -1,8 +1,8 @@
-package cdio.controller;
+package cdio.drone;
 
-import cdio.controller.interfaces.IDroneCommander;
-import cdio.handler.QRCodeException;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
+import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
@@ -10,7 +10,6 @@ import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
-import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
 
 import java.awt.image.BufferedImage;
@@ -41,9 +40,8 @@ public final class DroneCommander implements IDroneCommander {
     private final NavDataManager navDataManager;
     private final ConfigurationManager configManager;
 
-    private final QRCodeHandler qrCodeHandler;
+    private final IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
     private BufferedImage latestReceivedImage;
-    private QRCodeData qrCodeData;
 
     private List<String> messageList = new ArrayList<>();
 
@@ -67,8 +65,6 @@ public final class DroneCommander implements IDroneCommander {
         videoManager = drone.getVideoManager();
         navDataManager = drone.getNavDataManager();
         configManager = drone.getConfigurationManager();
-
-        qrCodeHandler = new QRCodeHandler();
 
         /* Start listeners */
         startAcceleroListener();
@@ -197,7 +193,7 @@ public final class DroneCommander implements IDroneCommander {
      */
     @Override
     public final QRCodeData searchForQRCode() throws DroneCommanderException {
-        addMessage("Doing a search rotation!");
+        addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
          * hvor meget den skal dreje. Det er den vinkel den skal opnå at pege
@@ -243,8 +239,7 @@ public final class DroneCommander implements IDroneCommander {
 
             try {
 
-                QRCodeData newQRDATA = qrCodeHandler.scanImage(latestReceivedImage);
-                setQrCodeData(newQRDATA);
+                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage);
                 // qr detected
 
                 /*
@@ -257,10 +252,10 @@ public final class DroneCommander implements IDroneCommander {
                 System.out.println("#############  QR CODE DETECTED #############");
                 System.out.println(map);
 
-                addMessage("FANDT QR KODE OG NU STOPPER JEG HEHEH OG RETURNERER DEN");
-                return newQRDATA;
-            } catch (QRCodeException ignored) {
-                // no qr detected
+                addMessage("Found QR code! Stopping.");
+                return qrCodeData;
+            } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                // no qr detected which is fine.
             }
 
             commandManager.hover().doFor(50);
@@ -406,19 +401,6 @@ public final class DroneCommander implements IDroneCommander {
         return drone;
     }
 
-    private void scanImageForQRCode(BufferedImage bufferedImage) {
-        try {
-            setQrCodeData(qrCodeHandler.scanImage(bufferedImage));
-            addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
-        } catch (QRCodeException ignored) {
-
-        }
-    }
-
-    public void setQrCodeData(QRCodeData qrCodeData) {
-        this.qrCodeData = qrCodeData;
-    }
-
     /**
      * Method to start the attitude listener.
      */
@@ -452,7 +434,6 @@ public final class DroneCommander implements IDroneCommander {
             @Override
             public void receivedAltitude(int altitude) {
                 DroneCommander.this.altitude = altitude;
-                //messageListener.setAltitude(altitude);
             }
 
             @Override
@@ -470,7 +451,6 @@ public final class DroneCommander implements IDroneCommander {
             @Override
             public void batteryLevelChanged(int battery) {
                 DroneCommander.this.battery = battery;
-                //DroneCommander.this.messageListener.setBattery(battery);
             }
 
             @Override
@@ -481,20 +461,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     private void startImageListener() {
-        videoManager.addImageListener(new ImageListener() {
-            final int INITIAL_QR_SCAN_TIMER = 30;
-            int qrScanTimer = INITIAL_QR_SCAN_TIMER;
-
-            @Override
-            public void imageUpdated(BufferedImage bufferedImage) {
-                latestReceivedImage = bufferedImage;
-                qrScanTimer--;
-                if (qrScanTimer == 0) {
-                    qrScanTimer = INITIAL_QR_SCAN_TIMER;
-                    scanImageForQRCode(bufferedImage);
-                }
-            }
-        });
+        videoManager.addImageListener(bufferedImage -> latestReceivedImage = bufferedImage);
     }
 
     private void startAcceleroListener() {
@@ -548,11 +515,6 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public List<String> getNewMessages() {
         return messageList;
-    }
-
-    @Override
-    public QRCodeData getQrData() {
-        return qrCodeData;
     }
 
     @Override

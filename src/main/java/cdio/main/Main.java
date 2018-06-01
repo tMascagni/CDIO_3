@@ -1,18 +1,15 @@
 package cdio.main;
 
-import cdio.controller.MainController;
-import cdio.controller.interfaces.IMainController;
+import cdio.algorithms.Algorithms;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 
 public final class Main {
 
-    private static final IMainController mainController = MainController.getInstance();
+    private static final IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
-        try {
-            mainController.start();
-        } catch (IMainController.MainControllerException e) {
-            e.printStackTrace();
-        }
+        Algorithms.runSingleRing(droneCommander);
     }
 
 }

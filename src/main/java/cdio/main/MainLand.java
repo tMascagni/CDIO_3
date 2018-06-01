@@ -1,7 +1,7 @@
 package cdio.main;
 
-import cdio.controller.DroneCommander;
-import cdio.controller.interfaces.IDroneCommander;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 
 import java.awt.*;
 

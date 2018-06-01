@@ -1,8 +1,7 @@
 package cdio.ui;
 
-import cdio.controller.interfaces.IDroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.KeyHandler;
-import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
 import cdio.ui.panel.CameraPanel;
 import cdio.ui.panel.CommandPanel;
@@ -32,7 +31,7 @@ public final class MainFrame extends JFrame {
     private final IKeyHandler keyHandler = KeyHandler.getInstance();
 
     public MainFrame(IDroneCommander droneController) {
-        super(TextHandler.GUI_TITLE);
+        super("DroneX - Group 3 - CDIO Project");
         this.droneController = droneController;
         setBackground(Color.WHITE);
         getRootPane().setBackground(Color.WHITE);
