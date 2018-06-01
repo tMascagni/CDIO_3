@@ -44,11 +44,9 @@ public final class MainController implements IMainController {
 
             droneCommander.hoverDrone(5000);
 
-            droneCommander.doSearchRotation();
-            droneCommander.hoverDrone(7000);
-            droneCommander.doSearchRotation();
+            droneCommander.searchForQRCode();
 
-            droneCommander.hoverDrone(10000);
+            droneCommander.hoverDrone(5000);
             droneCommander.landDrone();
             droneCommander.stopDrone();
 

@@ -163,7 +163,7 @@ public final class KeyHandler implements IKeyHandler {
                 break;
             case KeyEvent.VK_R:
                 droneController.addMessage("R pressed!");
-                droneController.doSearchRotation();
+                droneController.searchForQRCode();
                 break;
             case KeyEvent.VK_C:
                 droneController.addMessage("C pressed!");

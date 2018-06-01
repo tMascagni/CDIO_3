@@ -10,7 +10,6 @@ public final class MainGUI {
 
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame(droneController);
-        //droneController.setMessageListener(mainFrame);
 
         try {
             droneController.startDrone();

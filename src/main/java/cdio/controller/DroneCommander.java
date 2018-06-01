@@ -196,7 +196,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone rotate to a target yaw.
      */
     @Override
-    public final void doSearchRotation() throws DroneCommanderException {
+    public final QRCodeData searchForQRCode() throws DroneCommanderException {
         addMessage("Doing a search rotation!");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -257,6 +257,8 @@ public final class DroneCommander implements IDroneCommander {
                 System.out.println("#############  QR CODE DETECTED #############");
                 System.out.println(map);
 
+                addMessage("FANDT QR KODE OG NU STOPPER JEG HEHEH OG RETURNERER DEN");
+                return newQRDATA;
             } catch (QRCodeException ignored) {
                 // no qr detected
             }
@@ -265,6 +267,7 @@ public final class DroneCommander implements IDroneCommander {
             sleep(500);
         }
 
+        return null;
     }
 
     @Override
@@ -413,7 +416,6 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     public void setQrCodeData(QRCodeData qrCodeData) {
-        addMessage("QRCode res: " + qrCodeData.getResult());
         this.qrCodeData = qrCodeData;
     }
 

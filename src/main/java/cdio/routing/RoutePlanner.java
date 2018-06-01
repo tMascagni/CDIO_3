@@ -23,7 +23,7 @@ public class RoutePlanner implements ImageListener {
 
                 droneControl.startDrone();
                 droneControl.takeOffDrone();
-                droneControl.doSearchRotation();
+                droneControl.searchForQRCode();
 
                 if (cameraControl.equals(true)) {
                     System.out.println("found it");

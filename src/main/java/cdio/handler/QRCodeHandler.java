@@ -73,7 +73,6 @@ public class QRCodeHandler {
 
         QRCodeData data = new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
 
-        System.out.println("Data: " + data);
 
         return data;
     }

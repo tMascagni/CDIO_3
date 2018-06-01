@@ -15,7 +15,7 @@ public interface IDroneCommander {
     void hoverDrone(int timeMillis) throws DroneCommanderException;
     void hoverDrone() throws DroneCommanderException;
 
-    void doSearchRotation() throws DroneCommanderException;
+    QRCodeData searchForQRCode() throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
 
     void flyForward(int distanceMilli) throws DroneCommanderException;
