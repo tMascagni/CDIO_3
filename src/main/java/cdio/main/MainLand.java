@@ -1,20 +1,20 @@
 package cdio.main;
 
-import cdio.controller.DroneController;
-import cdio.controller.interfaces.IDroneController;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 
 import java.awt.*;
 
 public final class MainLand {
 
-    private final static IDroneController droneController = DroneController.getInstance();
+    private final static IDroneCommander droneController = DroneCommander.getInstance();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
                 droneController.landDrone();
                 droneController.stopDrone();
-            } catch (IDroneController.DroneControllerException e) {
+            } catch (IDroneCommander.DroneCommanderException e) {
                 e.printStackTrace();
             }
         });

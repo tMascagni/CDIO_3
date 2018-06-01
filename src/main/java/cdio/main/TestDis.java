@@ -1,15 +1,15 @@
 package cdio.main;
 
 import cdio.controller.DisCal;
-import cdio.controller.DroneController;
-import cdio.controller.interfaces.IDroneController;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
 
 import java.awt.*;
 
 public final class TestDis {
 
-    private final static IDroneController droneController = DroneController.getInstance();
+    private final static IDroneCommander droneController = DroneCommander.getInstance();
 
     public static void main(String[] args) {
 
@@ -37,7 +37,7 @@ public final class TestDis {
                 }
 
 
-            } catch (IDroneController.DroneControllerException e) {
+            } catch (IDroneCommander.DroneCommanderException e) {
                 e.printStackTrace();
             }
         });

@@ -1,7 +1,7 @@
 package cdio.routing;
 
-import cdio.controller.DroneController;
-import cdio.controller.interfaces.IDroneController;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import de.yadrone.base.video.ImageListener;
@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class RoutePlanner implements ImageListener {
 
-    private final static IDroneController droneControl = DroneController.getInstance();
+    private final static IDroneCommander droneControl = DroneCommander.getInstance();
     private final static ImageListener cameraControl = null;
 
     private long imageCount = 0;
@@ -33,7 +33,7 @@ public class RoutePlanner implements ImageListener {
                 }
 
             }
-        } catch (IDroneController.DroneControllerException e) {
+        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
 

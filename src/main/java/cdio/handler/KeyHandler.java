@@ -1,7 +1,7 @@
 package cdio.handler;
 
-import cdio.controller.DroneController;
-import cdio.controller.interfaces.IDroneController;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IKeyHandler;
 
 import java.awt.event.KeyEvent;
@@ -46,7 +46,7 @@ public final class KeyHandler implements IKeyHandler {
 
     private static IKeyHandler instance;
 
-    private final IDroneController droneController = DroneController.getInstance();
+    private final IDroneCommander droneController = DroneCommander.getInstance();
 
     static {
         try {
@@ -101,7 +101,7 @@ public final class KeyHandler implements IKeyHandler {
         keyPool[e.getKeyCode()] = true;
         try {
             handleCommand(e);
-        } catch (IDroneController.DroneControllerException e1) {
+        } catch (IDroneCommander.DroneCommanderException e1) {
             e1.printStackTrace();
         }
     }
@@ -111,7 +111,7 @@ public final class KeyHandler implements IKeyHandler {
         keyPool[e.getKeyCode()] = false;
     }
 
-    private void handleCommand(KeyEvent e) throws IDroneController.DroneControllerException {
+    private void handleCommand(KeyEvent e) throws IDroneCommander.DroneCommanderException {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_W:

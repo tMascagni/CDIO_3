@@ -1,6 +1,6 @@
 package cdio.ui;
 
-import cdio.controller.interfaces.IDroneController;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.handler.KeyHandler;
 import cdio.handler.TextHandler;
 import cdio.handler.interfaces.IKeyHandler;
@@ -27,11 +27,11 @@ public final class MainFrame extends JFrame {
     private StatusPanel statusPanel;
     private CameraPanel frontCamPanel;
 
-    private final IDroneController droneController;
+    private final IDroneCommander droneController;
 
     private final IKeyHandler keyHandler = KeyHandler.getInstance();
 
-    public MainFrame(IDroneController droneController) {
+    public MainFrame(IDroneCommander droneController) {
         super(TextHandler.GUI_TITLE);
         this.droneController = droneController;
         setBackground(Color.WHITE);
@@ -57,7 +57,7 @@ public final class MainFrame extends JFrame {
             frontCamPanel = new CameraPanel(droneController.getDrone());
             frontCamPanel.setPreferredSize(preferredPanelSize);
             frontCamPanel.setSize(preferredPanelSize);
-        } catch (IDroneController.DroneControllerException e) {
+        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
 
@@ -152,7 +152,7 @@ public final class MainFrame extends JFrame {
                     }
 
                     messages.clear();
-                } catch (IDroneController.DroneControllerException e) {
+                } catch (IDroneCommander.DroneCommanderException e) {
                     e.printStackTrace();
                 }
             }
