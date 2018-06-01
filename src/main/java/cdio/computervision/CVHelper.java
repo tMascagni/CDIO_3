@@ -2,6 +2,8 @@ package cdio.computervision;
 
 import org.opencv.core.Mat;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
@@ -35,6 +37,20 @@ public class CVHelper {
         in.get(0, 0, data);
         out.getRaster().setDataElements(0, 0, in.width(), in.height(), data);
         return out;
+    }
+
+    public void displayImage(Image img2) {
+
+        //BufferedImage img=ImageIO.read(new File("/HelloOpenCV/lena.png"));
+        ImageIcon icon=new ImageIcon(img2);
+        JFrame frame=new JFrame();
+        frame.setLayout(new FlowLayout());
+        frame.setSize(img2.getWidth(null)+50, img2.getHeight(null)+50);
+        JLabel lbl=new JLabel();
+        lbl.setIcon(icon);
+        frame.add(lbl);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 }

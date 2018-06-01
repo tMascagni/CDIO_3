@@ -25,7 +25,7 @@ public class demo {
 
 	// write your code here
        //init();
-        String path = "C:\\Users\\phenotype\\Documents\\CDIO_3\\qr_code_test\\pil";
+        String path = "C:\\Users\\Helen\\Downloads\\CDIO_3\\qr_code_test\\pil";
            File folder = new File(path);
             int j = 0;
            for(File fileEntry : folder.listFiles()) {
@@ -33,7 +33,22 @@ public class demo {
 
                    QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
                    ArrayList<Double> var = new ArrayList<>();
-                   ArrayList<Mat> res = qr.processAll(var);
+                    ArrayList<Mat> res = qr.processAll(var);
+                   /*
+                   qr.getGray();
+                   qr.thresholding();
+                   ContourTree con = qr.getContours();
+
+                   for (int i = 0; i < 100; i++) {
+                       long startTime = System.nanoTime();
+                        ArrayList<Mat> qrCodes = new ArrayList<>();
+                        qr.findQR(qrCodes, qr.orgImg, con);
+                       long endTime = System.nanoTime();
+
+                       System.out.print(endTime - startTime + ",");
+                   }
+                   System.out.println();
+                   */
 
 /*
                     int i = 0;
@@ -43,7 +58,7 @@ public class demo {
                        i++;
                    }
 
-				   */
+
                    System.out.println("Bin img: " + qr.binImg.type());
                    System.out.println("Org img: " + qr.orgImg.type());
 
@@ -54,6 +69,8 @@ public class demo {
                    // Show the images
                    displayImage(buffBinImg); // Converted img (black)
                    displayImage(buffOrgImg); // Original img
+               */
+
                }
                j++;
            }

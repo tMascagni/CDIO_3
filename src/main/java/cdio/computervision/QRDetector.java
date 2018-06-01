@@ -32,15 +32,24 @@ public class QRDetector {
 
     // Do everything and return the qr codes as images
     public ArrayList<Mat> processAll(ArrayList<Double> variance) {
+        long getGreyStartTime = System.nanoTime();
         getGray();
+        long thresholdingStartTime = System.nanoTime();
         thresholding();
+        long contourtreeStartTime = System.nanoTime();
         ContourTree con = getContours();
 
+        long findQR = System.nanoTime();
         ArrayList<Mat> qr_codes = new ArrayList<>();
         findQR(qr_codes, orgImg, con);
-        sortQR(qr_codes, variance);
+        sortQR(qr_codes);
+        long timeEnd = System.nanoTime();
 
-
+       /* System.out.println("time to grey: " + (thresholdingStartTime-getGreyStartTime));
+        System.out.println("time to threshold: " + (contourtreeStartTime-thresholdingStartTime));
+        System.out.println("time to contour: " + (findQR-contourtreeStartTime));
+        System.out.println("time to findQR: " + (timeEnd-findQR));
+*/
         return qr_codes;
         //return qr_codes;
     }
@@ -97,15 +106,15 @@ public class QRDetector {
 
     public void getGray() {
         // Convert to HSV
-        Mat tmpImg = orgImg.clone();
-        Imgproc.cvtColor(orgImg, tmpImg, Imgproc.COLOR_BGR2HSV);
+//        Mat tmpImg = orgImg.clone();
+        Imgproc.cvtColor(orgImg, orgImg, Imgproc.COLOR_BGR2HSV);
 
         // Split HSV channels to seperat mats
         ArrayList<Mat> tmpMats = new ArrayList<>();
-        Core.split(tmpImg, tmpMats);
+        Core.split(orgImg, tmpMats);
 
         // Get only V channel
-        grayImg = tmpMats.get(2).clone();
+        grayImg = tmpMats.get(2);
 
         //Imgproc.threshold(binImg, binImg, 180, 255,Imgproc.THRESH_BINARY);
     }
@@ -163,35 +172,42 @@ public class QRDetector {
         ct.drawRectIfChildren(scr, 3);
     }
 
-    public void sortQR(ArrayList<Mat> src, ArrayList<Double> deviations) {
+    public void sortQR(ArrayList<Mat> src) {
+        System.out.println(src.size());
+/*
         int maxCount = 20000;
         int channel = 1;
-        double deviation = 0.1;
-        for(int count = 0; count < src.size(); count ++) {
+        for (int count = 0; count < src.size(); count++) {
             Mat img = src.get(count).clone();
             Imgproc.cvtColor(src.get(count), img, Imgproc.COLOR_BGR2HSV);
             double avg = 0;
+            int countInRange = 0;
             for (int i = 0; i < maxCount; i++) {
                 int x = (int) (Math.random() * img.width());
                 int y = (int) (Math.random() * img.height());
-                double[] p = img.get(y,x);
+                double[] p = img.get(y, x);
+
+                if (p[2] > 85 && 170 < p[2]) {
+                    countInRange++;
+                }
+
                 avg += p[channel];
+                Imgproc.putText(img, Integer.toString(countInRange), new Point(50, 50), Core.FONT_HERSHEY_COMPLEX, 2, new Scalar(255, 255, 100));
+                BufferedImage bufferedImage = cvHelper.mat2buf(img);
+                //   cvHelper.displayImage(bufferedImage);
             }
 
-            avg /= maxCount;
 
-            double sum = 0;
-            for (int i = 0; i < maxCount; i++) {
-                int x = (int) (Math.random() * img.width());
-                int y = (int) (Math.random() * img.height());
-                double[] p = img.get(y,x);
+            if (countInRange > 2000) {
 
-                sum += (p[channel] - avg) * (p[channel] - avg);
             }
 
-            deviations.add(sum/maxCount);
+            // 85-170
+
 
         }
+*/
     }
-
 }
+
+

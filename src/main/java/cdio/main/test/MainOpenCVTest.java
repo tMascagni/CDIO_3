@@ -9,6 +9,11 @@ public class MainOpenCVTest {
     // CompulsoryRu
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
+    static {
+        nu.pattern.OpenCV.loadShared();
+        System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to OpenCV " + Core.VERSION);
         Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
