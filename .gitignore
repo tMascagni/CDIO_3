@@ -38,3 +38,5 @@ opencv-3\.2\.0-0/org/opencv/imgproc/
 opencv-3\.2\.0-0/org/opencv/utils/
 
 CDIO_3_DRONE\.iml
+
+.idea*
