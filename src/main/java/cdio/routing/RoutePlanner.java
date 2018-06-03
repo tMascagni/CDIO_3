@@ -1,50 +1,70 @@
 package cdio.routing;
 
-import cdio.drone.DroneCommander;
+import cdio.cv.QRDetector;
 import cdio.drone.interfaces.IDroneCommander;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import de.yadrone.base.video.ImageListener;
+import cdio.ui.MainFrame;
+import de.yadrone.base.IARDrone;
+import de.yadrone.base.command.CommandManager;
+import javax.swing.*;
+public final class RoutePlanner {
 
-import java.awt.image.BufferedImage;
+    private RoutePlanner() {
 
-public class RoutePlanner implements ImageListener {
+    }
 
-    private final static IDroneCommander droneControl = DroneCommander.getInstance();
-    private final static ImageListener cameraControl = null;
+    public static void flightControl(IDroneCommander droneCommander) {
+       IARDrone  drone = null;
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+    });
+        /* ######### TEST ######### */
+        CommandManager cmd = drone.getCommandManager();
+        int speed = 30; // percentage of max speed
 
-    private long imageCount = 0;
+        cmd.takeOff().doFor(5000);
 
-    @Override
-    public void imageUpdated(BufferedImage bufferedImage) {
+        cmd.schedule(5000, new Runnable() {
+            public void run()
+            {
+                cmd.goLeft(speed).doFor(1000);
 
-        try {
-            if (droneControl.getDrone().getNavDataManager().isConnected()) {
+            }
+        });
+        cmd.schedule(5000, new Runnable() {
+            public void run()
+            {
+                try {
+                    droneCommander.searchForQRCode();
 
-                droneControl.startDrone();
-                droneControl.takeOffDrone();
-                droneControl.searchForQRCode();
-
-                if (cameraControl.equals(true)) {
-                    System.out.println("found it");
-                    droneControl.stopDrone();
-                } else {
-                    droneControl.stopDrone();
+                } catch (IDroneCommander.DroneCommanderException e) {
+                    e.printStackTrace();
                 }
 
             }
-        } catch (IDroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        }
+        });
+        cmd.hover().doFor(2000);
+        cmd.schedule(5000, new Runnable() {
+            public void run()
+            {
+                cmd.goRight(speed).doFor(2000);
 
-        if ((++imageCount % 2) == 0)
-            return;
-        int[] realDimension = new int[]{297, 420, 297, 420};
-        //measure image
-        LuminanceSource dimension = new BufferedImageLuminanceSource(bufferedImage);
-        //dimension.crop(0,0,0,0).toString();
-        if (dimension.crop(0, 0, 0, 0).toString().equals(realDimension)) {
-            System.out.println(dimension.crop(0, 0, 0, 0));
-        }
+            }
+        });
+        cmd.schedule(5000, new Runnable() {
+            public void run()
+            {
+                try {
+                    droneCommander.searchForQRCode();
+
+                } catch (IDroneCommander.DroneCommanderException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        cmd.hover().doFor(2000);
+        cmd.landing();
+        cmd.stop();
+
     }
 }
