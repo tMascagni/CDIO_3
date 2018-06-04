@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class DroneCommander implements IDroneCommander {
 
@@ -525,6 +526,18 @@ public final class DroneCommander implements IDroneCommander {
             @Override
             public void receivedPhysData(AcceleroPhysData acceleroPhysData) {
 
+            }
+        });
+    }
+
+    private void startNavDataCommonListener() {
+        AtomicInteger timer = new AtomicInteger(1000);
+        navDataManager.addCommonNavdataListener((commonNavdata, i) -> {
+            timer.getAndDecrement();
+            if (timer.get() == 0) {
+                addMessage("Altitude: " + commonNavdata.altitude + ", ax: " + commonNavdata.ax + " ay: " + commonNavdata.ay + ", az: " + commonNavdata.az
+                        + ", Battery: " + commonNavdata.battery + ", magX: " + commonNavdata.magX + ", magY: " + commonNavdata.magY + " magZ: " + commonNavdata.magZ);
+                timer.set(1000);
             }
         });
     }

@@ -21,15 +21,9 @@ public final class Algorithms {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-
-
-
-
             droneCommander.hoverDrone(5000);
-            droneCommander.searchForQRCode();
 
-
-
+            droneCommander.flyForward(1500);
 
             droneCommander.hoverDrone(5000);
             droneCommander.landDrone();
