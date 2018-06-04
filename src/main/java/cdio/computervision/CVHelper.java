@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-
 import static org.opencv.core.CvType.CV_8U;
 import static org.opencv.core.CvType.CV_8UC3;
 
@@ -40,13 +39,12 @@ public class CVHelper {
     }
 
     public void displayImage(Image img2) {
-
         //BufferedImage img=ImageIO.read(new File("/HelloOpenCV/lena.png"));
-        ImageIcon icon=new ImageIcon(img2);
-        JFrame frame=new JFrame();
+        ImageIcon icon = new ImageIcon(img2);
+        JFrame frame = new JFrame();
         frame.setLayout(new FlowLayout());
-        frame.setSize(img2.getWidth(null)+50, img2.getHeight(null)+50);
-        JLabel lbl=new JLabel();
+        frame.setSize(img2.getWidth(null) + 50, img2.getHeight(null) + 50);
+        JLabel lbl = new JLabel();
         lbl.setIcon(icon);
         frame.add(lbl);
         frame.setVisible(true);

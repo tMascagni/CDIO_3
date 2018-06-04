@@ -31,7 +31,7 @@ public class QRDetector {
     }
 
     // Do everything and return the qr codes as images
-    public ArrayList<Mat> processAll(ArrayList<Double> variance) {
+    public ArrayList<Mat> processAll() {
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
@@ -42,7 +42,7 @@ public class QRDetector {
         long findQR = System.nanoTime();
         ArrayList<Mat> qr_codes = new ArrayList<>();
         findQR(qr_codes, orgImg, con);
-        sortQR(qr_codes);
+        qr_codes = sortQR(qr_codes);
         long timeEnd = System.nanoTime();
 
        /* System.out.println("time to grey: " + (thresholdingStartTime-getGreyStartTime));
@@ -106,12 +106,12 @@ public class QRDetector {
 
     public void getGray() {
         // Convert to HSV
-//        Mat tmpImg = orgImg.clone();
-        Imgproc.cvtColor(orgImg, orgImg, Imgproc.COLOR_BGR2HSV);
+        Mat tmpImg = orgImg.clone();
+        Imgproc.cvtColor(tmpImg, tmpImg, Imgproc.COLOR_BGR2HSV);
 
         // Split HSV channels to seperat mats
         ArrayList<Mat> tmpMats = new ArrayList<>();
-        Core.split(orgImg, tmpMats);
+        Core.split(tmpImg, tmpMats);
 
         // Get only V channel
         grayImg = tmpMats.get(2);
@@ -172,41 +172,42 @@ public class QRDetector {
         ct.drawRectIfChildren(scr, 3);
     }
 
-    public void sortQR(ArrayList<Mat> src) {
+    public ArrayList<Mat> sortQR(ArrayList<Mat> src) {
         System.out.println(src.size());
-/*
+        ArrayList<Mat> qrkoder = new ArrayList<>();
+
         int maxCount = 20000;
-        int channel = 1;
-        for (int count = 0; count < src.size(); count++) {
+        int acceptanceLimit = maxCount/2;
+        int outOfRangeCount = 0;
+        int channel = 2;
+        for(int count = 0; count < src.size(); count ++) {
             Mat img = src.get(count).clone();
             Imgproc.cvtColor(src.get(count), img, Imgproc.COLOR_BGR2HSV);
             double avg = 0;
-            int countInRange = 0;
             for (int i = 0; i < maxCount; i++) {
                 int x = (int) (Math.random() * img.width());
                 int y = (int) (Math.random() * img.height());
-                double[] p = img.get(y, x);
+                double[] p = img.get(y,x);
 
-                if (p[2] > 85 && 170 < p[2]) {
-                    countInRange++;
+                int colorValue = (int) p[channel];
+
+                if(colorValue > 55 && colorValue < 200){
+                    outOfRangeCount++;
                 }
-
-                avg += p[channel];
-                Imgproc.putText(img, Integer.toString(countInRange), new Point(50, 50), Core.FONT_HERSHEY_COMPLEX, 2, new Scalar(255, 255, 100));
-                BufferedImage bufferedImage = cvHelper.mat2buf(img);
-                //   cvHelper.displayImage(bufferedImage);
             }
 
-
-            if (countInRange > 2000) {
-
+            if(outOfRangeCount < acceptanceLimit){
+                qrkoder.add(src.get(count));
+                System.out.println("Acceptable!");
             }
-
-            // 85-170
-
+            else {
+                //qrkoder.add(src.get(count));
+                System.out.println("Unacceptable!");
+            }
 
         }
-*/
+
+        return qrkoder;
     }
 }
 
