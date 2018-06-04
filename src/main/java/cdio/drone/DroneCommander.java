@@ -204,16 +204,19 @@ public final class DroneCommander implements IDroneCommander {
          *
          * Måske burde dette laves om til at den altid drejer 360 heletiden?
          */
+
+        /*
+         * Here we get a corrected targetYaw, wrapping around 180 and -180.
+         *
+         */
         int targetYaw = (int) (getCorrectedYaw() + 180);
 
-        if (targetYaw > 179) {
-            if (getCorrectedYaw() > 0) {
-                targetYaw = targetYaw - 360;
-                addMessage("CALCULATED TargetYaw: " + targetYaw);
-            }
-        } else if (targetYaw < -179) {
-            targetYaw = 360 + targetYaw;
-            addMessage("CALCULATED TargetYaw: " + targetYaw);
+        if (targetYaw > 180 && getCorrectedYaw() > 0) {
+            targetYaw -= 360;
+            addMessage("CALCULATED POS TargetYaw: " + targetYaw);
+        } else if (targetYaw < -180) {
+            targetYaw += 360;
+            addMessage("CALCULATED NEG TargetYaw: " + targetYaw);
         }
 
         int negativeBound = -8;
@@ -221,10 +224,11 @@ public final class DroneCommander implements IDroneCommander {
 
         while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
-            if (yaw > 179)
+            if (yaw > 180) {
                 yaw = 360 - yaw;
-            else if (yaw < -179)
+            } else if (yaw < -180) {
                 yaw = 360 + yaw;
+            }
 
             if (yaw > 0) {
                 commandManager.spinLeft(80).doFor(40);
