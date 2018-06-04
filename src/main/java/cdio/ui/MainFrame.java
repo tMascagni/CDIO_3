@@ -139,6 +139,7 @@ public final class MainFrame extends JFrame {
                     statusPanel.setPitch((int) droneController.getPitch());
                     statusPanel.setRoll((int) droneController.getRoll());
                     statusPanel.setYaw((int) droneController.getYaw());
+                    statusPanel.setCorrectedYaw((int) droneController.getCorrectedYaw());
                     statusPanel.setAltitude((int) droneController.getAltitude());
                     statusPanel.setBattery(droneController.getBattery());
                     statusPanel.setSpeed(droneController.getSpeed());
