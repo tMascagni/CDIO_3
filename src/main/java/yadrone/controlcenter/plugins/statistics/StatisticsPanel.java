@@ -1,7 +1,7 @@
 package yadrone.controlcenter.plugins.statistics;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
+import yadankdrone.IARDrone;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

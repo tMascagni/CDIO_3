@@ -21,8 +21,6 @@
         </plugins>
     </build>
 
-
-
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
@@ -98,12 +96,6 @@
             <version>3.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>Group_3</groupId>
-            <artifactId>YaDrone</artifactId>
-            <version>032</version>
-        </dependency>
     </dependencies>
-
 
 </project>

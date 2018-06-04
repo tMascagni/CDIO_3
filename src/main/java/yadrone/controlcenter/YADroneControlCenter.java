@@ -1,6 +1,6 @@
 package yadrone.controlcenter;
 
-import de.yadrone.base.ARDrone;
+import yadankdrone.ARDrone;
 
 public class YADroneControlCenter {
 

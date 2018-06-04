@@ -4,7 +4,7 @@ import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import de.yadrone.base.video.ImageListener;
+import yadankdrone.video.ImageListener;
 
 import java.awt.image.BufferedImage;
 

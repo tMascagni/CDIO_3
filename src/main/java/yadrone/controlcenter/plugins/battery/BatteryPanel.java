@@ -1,8 +1,8 @@
 package yadrone.controlcenter.plugins.battery;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.navdata.BatteryListener;
+import yadankdrone.IARDrone;
+import yadankdrone.navdata.BatteryListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

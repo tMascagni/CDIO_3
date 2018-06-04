@@ -1,8 +1,8 @@
 package yadrone.controlcenter.plugins.configuration;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.configuration.ConfigurationListener;
+import yadankdrone.IARDrone;
+import yadankdrone.configuration.ConfigurationListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConfigurationPanel extends JPanel implements ICCPlugin {
+
     private IARDrone drone;
 
     private JRadioButton customConfigIdsButton;

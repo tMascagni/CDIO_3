@@ -1,12 +1,13 @@
 package yadrone.controlcenter.plugins.keyboard;
 
-import de.yadrone.base.IARDrone;
+import yadankdrone.IARDrone;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardCommandManager implements KeyListener {
+
     protected IARDrone drone;
 
     public KeyboardCommandManager(IARDrone ardrone) {
@@ -125,7 +126,6 @@ public class KeyboardCommandManager implements KeyListener {
 
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
-
     }
 
 }

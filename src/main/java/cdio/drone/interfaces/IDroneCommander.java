@@ -1,7 +1,8 @@
 package cdio.drone.interfaces;
 
 import cdio.model.QRCodeData;
-import de.yadrone.base.IARDrone;
+import yadankdrone.IARDrone;
+
 import java.util.List;
 
 public interface IDroneCommander {

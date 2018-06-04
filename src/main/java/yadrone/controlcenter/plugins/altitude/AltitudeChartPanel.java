@@ -1,11 +1,10 @@
 package yadrone.controlcenter.plugins.altitude;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.apps.controlcenter.plugins.altitude.AltitudeChart;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.navdata.Altitude;
-import de.yadrone.base.navdata.AltitudeListener;
 import org.jfree.chart.ChartPanel;
+import yadankdrone.IARDrone;
+import yadankdrone.navdata.Altitude;
+import yadankdrone.navdata.AltitudeListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

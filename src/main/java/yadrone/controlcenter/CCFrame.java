@@ -1,7 +1,7 @@
 package yadrone.controlcenter;
 
-import de.yadrone.apps.controlcenter.plugins.pluginmanager.PluginManager;
-import de.yadrone.base.ARDrone;
+import yadankdrone.ARDrone;
+import yadrone.controlcenter.plugins.pluginmanager.PluginManager;
 
 import javax.swing.*;
 import java.awt.*;

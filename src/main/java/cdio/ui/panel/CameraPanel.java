@@ -1,8 +1,8 @@
 package cdio.ui.panel;
 
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.command.VideoCodec;
-import de.yadrone.base.video.ImageListener;
+import yadankdrone.IARDrone;
+import yadankdrone.command.VideoCodec;
+import yadankdrone.video.ImageListener;
 
 import javax.swing.*;
 import java.awt.*;
