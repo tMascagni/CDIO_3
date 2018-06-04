@@ -1,5 +1,7 @@
 package cdio.controller;
 
+import cdio.computervision.CVHelper;
+import cdio.computervision.QRDetector;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
@@ -12,6 +14,7 @@ import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
+import org.opencv.core.Mat;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -405,8 +408,15 @@ public final class DroneController implements IDroneController {
 
     private void scanImageForQRCode(BufferedImage bufferedImage) {
         try {
-            setQrCodeData(qrCodeHandler.scanImage(bufferedImage));
+            QRDetector qrDetector = new QRDetector();
+            CVHelper cvHelper = new CVHelper();
+
+            ArrayList<Mat> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
+
+            setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0))));
+
             addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
+            addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
         } catch (QRCodeException ignored) {
 
         }

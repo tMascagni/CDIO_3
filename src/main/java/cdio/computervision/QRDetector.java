@@ -18,6 +18,9 @@ public class QRDetector {
 
     public Mat orgImg, grayImg, binImg;
 
+    public QRDetector() {
+    }
+
     public QRDetector(String filePath) {
         orgImg = Imgcodecs.imread(filePath);
     }
@@ -31,7 +34,8 @@ public class QRDetector {
     }
 
     // Do everything and return the qr codes as images
-    public ArrayList<Mat> processAll() {
+    public ArrayList<Mat> processAll(Mat mat) {
+        orgImg = mat;
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
@@ -208,6 +212,17 @@ public class QRDetector {
         }
 
         return qrkoder;
+    }
+
+    public double angleOfQRCode(Mat input){
+        double width = input.width();
+        double height = input.height();
+        double widthNorm = width/height;
+        double s = 0;
+
+        s = Math.acos(widthNorm/0.7)*57.2957795; // 1 radian = 57.2957795 grader
+
+        return 90 - s;
     }
 }
 
