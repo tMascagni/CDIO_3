@@ -1,8 +1,8 @@
 package yadrone.controlcenter.plugins.connection;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.exception.*;
+import yadankdrone.IARDrone;
+import yadankdrone.exception.*;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,21 +31,19 @@ public class ConnectionState extends JPanel implements ICCPlugin {
         navdataLabel = new JLabel("Navdata Channel", greenIcon, SwingConstants.LEFT);
         videoLabel = new JLabel("Video Channel", greenIcon, SwingConstants.LEFT);
 
-        exceptionListener = new IExceptionListener() {
-            public void exeptionOccurred(ARDroneException exc) {
-                if (exc instanceof ConfigurationException) {
-                    configurationLabel.setIcon(redIcon);
-                    configurationLabel.setToolTipText(exc + "");
-                } else if (exc instanceof CommandException) {
-                    commandLabel.setIcon(redIcon);
-                    commandLabel.setToolTipText(exc + "");
-                } else if (exc instanceof NavDataException) {
-                    navdataLabel.setIcon(redIcon);
-                    navdataLabel.setToolTipText(exc + "");
-                } else if (exc instanceof VideoException) {
-                    videoLabel.setIcon(redIcon);
-                    videoLabel.setToolTipText(exc + "");
-                }
+        exceptionListener = exc -> {
+            if (exc instanceof ConfigurationException) {
+                configurationLabel.setIcon(redIcon);
+                configurationLabel.setToolTipText(exc + "");
+            } else if (exc instanceof CommandException) {
+                commandLabel.setIcon(redIcon);
+                commandLabel.setToolTipText(exc + "");
+            } else if (exc instanceof NavDataException) {
+                navdataLabel.setIcon(redIcon);
+                navdataLabel.setToolTipText(exc + "");
+            } else if (exc instanceof VideoException) {
+                videoLabel.setIcon(redIcon);
+                videoLabel.setToolTipText(exc + "");
             }
         };
 

@@ -1,9 +1,9 @@
 package yadrone.controlcenter.plugins.attitudechart;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.navdata.AttitudeListener;
 import org.jfree.chart.ChartPanel;
+import yadankdrone.IARDrone;
+import yadankdrone.navdata.AttitudeListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

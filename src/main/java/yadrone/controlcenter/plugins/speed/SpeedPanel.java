@@ -1,8 +1,8 @@
 package yadrone.controlcenter.plugins.speed;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.ARDrone;
-import de.yadrone.base.IARDrone;
+import yadankdrone.ARDrone;
+import yadankdrone.IARDrone;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

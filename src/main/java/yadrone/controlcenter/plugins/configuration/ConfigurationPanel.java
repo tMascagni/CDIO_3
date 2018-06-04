@@ -1,8 +1,8 @@
 package yadrone.controlcenter.plugins.configuration;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.configuration.ConfigurationListener;
+import yadankdrone.IARDrone;
+import yadankdrone.configuration.ConfigurationListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

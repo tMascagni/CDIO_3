@@ -7,12 +7,11 @@ import com.xuggle.mediatool.ToolFactory;
 import com.xuggle.mediatool.event.ICloseEvent;
 import com.xuggle.mediatool.event.IVideoPictureEvent;
 import com.xuggle.xuggler.ICodec;
-import de.yadrone.apps.controlcenter.CCPropertyManager;
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.apps.controlcenter.plugins.video.VideoCanvas;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.command.VideoCodec;
-import de.yadrone.base.video.ImageListener;
+import yadankdrone.IARDrone;
+import yadankdrone.command.VideoCodec;
+import yadankdrone.video.ImageListener;
+import yadrone.controlcenter.CCPropertyManager;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

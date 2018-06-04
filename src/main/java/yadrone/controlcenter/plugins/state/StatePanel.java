@@ -1,10 +1,10 @@
 package yadrone.controlcenter.plugins.state;
 
-import de.yadrone.apps.controlcenter.ICCPlugin;
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.navdata.ControlState;
-import de.yadrone.base.navdata.DroneState;
-import de.yadrone.base.navdata.StateListener;
+import yadankdrone.IARDrone;
+import yadankdrone.navdata.ControlState;
+import yadankdrone.navdata.DroneState;
+import yadankdrone.navdata.StateListener;
+import yadrone.controlcenter.ICCPlugin;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
 package yadrone.controlcenter.plugins.video;
 
-import de.yadrone.base.IARDrone;
+import yadankdrone.IARDrone;
 
 import javax.swing.*;
 import java.awt.*;

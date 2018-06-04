@@ -1,6 +1,6 @@
 package yadrone.controlcenter.plugins.keyboard;
 
-import de.yadrone.base.IARDrone;
+import yadankdrone.IARDrone;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;

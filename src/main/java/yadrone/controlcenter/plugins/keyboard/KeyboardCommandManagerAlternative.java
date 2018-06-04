@@ -1,7 +1,7 @@
 package yadrone.controlcenter.plugins.keyboard;
 
-import de.yadrone.base.IARDrone;
-import de.yadrone.base.command.FlightAnimation;
+import yadankdrone.IARDrone;
+import yadankdrone.command.FlightAnimation;
 
 import java.awt.event.KeyEvent;
 
