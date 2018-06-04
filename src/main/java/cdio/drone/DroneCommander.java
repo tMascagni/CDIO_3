@@ -14,9 +14,7 @@ import yadankdrone.video.VideoManager;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class DroneCommander implements IDroneCommander {
 
@@ -186,8 +184,6 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone finished hovering!");
     }
 
-    Map<String, Float> map = new HashMap<>();
-
     /**
      * Method to make the drone rotate to a target yaw.
      */
@@ -252,9 +248,6 @@ public final class DroneCommander implements IDroneCommander {
                  *
                  * For at finde den rigtige path.
                  */
-                map.put(qrCodeData.getResult(), getCorrectedYaw());
-                System.out.println("#############  QR CODE DETECTED #############");
-                System.out.println(map);
 
                 addMessage("Found QR code! Stopping.");
                 return qrCodeData;
