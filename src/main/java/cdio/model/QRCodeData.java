@@ -10,7 +10,7 @@ public class QRCodeData {
     public QRCodeData(int codeWidth, int codeHeight, String codeResult, int codeAngle) {
         this.width = codeWidth;
         this.height = codeHeight;
-        this.result = codeResult;
+        this.result = codeResult.substring(3, 3);
         this.orientation = codeAngle;
     }
 
