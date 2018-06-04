@@ -496,17 +496,6 @@ public final class DroneCommander implements IDroneCommander {
         commandManager.setLedsAnimation(ledAnimation, freq, duration);
     }
 
-    private float getCorrectedYawIntern() {
-        float yawCorrected = yaw; // + yawCorrection;
-
-        if (yawCorrected >= 180)
-            yawCorrected = 359 - yawCorrected;
-        else if (yawCorrected <= -180)
-            yawCorrected = 359 + yawCorrected;
-
-        return yawCorrected;
-    }
-
     @Override
     public void addMessage(String msg) {
         messageList.add(msg);
@@ -534,7 +523,14 @@ public final class DroneCommander implements IDroneCommander {
 
     @Override
     public float getCorrectedYaw() {
-        return -1.0F;
+        float yawCorrected = yaw; // + yawCorrection;
+
+        if (yawCorrected >= 180)
+            yawCorrected = 359 - yawCorrected;
+        else if (yawCorrected <= -180)
+            yawCorrected = 359 + yawCorrected;
+
+        return yawCorrected;
     }
 
     @Override
