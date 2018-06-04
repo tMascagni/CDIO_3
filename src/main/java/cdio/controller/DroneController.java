@@ -14,6 +14,7 @@ import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
 import java.awt.image.BufferedImage;
@@ -23,6 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 public final class DroneController implements IDroneController {
+
+    static {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
 
     private final int MAX_ALTITUDE = 2500; /* millimeters. */
     private final int MIN_ALTITUDE = 1000; /* millimeters. */
@@ -407,19 +412,20 @@ public final class DroneController implements IDroneController {
     }
 
     private void scanImageForQRCode(BufferedImage bufferedImage) {
-        try {
-            QRDetector qrDetector = new QRDetector();
-            CVHelper cvHelper = new CVHelper();
 
-            ArrayList<Mat> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
+                    QRDetector qrDetector = new QRDetector();
+                    CVHelper cvHelper = new CVHelper();
 
-            setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0))));
+                    ArrayList<Mat> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
-            addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
-            addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-        } catch (QRCodeException ignored) {
+                    try {
+                        setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0))));
+                    } catch (QRCodeException e) {
+                        e.printStackTrace();
+                    }
+                    addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                    addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
 
-        }
     }
 
     public void setQrCodeData(QRCodeData qrCodeData) {

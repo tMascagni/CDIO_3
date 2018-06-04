@@ -19,7 +19,7 @@ public class Demo2 {
         CVHelper cvHelper = new CVHelper();
 
         try {
-            BufferedImage img = ImageIO.read(new File("C:\\Users\\phenotype\\Documents\\CDIO_3\\qr_code_test\\pil\\1.jpg"));
+            BufferedImage img = ImageIO.read(new File("qr_code_test/pil/1.jpg"));
 
             cvHelper.displayImage(img);
 

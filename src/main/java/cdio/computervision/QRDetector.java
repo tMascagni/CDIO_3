@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class QRDetector {
+public class QRDetector implements ICV{
 
     private static final double CV_PI = 3.14159;
 
@@ -95,7 +95,7 @@ public class QRDetector {
     }
     */
 
-    public ContourTree getContours() {
+    private ContourTree getContours() {
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
@@ -108,7 +108,7 @@ public class QRDetector {
         return ct;
     }
 
-    public void getGray() {
+    private void getGray() {
         // Convert to HSV
         Mat tmpImg = orgImg.clone();
         Imgproc.cvtColor(tmpImg, tmpImg, Imgproc.COLOR_BGR2HSV);
@@ -123,7 +123,7 @@ public class QRDetector {
         //Imgproc.threshold(binImg, binImg, 180, 255,Imgproc.THRESH_BINARY);
     }
 
-    public void edgeDetection() {
+    private void edgeDetection() {
         int threshold = 100;
         int ratio = 3;
         int blurAmout = 2;
@@ -132,13 +132,13 @@ public class QRDetector {
         Imgproc.Canny(binImg, binImg, threshold, threshold * ratio);
     }
 
-    public void thresholding() {
+    private void thresholding() {
         binImg = new Mat();
         int thres = 190;
         Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
-    public void addLines(Mat dst, Mat scr) {
+    private void addLines(Mat dst, Mat scr) {
         LineSegmentDetector lsd = Imgproc.createLineSegmentDetector();
         Mat lines = new Mat();
         lsd.detect(scr, lines);
@@ -203,6 +203,8 @@ public class QRDetector {
             if(outOfRangeCount < acceptanceLimit){
                 qrkoder.add(src.get(count));
                 System.out.println("Acceptable!");
+                cvHelper.displayImage(cvHelper.mat2buf(src.get(count)));
+
             }
             else {
                 //qrkoder.add(src.get(count));
