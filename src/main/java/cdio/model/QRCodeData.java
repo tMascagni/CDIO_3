@@ -4,13 +4,13 @@ public class QRCodeData {
 
     private int width;
     private int height;
-    private String result;
+    private int result;
     private int orientation;
 
     public QRCodeData(int codeWidth, int codeHeight, String codeResult, int codeAngle) {
         this.width = codeWidth;
         this.height = codeHeight;
-        this.result = codeResult.substring(3, 3);
+        this.result = codeResult.charAt(3) - '0';
         this.orientation = codeAngle;
     }
 
@@ -22,7 +22,7 @@ public class QRCodeData {
         return height;
     }
 
-    public String getResult() {
+    public int getResult() {
         return result;
     }
 

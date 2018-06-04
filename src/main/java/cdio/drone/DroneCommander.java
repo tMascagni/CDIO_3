@@ -10,6 +10,7 @@ import yadankdrone.command.CommandManager;
 import yadankdrone.command.LEDAnimation;
 import yadankdrone.configuration.ConfigurationManager;
 import yadankdrone.navdata.*;
+import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
 
 import java.awt.image.BufferedImage;
@@ -45,6 +46,9 @@ public final class DroneCommander implements IDroneCommander {
 
     private List<String> messageList = new ArrayList<>();
 
+    private int targetQrCode = 2;
+    private Map<Integer, QRCodeData> qrCodeMap = new HashMap<>();
+
     private static IDroneCommander instance;
 
     static {
@@ -72,6 +76,12 @@ public final class DroneCommander implements IDroneCommander {
         startAltitudeListener();
         startBatteryListener();
         startImageListener();
+
+        for (int mapNumber = 0; mapNumber <= 7; mapNumber++) {
+            qrCodeMap.put(mapNumber, null);
+        }
+
+        addMessage("QR Code Target: " + getTargetQrCode());
     }
 
     /**
@@ -243,6 +253,7 @@ public final class DroneCommander implements IDroneCommander {
 
                 QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage);
                 // qr detected
+
 
                 /*
                  * Vi skal have en hjælpefunktion der tager gennemsnittet
@@ -460,7 +471,48 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     private void startImageListener() {
-        videoManager.addImageListener(bufferedImage -> latestReceivedImage = bufferedImage);
+        videoManager.addImageListener(new ImageListener() {
+            final int INITIAL_QR_SCAN_TIMER = 30;
+            int qrScanTimer = INITIAL_QR_SCAN_TIMER;
+
+            @Override
+            public void imageUpdated(BufferedImage bufferedImage) {
+                latestReceivedImage = bufferedImage;
+                qrScanTimer--;
+                if (qrScanTimer == 0) {
+                    qrScanTimer = INITIAL_QR_SCAN_TIMER;
+
+                    try {
+
+                        QRCodeData qrCodeData = qrCodeHandler.scanImage(bufferedImage);
+
+                        addMessage(qrCodeData.getResult() + "");
+
+                        // QR CODE TARGET FOUND!
+                        if (isQrCodeTarget(qrCodeData.getResult())) {
+                            updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
+                            incNextQrCodeTarget(); // TODO: Do this after the ring has been passed.
+                            addMessage("DEBUG: Found target QR code: " + qrCodeData.toString());
+                            addMessage("DEBUG: New target: " + getTargetQrCode());
+                            addMessage("DEBUG: QR Code Map: " + qrCodeMap.toString());
+                            //break;
+                            // TODO: Fly to the code.
+                        } else {
+                            // FOUND QR CODE, BUT NOT TARGET!
+                            updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
+                            addMessage("DEBUG: Found QR code, but not target: " + qrCodeData.toString());
+                            addMessage("DEBUG: QR Code Map: " + qrCodeMap.toString());
+                            // keep rotating.
+                        }
+
+                    } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+
+                        // no QR found
+                    }
+
+                }
+            }
+        });
     }
 
     private void startAcceleroListener() {
@@ -505,6 +557,31 @@ public final class DroneCommander implements IDroneCommander {
         return messageList;
     }
 
+    public void updateQrCodeMapData(int mapNumber, QRCodeData qrCodeData) {
+        /*
+         * If the qrCodeMap already contains QR Code data at the given mapNumber,
+         * do not update it, since we don't want to overwrite it.
+         */
+        if (qrCodeMap.get(mapNumber) != null) {
+            return;
+        }
+
+        /*
+         * If the map does not contain it already, then put it into the map.
+         *
+         * TODO: Update the data is the height is larger than the previous data.
+         */
+        qrCodeMap.putIfAbsent(mapNumber, qrCodeData);
+    }
+
+    public int getTargetQrCode() {
+        return targetQrCode;
+    }
+
+    public Map<Integer, QRCodeData> getQrCodeMap() {
+        return qrCodeMap;
+    }
+
     @Override
     public float getPitch() {
         return pitch;
@@ -540,6 +617,15 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public int getBattery() {
         return battery;
+    }
+
+    public boolean isQrCodeTarget(int possibleTarget) {
+        return targetQrCode == possibleTarget;
+    }
+
+    public void incNextQrCodeTarget() {
+        if (targetQrCode < 7)
+            targetQrCode++;
     }
 
 }
