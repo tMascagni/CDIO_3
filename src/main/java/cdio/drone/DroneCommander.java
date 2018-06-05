@@ -8,7 +8,6 @@ import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
 import yadankdrone.command.CommandManager;
 import yadankdrone.command.LEDAnimation;
-import yadankdrone.configuration.ConfigurationManager;
 import yadankdrone.navdata.*;
 import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public final class DroneCommander implements IDroneCommander {
 
@@ -40,14 +38,13 @@ public final class DroneCommander implements IDroneCommander {
     private final CommandManager commandManager;
     private final VideoManager videoManager;
     private final NavDataManager navDataManager;
-    private final ConfigurationManager configManager;
 
     private final IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
     private BufferedImage latestReceivedImage;
 
     private List<String> messageList = new ArrayList<>();
 
-    private int targetQrCode = 2;
+    private int targetQrCode = 0;
     private Map<Integer, QRCodeData> qrCodeMap = new HashMap<>();
 
     private static IDroneCommander instance;
@@ -69,7 +66,6 @@ public final class DroneCommander implements IDroneCommander {
         commandManager = drone.getCommandManager();
         videoManager = drone.getVideoManager();
         navDataManager = drone.getNavDataManager();
-        configManager = drone.getConfigurationManager();
 
         /* Start listeners */
         startAcceleroListener();
@@ -78,11 +74,8 @@ public final class DroneCommander implements IDroneCommander {
         startBatteryListener();
         startImageListener();
 
-        for (int mapNumber = 0; mapNumber <= 7; mapNumber++) {
-            qrCodeMap.put(mapNumber, null);
-        }
-
-        addMessage("QR Code Target: " + getTargetQrCode());
+        /* Initialize QR code map */
+        initQrCodeMap();
     }
 
     /**
@@ -197,6 +190,48 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone finished hovering!");
     }
 
+    private int getCorrectTargetYaw(int targetYaw) {
+        if (targetYaw >= 180) {
+            targetYaw = targetYaw - 360;
+        } else if (targetYaw <= -180) {
+            targetYaw = 360 - targetYaw;
+        }
+        return targetYaw;
+    }
+
+    private float getCorrectYaw(float yaw) {
+        if (yaw >= 180) {
+            yaw = yaw - 360;
+        } else if (yaw <= -180) {
+            yaw = 360 - yaw;
+        }
+        return yaw;
+    }
+
+    @Override
+    public float getCorrectedYaw() {
+        /*
+        float yawCorrected = yaw; // + yawCorrection;
+
+        if (yawCorrected >= 180)
+            yawCorrected = 360 - yawCorrected;
+        else if (yawCorrected <= -180)
+            yawCorrected = 360 + yawCorrected;
+
+        return yawCorrected;
+        */
+
+        float yawCorrected = yaw; // + yawCorrection;
+
+        if (yawCorrected >= 180)
+            yawCorrected = yawCorrected - 360;
+        else if (yawCorrected <= -180)
+            yawCorrected = 360 - yawCorrected;
+
+        return yawCorrected;
+    }
+
+
     /**
      * Method to make the drone rotate to a target yaw.
      */
@@ -219,55 +254,43 @@ public final class DroneCommander implements IDroneCommander {
          *
          */
         int targetYaw = (int) (getCorrectedYaw() + 180);
-
-        if (targetYaw > 180 && getCorrectedYaw() > 0) {
-            targetYaw -= 360;
-            addMessage("CALCULATED POS TargetYaw: " + targetYaw);
-        } else if (targetYaw < -180) {
-            targetYaw += 360;
-            addMessage("CALCULATED NEG TargetYaw: " + targetYaw);
-        }
+        targetYaw = getCorrectTargetYaw(targetYaw);
+        addMessage("TargetYaw: " + targetYaw);
 
         int negativeBound = -8;
         int positiveBound = 8;
 
-        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
-
-            if (yaw > 180) {
-                yaw = 360 - yaw;
-            } else if (yaw < -180) {
-                yaw = 360 + yaw;
-            }
-
-            if (yaw > 0) {
-                commandManager.spinLeft(80).doFor(40);
-                commandManager.spinRight(80).doFor(10);
-            } else {
-                commandManager.spinRight(80).doFor(40);
-                commandManager.spinLeft(80).doFor(10);
-            }
-
-            // do some scanning for QRCode
-            commandManager.hover().doFor(50);
+        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound
+                || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             try {
+                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage, this);
 
-                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage);
-                // qr detected
+                // QR CODE TARGET FOUND!
+                if (isQrCodeTarget(qrCodeData.getResult())) {
+                    updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
+                    incQrCodeTarget(); // TODO: Do this after the ring has been passed.
+                    addMessage("Found correct QR code: " + qrCodeData.getResult());
+                    return qrCodeData;
+                    // TODO: Fly to the code.
+                    // clear the map after the drone has flown through the ring.
+                    // qrCodeMap.clear();
+                } else {
+                    // FOUND QR CODE, BUT NOT TARGET!
+                    updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
+                    addMessage("Found incorrect QR code: " + qrCodeData.getResult());
+                    continue;
+                }
 
-
-                /*
-                 * Vi skal have en hjælpefunktion der tager gennemsnittet
-                 * af alle i en pågældende gruppe.
-                 *
-                 * For at finde den rigtige path.
-                 */
-
-                addMessage("Found QR code! Stopping.");
-                return qrCodeData;
             } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
                 // no qr detected which is fine.
             }
+
+            commandManager.hover().doFor(50);
+
+            yaw = getCorrectYaw(yaw);
+            commandManager.spinRight(80).doFor(40);
+            commandManager.spinLeft(80).doFor(20);
 
             commandManager.hover().doFor(50);
             sleep(500);
@@ -485,29 +508,11 @@ public final class DroneCommander implements IDroneCommander {
 
                     try {
 
-                        QRCodeData qrCodeData = qrCodeHandler.scanImage(bufferedImage);
+                        QRCodeData qrCodeData = qrCodeHandler.scanImage(bufferedImage, DroneCommander.this);
 
                         addMessage(qrCodeData.getResult() + "");
 
-                        // QR CODE TARGET FOUND!
-                        if (isQrCodeTarget(qrCodeData.getResult())) {
-                            updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
-                            incNextQrCodeTarget(); // TODO: Do this after the ring has been passed.
-                            addMessage("DEBUG: Found target QR code: " + qrCodeData.toString());
-                            addMessage("DEBUG: New target: " + getTargetQrCode());
-                            addMessage("DEBUG: QR Code Map: " + qrCodeMap.toString());
-                            //break;
-                            // TODO: Fly to the code.
-                        } else {
-                            // FOUND QR CODE, BUT NOT TARGET!
-                            updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
-                            addMessage("DEBUG: Found QR code, but not target: " + qrCodeData.toString());
-                            addMessage("DEBUG: QR Code Map: " + qrCodeMap.toString());
-                            // keep rotating.
-                        }
-
                     } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-
                         // no QR found
                     }
 
@@ -530,18 +535,6 @@ public final class DroneCommander implements IDroneCommander {
         });
     }
 
-    private void startNavDataCommonListener() {
-        AtomicInteger timer = new AtomicInteger(1000);
-        navDataManager.addCommonNavdataListener((commonNavdata, i) -> {
-            timer.getAndDecrement();
-            if (timer.get() == 0) {
-                addMessage("Altitude: " + commonNavdata.altitude + ", ax: " + commonNavdata.ax + " ay: " + commonNavdata.ay + ", az: " + commonNavdata.az
-                        + ", Battery: " + commonNavdata.battery + ", magX: " + commonNavdata.magX + ", magY: " + commonNavdata.magY + " magZ: " + commonNavdata.magZ);
-                timer.set(1000);
-            }
-        });
-    }
-
     /**
      * Helper method used to sleep when neccessary.
      */
@@ -551,6 +544,14 @@ public final class DroneCommander implements IDroneCommander {
         } catch (InterruptedException ignored) {
 
         }
+    }
+
+    private void initQrCodeMap() {
+        for (int mapNumber = 0; mapNumber <= 7; mapNumber++) {
+            qrCodeMap.put(mapNumber, null);
+        }
+
+        addMessage("QR Code Target: " + getTargetQrCode());
     }
 
     /**
@@ -587,10 +588,44 @@ public final class DroneCommander implements IDroneCommander {
         qrCodeMap.putIfAbsent(mapNumber, qrCodeData);
     }
 
+    @Override
+    public void rotateDrone(int targetYaw) throws DroneCommanderException {
+        /*
+         * First get the correct target yaw.
+         */
+        targetYaw = getCorrectTargetYaw(targetYaw);
+
+        if (targetYaw < 0) {
+            targetYaw -= 40;
+        } else {
+            targetYaw += 45;
+        }
+
+        targetYaw = getCorrectTargetYaw(targetYaw);
+
+        int negativeBound = -5;
+        int positiveBound = 5;
+
+        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound
+                || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+            yaw = getCorrectYaw(yaw);
+
+            commandManager.hover().doFor(50);
+
+            commandManager.spinRight(80).doFor(40);
+            commandManager.spinLeft(80).doFor(20);
+
+            commandManager.hover().doFor(50);
+        }
+
+    }
+
+    @Override
     public int getTargetQrCode() {
         return targetQrCode;
     }
 
+    @Override
     public Map<Integer, QRCodeData> getQrCodeMap() {
         return qrCodeMap;
     }
@@ -611,18 +646,6 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public float getCorrectedYaw() {
-        float yawCorrected = yaw; // + yawCorrection;
-
-        if (yawCorrected >= 180)
-            yawCorrected = 359 - yawCorrected;
-        else if (yawCorrected <= -180)
-            yawCorrected = 359 + yawCorrected;
-
-        return yawCorrected;
-    }
-
-    @Override
     public float getAltitude() {
         return altitude;
     }
@@ -632,13 +655,40 @@ public final class DroneCommander implements IDroneCommander {
         return battery;
     }
 
+    @Override
     public boolean isQrCodeTarget(int possibleTarget) {
         return targetQrCode == possibleTarget;
     }
 
-    public void incNextQrCodeTarget() {
+    @Override
+    public void incQrCodeTarget() {
         if (targetQrCode < 7)
             targetQrCode++;
     }
+
+    @Override
+    public QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException {
+        int index = -1;
+        int greatestHeight = -1;
+
+        for (int key : qrCodeMap.keySet()) {
+            QRCodeData qrCodeData = qrCodeMap.get(key);
+
+            if (qrCodeData == null)
+                continue;
+
+            if (qrCodeData.getHeight() > greatestHeight) {
+                greatestHeight = qrCodeData.getHeight();
+                index = key;
+            }
+        }
+
+        if (greatestHeight == -1 || index == -1) {
+            throw new DroneCommanderException("No QR codes in the map!");
+        }
+
+        return qrCodeMap.get(index);
+    }
+
 
 }
