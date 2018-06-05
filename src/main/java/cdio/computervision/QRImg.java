@@ -1,12 +1,14 @@
 package cdio.computervision;
 
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
 
 public class QRImg {
 
     private Mat img;
     private double h;
     private double w;
+    public MatOfPoint contour;
 
 
     public QRImg(Mat img, double h, double w) {

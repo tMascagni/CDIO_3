@@ -96,7 +96,7 @@ public class QRDetector implements ICV{
     }
     */
 
-    private ContourTree getContours() {
+    public ContourTree getContours() {
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
@@ -109,7 +109,7 @@ public class QRDetector implements ICV{
         return ct;
     }
 
-    private void getGray() {
+    public void getGray() {
         /* HSV method
         // Convert to HSV
         Mat tmpImg = orgImg.clone();
@@ -140,9 +140,9 @@ public class QRDetector implements ICV{
         Imgproc.Canny(binImg, binImg, 30,200);
     }
 
-    private void thresholding() {
+    public void thresholding() {
         binImg = new Mat();
-        int thres = 190;
+        int thres = 120;
         Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
@@ -158,31 +158,30 @@ public class QRDetector implements ICV{
     // The images are then transformed to a rectangle for further processing.
     public void findQR(ArrayList<QRImg> dst, Mat scr, ContourTree ct) {
 
-        if(ct == null) {
-            System.out.println("ct is null. This is not good..");
-        }
-        ArrayList<RotatedRect> rects = ct.findRectIfChildren(0,3);
+        if(ct != null) {
+            ArrayList<RotatedRect> rects = ct.findRectIfChildren(0, 4);
 
-        for (RotatedRect src_point : rects) {
-            Mat new_img = scr.clone();
-            Point p[] = {
-                    new Point(0, 0),
-                    new Point(new_img.width(), 0),
-                    new Point(new_img.width(), new_img.height()),
-                    new Point(0, new_img.height())
-            };
+            for (RotatedRect src_point : rects) {
+                Mat new_img = scr.clone();
+                Point p[] = {
+                        new Point(0, 0),
+                        new Point(new_img.width(), 0),
+                        new Point(new_img.width(), new_img.height()),
+                        new Point(0, new_img.height())
+                };
 
-            MatOfPoint2f dest_points = new MatOfPoint2f(p);
-            Point[] points = new Point[4];
-            src_point.points(points);
-            points = ct.orderPoints(points);
+                MatOfPoint2f dest_points = new MatOfPoint2f(p);
+                Point[] points = new Point[4];
+                src_point.points(points);
+                points = ct.orderPoints(points);
 
-            Mat perspectiveTransform = Imgproc.getPerspectiveTransform(new MatOfPoint2f(points), dest_points);
-            Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
+                Mat perspectiveTransform = Imgproc.getPerspectiveTransform(new MatOfPoint2f(points), dest_points);
+                Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
 
-            QRImg qrImg = new QRImg(new_img, src_point.boundingRect().height, src_point.boundingRect().width);
-
-            dst.add(qrImg);
+                QRImg qrImg = new QRImg(new_img, src_point.boundingRect().height, src_point.boundingRect().width);
+                qrImg.contour = new MatOfPoint(points);
+                dst.add(qrImg);
+            }
         }
     }
 
@@ -212,7 +211,7 @@ public class QRDetector implements ICV{
 
                 int colorValue = (int) p[channel];
 
-                if(colorValue > 55 && colorValue < 200){
+                if(colorValue > 75 && colorValue < 180){
                     outOfRangeCount++;
                 }
             }

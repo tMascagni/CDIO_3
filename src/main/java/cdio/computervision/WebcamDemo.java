@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class WebcamDemo {
@@ -21,30 +22,54 @@ public class WebcamDemo {
 
    public static void main(String[] args) throws InterruptedException {
 
-      VideoCapture cam = new VideoCapture(0);
-      QRDetector qrDetector = new QRDetector();
-      CVHelper cvHelper = new CVHelper();
-      ArrayList<JFrame> windows = new ArrayList<>();
-      while(true) {
-          Mat image = new Mat();
-          cam.read(image);
-          ArrayList<QRImg> qrImgs = qrDetector.processAll(image);
-          if(qrImgs.size() > 0) {
-             for(JFrame frame : windows) {
-                frame.setVisible(false);
-              }
-              windows = new ArrayList<>();
-             for(QRImg img : qrImgs) {
-                 windows.add(cvHelper.displayImage(cvHelper.mat2buf(img.getImg())));
-                 System.out.println("Angle: " + qrDetector.angleOfQRCode(img) +
-                                    "\t Ratio: " + (img.getW() / img.getH()));
-             }
-          }
-          else {
-              //System.out.println("Empty");
-          }
-          Thread.sleep(100);
-      }
+       VideoCapture cam = new VideoCapture(0);
+       QRDetector qrDetector = new QRDetector();
+       CVHelper cvHelper = new CVHelper();
+       ArrayList<JFrame> windows = new ArrayList<>();
+       JFrame webCamView = new JFrame();
+       webCamView.setLayout(new FlowLayout());
+       JLabel label = new JLabel();
+       webCamView.add(label);
+       webCamView.setVisible(true);
+       while(true) {
+           Mat image = new Mat();
+           cam.read(image);
+           //ArrayList<QRImg> qrImgs = qrDetector.processAll(image);
+           qrDetector.orgImg = image;
+           qrDetector.getGray();
+           qrDetector.thresholding();
+           ContourTree ct = qrDetector.getContours();
+           ArrayList<QRImg> qr_codes = new ArrayList<>();
+           qrDetector.findQR(qr_codes, qrDetector.grayImg, ct);
+           qr_codes = qrDetector.sortQR(qr_codes);
+
+           if(ct != null) {
+               ct.drawRectIfChildren(image, 3, 0);
+           }
+
+           if(qr_codes.size() > 0) {
+               for(JFrame frame : windows) {
+                   frame.setVisible(false);
+               }
+               windows = new ArrayList<>();
+               for(QRImg img : qr_codes) {
+                   //windows.add(cvHelper.displayImage(cvHelper.mat2buf(img.getImg())));
+                   System.out.println("Angle: " + qrDetector.angleOfQRCode(img) +
+                           "\t Ratio: " + (img.getW() / img.getH()));
+
+                   Imgproc.drawContours(image, Arrays.asList(img.contour), -1, new Scalar(255, 50, 100), 4);
+               }
+           }
+           else {
+               //System.out.println("Empty");
+           }
+
+
+           ImageIcon icon = new ImageIcon(cvHelper.mat2buf(image));
+           label.setIcon(icon);
+           webCamView.repaint();
+           Thread.sleep(100);
+       }
 
    }
 }
