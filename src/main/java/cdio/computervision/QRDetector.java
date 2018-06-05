@@ -38,17 +38,23 @@ public class QRDetector implements ICV{
         orgImg = mat;
         long getGreyStartTime = System.nanoTime();
         getGray();
-        long thresholdingStartTime = System.nanoTime();
-        thresholding();
-        //edgeDetection();
-        long contourtreeStartTime = System.nanoTime();
-        ContourTree con = getContours();
-
-        long findQR = System.nanoTime();
         ArrayList<QRImg> qr_codes = new ArrayList<>();
-        findQR(qr_codes, orgImg, con);
-        qr_codes = sortQR(qr_codes);
-        long timeEnd = System.nanoTime();
+        long thresholdingStartTime = System.nanoTime();
+        for(int i = 50; i < 120; i += 20){
+            thresholding(i);
+            //edgeDetection();
+            long contourtreeStartTime = System.nanoTime();
+            ContourTree con = getContours();
+
+            long findQR = System.nanoTime();
+            ArrayList<QRImg> qr_codes2 = new ArrayList<>();
+
+            findQR(qr_codes2, orgImg, con);
+            qr_codes.addAll(sortQR(qr_codes));
+            long timeEnd = System.nanoTime();
+        }
+
+
 
        /* System.out.println("time to grey: " + (thresholdingStartTime-getGreyStartTime));
         System.out.println("time to threshold: " + (contourtreeStartTime-thresholdingStartTime));
@@ -62,7 +68,7 @@ public class QRDetector implements ICV{
     // Do everything and return the qr codes as images (USED FOR THE GUI)
     public BufferedImage processSingleImg(Image dstImg) {
         getGray();
-        thresholding();
+        thresholding(190);
         ContourTree con = getContours();
 
         findQRDraw(orgImg, con);
@@ -136,9 +142,8 @@ public class QRDetector implements ICV{
         Imgproc.Canny(binImg, binImg, 30,200);
     }
 
-    private void thresholding() {
+    private void thresholding(int thres) {
         binImg = new Mat();
-        int thres = 190;
         Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
@@ -154,7 +159,7 @@ public class QRDetector implements ICV{
     // The images are then transformed to a rectangle for further processing.
     public void findQR(ArrayList<QRImg> dst, Mat scr, ContourTree ct) {
 
-        ArrayList<RotatedRect> rects = ct.findRectIfChildren(3);
+        ArrayList<RotatedRect> rects = ct.findRectIfChildren(0,2);
 
         for (RotatedRect src_point : rects) {
             Mat new_img = scr.clone();
@@ -184,11 +189,11 @@ public class QRDetector implements ICV{
     // These are not guaranteed to be QR codes, but they are likely.
     // The images are then transformed to a rectangle for further processing.
     public void findQRDraw(Mat scr, ContourTree ct) {
-        ct.drawRectIfChildren(scr, 3);
+        //ct.drawRectIfChildren(scr, 3);
     }
 
     public ArrayList<QRImg> sortQR(ArrayList<QRImg> src) {
-        System.out.println(src.size());
+       // System.out.println(src.size());
         ArrayList<QRImg> qrkoder = new ArrayList<>();
 
         int maxCount = 20000;
