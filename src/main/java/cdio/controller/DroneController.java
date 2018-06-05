@@ -419,18 +419,27 @@ public final class DroneController implements IDroneController {
                     ArrayList<Mat> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
                     try {
-                        setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0))));
+                        for (Mat data: qrCodes) {
+                            QRCodeData qrdata = setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(data)));
+                            addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(data));
+                            if(qrdata != null){
+                                break;
+                            }
+                        }
+
                     } catch (QRCodeException e) {
                         e.printStackTrace();
                     }
-                    addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+
+                    //addMessage("vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
                     addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
 
     }
 
-    public void setQrCodeData(QRCodeData qrCodeData) {
+    public QRCodeData setQrCodeData(QRCodeData qrCodeData) {
         addMessage("QRCode res: " + qrCodeData.getResult());
         this.qrCodeData = qrCodeData;
+        return qrCodeData;
     }
 
     /**
