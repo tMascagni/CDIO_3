@@ -120,31 +120,39 @@ public class ContourTree {
     // QR-codes often have a high (2-3) number of depth
     public ArrayList<RotatedRect> findRectIfChildren(int current, int reqDepth) {
         ArrayList<RotatedRect> l = new ArrayList<>();
-       for(int cur = current; cur != -1; cur = getNext(cur)) {
-           if(getDepth(cur) >= reqDepth) {
-               MatOfPoint2f newContour = new MatOfPoint2f(contours.get(cur).toArray());
-               RotatedRect rotatedRect = Imgproc.minAreaRect(newContour);
-               Point[] points = new Point[4];
-               rotatedRect.points(points);
-               points = orderPoints(points);
-               l.add(rotatedRect);
-               l.addAll(findRectIfChildren(getChild(cur), reqDepth));
-           }
-       }
+        for(int cur = current; cur != -1; cur = getNext(cur)) {
+            if(getDepth(cur) >= reqDepth) {
+                //MatOfPoint2f newContour = new MatOfPoint2f(contours.get(cur).toArray());
+                // Approx contour start
+                MatOfPoint2f newContour = new MatOfPoint2f();
+                MatOfPoint2f approx = new MatOfPoint2f();
+                contours.get(cur).convertTo(newContour, CvType.CV_32F);
+                double arcLenght = Imgproc.arcLength(newContour, true);
+                Imgproc.approxPolyDP(newContour, approx, 0.03*arcLenght, true);
+                //System.out.println(approx.height());
+                if(approx.height() == 4) {
+                    RotatedRect rotatedRect = Imgproc.minAreaRect(approx);
+                    Point[] points = new Point[4];
+                    rotatedRect.points(points);
+                    points = orderPoints(points);
+                    l.add(rotatedRect);
+                }
+                l.addAll(findRectIfChildren(getChild(cur), reqDepth));
+            }
+        }
        return l;
     }
 
     // Find the maximum number of steps from the root of the tree to a leaf
     public int getDepth(int current) {
         int depth = 0;
-            for (int child = getChild(current); child != -1; child = getNext(child)) {
-                int childDepth = getDepth(child);
-                if (childDepth > depth) {
-                    depth = childDepth;
-                }
+        for (int child = getChild(current); child != -1; child = getNext(child)) {
+            int childDepth = getDepth(child);
+            if (childDepth > depth) {
+                depth = childDepth;
             }
-            depth++;
-        return depth;
+        }
+        return depth+1;
     }
 
 }

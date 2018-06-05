@@ -38,7 +38,7 @@ public class CVHelper {
         return out;
     }
 
-    public void displayImage(Image img2) {
+    public JFrame displayImage(Image img2) {
         //BufferedImage img=ImageIO.read(new File("/HelloOpenCV/lena.png"));
         ImageIcon icon = new ImageIcon(img2);
         JFrame frame = new JFrame();
@@ -49,6 +49,7 @@ public class CVHelper {
         frame.add(lbl);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        return frame;
     }
 
 }

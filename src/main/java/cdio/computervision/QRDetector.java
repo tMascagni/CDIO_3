@@ -39,14 +39,14 @@ public class QRDetector implements ICV{
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
-        //thresholding();
-        edgeDetection();
+        thresholding();
+        //edgeDetection();
         long contourtreeStartTime = System.nanoTime();
         ContourTree con = getContours();
 
         long findQR = System.nanoTime();
         ArrayList<QRImg> qr_codes = new ArrayList<>();
-        findQR(qr_codes, orgImg, con);
+        findQR(qr_codes, grayImg, con);
         qr_codes = sortQR(qr_codes);
         long timeEnd = System.nanoTime();
 
@@ -100,7 +100,7 @@ public class QRDetector implements ICV{
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
-        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE);
+        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
 
         if (contours.size() > 0) {
             ct = new ContourTree(hir, contours, 0);
@@ -110,6 +110,7 @@ public class QRDetector implements ICV{
     }
 
     private void getGray() {
+        /* HSV method
         // Convert to HSV
         Mat tmpImg = orgImg.clone();
         Imgproc.cvtColor(tmpImg, tmpImg, Imgproc.COLOR_BGR2HSV);
@@ -121,6 +122,9 @@ public class QRDetector implements ICV{
         // Get only V channel
         grayImg = tmpMats.get(2);
 
+        */
+        grayImg = new Mat();
+        Imgproc.cvtColor(orgImg, grayImg, Imgproc.COLOR_BGR2GRAY);
         //Imgproc.threshold(binImg, binImg, 180, 255,Imgproc.THRESH_BINARY);
     }
 
@@ -154,7 +158,10 @@ public class QRDetector implements ICV{
     // The images are then transformed to a rectangle for further processing.
     public void findQR(ArrayList<QRImg> dst, Mat scr, ContourTree ct) {
 
-        ArrayList<RotatedRect> rects = ct.findRectIfChildren(3);
+        if(ct == null) {
+            System.out.println("ct is null. This is not good..");
+        }
+        ArrayList<RotatedRect> rects = ct.findRectIfChildren(0,3);
 
         for (RotatedRect src_point : rects) {
             Mat new_img = scr.clone();
@@ -184,20 +191,19 @@ public class QRDetector implements ICV{
     // These are not guaranteed to be QR codes, but they are likely.
     // The images are then transformed to a rectangle for further processing.
     public void findQRDraw(Mat scr, ContourTree ct) {
-        ct.drawRectIfChildren(scr, 3);
+        //ct.drawRectIfChildren(scr, 3);
     }
 
     public ArrayList<QRImg> sortQR(ArrayList<QRImg> src) {
-        System.out.println(src.size());
         ArrayList<QRImg> qrkoder = new ArrayList<>();
 
-        int maxCount = 20000;
+        int maxCount = 10000;
         int acceptanceLimit = maxCount/2;
-        int outOfRangeCount = 0;
-        int channel = 2;
+        int channel = 0;
         for(int count = 0; count < src.size(); count ++) {
+            int outOfRangeCount = 0;
             Mat img = src.get(count).getImg().clone();
-            Imgproc.cvtColor(src.get(count).getImg(), img, Imgproc.COLOR_BGR2HSV);
+            //Imgproc.cvtColor(src.get(count).getImg(), img, Imgproc.COLOR_BGR2GRAY);
             double avg = 0;
             for (int i = 0; i < maxCount; i++) {
                 int x = (int) (Math.random() * img.width());
@@ -211,15 +217,19 @@ public class QRDetector implements ICV{
                 }
             }
             double ratio = src.get(count).getW() / ((double) src.get(count).getH());
-            if(outOfRangeCount < acceptanceLimit && ratio <= 0.7){
+            if(outOfRangeCount < acceptanceLimit){
                 qrkoder.add(src.get(count));
-                System.out.println("Acceptable!");
-                cvHelper.displayImage(cvHelper.mat2buf(src.get(count).getImg()));
+                //System.out.println("Acceptable! " + outOfRangeCount + " / " + acceptanceLimit +
+                        //"\t Angle: " + angleOfQRCode(src.get(count)) +
+                        //"\t Ratio: " + ratio);
+                //cvHelper.displayImage(cvHelper.mat2buf(src.get(count).getImg()));
+                //cvHelper.displayImage(cvHelper.mat2buf(img));
 
             }
             else {
                 //qrkoder.add(src.get(count));
-                System.out.println("Unacceptable!");
+                //System.out.println("Unacceptable! " + outOfRangeCount + " / " + acceptanceLimit);
+                //cvHelper.displayImage(cvHelper.mat2buf(img));
             }
 
         }
@@ -233,9 +243,9 @@ public class QRDetector implements ICV{
         double widthNorm = width/height;
         double s = 0;
 
-        s = Math.acos(widthNorm/0.7)*57.2957795; // 1 radian = 57.2957795 grader
+        s = Math.toDegrees(Math.acos(widthNorm/0.8)); // 1 radian = 57.2957795 grader
 
-        return 90 - s;
+        return s;
     }
 }
 
