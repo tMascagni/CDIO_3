@@ -34,7 +34,7 @@ public class QRDetector implements ICV{
     }
 
     // Do everything and return the qr codes as images
-    public ArrayList<Mat> processAll(Mat mat) {
+    public ArrayList<QRImg> processAll(Mat mat) {
         orgImg = mat;
         long getGreyStartTime = System.nanoTime();
         getGray();
@@ -44,7 +44,7 @@ public class QRDetector implements ICV{
         ContourTree con = getContours();
 
         long findQR = System.nanoTime();
-        ArrayList<Mat> qr_codes = new ArrayList<>();
+        ArrayList<QRImg> qr_codes = new ArrayList<>();
         findQR(qr_codes, orgImg, con);
         qr_codes = sortQR(qr_codes);
         long timeEnd = System.nanoTime();
@@ -148,10 +148,11 @@ public class QRDetector implements ICV{
     // We use the contour tree, and select all with a certain depth.
     // These are not guaranteed to be QR codes, but they are likely.
     // The images are then transformed to a rectangle for further processing.
-    public void findQR(ArrayList<Mat> dst, Mat scr, ContourTree ct) {
-        ArrayList<MatOfPoint2f> points = ct.findRectIfChildren(3);
+    public void findQR(ArrayList<QRImg> dst, Mat scr, ContourTree ct) {
 
-        for (MatOfPoint2f scr_point : points) {
+        ArrayList<RotatedRect> rects = ct.findRectIfChildren(3);
+
+        for (RotatedRect src_point : rects) {
             Mat new_img = scr.clone();
             Point p[] = {
                     new Point(0, 0),
@@ -161,10 +162,16 @@ public class QRDetector implements ICV{
             };
 
             MatOfPoint2f dest_points = new MatOfPoint2f(p);
-            Mat perspectiveTransform = Imgproc.getPerspectiveTransform(scr_point, dest_points);
+            Point[] points = new Point[4];
+            src_point.points(points);
+            points = ct.orderPoints(points);
+
+            Mat perspectiveTransform = Imgproc.getPerspectiveTransform(new MatOfPoint2f(points), dest_points);
             Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
 
-            dst.add(new_img);
+            QRImg qrImg = new QRImg(new_img, src_point.boundingRect().height, src_point.boundingRect().width);
+
+            dst.add(qrImg);
         }
     }
 
@@ -176,17 +183,17 @@ public class QRDetector implements ICV{
         ct.drawRectIfChildren(scr, 3);
     }
 
-    public ArrayList<Mat> sortQR(ArrayList<Mat> src) {
+    public ArrayList<QRImg> sortQR(ArrayList<QRImg> src) {
         System.out.println(src.size());
-        ArrayList<Mat> qrkoder = new ArrayList<>();
+        ArrayList<QRImg> qrkoder = new ArrayList<>();
 
         int maxCount = 20000;
         int acceptanceLimit = maxCount/2;
         int outOfRangeCount = 0;
         int channel = 2;
         for(int count = 0; count < src.size(); count ++) {
-            Mat img = src.get(count).clone();
-            Imgproc.cvtColor(src.get(count), img, Imgproc.COLOR_BGR2HSV);
+            Mat img = src.get(count).getImg().clone();
+            Imgproc.cvtColor(src.get(count).getImg(), img, Imgproc.COLOR_BGR2HSV);
             double avg = 0;
             for (int i = 0; i < maxCount; i++) {
                 int x = (int) (Math.random() * img.width());
@@ -199,11 +206,11 @@ public class QRDetector implements ICV{
                     outOfRangeCount++;
                 }
             }
-
-            if(outOfRangeCount < acceptanceLimit){
+            double ratio = src.get(count).getW() / ((double) src.get(count).getH());
+            if(outOfRangeCount < acceptanceLimit && ratio <= 0.7){
                 qrkoder.add(src.get(count));
                 System.out.println("Acceptable!");
-                cvHelper.displayImage(cvHelper.mat2buf(src.get(count)));
+                cvHelper.displayImage(cvHelper.mat2buf(src.get(count).getImg()));
 
             }
             else {
@@ -216,9 +223,9 @@ public class QRDetector implements ICV{
         return qrkoder;
     }
 
-    public double angleOfQRCode(Mat input){
-        double width = input.width();
-        double height = input.height();
+    public double angleOfQRCode(QRImg input){
+        double width = input.getW();
+        double height = input.getH();
         double widthNorm = width/height;
         double s = 0;
 

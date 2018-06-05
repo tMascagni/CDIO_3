@@ -68,7 +68,7 @@ public class ContourTree {
     // that the points are ordered the same every time.
     // To ensure this we manually order the points using this function.
     // It's ugly, but it works
-    private Point[] orderPoints(Point[] points) {
+    public Point[] orderPoints(Point[] points) {
        /* Point ordering
                    X
     ----------------->
@@ -117,8 +117,8 @@ public class ContourTree {
 
     // Find the minAreaRect of all contours with reqDepth amount of children.
     // QR-codes often have a high (2-3) number of depth
-    public ArrayList<MatOfPoint2f> findRectIfChildren(int reqDepth) {
-        ArrayList<MatOfPoint2f> l = new ArrayList<>();
+    public ArrayList<RotatedRect> findRectIfChildren(int reqDepth) {
+        ArrayList<RotatedRect> l = new ArrayList<>();
        for(ContourTree current = this; current != null; current = current.Sibling) {
            if(current.getDepth() >= reqDepth) {
                MatOfPoint2f newContour = new MatOfPoint2f(current.contour.toArray());
@@ -126,7 +126,7 @@ public class ContourTree {
                Point[] points = new Point[4];
                rotatedRect.points(points);
                points = orderPoints(points);
-               l.add(new MatOfPoint2f(points));
+               l.add(rotatedRect);
                l.addAll(current.Child.findRectIfChildren(reqDepth));
            }
        }
