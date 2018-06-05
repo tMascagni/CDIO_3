@@ -8,33 +8,33 @@ import java.util.Arrays;
 
 public class ContourTree {
 
-    public ContourTree Sibling, Child;
-    int Number;
-    MatOfPoint contour;
+    ArrayList<MatOfPoint> contours;
+    Mat hir;
 
     public ContourTree(Mat hir, ArrayList<MatOfPoint> contours, int Num) {
-        Number = Num;
-        contour = contours.get(Number);
-        int sibNum = (int) hir.get(0, Number)[0];
-        int childNum = (int) hir.get(0, Number)[2];
+        this.hir = hir;
+        this.contours = contours;
+        //int sibNum = (int) hir.get(0, Number)[0];
+        //int childNum = (int) hir.get(0, Number)[2];
 
-        if (sibNum != -1) {
-            Sibling = new ContourTree(hir, contours, sibNum);
-        } else {
-            Sibling = null;
-        }
+    }
 
-        if (childNum != -1) {
-            Child = new ContourTree(hir, contours, childNum);
-        } else {
-            Child = null;
-        }
+    int getNext(int current) {
+        return (int) hir.get(0, current)[0];
+    }
+
+    int getChild(int current) {
+        return (int) hir.get(0, current)[2];
+    }
+
+    MatOfPoint getContour(int current) {
+       return contours.get(current);
     }
 
     // Used for debugging.
     // Draws a certain level of contours with a certain color.
     // Used for visualizing the contour tree
-    public void drawContourChildren(Mat img, Scalar color, int level, int desiredLevel) {
+    /*public void drawContourChildren(Mat img, Scalar color, int level, int desiredLevel) {
         ArrayList<Integer> alreadyDrawn = new ArrayList<>();
         for (ContourTree current = this; current != null; current = current.Sibling) {
             if (level == desiredLevel) {
@@ -64,6 +64,7 @@ public class ContourTree {
         }
     }
 
+*/
     // When using points for a perspective transform, it is important
     // that the points are ordered the same every time.
     // To ensure this we manually order the points using this function.
@@ -117,33 +118,32 @@ public class ContourTree {
 
     // Find the minAreaRect of all contours with reqDepth amount of children.
     // QR-codes often have a high (2-3) number of depth
-    public ArrayList<RotatedRect> findRectIfChildren(int reqDepth) {
+    public ArrayList<RotatedRect> findRectIfChildren(int current, int reqDepth) {
         ArrayList<RotatedRect> l = new ArrayList<>();
-       for(ContourTree current = this; current != null; current = current.Sibling) {
-           if(current.getDepth() >= reqDepth) {
-               MatOfPoint2f newContour = new MatOfPoint2f(current.contour.toArray());
+       for(int cur = current; cur != -1; cur = getNext(cur)) {
+           if(getDepth(cur) >= reqDepth) {
+               MatOfPoint2f newContour = new MatOfPoint2f(contours.get(cur).toArray());
                RotatedRect rotatedRect = Imgproc.minAreaRect(newContour);
                Point[] points = new Point[4];
                rotatedRect.points(points);
                points = orderPoints(points);
                l.add(rotatedRect);
-               l.addAll(current.Child.findRectIfChildren(reqDepth));
+               l.addAll(findRectIfChildren(getChild(cur), reqDepth));
            }
        }
        return l;
     }
 
     // Find the maximum number of steps from the root of the tree to a leaf
-    public int getDepth() {
+    public int getDepth(int current) {
         int depth = 0;
-        if (Child != null) {
-            for (ContourTree ct = Child; ct != null; ct = ct.Sibling) {
-                if (ct.getDepth() > depth) {
-                    depth = ct.getDepth();
+            for (int child = getChild(current); child != -1; child = getNext(child)) {
+                int childDepth = getDepth(child);
+                if (childDepth > depth) {
+                    depth = childDepth;
                 }
             }
             depth++;
-        }
         return depth;
     }
 
