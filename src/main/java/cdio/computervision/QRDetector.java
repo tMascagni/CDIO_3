@@ -35,7 +35,8 @@ public class QRDetector {
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
-        thresholding();
+        //thresholding();
+        edgeDetection();
         long contourtreeStartTime = System.nanoTime();
         ContourTree con = getContours();
 
@@ -122,10 +123,13 @@ public class QRDetector {
     public void edgeDetection() {
         int threshold = 100;
         int ratio = 3;
-        int blurAmout = 2;
+        int blurAmout = 3;
+        Imgproc.cvtColor(orgImg, grayImg, Imgproc.COLOR_BGR2GRAY);
         binImg = grayImg.clone();
-        Imgproc.blur(grayImg, binImg, new Size(blurAmout, blurAmout));
-        Imgproc.Canny(binImg, binImg, threshold, threshold * ratio);
+        Mat out = new Mat();
+        Imgproc.bilateralFilter(grayImg, out,11, 17, 17 );
+        Imgproc.blur(out, binImg, new Size(blurAmout, blurAmout));
+        Imgproc.Canny(binImg, binImg, 30,200);
     }
 
     public void thresholding() {
