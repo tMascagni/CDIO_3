@@ -516,7 +516,7 @@ public final class DroneController implements IDroneController {
 
     private void startImageListener() {
         videoManager.addImageListener(new ImageListener() {
-            final int INITIAL_QR_SCAN_TIMER = 30;
+            final int INITIAL_QR_SCAN_TIMER = 20;
             int qrScanTimer = INITIAL_QR_SCAN_TIMER;
 
             @Override

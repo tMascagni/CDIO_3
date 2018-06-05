@@ -56,7 +56,7 @@ public class demo {
 
                    // Show the images
                    displayImage(buffBinImg); // Converted img (black)
-*/
+                   */
                }
                j++;
            }

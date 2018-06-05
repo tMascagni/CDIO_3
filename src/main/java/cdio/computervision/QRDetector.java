@@ -39,8 +39,8 @@ public class QRDetector implements ICV{
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
-        //thresholding();
-        edgeDetection();
+        thresholding();
+        //edgeDetection();
         long contourtreeStartTime = System.nanoTime();
         ContourTree con = getContours();
 
@@ -100,7 +100,7 @@ public class QRDetector implements ICV{
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
-        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE);
+        Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
 
         if (contours.size() > 0) {
             ct = new ContourTree(hir, contours, 0);
@@ -206,15 +206,17 @@ public class QRDetector implements ICV{
 
                 int colorValue = (int) p[channel];
 
-                if(colorValue > 55 && colorValue < 200){
+                if(colorValue > 75 && colorValue < 180){
                     outOfRangeCount++;
                 }
             }
             double ratio = src.get(count).getW() / ((double) src.get(count).getH());
-            if(outOfRangeCount < acceptanceLimit && ratio <= 0.7){
+            if(outOfRangeCount < acceptanceLimit){
+
+
                 qrkoder.add(src.get(count));
-                System.out.println("Acceptable!");
-                cvHelper.displayImage(cvHelper.mat2buf(src.get(count).getImg()));
+                System.out.println("Acceptable! Ratio: " + ratio);
+                //cvHelper.displayImage(cvHelper.mat2buf(src.get(count).getImg()));
 
             }
             else {
@@ -233,7 +235,7 @@ public class QRDetector implements ICV{
         double widthNorm = width/height;
         double s = 0;
 
-        s = Math.acos(widthNorm/0.7)*57.2957795; // 1 radian = 57.2957795 grader
+        s = Math.acos(widthNorm/0.7855)*57.2957795; // 1 radian = 57.2957795 grader
 
         return 90 - s;
     }
