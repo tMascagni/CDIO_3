@@ -26,21 +26,23 @@ public class demo {
 
 	// write your code here
        //init();
-        String path = "/home/pil/Desktop/ringe/mine";
+
+        String path = "qr_code_test/pil";
            File folder = new File(path);
             int j = 0;
            for(File fileEntry : folder.listFiles()) {
                if(fileEntry.getName().toLowerCase().contains(".jpg")) {
 
                    QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
-                   ArrayList<Mat> res = qr.processAll();
+                   ArrayList<QRImg> res = qr.processAll(qr.orgImg);
 
                     int i = 0;
 
-                   for(Mat r : res) {
-                       Imgcodecs.imwrite("/home/pil/Desktop/ringe/daniel/output/"+ i + fileEntry.getName(), r);
-
-                       BufferedImage buffOrgImg = cvHelper.mat2buf(r);
+                   for(QRImg r : res) {
+                      // Imgcodecs.imwrite("/home/pil/Desktop/ringe/daniel/output/"+ i + fileEntry.getName(), r);
+                     //  double angle = qr.angleOfQRCode(r);
+                      // System.out.println("Angle: " + angle);
+                       BufferedImage buffOrgImg = cvHelper.mat2buf(r.getImg());
                        cvHelper.displayImage(buffOrgImg); // Original img
                        i++;
                    }
@@ -54,10 +56,11 @@ public class demo {
 
                    // Show the images
                    displayImage(buffBinImg); // Converted img (black)
-                   */
+*/
                }
                j++;
            }
+
     }
 
 }

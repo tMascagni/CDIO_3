@@ -1,5 +1,8 @@
 package cdio.controller;
 
+import cdio.computervision.CVHelper;
+import cdio.computervision.QRDetector;
+import cdio.computervision.QRImg;
 import cdio.controller.interfaces.IDroneController;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
@@ -12,6 +15,9 @@ import de.yadrone.base.configuration.ConfigurationManager;
 import de.yadrone.base.navdata.*;
 import de.yadrone.base.video.ImageListener;
 import de.yadrone.base.video.VideoManager;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import paperchase.QRCodeScanner;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -20,6 +26,10 @@ import java.util.List;
 import java.util.Map;
 
 public final class DroneController implements IDroneController {
+
+    static {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
 
     private final int MAX_ALTITUDE = 2500; /* millimeters. */
     private final int MIN_ALTITUDE = 1000; /* millimeters. */
@@ -48,6 +58,12 @@ public final class DroneController implements IDroneController {
     private List<String> messageList = new ArrayList<>();
 
     private static IDroneController instance;
+
+    private boolean QRCodeScaningEnabled = true;
+    private boolean RingScaningEnabled = false;
+
+    QRDetector qrDetector = new QRDetector();
+    CVHelper cvHelper = new CVHelper();
 
     static {
         try {
@@ -404,17 +420,37 @@ public final class DroneController implements IDroneController {
     }
 
     private void scanImageForQRCode(BufferedImage bufferedImage) {
-        try {
-            setQrCodeData(qrCodeHandler.scanImage(bufferedImage));
-            addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
-        } catch (QRCodeException ignored) {
+                    ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
-        }
+                    DisCal disCal = new DisCal();
+
+                    try {
+
+                            QRCodeData qrdata = setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg())));
+                            if(qrdata != null){
+                                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+
+                                addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
+                                System.out.println("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
+
+                                addMessage("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
+                                System.out.println("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
+
+
+                        }
+
+                    } catch (QRCodeException e) {
+                        e.printStackTrace();
+                        addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                        System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                    }
     }
 
-    public void setQrCodeData(QRCodeData qrCodeData) {
+    public QRCodeData setQrCodeData(QRCodeData qrCodeData) {
         addMessage("QRCode res: " + qrCodeData.getResult());
         this.qrCodeData = qrCodeData;
+        return qrCodeData;
     }
 
     /**
@@ -486,10 +522,16 @@ public final class DroneController implements IDroneController {
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
                 latestReceivedImage = bufferedImage;
-                qrScanTimer--;
-                if (qrScanTimer == 0) {
-                    qrScanTimer = INITIAL_QR_SCAN_TIMER;
-                    scanImageForQRCode(bufferedImage);
+
+                if(QRCodeScaningEnabled) {
+                    qrScanTimer--;
+                    if (qrScanTimer == 0) {
+                        qrScanTimer = INITIAL_QR_SCAN_TIMER;
+                        scanImageForQRCode(bufferedImage);
+                    }
+                }
+                else if(RingScaningEnabled){
+                    // søg efter ringe
                 }
             }
         });
@@ -583,4 +625,23 @@ public final class DroneController implements IDroneController {
         return battery;
     }
 
+    public int getMAX_ALTITUDE() {
+        return MAX_ALTITUDE;
+    }
+
+    public boolean isQRCodeScaningEnabled() {
+        return QRCodeScaningEnabled;
+    }
+
+    public void setQRCodeScaningEnabled(boolean QRCodeScaningEnabled) {
+        this.QRCodeScaningEnabled = QRCodeScaningEnabled;
+    }
+
+    public boolean isRingScaningEnabled() {
+        return RingScaningEnabled;
+    }
+
+    public void setRingScaningEnabled(boolean ringScaningEnabled) {
+        RingScaningEnabled = ringScaningEnabled;
+    }
 }
