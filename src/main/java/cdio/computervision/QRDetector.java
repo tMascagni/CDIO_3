@@ -39,15 +39,18 @@ public class QRDetector implements ICV{
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
-        thresholding(120);
-        //edgeDetection();
-        long contourtreeStartTime = System.nanoTime();
-        ContourTree con = getContours();
-
-        long findQR = System.nanoTime();
         ArrayList<QRImg> qr_codes = new ArrayList<>();
-        findQR(qr_codes, grayImg, con);
-        qr_codes = sortQR(qr_codes);
+        for(int i = 50; i < 200; i += 20) {
+            thresholding(i);
+            //edgeDetection();
+            long contourtreeStartTime = System.nanoTime();
+            ContourTree con = getContours();
+
+            long findQR = System.nanoTime();
+            ArrayList<QRImg> qr_codes_tmp = new ArrayList<>();
+            findQR(qr_codes_tmp, grayImg, con);
+            qr_codes.addAll(sortQR(qr_codes_tmp));
+        }
         long timeEnd = System.nanoTime();
 
        /* System.out.println("time to grey: " + (thresholdingStartTime-getGreyStartTime));
