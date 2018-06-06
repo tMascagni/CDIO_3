@@ -41,20 +41,31 @@ public interface IDroneCommander {
 
     IARDrone getDrone() throws DroneCommanderException;
 
+    /* QR Code Mapping */
+    void updateQrCodeMapData(int mapNumber, QRCodeData qrCodeData) throws DroneCommanderException;
     QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException;
-    float getPitch();
-    float getRoll();
-    float getYaw();
-    float getCorrectYaw(float yaw);
-    float getAltitude();
-    int getBattery();
     int getTargetQrCode();
     Map<Integer, QRCodeData> getQrCodeMap();
     boolean isQrCodeTarget(int possibleTarget);
     void incQrCodeTarget();
-    int getCorrectTargetYaw(int targetYaw);
 
-    public ArrayList<QRImg> getQrImgs();
+    /* OpenCV */
+    ArrayList<QRImg> getQrImgs();
+
+    /* Getters and setters */
+    boolean isQRCodeScanningEnabled();
+    void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled);
+    boolean isRingScanningEnabled();
+    void setRingScanningEnabled(boolean isRingScanningEnabled);
+    float getPitch();
+    float getRoll();
+    float getYaw();
+    float getCorrectYaw(float yaw);
+    int getCorrectTargetYaw(int targetYaw);
+    float getAltitude();
+    int getMinAltitude();
+    int getMaxAltitude();
+    int getBattery();
 
     class DroneCommanderException extends Exception {
 

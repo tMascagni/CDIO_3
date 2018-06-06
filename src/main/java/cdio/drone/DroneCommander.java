@@ -56,13 +56,15 @@ public final class DroneCommander implements IDroneCommander {
     private int targetQrCode = 0;
     private Map<Integer, QRCodeData> qrCodeMap = new HashMap<>();
 
+    private ArrayList<QRImg> qrImgs = new ArrayList<>();
+
     private static IDroneCommander instance;
 
-    private boolean QRCodeScaningEnabled = true;
-    private boolean RingScaningEnabled = false;
+    private boolean isQRCodeScanningEnabled = true;
+    private boolean isRingScanningEnabled = false;
 
-    QRDetector qrDetector = new QRDetector();
-    CVHelper cvHelper = new CVHelper();
+    private QRDetector qrDetector = new QRDetector();
+    private CVHelper cvHelper = new CVHelper();
 
     static {
         try {
@@ -203,41 +205,6 @@ public final class DroneCommander implements IDroneCommander {
         commandManager.hover();
 
         addMessage("Drone finished hovering!");
-    }
-
-    @Override
-    public int getCorrectTargetYaw(int targetYaw) {
-        if (targetYaw >= 180) {
-            targetYaw = targetYaw - 360;
-        } else if (targetYaw <= -180) {
-            targetYaw = 360 - targetYaw;
-        }
-        return targetYaw;
-    }
-
-    @Override
-    public ArrayList<QRImg> getQrImgs() {
-        return null;
-    }
-
-    @Override
-    public float getCorrectYaw(float yaw) {
-        /*
-        float yawCorrected = yaw; // + yawCorrection;
-        if (yawCorrected >= 180)
-            yawCorrected = 360 - yawCorrected;
-        else if (yawCorrected <= -180)
-            yawCorrected = 360 + yawCorrected;
-        return yawCorrected;
-        */
-        // + yawCorrection;
-
-        if (yaw >= 180)
-            yaw = yaw - 360;
-        else if (yaw <= -180)
-            yaw = 360 - yaw;
-
-        return yaw;
     }
 
 
@@ -472,6 +439,8 @@ public final class DroneCommander implements IDroneCommander {
             addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
             System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
         }
+
+        this.qrImgs = qrCodes;
     }
 
 
@@ -544,13 +513,13 @@ public final class DroneCommander implements IDroneCommander {
             public void imageUpdated(BufferedImage bufferedImage) {
                 latestReceivedImage = bufferedImage;
 
-                if (QRCodeScaningEnabled) {
+                if (isQRCodeScanningEnabled) {
                     qrScanTimer--;
                     if (qrScanTimer == 0) {
                         qrScanTimer = INITIAL_QR_SCAN_TIMER;
                         scanImageForQRCode(bufferedImage);
                     }
-                } else if (RingScaningEnabled) {
+                } else if (isRingScanningEnabled) {
                     // søg efter ringe
                 }
             }
@@ -607,6 +576,7 @@ public final class DroneCommander implements IDroneCommander {
         return messageList;
     }
 
+    @Override
     public void updateQrCodeMapData(int mapNumber, QRCodeData qrCodeData) {
         /*
          * If the qrCodeMap already contains QR Code data at the given mapNumber,
@@ -656,52 +626,9 @@ public final class DroneCommander implements IDroneCommander {
 
     }
 
-    @Override
-    public int getTargetQrCode() {
-        return targetQrCode;
-    }
-
-    @Override
-    public Map<Integer, QRCodeData> getQrCodeMap() {
-        return qrCodeMap;
-    }
-
-    @Override
-    public float getPitch() {
-        return pitch;
-    }
-
-    @Override
-    public float getRoll() {
-        return roll;
-    }
-
-    @Override
-    public float getYaw() {
-        return yaw;
-    }
-
-    @Override
-    public float getAltitude() {
-        return altitude;
-    }
-
-    @Override
-    public int getBattery() {
-        return battery;
-    }
-
-    @Override
-    public boolean isQrCodeTarget(int possibleTarget) {
-        return targetQrCode == possibleTarget;
-    }
-
-    @Override
-    public void incQrCodeTarget() {
-        if (targetQrCode < 7)
-            targetQrCode++;
-    }
-
+    /**************************
+     * QR Code Mapping Methods
+     **************************/
     @Override
     public QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException {
         int index = -1;
@@ -726,24 +653,114 @@ public final class DroneCommander implements IDroneCommander {
         return qrCodeMap.get(index);
     }
 
-    public int getMAX_ALTITUDE() {
+    @Override
+    public int getTargetQrCode() {
+        return targetQrCode;
+    }
+
+    @Override
+    public Map<Integer, QRCodeData> getQrCodeMap() {
+        return qrCodeMap;
+    }
+
+    @Override
+    public boolean isQrCodeTarget(int possibleTarget) {
+        return targetQrCode == possibleTarget;
+    }
+
+    @Override
+    public void incQrCodeTarget() {
+        if (targetQrCode < 7)
+            targetQrCode++;
+    }
+
+
+    /**************************
+     * OpenCV
+     **************************/
+    @Override
+    public ArrayList<QRImg> getQrImgs() {
+        return qrImgs;
+    }
+
+
+    /**************************
+     * Getters and Setters
+     **************************/
+    @Override
+    public boolean isQRCodeScanningEnabled() {
+        return isQRCodeScanningEnabled;
+    }
+
+    @Override
+    public void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled) {
+        this.isQRCodeScanningEnabled = isQRCodeScanningEnabled;
+    }
+
+    @Override
+    public boolean isRingScanningEnabled() {
+        return isRingScanningEnabled;
+    }
+
+    @Override
+    public void setRingScanningEnabled(boolean isRingScanningEnabled) {
+        this.isRingScanningEnabled = isRingScanningEnabled;
+    }
+
+    @Override
+    public float getPitch() {
+        return pitch;
+    }
+
+    @Override
+    public float getRoll() {
+        return roll;
+    }
+
+    @Override
+    public int getCorrectTargetYaw(int targetYaw) {
+        if (targetYaw >= 180) {
+            targetYaw = targetYaw - 360;
+        } else if (targetYaw <= -180) {
+            targetYaw = 360 - targetYaw;
+        }
+        return targetYaw;
+    }
+
+    @Override
+    public float getCorrectYaw(float yaw) {
+        if (yaw >= 180)
+            yaw = yaw - 360;
+        else if (yaw <= -180)
+            yaw = 360 - yaw;
+
+        return yaw;
+    }
+
+    @Override
+    public float getYaw() {
+        return yaw;
+    }
+
+    @Override
+    public float getAltitude() {
+        return altitude;
+    }
+
+    @Override
+    public int getMaxAltitude() {
         return MAX_ALTITUDE;
     }
 
-    public boolean isQRCodeScaningEnabled() {
-        return QRCodeScaningEnabled;
+    @Override
+    public int getMinAltitude() {
+        return MIN_ALTITUDE;
     }
 
-    public void setQRCodeScaningEnabled(boolean QRCodeScaningEnabled) {
-        this.QRCodeScaningEnabled = QRCodeScaningEnabled;
+    @Override
+    public int getBattery() {
+        return battery;
     }
 
-    public boolean isRingScaningEnabled() {
-        return RingScaningEnabled;
-    }
-
-    public void setRingScaningEnabled(boolean ringScaningEnabled) {
-        RingScaningEnabled = ringScaningEnabled;
-    }
 
 }
