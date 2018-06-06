@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class QRDetector implements ICV{
+public class QRDetector implements ICV {
 
     private static final double CV_PI = 3.14159;
 
@@ -37,7 +37,7 @@ public class QRDetector implements ICV{
         orgImg = mat;
         getGray();
         ArrayList<QRImg> qr_codes = new ArrayList<>();
-        for(int i = 50; i < 200; i += 20) {
+        for (int i = 50; i < 200; i += 20) {
             thresholding(i);
 
             ContourTree con = getContours();
@@ -90,7 +90,7 @@ public class QRDetector implements ICV{
     // The images are then transformed to a rectangle for further processing.
     public void findQR(ArrayList<QRImg> dst, Mat scr, ContourTree ct) {
 
-        if(ct != null) {
+        if (ct != null) {
             ArrayList<RotatedRect> rects = ct.findRectIfChildren(0, 4);
 
             for (RotatedRect src_point : rects) {
@@ -131,22 +131,22 @@ public class QRDetector implements ICV{
     public ArrayList<QRImg> sortQR(ArrayList<QRImg> src) {
         ArrayList<QRImg> qrkoder = new ArrayList<>();
 
-        for(int count = 0; count < src.size(); count ++) {
+        for (int count = 0; count < src.size(); count++) {
             src.get(count).setAngle(angleOfQRCode(src.get(count)));
-            if(!Double.isNaN(src.get(count).getAngle())) {
+            if (!Double.isNaN(src.get(count).getAngle())) {
                 qrkoder.add(src.get(count));
             }
         }
         return qrkoder;
     }
 
-    public double angleOfQRCode(QRImg input){
+    public double angleOfQRCode(QRImg input) {
         double ratio = 0.8;
         double width = input.getW();
         double height = input.getH();
-        double widthNorm = width/height;
-        double s = Math.toDegrees(Math.acos(widthNorm/ratio)); // 1 radian = 57.2957795 grader
-        return s-15;
+        double widthNorm = width / height;
+        double s = Math.toDegrees(Math.acos(widthNorm / ratio)); // 1 radian = 57.2957795 grader
+        return s - 15;
     }
 }
 

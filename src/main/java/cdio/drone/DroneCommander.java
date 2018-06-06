@@ -1,10 +1,10 @@
 package cdio.drone;
 
-import cdio.cv.DisCal;
-import cdio.drone.interfaces.IDroneCommander;
 import cdio.cv.CVHelper;
+import cdio.cv.DisCal;
 import cdio.cv.QRDetector;
 import cdio.cv.QRImg;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
@@ -422,31 +422,31 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     private void scanImageForQRCode(BufferedImage bufferedImage) {
-                    ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
+        ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
-                    DisCal disCal = new DisCal();
+        DisCal disCal = new DisCal();
 
-                    try {
+        try {
 
-                            QRCodeData qrdata = qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg()));
-                            if(qrdata != null){
-                                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-                                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+            QRCodeData qrdata = qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg()));
+            if (qrdata != null) {
+                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
 
-                                addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
-                                System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
+                addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
+                System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
 
-                                addMessage("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
-                                System.out.println("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
+                addMessage("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
+                System.out.println("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
 
 
-                        }
+            }
 
-                    } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                        e.printStackTrace();
-                        addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-                        System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-                    }
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
+            e.printStackTrace();
+            addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+            System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+        }
     }
 
 
@@ -519,14 +519,13 @@ public final class DroneCommander implements IDroneCommander {
             public void imageUpdated(BufferedImage bufferedImage) {
                 latestReceivedImage = bufferedImage;
 
-                if(QRCodeScaningEnabled) {
+                if (QRCodeScaningEnabled) {
                     qrScanTimer--;
                     if (qrScanTimer == 0) {
                         qrScanTimer = INITIAL_QR_SCAN_TIMER;
                         scanImageForQRCode(bufferedImage);
                     }
-                }
-                else if(RingScaningEnabled){
+                } else if (RingScaningEnabled) {
                     // søg efter ringe
                 }
             }
@@ -631,4 +630,5 @@ public final class DroneCommander implements IDroneCommander {
     public void setRingScaningEnabled(boolean ringScaningEnabled) {
         RingScaningEnabled = ringScaningEnabled;
     }
+
 }
