@@ -19,13 +19,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class QRCodeHandler implements IQRCodeHandler {
-
-    private String qrCodeValue;
-    private int orientation;
-    private Result detectionResult;
+    private QRDetector qrDetector = new QRDetector();
+    private CVHelper helper = new CVHelper();
 
     private final QRCodeReader reader = new QRCodeReader();
-
     private static IQRCodeHandler instance;
 
     private QRCodeHandler() {
@@ -45,8 +42,8 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     @Override
-    public ArrayList<QRImg> scanImage(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
-        QRDetector qrDetector = new QRDetector(image);
+    public ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+        qrDetector.orgImg = helper.buf2mat(image);
         ArrayList<QRImg> qrCodes;
         qrCodes = qrDetector.processAll(qrDetector.orgImg);
 
@@ -57,15 +54,19 @@ public class QRCodeHandler implements IQRCodeHandler {
         return qrCodes;
     }
 
+    public QRImg scanImageForBest(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+        ArrayList<QRImg> qrCodes = scanImageForAll(image, droneCommander);
+        return qrDetector.findBest(qrCodes);
+    }
+
     private QRCodeData scanImgForQrCode(final Mat mat, IDroneCommander droneCommander) throws QRCodeHandlerException {
         /* Try to detect QR code */
-        CVHelper helper = new CVHelper();
         LuminanceSource source = new BufferedImageLuminanceSource(helper.mat2buf(mat));
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
         try {
-            detectionResult = reader.decode(bitmap);
-            qrCodeValue = detectionResult.getText();
+            Result detectionResult = reader.decode(bitmap);
+            String qrCodeValue = detectionResult.getText();
 
             ResultPoint[] points = detectionResult.getResultPoints();
             ResultPoint a = points[1]; // top-left
@@ -87,11 +88,12 @@ public class QRCodeHandler implements IQRCodeHandler {
                 theta = 360 - theta;
             }
 
-            orientation = (int) theta;
+            int orientation = (int) theta;
 
             return new QRCodeData(qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
         } catch (ReaderException e) {
-            throw new QRCodeHandlerException("Failed to scan for QR Code!");
+            return null;
+            //throw new QRCodeHandlerException("Failed to scan for QR Code!");
         }
     }
 

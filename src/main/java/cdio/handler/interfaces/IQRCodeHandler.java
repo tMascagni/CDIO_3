@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public interface IQRCodeHandler {
 
-    ArrayList<QRImg> scanImage(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException;
+    ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException;
+    QRImg scanImageForBest(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException;
     BufferedImage getImageLocal(String path) throws QRCodeHandlerException;
     BufferedImage getImageRemote(String url) throws QRCodeHandlerException;
     void saveImage(String imageUrl, String destinationFile) throws QRCodeHandlerException;

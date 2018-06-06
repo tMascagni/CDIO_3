@@ -52,6 +52,93 @@ public class QRDetector implements ICV {
         //return qr_codes;
     }
 
+    public QRImg findBest(ArrayList<QRImg> qrImgs) {
+        // Check if any of the codes have been read succefully
+        // If only one have, return that, if multiple have, return largest
+        QRImg returnCandidate = null;
+        for(QRImg qrImg : qrImgs) {
+            if(qrImg.getQrCodeData() != null) {
+                if(returnCandidate == null) {
+                    returnCandidate = qrImg;
+                } else {
+                    if(Imgproc.contourArea(qrImg.getContour()) >
+                            Imgproc.contourArea(returnCandidate.getContour())) {
+                        returnCandidate = qrImg;
+                    }
+                }
+            }
+        }
+        if(returnCandidate != null) {
+            return returnCandidate;
+        }
+
+        // No qrCodes were read.
+        // Find the average position and area
+        double avg_x = 0, avg_y = 0, avg_a = 0;
+        int count = 0;
+        for(QRImg qrImg : qrImgs) {
+            avg_x += qrImg.getPosition().x;
+            avg_y += qrImg.getPosition().y;
+            avg_a += Imgproc.contourArea(qrImg.getContour());
+            count++;
+        }
+        avg_x /= count;
+        avg_y /= count;
+        avg_a /= count;
+
+        // Remove outliers
+        ArrayList<QRImg> toRemove = new ArrayList<>();
+        for(QRImg qrImg: qrImgs) {
+
+            // Distance for center of qr to average center
+            double diff_x = avg_x - qrImg.getPosition().x;
+            double diff_y = avg_y - qrImg.getPosition().y;
+            double dist = Math.sqrt(diff_x*diff_x + diff_y*diff_y);
+
+            // If that distance is larger than the area, discard the qr code
+            if(dist > Math.sqrt(avg_a / Math.PI)) {
+                toRemove.add(qrImg);
+            }
+        }
+        qrImgs.removeAll(toRemove);
+
+        if(qrImgs.size() == 0) {
+            return null;
+        }
+
+        // Calculate average qr
+        double avg_h = 0;
+        double avg_w = 0;
+        double avg_angle = 0;
+        double avg_distance = 0;
+        avg_x = 0;
+        avg_y = 0;
+        count = 0;
+        for(QRImg qrImg: qrImgs) {
+            avg_h += qrImg.getH();
+            avg_w += qrImg.getW();
+            avg_angle += qrImg.getAngle();
+            avg_distance += qrImg.getDistance();
+            avg_x += qrImg.getPosition().x;
+            avg_y += qrImg.getPosition().y;
+            count++;
+        }
+        avg_h /= count;
+        avg_w /= count;
+        avg_angle  /= count;
+        avg_distance  /= count;
+        avg_x  /= count;
+        avg_y  /= count;
+
+        QRImg averageQr = new QRImg(qrImgs.get(0).getImg(), avg_h, avg_w);
+        averageQr.setAngle(avg_angle);
+        averageQr.setContour(qrImgs.get(0).getContour());
+        averageQr.setPosition(new Point(avg_x, avg_y));
+        averageQr.setQrCodeData(null);
+        averageQr.setDistance(avg_distance);
+        return averageQr;
+    }
+
     // Do everything and return the qr codes as images (USED FOR THE GUI)
     public BufferedImage processSingleImg(Image dstImg) {
         getGray();
