@@ -37,15 +37,20 @@ public class WebcamDemo {
            //ArrayList<QRImg> qrImgs = qrDetector.processAll(image);
            qrDetector.orgImg = image;
            qrDetector.getGray();
-           qrDetector.thresholding();
-           ContourTree ct = qrDetector.getContours();
            ArrayList<QRImg> qr_codes = new ArrayList<>();
-           qrDetector.findQR(qr_codes, qrDetector.grayImg, ct);
+           for(int i = 50; i < 200; i += 20) {
+               qrDetector.thresholding(i);
+               ContourTree ct = qrDetector.getContours();
+               if(ct != null) {
+                   ct.drawRectIfChildren(image, 3, 0);
+               }
+               ArrayList<QRImg> qr_codes2 = new ArrayList<>();
+               qrDetector.findQR(qr_codes2, qrDetector.grayImg, ct);
+               qr_codes.addAll(qr_codes2);
+           }
            qr_codes = qrDetector.sortQR(qr_codes);
 
-           if(ct != null) {
-               ct.drawRectIfChildren(image, 3, 0);
-           }
+
 
            if(qr_codes.size() > 0) {
                for(JFrame frame : windows) {

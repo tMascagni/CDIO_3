@@ -39,7 +39,7 @@ public class QRDetector implements ICV{
         long getGreyStartTime = System.nanoTime();
         getGray();
         long thresholdingStartTime = System.nanoTime();
-        thresholding();
+        thresholding(120);
         //edgeDetection();
         long contourtreeStartTime = System.nanoTime();
         ContourTree con = getContours();
@@ -62,7 +62,7 @@ public class QRDetector implements ICV{
     // Do everything and return the qr codes as images (USED FOR THE GUI)
     public BufferedImage processSingleImg(Image dstImg) {
         getGray();
-        thresholding();
+        thresholding(120);
         ContourTree con = getContours();
 
         findQRDraw(orgImg, con);
@@ -140,9 +140,8 @@ public class QRDetector implements ICV{
         Imgproc.Canny(binImg, binImg, 30,200);
     }
 
-    public void thresholding() {
+    public void thresholding(int thres) {
         binImg = new Mat();
-        int thres = 120;
         Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
@@ -216,7 +215,7 @@ public class QRDetector implements ICV{
                 }
             }
             double ratio = src.get(count).getW() / ((double) src.get(count).getH());
-            if(outOfRangeCount < acceptanceLimit){
+            if(!Double.isNaN(angleOfQRCode(src.get(count)) )) {//if(outOfRangeCount < acceptanceLimit){
                 qrkoder.add(src.get(count));
                 //System.out.println("Acceptable! " + outOfRangeCount + " / " + acceptanceLimit +
                         //"\t Angle: " + angleOfQRCode(src.get(count)) +
