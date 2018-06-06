@@ -1,8 +1,10 @@
 package cdio.drone.interfaces;
 
+import cdio.cv.QRImg;
 import cdio.model.QRCodeData;
 import yadankdrone.IARDrone;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -51,6 +53,8 @@ public interface IDroneCommander {
     boolean isQrCodeTarget(int possibleTarget);
     void incQrCodeTarget();
     int getCorrectTargetYaw(int targetYaw);
+
+    public ArrayList<QRImg> getQrImgs();
 
     class DroneCommanderException extends Exception {
 
