@@ -63,6 +63,7 @@ public class WebcamDemo {
                            "\t Ratio: " + (img.getW() / img.getH()));
 
                    Imgproc.drawContours(image, Arrays.asList(img.contour), -1, new Scalar(255, 50, 100), 4);
+                   Imgproc.drawMarker(image, img.position, new Scalar(255, 10, 100), 0, 20, 5, 8);
                }
            }
            else {

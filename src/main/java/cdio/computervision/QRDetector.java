@@ -178,6 +178,7 @@ public class QRDetector implements ICV{
                 Imgproc.warpPerspective(scr, new_img, perspectiveTransform, new_img.size());
 
                 QRImg qrImg = new QRImg(new_img, src_point.boundingRect().height, src_point.boundingRect().width);
+                qrImg.position = src_point.center;
                 qrImg.contour = new MatOfPoint(points);
                 dst.add(qrImg);
             }

@@ -2,6 +2,7 @@ package cdio.computervision;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
 
 public class QRImg {
 
@@ -9,6 +10,7 @@ public class QRImg {
     private double h;
     private double w;
     public MatOfPoint contour;
+    public Point position;
 
 
     public QRImg(Mat img, double h, double w) {
