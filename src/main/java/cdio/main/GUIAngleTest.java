@@ -6,14 +6,14 @@ import cdio.ui.MainFrame;
 
 public class GUIAngleTest {
 
-    private static final IDroneCommander droneController = DroneCommander.getInstance();
+    private static final IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame(droneController);
-        //droneController.setMessageListener(mainFrame);
+        MainFrame mainFrame = new MainFrame(droneCommander);
+        //droneCommander.setMessageListener(mainFrame);
 
         try {
-            droneController.startDrone();
+            droneCommander.startDrone();
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();

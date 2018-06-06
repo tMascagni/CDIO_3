@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class RoutePlanner implements ImageListener {
 
-    private final static IDroneCommander droneControl = DroneCommander.getInstance();
+    private final static IDroneCommander droneCommander = DroneCommander.getInstance();
     private final static ImageListener cameraControl = null;
 
     private long imageCount = 0;
@@ -19,17 +19,17 @@ public class RoutePlanner implements ImageListener {
     public void imageUpdated(BufferedImage bufferedImage) {
 
         try {
-            if (droneControl.getDrone().getNavDataManager().isConnected()) {
+            if (droneCommander.getDrone().getNavDataManager().isConnected()) {
 
-                droneControl.startDrone();
-                droneControl.takeOffDrone();
-                droneControl.searchForQRCode();
+                droneCommander.startDrone();
+                droneCommander.takeOffDrone();
+                droneCommander.searchForQRCode();
 
                 if (cameraControl.equals(true)) {
                     System.out.println("found it");
-                    droneControl.stopDrone();
+                    droneCommander.stopDrone();
                 } else {
-                    droneControl.stopDrone();
+                    droneCommander.stopDrone();
                 }
 
             }

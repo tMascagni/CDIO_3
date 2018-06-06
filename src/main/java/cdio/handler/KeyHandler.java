@@ -46,7 +46,7 @@ public final class KeyHandler implements IKeyHandler {
 
     private static IKeyHandler instance;
 
-    private final IDroneCommander droneController = DroneCommander.getInstance();
+    private final IDroneCommander droneCommander = DroneCommander.getInstance();
 
     static {
         try {
@@ -115,76 +115,76 @@ public final class KeyHandler implements IKeyHandler {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_W:
-                droneController.addMessage("W pressed!");
-                droneController.getDrone().forward();
+                droneCommander.addMessage("W pressed!");
+                droneCommander.getDrone().forward();
                 break;
             case KeyEvent.VK_S:
-                droneController.addMessage("S pressed!");
-                droneController.getDrone().backward();
+                droneCommander.addMessage("S pressed!");
+                droneCommander.getDrone().backward();
                 break;
             case KeyEvent.VK_Q:
-                droneController.addMessage("Q pressed!");
-                droneController.getDrone().up();
+                droneCommander.addMessage("Q pressed!");
+                droneCommander.getDrone().up();
                 break;
             case KeyEvent.VK_E:
-                droneController.addMessage("E pressed!");
-                droneController.getDrone().down();
+                droneCommander.addMessage("E pressed!");
+                droneCommander.getDrone().down();
                 break;
             case KeyEvent.VK_A:
-                droneController.addMessage("A pressed!");
-                droneController.getDrone().goLeft();
+                droneCommander.addMessage("A pressed!");
+                droneCommander.getDrone().goLeft();
                 break;
             case KeyEvent.VK_D:
-                droneController.addMessage("D pressed!");
-                droneController.getDrone().goRight();
+                droneCommander.addMessage("D pressed!");
+                droneCommander.getDrone().goRight();
                 break;
             case KeyEvent.VK_P:
-                droneController.addMessage("P pressed!");
+                droneCommander.addMessage("P pressed!");
                 break;
             case KeyEvent.VK_O:
-                droneController.addMessage("O pressed!");
-                droneController.startDrone();
+                droneCommander.addMessage("O pressed!");
+                droneCommander.startDrone();
                 break;
             case KeyEvent.VK_I:
-                droneController.addMessage("I pressed!");
-                droneController.stopDrone();
+                droneCommander.addMessage("I pressed!");
+                droneCommander.stopDrone();
                 break;
             case KeyEvent.VK_ENTER:
-                droneController.addMessage("ENTER pressed!");
-                droneController.takeOffDrone();
+                droneCommander.addMessage("ENTER pressed!");
+                droneCommander.takeOffDrone();
                 break;
             case KeyEvent.VK_SPACE:
-                droneController.addMessage("SPACE pressed!");
-                droneController.landDrone();
+                droneCommander.addMessage("SPACE pressed!");
+                droneCommander.landDrone();
                 break;
             case KeyEvent.VK_H:
-                droneController.addMessage("H pressed!");
-                droneController.hoverDrone();
+                droneCommander.addMessage("H pressed!");
+                droneCommander.hoverDrone();
                 break;
             case KeyEvent.VK_R:
-                droneController.addMessage("R pressed!");
-                droneController.searchForQRCode();
+                droneCommander.addMessage("R pressed!");
+                droneCommander.searchForQRCode();
                 break;
             case KeyEvent.VK_C:
-                droneController.addMessage("C pressed!");
-                droneController.circleAroundObject();
+                droneCommander.addMessage("C pressed!");
+                droneCommander.circleAroundObject();
                 break;
             case KeyEvent.VK_F:
-                droneController.addMessage("F pressed!");
+                droneCommander.addMessage("F pressed!");
                 break;
             case KeyEvent.VK_G:
-                droneController.addMessage("G pressed!");
+                droneCommander.addMessage("G pressed!");
                 break;
             case KeyEvent.VK_N:
-                droneController.addMessage("N pressed!");
-                droneController.setSpeed(droneController.getSpeed() + 1);
+                droneCommander.addMessage("N pressed!");
+                droneCommander.setSpeed(droneCommander.getSpeed() + 1);
                 break;
             case KeyEvent.VK_M:
-                droneController.addMessage("M pressed!");
-                droneController.setSpeed(droneController.getSpeed() - 1);
+                droneCommander.addMessage("M pressed!");
+                droneCommander.setSpeed(droneCommander.getSpeed() - 1);
                 break;
             default:
-                droneController.addMessage("Unknown key pressed!");
+                droneCommander.addMessage("Unknown key pressed!");
                 break;
         }
 

@@ -1,5 +1,8 @@
 package cdio.handler;
 
+import cdio.cv.CVHelper;
+import cdio.cv.QRDetector;
+import cdio.cv.QRImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
@@ -7,19 +10,19 @@ import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
+import org.opencv.core.Mat;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class QRCodeHandler implements IQRCodeHandler {
 
     private String qrCodeValue;
     private int orientation;
     private Result detectionResult;
-    private int qrCodeWidth;
-    private int qrCodeHeight;
 
     private final QRCodeReader reader = new QRCodeReader();
 
@@ -42,9 +45,22 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     @Override
-    public QRCodeData scanImage(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+    public ArrayList<QRImg> scanImage(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+        QRDetector qrDetector = new QRDetector(image);
+        ArrayList<QRImg> qrCodes;
+        qrCodes = qrDetector.processAll(qrDetector.orgImg);
+
+        for (QRImg img : qrCodes) {
+            img.setQrCodeData(scanImgForQrCode(img.getImg(), droneCommander));
+        }
+
+        return qrCodes;
+    }
+
+    private QRCodeData scanImgForQrCode(final Mat mat, IDroneCommander droneCommander) throws QRCodeHandlerException {
         /* Try to detect QR code */
-        LuminanceSource source = new BufferedImageLuminanceSource(image);
+        CVHelper helper = new CVHelper();
+        LuminanceSource source = new BufferedImageLuminanceSource(helper.mat2buf(mat));
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
         try {
@@ -55,10 +71,6 @@ public class QRCodeHandler implements IQRCodeHandler {
             ResultPoint a = points[1]; // top-left
             ResultPoint b = points[2]; // top-right
             ResultPoint c = points[0]; // bottom-left
-            ResultPoint d = null;
-
-            if (points.length == 4)
-                d = points[3]; // alignment point (bottom-right) // THIS CAUSES MASSIEV
 
             // Find the degree of the rotation that is needed
             double z = Math.abs(a.getX() - b.getX());
@@ -77,18 +89,10 @@ public class QRCodeHandler implements IQRCodeHandler {
 
             orientation = (int) theta;
 
-            qrCodeWidth = (int) b.getX() - (int) a.getX();
-
-            if (d != null)
-                qrCodeHeight = (int) d.getX() - (int) c.getX();
-            else
-                qrCodeHeight = -1;
-
+            return new QRCodeData(qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
         } catch (ReaderException e) {
-            throw new QRCodeHandlerException("Failed to scan QR Code!");
+            throw new QRCodeHandlerException("Failed to scan for QR Code!");
         }
-
-        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
     }
 
     @Override

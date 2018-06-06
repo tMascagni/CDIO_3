@@ -10,6 +10,7 @@ public class QRImg {
     private Mat img;
     private double h;
     private double w;
+    private double distance;
     private MatOfPoint contour;
     private Point position;
     private QRCodeData qrCodeData;
@@ -87,4 +88,13 @@ public class QRImg {
     public void setQrCodeData(QRCodeData qrCodeData) {
         this.qrCodeData = qrCodeData;
     }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
 }

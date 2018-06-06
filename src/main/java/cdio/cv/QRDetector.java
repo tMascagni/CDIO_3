@@ -1,5 +1,6 @@
 package cdio.cv;
 
+import cdio.cv.interfaces.ICV;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -132,6 +133,7 @@ public class QRDetector implements ICV {
         ArrayList<QRImg> qrkoder = new ArrayList<>();
 
         for (int count = 0; count < src.size(); count++) {
+            src.get(count).setDistance(distanceFromHeight(src.get(count).getH()));
             src.get(count).setAngle(angleOfQRCode(src.get(count)));
             if (!Double.isNaN(src.get(count).getAngle())) {
                 qrkoder.add(src.get(count));
@@ -148,6 +150,11 @@ public class QRDetector implements ICV {
         double s = Math.toDegrees(Math.acos(widthNorm / ratio)); // 1 radian = 57.2957795 grader
         return s - 15;
     }
+
+    public double distanceFromHeight(double qrCodeHeight) {
+        return Math.pow(48722 * qrCodeHeight, -1.021);
+    }
+
 }
 
 

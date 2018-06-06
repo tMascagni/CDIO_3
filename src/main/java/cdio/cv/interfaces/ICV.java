@@ -1,5 +1,6 @@
-package cdio.cv;
+package cdio.cv.interfaces;
 
+import cdio.cv.QRImg;
 import org.opencv.core.Mat;
 
 import java.util.ArrayList;

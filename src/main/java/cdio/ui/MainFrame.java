@@ -26,13 +26,13 @@ public final class MainFrame extends JFrame {
     private StatusPanel statusPanel;
     private CameraPanel frontCamPanel;
 
-    private final IDroneCommander droneController;
+    private final IDroneCommander droneCommander;
 
     private final IKeyHandler keyHandler = KeyHandler.getInstance();
 
-    public MainFrame(IDroneCommander droneController) {
+    public MainFrame(IDroneCommander droneCommander) {
         super("DroneX - Group 3 - CDIO Project");
-        this.droneController = droneController;
+        this.droneCommander = droneCommander;
         setBackground(Color.WHITE);
         getRootPane().setBackground(Color.WHITE);
 
@@ -53,7 +53,7 @@ public final class MainFrame extends JFrame {
         statusPanel.setSize(new Dimension(width / 2, height / 2));
 
         try {
-            frontCamPanel = new CameraPanel(droneController.getDrone());
+            frontCamPanel = new CameraPanel(droneCommander.getDrone());
             frontCamPanel.setPreferredSize(preferredPanelSize);
             frontCamPanel.setSize(preferredPanelSize);
         } catch (IDroneCommander.DroneCommanderException e) {
@@ -64,7 +64,7 @@ public final class MainFrame extends JFrame {
             addKeyListener(keyHandler);
             getRootPane().addKeyListener(keyHandler);
         } else {
-            droneController.addMessage("KEYBOARD DISABLED!");
+            droneCommander.addMessage("KEYBOARD DISABLED!");
         }
 
         commandPanel.setFocusable(false);
@@ -136,15 +136,15 @@ public final class MainFrame extends JFrame {
             @Override
             public void run() {
                 try {
-                    statusPanel.setPitch((int) droneController.getPitch());
-                    statusPanel.setRoll((int) droneController.getRoll());
-                    statusPanel.setYaw((int) droneController.getYaw());
-                    statusPanel.setCorrectedYaw((int) droneController.getCorrectYaw(droneController.getYaw()));
-                    statusPanel.setAltitude((int) droneController.getAltitude());
-                    statusPanel.setBattery(droneController.getBattery());
-                    statusPanel.setSpeed(droneController.getSpeed());
+                    statusPanel.setPitch((int) droneCommander.getPitch());
+                    statusPanel.setRoll((int) droneCommander.getRoll());
+                    statusPanel.setYaw((int) droneCommander.getYaw());
+                    statusPanel.setCorrectedYaw((int) droneCommander.getCorrectYaw(droneCommander.getYaw()));
+                    statusPanel.setAltitude((int) droneCommander.getAltitude());
+                    statusPanel.setBattery(droneCommander.getBattery());
+                    statusPanel.setSpeed(droneCommander.getSpeed());
 
-                    List<String> messages = droneController.getNewMessages();
+                    List<String> messages = droneCommander.getNewMessages();
 
                     for (String str : messages) {
                         commandPanel.appendText("############### Drone Command ###############");

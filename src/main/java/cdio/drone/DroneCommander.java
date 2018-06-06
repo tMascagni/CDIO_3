@@ -7,7 +7,6 @@ import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
-import cdio.utils.Utils;
 import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
@@ -242,7 +241,15 @@ public final class DroneCommander implements IDroneCommander {
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             try {
-                QRCodeData qrCodeData = qrCodeHandler.scanImage(latestReceivedImage, this);
+                List<QRImg> qrCodes = qrCodeHandler.scanImage(latestReceivedImage, this);
+
+                if (qrCodes.size() == 0) {
+                    throw new DroneCommanderException("Empty QR codes list!");
+                }
+
+                QRImg qrImg = qrCodes.get(0);
+
+                // REWRITE HER FRA
 
                 // QR CODE TARGET FOUND!
                 if (isQrCodeTarget(qrCodeData.getResult())) {
@@ -426,8 +433,8 @@ public final class DroneCommander implements IDroneCommander {
                 addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
                 System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
 
-                addMessage("Distance til QR: " + Utils.getInstance().distanceFromHeight(qrCodes.get(0).getH()));
-                System.out.println("Distance til QR: " + Utils.getInstance().distanceFromHeight(qrCodes.get(0).getH()));
+                addMessage("Distance til QR: " + qrDetector.distanceFromHeight(qrCodes.get(0).getH()));
+                System.out.println("Distance til QR: " + qrDetector.distanceFromHeight(qrCodes.get(0).getH()));
             }
 
         } catch (IQRCodeHandler.QRCodeHandlerException e) {
@@ -670,7 +677,6 @@ public final class DroneCommander implements IDroneCommander {
             targetQrCode++;
     }
 
-
     /**************************
      * OpenCV
      **************************/
@@ -678,7 +684,6 @@ public final class DroneCommander implements IDroneCommander {
     public ArrayList<QRImg> getQrImgs() {
         return qrImgs;
     }
-
 
     /**************************
      * Getters and Setters
@@ -757,6 +762,5 @@ public final class DroneCommander implements IDroneCommander {
     public int getBattery() {
         return battery;
     }
-
 
 }

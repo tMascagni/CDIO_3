@@ -6,19 +6,19 @@ import cdio.ui.MainFrame;
 
 public final class MainGUI {
 
-    private static final IDroneCommander droneController = DroneCommander.getInstance();
+    private static final IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame(droneController);
+        MainFrame mainFrame = new MainFrame(droneCommander);
 
         try {
-            droneController.startDrone();
-            droneController.initDrone();
+            droneCommander.startDrone();
+            droneCommander.initDrone();
 
-            int targetYaw = (int) (droneController.getCorrectYaw(droneController.getYaw()) + 180);
-            droneController.addMessage("RAW target yaw: " + targetYaw + "");
-            targetYaw = droneController.getCorrectTargetYaw(targetYaw);
-            droneController.addMessage("Correct target yaw: " + targetYaw);
+            int targetYaw = (int) (droneCommander.getCorrectYaw(droneCommander.getYaw()) + 180);
+            droneCommander.addMessage("RAW target yaw: " + targetYaw + "");
+            targetYaw = droneCommander.getCorrectTargetYaw(targetYaw);
+            droneCommander.addMessage("Correct target yaw: " + targetYaw);
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();

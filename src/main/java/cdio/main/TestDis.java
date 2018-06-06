@@ -9,26 +9,26 @@ import javax.swing.*;
 
 public final class TestDis {
 
-    private final static IDroneCommander droneController = DroneCommander.getInstance();
+    private final static IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
-            MainFrame mainFrame = new MainFrame(droneController);
+            MainFrame mainFrame = new MainFrame(droneCommander);
         });
 
         DisCal disCal = new DisCal();
 
-               /* droneController.startDrone();
-                droneController.initDrone();
+               /* droneCommander.startDrone();
+                droneCommander.initDrone();
 
-                droneController.takeOffDrone();
+                droneCommander.takeOffDrone();
 
-                droneController.hoverDrone(8000);
+                droneCommander.hoverDrone(8000);
 */
 
         int timer = 200;
-        while (droneController.getQrImgs().isEmpty()) {
+        while (droneCommander.getQrImgs().isEmpty()) {
             timer--;
             if (timer == 0) {
                 System.out.println("venter på qr kode");
@@ -36,15 +36,15 @@ public final class TestDis {
             }
         }
 
-        while (disCal.distanceFromHeight(droneController.getQrImgs().get(0).getH()) <= 100) {
-            // droneController.flyForward(200);
-            // droneController.hoverDrone(200);
-            droneController.addMessage("Height af QR kode: " + droneController.getQrImgs().get(0).getH());
+        while (disCal.distanceFromHeight(droneCommander.getQrImgs().get(0).getH()) <= 100) {
+            // droneCommander.flyForward(200);
+            // droneCommander.hoverDrone(200);
+            droneCommander.addMessage("Height af QR kode: " + droneCommander.getQrImgs().get(0).getH());
         }
 
-        //       droneController.flyBackward(500);
-        //      droneController.hoverDrone(2000);
-        //      droneController.landDrone();
+        //       droneCommander.flyBackward(500);
+        //      droneCommander.hoverDrone(2000);
+        //      droneCommander.landDrone();
 
         //   } catch (IDroneCommander.DroneCommanderException e) {
         //       e.printStackTrace();

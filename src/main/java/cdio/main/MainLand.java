@@ -7,13 +7,13 @@ import java.awt.*;
 
 public final class MainLand {
 
-    private final static IDroneCommander droneController = DroneCommander.getInstance();
+    private final static IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                droneController.landDrone();
-                droneController.stopDrone();
+                droneCommander.landDrone();
+                droneCommander.stopDrone();
             } catch (IDroneCommander.DroneCommanderException e) {
                 e.printStackTrace();
             }
