@@ -16,6 +16,7 @@ import yadankdrone.navdata.*;
 import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -389,6 +390,29 @@ public final class DroneCommander implements IDroneCommander {
         sleep(100);
 
         addMessage("Drone done flying right!");
+    }
+
+    public void adjustToCenterFromQR() throws DroneCommanderException {
+        int centerOfFrameX = latestReceivedImage.getWidth()/2;
+        QRImg qrImg;
+
+        do {
+            try {
+                 qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                e.printStackTrace();
+                break;
+            }
+
+            if(qrImg.getPosition().x < 0){
+                flyRight(200);
+            }else {
+                flyLeft(200);
+            }
+                hoverDrone(100);
+                sleep(500);
+
+        }while (qrImg.getPosition().x <= centerOfFrameX-50 || qrImg.getPosition().x >= centerOfFrameX+50);
     }
 
     @Override
