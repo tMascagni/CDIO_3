@@ -148,6 +148,12 @@ public class QRDetector implements ICV{
         Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
     }
 
+    public void thresholding() {
+        int thres = 120;
+        binImg = new Mat();
+        Imgproc.threshold(grayImg, binImg, thres, 255, Imgproc.THRESH_BINARY);
+    }
+
     private void addLines(Mat dst, Mat scr) {
         LineSegmentDetector lsd = Imgproc.createLineSegmentDetector();
         Mat lines = new Mat();
@@ -242,12 +248,14 @@ public class QRDetector implements ICV{
     }
 
     public double angleOfQRCode(QRImg input){
+        double A3Ratio = 1.414;
+        double oldRatio = 0.8;
         double width = input.getW();
         double height = input.getH();
         double widthNorm = width/height;
         double s = 0;
 
-        s = Math.toDegrees(Math.acos(widthNorm/0.8)); // 1 radian = 57.2957795 grader
+        s = Math.toDegrees(Math.acos(widthNorm/oldRatio)); // 1 radian = 57.2957795 grader
 
         return s;
     }

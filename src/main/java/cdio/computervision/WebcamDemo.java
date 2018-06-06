@@ -1,4 +1,7 @@
 package cdio.computervision;
+import cdio.handler.QRCodeException;
+import cdio.handler.QRCodeHandler;
+import cdio.model.QRCodeData;
 import org.opencv.core.*;
 import org.opencv.video.*;
 import org.opencv.videoio.*;
@@ -18,6 +21,7 @@ public class WebcamDemo {
    static {
       System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
    }
+
 
 
    public static void main(String[] args) throws InterruptedException {
@@ -50,7 +54,7 @@ public class WebcamDemo {
            }
            qr_codes = qrDetector.sortQR(qr_codes);
 
-
+           QRCodeHandler qrCodeHandler = new QRCodeHandler();
 
            if(qr_codes.size() > 0) {
                for(JFrame frame : windows) {
@@ -64,6 +68,14 @@ public class WebcamDemo {
 
                    Imgproc.drawContours(image, Arrays.asList(img.contour), -1, new Scalar(255, 50, 100), 4);
                    Imgproc.drawMarker(image, img.position, new Scalar(255, 10, 100), 0, 20, 5, 8);
+
+                   try {
+                       QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(qrDetector.grayImg));
+                       System.out.println(qrCodeData.toString());
+                   } catch (QRCodeException e) {
+                       e.printStackTrace();
+                   }
+
                }
            }
            else {
