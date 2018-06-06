@@ -1,12 +1,12 @@
 package cdio.main;
 
-import cdio.controller.DroneController;
-import cdio.controller.interfaces.IDroneController;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
 
 public class GUIAngleTest {
 
-    private static final IDroneController droneController = DroneController.getInstance();
+    private static final IDroneCommander droneController = DroneCommander.getInstance();
 
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame(droneController);
@@ -15,7 +15,7 @@ public class GUIAngleTest {
         try {
             droneController.startDrone();
 
-        } catch (IDroneController.DroneControllerException e) {
+        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
 

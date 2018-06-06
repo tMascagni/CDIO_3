@@ -4,7 +4,6 @@ import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.imgproc.LineSegmentDetector;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,7 +1,7 @@
-package cdio.computervision;
-import cdio.controller.DisCal;
-import cdio.handler.QRCodeException;
+package cdio.cv;
+import cdio.cv.QRImg;
 import cdio.handler.QRCodeHandler;
+import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
 import org.opencv.core.*;
 import org.opencv.video.*;
@@ -11,11 +11,8 @@ import org.opencv.imgproc.Imgproc;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class WebcamDemo {
 
@@ -56,7 +53,7 @@ public class WebcamDemo {
            }
            qr_codes = qrDetector.sortQR(qr_codes);
 
-           QRCodeHandler qrCodeHandler = new QRCodeHandler();
+           IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
            DisCal disCal = new DisCal();
 
            if(qr_codes.size() > 0) {
@@ -76,7 +73,7 @@ public class WebcamDemo {
                        QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(img.getImg()));
                        img.setQrCodeData(qrCodeData);
                        System.out.println(img.toString());
-                   } catch (QRCodeException e) {
+                   } catch (IQRCodeHandler.QRCodeHandlerException e) {
                       // e.printStackTrace();
                    }
 

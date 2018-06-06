@@ -1,24 +1,22 @@
 package cdio.drone;
 
+import cdio.cv.DisCal;
 import cdio.drone.interfaces.IDroneCommander;
-import cdio.computervision.CVHelper;
-import cdio.computervision.QRDetector;
-import cdio.computervision.QRImg;
-import cdio.controller.interfaces.IDroneController;
-import cdio.handler.QRCodeException;
+import cdio.cv.CVHelper;
+import cdio.cv.QRDetector;
+import cdio.cv.QRImg;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
+import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
 import yadankdrone.command.CommandManager;
 import yadankdrone.command.LEDAnimation;
 import yadankdrone.configuration.ConfigurationManager;
 import yadankdrone.navdata.*;
+import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import paperchase.QRCodeScanner;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -430,13 +428,13 @@ public final class DroneCommander implements IDroneCommander {
 
                     try {
 
-                            QRCodeData qrdata = setQrCodeData(qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg())));
+                            QRCodeData qrdata = qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg()));
                             if(qrdata != null){
                                 addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
                                 System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
 
-                                addMessage("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
-                                System.out.println("Result: " + qrCodeData.getResult() + ", Width: " + qrCodeData.getWidth() + ", Height: " + qrCodeData.getHeight() + ", Orientation: " + qrCodeData.getOrientation());
+                                addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
+                                System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
 
                                 addMessage("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
                                 System.out.println("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
@@ -444,18 +442,13 @@ public final class DroneCommander implements IDroneCommander {
 
                         }
 
-                    } catch (QRCodeException e) {
+                    } catch (IQRCodeHandler.QRCodeHandlerException e) {
                         e.printStackTrace();
                         addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
                         System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
                     }
     }
 
-    public QRCodeData setQrCodeData(QRCodeData qrCodeData) {
-        addMessage("QRCode res: " + qrCodeData.getResult());
-        this.qrCodeData = qrCodeData;
-        return qrCodeData;
-    }
 
     /**
      * Method to start the attitude listener.

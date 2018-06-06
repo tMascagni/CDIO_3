@@ -2,6 +2,7 @@ package cdio.cv;
 
 import org.opencv.core.*;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
