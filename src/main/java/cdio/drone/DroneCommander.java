@@ -272,7 +272,83 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public final void circleAroundObject() throws DroneCommanderException {
 
+
+        int distanceQR = 200;
+        int DegreeQR = 45;
+        int i;
+
+        hoverDrone(2000);
+
+
+        if (distanceQR <= 50){
+            flyBackward(1000);
+            hoverDrone(1000);
+        }
+
+        if (distanceQR >= 150){
+            flyForward(1000);
+            hoverDrone(1000);
+
+        }
+
+        for (i=0; i<3;i++) {
+            commandManager.spinLeft(80).doFor(150);
+            hoverDrone(1000);
+
+
+            if (DegreeQR < 0) {
+                flyLeft(1000);
+                hoverDrone(1000);
+
+            }
+
+            if (DegreeQR > 0) {
+                flyRight(1000);
+                hoverDrone(1000);
+
+            }
+        }
+
+
+
+
+       /*
+        // Flyv frem/tilbage ift distancen til QR kode
+
+        if (DistanceQR <= 50){
+            flyBackward(100);
+        }
+
+        if (DistanceQr >= 150){
+            flyForward(100);
+        }
+
+
+        // Få vinklen på QR kode
+
+        //Drej drone til ønsket Yaw
+        //Daniel er igang
+
+
+        //Flyv højre/venstre
+
+        if (DegreeQR < 0) {
+            flyLeft(100);
+        }
+
+        if (DegreeQR > 0) {
+            flyRight(100) ;
+        }
+
+
+        //Tjek værdier
+
+        */
+
     }
+
+
+
 
     /**
      * Method to make the drone fly forwards.

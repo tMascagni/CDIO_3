@@ -24,4 +24,8 @@ public final class Utils {
         return Math.pow(5976.4 * qrCodeWidth, -0.923);
     }
 
+    public static double distanceFromHeight(int qrCodeHeight) {
+        return Math.pow(48722* qrCodeHeight, -1.021);
+    }
+
 }
