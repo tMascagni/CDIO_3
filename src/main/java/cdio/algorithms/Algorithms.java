@@ -104,6 +104,7 @@ public final class Algorithms {
              * (360 grader rundt), så roterer vi hen til graden af den kode der har den
              * største højde.
              */
+
             try {
                 qrCodeData = droneCommander.getQrCodeWithGreatestHeight();
             } catch (IDroneCommander.DroneCommanderException e) {
