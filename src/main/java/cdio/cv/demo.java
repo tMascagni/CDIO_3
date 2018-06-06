@@ -28,24 +28,24 @@ public class demo {
        //init();
 
         String path = "qr_code_test/pil";
-           File folder = new File(path);
-            int j = 0;
-           for(File fileEntry : folder.listFiles()) {
-               if(fileEntry.getName().toLowerCase().contains(".jpg")) {
+        File folder = new File(path);
+        int j = 0;
+        for(File fileEntry : folder.listFiles()) {
+            if(fileEntry.getName().toLowerCase().contains(".jpg")) {
 
-                   QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
-                   ArrayList<QRImg> res = qr.processAll(qr.orgImg);
+                QRDetector qr = new QRDetector(fileEntry.getAbsolutePath());
+                ArrayList<QRImg> res = qr.processAll(qr.orgImg);
 
-                    int i = 0;
+                int i = 0;
 
-                   for(QRImg r : res) {
-                      // Imgcodecs.imwrite("/home/pil/Desktop/ringe/daniel/output/"+ i + fileEntry.getName(), r);
-                     //  double angle = qr.angleOfQRCode(r);
-                      // System.out.println("Angle: " + angle);
-                       BufferedImage buffOrgImg = cvHelper.mat2buf(r.getImg());
-                       cvHelper.displayImage(buffOrgImg); // Original img
-                       i++;
-                   }
+                for(QRImg r : res) {
+                    // Imgcodecs.imwrite("/home/pil/Desktop/ringe/daniel/output/"+ i + fileEntry.getName(), r);
+                    //  double angle = qr.angleOfQRCode(r);
+                    // System.out.println("Angle: " + angle);
+                    BufferedImage buffOrgImg = cvHelper.mat2buf(r.getImg());
+                    cvHelper.displayImage(buffOrgImg); // Original img
+                    i++;
+                }
 
                    /*
                    System.out.println("Bin img: " + qr.binImg.type());
@@ -57,9 +57,9 @@ public class demo {
                    // Show the images
                    displayImage(buffBinImg); // Converted img (black)
                    */
-               }
-               j++;
-           }
+            }
+            j++;
+        }
 
     }
 
