@@ -1,4 +1,5 @@
 package cdio.computervision;
+import cdio.controller.DisCal;
 import cdio.handler.QRCodeException;
 import cdio.handler.QRCodeHandler;
 import cdio.model.QRCodeData;
@@ -34,6 +35,7 @@ public class WebcamDemo {
        webCamView.setLayout(new FlowLayout());
        JLabel label = new JLabel();
        webCamView.add(label);
+       webCamView.setSize(720, 480);
        webCamView.setVisible(true);
        while(true) {
            Mat image = new Mat();
@@ -55,6 +57,7 @@ public class WebcamDemo {
            qr_codes = qrDetector.sortQR(qr_codes);
 
            QRCodeHandler qrCodeHandler = new QRCodeHandler();
+           DisCal disCal = new DisCal();
 
            if(qr_codes.size() > 0) {
                for(JFrame frame : windows) {
@@ -63,17 +66,18 @@ public class WebcamDemo {
                windows = new ArrayList<>();
                for(QRImg img : qr_codes) {
                    //windows.add(cvHelper.displayImage(cvHelper.mat2buf(img.getImg())));
-                   System.out.println("Angle: " + qrDetector.angleOfQRCode(img) +
-                           "\t Ratio: " + (img.getW() / img.getH()));
+                  // System.out.println("Angle: " + qrDetector.angleOfQRCode(img) +
+                   //        "\t Ratio: " + (img.getW() / img.getH()));
 
-                   Imgproc.drawContours(image, Arrays.asList(img.contour), -1, new Scalar(255, 50, 100), 4);
-                   Imgproc.drawMarker(image, img.position, new Scalar(255, 10, 100), 0, 20, 5, 8);
+                   Imgproc.drawContours(image, Arrays.asList(img.getContour()), -1, new Scalar(255, 50, 100), 4);
+                   Imgproc.drawMarker(image, img.getPosition(), new Scalar(255, 10, 100), 0, 20, 5, 8);
 
                    try {
-                       QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(qrDetector.grayImg));
-                       System.out.println(qrCodeData.toString());
+                       QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(img.getImg()));
+                       img.setQrCodeData(qrCodeData);
+                       System.out.println(img.toString());
                    } catch (QRCodeException e) {
-                       e.printStackTrace();
+                      // e.printStackTrace();
                    }
 
                }
