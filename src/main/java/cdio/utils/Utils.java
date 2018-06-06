@@ -20,8 +20,12 @@ public final class Utils {
         return instance;
     }
 
-    public static double distanceFromWidth(int qrCodeWidth) {
-        return Math.pow(5976.4 * qrCodeWidth, -0.923);
+    public double distanceFromWidth(int width) {
+        return Math.pow(5976.4 * width, -0.923);
+    }
+
+    public double distanceFromHeight(double qrCodeHeight) {
+        return Math.pow(48722 * qrCodeHeight, -1.021);
     }
 
 }

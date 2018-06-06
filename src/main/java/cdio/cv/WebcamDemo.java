@@ -57,7 +57,6 @@ public class WebcamDemo {
            qr_codes = qrDetector.sortQR(qr_codes);
 
            IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
-           DisCal disCal = new DisCal();
 
            if(qr_codes.size() > 0) {
                for(JFrame frame : windows) {

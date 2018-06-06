@@ -1,13 +1,13 @@
 package cdio.drone;
 
 import cdio.cv.CVHelper;
-import cdio.cv.DisCal;
 import cdio.cv.QRDetector;
 import cdio.cv.QRImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
+import cdio.utils.Utils;
 import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
@@ -416,8 +416,6 @@ public final class DroneCommander implements IDroneCommander {
     private void scanImageForQRCode(BufferedImage bufferedImage) {
         ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
-        DisCal disCal = new DisCal();
-
         try {
 
             QRCodeData qrdata = qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg()), this);
@@ -428,16 +426,12 @@ public final class DroneCommander implements IDroneCommander {
                 addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
                 System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
 
-                addMessage("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
-                System.out.println("Distance til QR: " + disCal.disCal(qrdata.getWidth()));
-
-
+                addMessage("Distance til QR: " + Utils.getInstance().distanceFromHeight(qrCodes.get(0).getH()));
+                System.out.println("Distance til QR: " + Utils.getInstance().distanceFromHeight(qrCodes.get(0).getH()));
             }
 
         } catch (IQRCodeHandler.QRCodeHandlerException e) {
-            e.printStackTrace();
-            addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-            System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+            // failed to scan QR code which is OK
         }
 
         this.qrImgs = qrCodes;
@@ -573,7 +567,9 @@ public final class DroneCommander implements IDroneCommander {
 
     @Override
     public List<String> getNewMessages() {
-        return messageList;
+        List<String> msgs = new ArrayList<>(messageList);
+        messageList.clear();
+        return msgs;
     }
 
     @Override

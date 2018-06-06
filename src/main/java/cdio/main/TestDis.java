@@ -26,15 +26,20 @@ public final class TestDis {
 
                 droneController.hoverDrone(8000);
 */
+
+        int timer = 200;
         while (droneController.getQrImgs().isEmpty()) {
-            System.out.println("venter på qr kode");
+            timer--;
+            if (timer == 0) {
+                System.out.println("venter på qr kode");
+                timer = 100;
+            }
         }
-        ;
 
         while (disCal.distanceFromHeight(droneController.getQrImgs().get(0).getH()) <= 100) {
             // droneController.flyForward(200);
             // droneController.hoverDrone(200);
-            droneController.addMessage("brede af QRkode:");
+            droneController.addMessage("Height af QR kode: " + droneController.getQrImgs().get(0).getH());
         }
 
         //       droneController.flyBackward(500);
