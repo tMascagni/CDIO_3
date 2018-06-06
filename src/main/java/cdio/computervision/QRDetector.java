@@ -175,9 +175,9 @@ public class QRDetector implements ICV{
                 Mat new_img = scr.clone();
                 Point p[] = {
                         new Point(0, 0),
-                        new Point(new_img.width(), 0),
-                        new Point(new_img.width(), new_img.height()),
-                        new Point(0, new_img.height())
+                        new Point(328, 0),
+                        new Point(328, 483),
+                        new Point(0, 483)
                 };
 
                 MatOfPoint2f dest_points = new MatOfPoint2f(p);
