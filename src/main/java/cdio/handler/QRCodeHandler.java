@@ -1,5 +1,6 @@
 package cdio.handler;
 
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
 import com.google.zxing.*;
@@ -41,7 +42,7 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     @Override
-    public QRCodeData scanImage(final BufferedImage image) throws QRCodeHandlerException {
+    public QRCodeData scanImage(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
         /* Try to detect QR code */
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -87,7 +88,7 @@ public class QRCodeHandler implements IQRCodeHandler {
             throw new QRCodeHandlerException("Failed to scan QR Code!");
         }
 
-        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation);
+        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
     }
 
     @Override

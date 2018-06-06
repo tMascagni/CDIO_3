@@ -4,6 +4,7 @@ import cdio.model.QRCodeData;
 import yadankdrone.IARDrone;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IDroneCommander {
     /** BASIC DRONE FUNCTIONALITY **/
@@ -17,6 +18,7 @@ public interface IDroneCommander {
     void hoverDrone() throws DroneCommanderException;
 
     QRCodeData searchForQRCode() throws DroneCommanderException;
+    void rotateDrone(int targetYaw) throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
 
     void flyForward(int distanceMilli) throws DroneCommanderException;
@@ -37,12 +39,18 @@ public interface IDroneCommander {
 
     IARDrone getDrone() throws DroneCommanderException;
 
+    QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException;
     float getPitch();
     float getRoll();
     float getYaw();
-    float getCorrectedYaw();
+    float getCorrectYaw(float yaw);
     float getAltitude();
     int getBattery();
+    int getTargetQrCode();
+    Map<Integer, QRCodeData> getQrCodeMap();
+    boolean isQrCodeTarget(int possibleTarget);
+    void incQrCodeTarget();
+    int getCorrectTargetYaw(int targetYaw);
 
     class DroneCommanderException extends Exception {
 

@@ -48,7 +48,7 @@ public class MainQRCodeTest {
 
 
         System.out.println("REAL IMAGES:");
-        System.out.println(qrCodeHandler.scanImage(imgLocal01));
+        //System.out.println(qrCodeHandler.scanImage(imgLocal01, ));
 /*
         try {
             System.out.println(handler.scanImage(imgLocal01));
