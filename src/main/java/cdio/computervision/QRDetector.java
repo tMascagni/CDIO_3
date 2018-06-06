@@ -164,6 +164,8 @@ public class QRDetector implements ICV{
             ArrayList<RotatedRect> rects = ct.findRectIfChildren(0, 4);
 
             for (RotatedRect src_point : rects) {
+                src_point.size.width *= 1.2;
+                src_point.size.height *= 1.2;
                 Mat new_img = scr.clone();
                 Point p[] = {
                         new Point(0, 0),
