@@ -24,7 +24,6 @@ public final class Algorithms {
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(5000);
 
-
             /*
              * Start med at søge efter en QR kode.
              */
@@ -37,6 +36,7 @@ public final class Algorithms {
              * korrekte QR kode. (den næste kode)
              */
             if (qrCodeData == null) {
+                droneCommander.hoverDrone(5000);
                 qrCodeData = droneCommander.searchForQRCode();
             }
 
@@ -58,9 +58,8 @@ public final class Algorithms {
                 }
 
                 if (qrCodeData1 != null) {
-                    droneCommander.rotateDrone((int) qrCodeData1.getFoundYaw());
+                    //droneCommander.rotateDrone((int) qrCodeData1.getFoundYaw());
                 }
-
 
             } else {
                 droneCommander.addMessage("qrCodeData is NOT null : correct code was found : doing nothing");

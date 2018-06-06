@@ -43,16 +43,14 @@ public interface IDroneCommander {
     float getPitch();
     float getRoll();
     float getYaw();
-    float getCorrectedYaw();
+    float getCorrectYaw(float yaw);
     float getAltitude();
     int getBattery();
     int getTargetQrCode();
     Map<Integer, QRCodeData> getQrCodeMap();
     boolean isQrCodeTarget(int possibleTarget);
     void incQrCodeTarget();
-
-
-
+    int getCorrectTargetYaw(int targetYaw);
 
     class DroneCommanderException extends Exception {
 

@@ -190,7 +190,8 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone finished hovering!");
     }
 
-    private int getCorrectTargetYaw(int targetYaw) {
+    @Override
+    public int getCorrectTargetYaw(int targetYaw) {
         if (targetYaw >= 180) {
             targetYaw = targetYaw - 360;
         } else if (targetYaw <= -180) {
@@ -199,17 +200,8 @@ public final class DroneCommander implements IDroneCommander {
         return targetYaw;
     }
 
-    private float getCorrectYaw(float yaw) {
-        if (yaw >= 180) {
-            yaw = yaw - 360;
-        } else if (yaw <= -180) {
-            yaw = 360 - yaw;
-        }
-        return yaw;
-    }
-
     @Override
-    public float getCorrectedYaw() {
+    public float getCorrectYaw(float yaw) {
         /*
         float yawCorrected = yaw; // + yawCorrection;
 
@@ -220,15 +212,14 @@ public final class DroneCommander implements IDroneCommander {
 
         return yawCorrected;
         */
+        // + yawCorrection;
 
-        float yawCorrected = yaw; // + yawCorrection;
+        if (yaw >= 180)
+            yaw = yaw - 360;
+        else if (yaw <= -180)
+            yaw = 360 - yaw;
 
-        if (yawCorrected >= 180)
-            yawCorrected = yawCorrected - 360;
-        else if (yawCorrected <= -180)
-            yawCorrected = 360 - yawCorrected;
-
-        return yawCorrected;
+        return yaw;
     }
 
 
@@ -253,14 +244,16 @@ public final class DroneCommander implements IDroneCommander {
          * Here we get a corrected targetYaw, wrapping around 180 and -180.
          *
          */
-        int targetYaw = (int) (getCorrectedYaw() + 180);
-        targetYaw = getCorrectTargetYaw(targetYaw);
+        addMessage("Start yaw: " + yaw);
+        int targetYaw = (int) (getCorrectYaw(yaw) + 180);
         addMessage("TargetYaw: " + targetYaw);
+        targetYaw = getCorrectTargetYaw(targetYaw);
+        addMessage("Corrected TargetYaw: " + targetYaw);
 
         int negativeBound = -8;
         int positiveBound = 8;
 
-        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound
+        while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             try {
@@ -606,7 +599,7 @@ public final class DroneCommander implements IDroneCommander {
         int negativeBound = -5;
         int positiveBound = 5;
 
-        while ((yaw = (getCorrectedYaw() - targetYaw)) < negativeBound
+        while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
             yaw = getCorrectYaw(yaw);
 
@@ -689,6 +682,5 @@ public final class DroneCommander implements IDroneCommander {
 
         return qrCodeMap.get(index);
     }
-
 
 }

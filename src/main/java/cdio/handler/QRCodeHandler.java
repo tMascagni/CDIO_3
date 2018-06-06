@@ -88,7 +88,7 @@ public class QRCodeHandler implements IQRCodeHandler {
             throw new QRCodeHandlerException("Failed to scan QR Code!");
         }
 
-        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation, droneCommander.getCorrectedYaw());
+        return new QRCodeData(qrCodeWidth, qrCodeHeight, qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
     }
 
     @Override
