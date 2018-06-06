@@ -1,5 +1,7 @@
 package cdio.cv;
 import cdio.cv.QRImg;
+import cdio.drone.DroneCommander;
+import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
@@ -20,6 +22,7 @@ public class WebcamDemo {
       System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
    }
 
+   private static IDroneCommander droneCommander = DroneCommander.getInstance();
 
 
    public static void main(String[] args) throws InterruptedException {
@@ -70,7 +73,7 @@ public class WebcamDemo {
                    Imgproc.drawMarker(image, img.getPosition(), new Scalar(255, 10, 100), 0, 20, 5, 8);
 
                    try {
-                       QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(img.getImg()));
+                       QRCodeData qrCodeData = qrCodeHandler.scanImage(cvHelper.mat2buf(img.getImg()), droneCommander);
                        img.setQrCodeData(qrCodeData);
                        System.out.println(img.toString());
                    } catch (IQRCodeHandler.QRCodeHandlerException e) {
