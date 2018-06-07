@@ -16,17 +16,6 @@ public class QRImg {
     private QRCodeData qrCodeData;
     private double angle;
 
-    @Override
-    public String toString() {
-        return "QRImg{" +
-                ", h=" + h +
-                ", w=" + w +
-                ", position=" + position +
-                ", qrCodeData=" + qrCodeData.toString() +
-                ", angle=" + angle +
-                '}';
-    }
-
     public QRImg(Mat img, double h, double w) {
         this.img = img;
         this.h = h;
@@ -95,6 +84,20 @@ public class QRImg {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    @Override
+    public String toString() {
+        return "QRImg{" +
+                "img=" + img +
+                ", h=" + h +
+                ", w=" + w +
+                ", distance=" + distance +
+                ", contour=" + contour +
+                ", position=" + position +
+                ", qrCodeData=" + qrCodeData +
+                ", angle=" + angle +
+                '}';
     }
 
 }

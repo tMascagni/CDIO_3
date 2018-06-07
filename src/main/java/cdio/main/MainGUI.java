@@ -15,11 +15,12 @@ public final class MainGUI {
             droneCommander.startDrone();
             droneCommander.initDrone();
 
+            /*
             int targetYaw = (int) (droneCommander.getCorrectYaw(droneCommander.getYaw()) + 180);
             droneCommander.addMessage("RAW target yaw: " + targetYaw + "");
             targetYaw = droneCommander.getCorrectTargetYaw(targetYaw);
             droneCommander.addMessage("Correct target yaw: " + targetYaw);
-
+*/
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }

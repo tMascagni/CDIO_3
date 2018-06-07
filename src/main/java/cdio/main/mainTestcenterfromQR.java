@@ -1,6 +1,5 @@
 package cdio.main;
 
-import cdio.controller.DisCal;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
