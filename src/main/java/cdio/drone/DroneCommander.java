@@ -648,15 +648,21 @@ public final class DroneCommander implements IDroneCommander {
         /*
          * If the qrCodeMap already contains QR Code data at the given mapNumber,
          * do not update it, since we don't want to overwrite it.
+         *
+         * Only overwrite it, if the angle of the new QRImg is smaller than the
+         * previous QRImg, since that means we have a new, more centered, image of the
+         * same QRCode.
          */
         if (qrCodeMap.get(mapNumber) != null) {
-            return;
+            // If the angle of the new image is smaller than the
+            // previous image angle, then update it, since it is a better picture.
+            if (qrImg.getAngle() < qrCodeMap.get(mapNumber).getAngle()) {
+                qrCodeMap.put(mapNumber, qrImg);
+            }
         }
 
         /*
          * If the map does not contain it already, then put it into the map.
-         *
-         * TODO: Update the data is the height is larger than the previous data.
          */
         qrCodeMap.putIfAbsent(mapNumber, qrImg);
     }
