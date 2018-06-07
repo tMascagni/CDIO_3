@@ -250,7 +250,7 @@ public final class DroneCommander implements IDroneCommander {
                     if (isQrCodeTarget(qrCodeResult)) {
                         updateQrCodeMapData(qrCodeResult, qrImg);
                         incQrCodeTarget(); // TODO: Do this after the ring has been passed.
-                        addMessage("Found correct QR code: " + qrCodeResult);
+                        addMessage("Found correct QR code: " + qrCodeResult + ". New QR Code target: " + targetQrCode);
                         return qrImg;
                         // TODO: Fly to the code.
                         // clear the map after the drone has flown through the ring.
@@ -258,7 +258,7 @@ public final class DroneCommander implements IDroneCommander {
                     } else {
                         // FOUND QR CODE, BUT NOT TARGET!
                         updateQrCodeMapData(qrCodeResult, qrImg);
-                        addMessage("Found incorrect QR code: " + qrCodeResult);
+                        addMessage("Found incorrect QR code: " + qrCodeResult + ". Correct QR code: " + targetQrCode);
                         continue;
                     }
                 }
@@ -531,15 +531,59 @@ public final class DroneCommander implements IDroneCommander {
             public void imageUpdated(BufferedImage bufferedImage) {
                 latestReceivedImage = bufferedImage;
 
+                /*
                 if (isQRCodeScanningEnabled) {
                     qrScanTimer--;
                     if (qrScanTimer == 0) {
                         qrScanTimer = INITIAL_QR_SCAN_TIMER;
-                        //scanImageForQRCode(bufferedImage);
+                        scanImageForQRCode(bufferedImage);
                     }
                 } else if (isRingScanningEnabled) {
                     // søg efter ringe
                 }
+                */
+
+
+                /*
+                try {
+                    QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, DroneCommander.this);
+
+                    if (qrImg != null && qrImg.getQrCodeData() != null) {
+
+                        int qrCodeResult = qrImg.getQrCodeData().getResult();
+
+                        // QR CODE TARGET FOUND!
+                        if (isQrCodeTarget(qrCodeResult)) {
+                            updateQrCodeMapData(qrCodeResult, qrImg);
+                            incQrCodeTarget(); // TODO: Do this after the ring has been passed.
+                            addMessage("Found correct QR code: " + qrCodeResult);
+                            addMessage("New Target QR: " + targetQrCode);
+                            addMessage(qrCodeMap.toString());
+                            QRImg heightQR = getQrCodeWithGreatestHeight();
+                            addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
+                            //return qrImg;
+                            // TODO: Fly to the code.
+                            // clear the map after the drone has flown through the ring.
+                            // qrCodeMap.clear();
+                        } else {
+                            // FOUND QR CODE, BUT NOT TARGET!
+                            updateQrCodeMapData(qrCodeResult, qrImg);
+                            addMessage("Found incorrect QR code: " + qrCodeResult + ", Target: " + targetQrCode);
+                            addMessage(qrCodeMap.toString());
+                            QRImg heightQR = getQrCodeWithGreatestHeight();
+                            addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
+                            //continue;
+                        }
+                    }
+
+                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                    // no qr detected which is fine.
+                } catch (DroneCommanderException e) {
+                    e.printStackTrace();
+                }
+                */
+
+
             }
         });
     }

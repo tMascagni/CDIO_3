@@ -86,6 +86,10 @@ public class QRImg {
         this.distance = distance;
     }
 
+    public boolean isQRCodeRead() {
+        return qrCodeData != null;
+    }
+
     @Override
     public String toString() {
         return "QRImg{" +
