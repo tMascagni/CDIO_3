@@ -41,32 +41,23 @@ public final class Algorithms {
                 qrImg = droneCommander.searchForQRCode();
             }
 
-            /*
+
             if (qrImg == null) {
-                droneCommander.addMessage("qrImg is null! : correct code was not found : rotating to first code in list ");
+                droneCommander.addMessage("qrImg is null : correct code was not found : rotating to tallest QR code!");
                 // still null after rotation
-                for (int key : droneCommander.getQrCodeMap().keySet()) {
-                    QRImg qrImgObj = droneCommander.getQrCodeMap().get(key);
 
-                    if (qrImgObj != null) {
-                        qrImg = qrImgObj;
-                        droneCommander.addMessage("Rotating to: " + qrImg.getQrCodeData().getFoundYaw());
-                        break;
-                    }
+                QRImg qrImgHeight = droneCommander.getQrCodeWithGreatestHeight();
 
+                if (qrImgHeight != null && qrImgHeight.getQrCodeData() != null) {
+                    droneCommander.rotateDrone((int) qrImgHeight.getQrCodeData().getFoundYaw());
+                } else {
+                    droneCommander.addMessage("Not rotating because... no idea why.");
                 }
 
-              */
-                /*
-                if (qrImg != null || qrImg.getQrCodeData() != null) {
-                    //droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
-                }
-                */
-/*
-        } else{
-            droneCommander.addMessage("qrImg is NOT null : correct code was found : doing nothing");
-        }
-*/
+            } else {
+                droneCommander.addMessage("qrImg is NOT null : correct code was found : doing nothing");
+            }
+
             droneCommander.hoverDrone(5000);
             droneCommander.landDrone();
             droneCommander.stopDrone();
