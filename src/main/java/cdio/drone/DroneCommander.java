@@ -785,4 +785,7 @@ public final class DroneCommander implements IDroneCommander {
         return battery;
     }
 
+    public BufferedImage getLatestReceivedImage() {
+        return latestReceivedImage;
+    }
 }

@@ -4,6 +4,7 @@ import cdio.cv.QRImg;
 import cdio.model.QRCodeData;
 import yadankdrone.IARDrone;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +70,7 @@ public interface IDroneCommander {
     int getMinAltitude();
     int getMaxAltitude();
     int getBattery();
+    BufferedImage getLatestReceivedImage();
 
     class DroneCommanderException extends Exception {
 
