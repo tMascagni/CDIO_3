@@ -709,6 +709,59 @@ public final class DroneCommander implements IDroneCommander {
 
     }
 
+    public void flyUpToAltitude(int altitude) {
+        while (getAltitude() <= altitude) {
+            flyUp(350);
+        }
+    }
+
+    public void flyDownToAltitude(int altitude) {
+        while (getAltitude() >= altitude) {
+            flyDown(350);
+        }
+    }
+
+    public Boolean flyToTagetQRCode(QRCodeHandler qrCodeHandler, Boolean centerOnTheWay) throws IQRCodeHandler.QRCodeHandlerException {
+        QRImg qrImg = null;
+
+        int count = 0;
+        while (qrImg == null) {
+            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+            count++;
+            if (count >= 1000) {
+                addMessage("Kunne ikke finde en QR-kode at flyve til!");
+                return false;
+            }
+        }
+
+        double dist = qrImg.getDistance();
+
+        while (dist > 80) {
+
+            addMessage("Inflyver til Qr-kode -> Distance til QR-kode: " + dist);
+
+            flyForward(400);
+
+            if (centerOnTheWay) {
+                adjustToCenterFromQR();
+            }
+
+            hoverDrone(200);
+
+            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+
+            dist = qrImg.getDistance();
+        }
+
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Ankommet til QR-kode:" + qrImg.getQrCodeData().toString() + ", med en Distance til QR koden på: " + dist);
+        } else {
+            addMessage("Ankommet til QR-kode, med en Distance til QR koden på: " + dist);
+        }
+
+        return true;
+    }
+
     /**************************
      * QR Code Mapping Methods
      **************************/
