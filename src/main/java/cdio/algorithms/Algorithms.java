@@ -110,6 +110,7 @@ public final class Algorithms {
 
             try {
                 qrImg = droneCommander.getQrCodeWithGreatestHeight();
+                droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
             } catch (IDroneCommander.DroneCommanderException e) {
                 // Hvis denne exception forekommer, er det fordi at der
                 // aldrig er blevet fundet nogle QR koder i begge rotationer.
