@@ -1,29 +1,25 @@
 package cdio.drone.interfaces;
 
 import cdio.cv.QRImg;
-import cdio.handler.QRCodeHandler;
-import cdio.handler.interfaces.IQRCodeHandler;
 import yadankdrone.IARDrone;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public interface IDroneCommander {
-    /** BASIC DRONE FUNCTIONALITY **/
+    /***************************
+     * BASIC DRONE FUNCTIONALITY
+     ***************************/
     void startDrone() throws DroneCommanderException;
-    void initDrone() throws DroneCommanderException;
     void stopDrone() throws DroneCommanderException;
+    void initDrone() throws DroneCommanderException;
+    void resetDrone() throws DroneCommanderException;
 
     void takeOffDrone() throws DroneCommanderException;
     void landDrone() throws DroneCommanderException;
     void hoverDrone(int timeMillis) throws DroneCommanderException;
     void hoverDrone() throws DroneCommanderException;
-
-    QRImg searchForQRCode() throws DroneCommanderException, IQRCodeHandler.QRCodeHandlerException;
-    void rotateDrone(int targetYaw) throws DroneCommanderException;
-    void circleAroundObject() throws DroneCommanderException;
 
     void flyForward(int distanceMilli) throws DroneCommanderException;
     void flyBackward(int distanceMilli) throws DroneCommanderException;
@@ -31,40 +27,32 @@ public interface IDroneCommander {
     void flyDown(int distanceMilli) throws DroneCommanderException;
     void flyLeft(int distanceMilli) throws DroneCommanderException;
     void flyRight(int distanceMilli) throws DroneCommanderException;
-
-    void adjustToCenterFromQR() throws DroneCommanderException, IQRCodeHandler.QRCodeHandlerException;
-
-    void setSpeed(int speed) throws DroneCommanderException;
-    int getSpeed() throws DroneCommanderException;
-    void resetDrone() throws DroneCommanderException;
-
-    void addMessage(String msg);
-    List<String> getNewMessages();
-
-    void flyDroneTest(double distance);
-    Boolean flyToTagetQRCode(QRCodeHandler qrCodeHandler, Boolean centerOnTheWay) throws IQRCodeHandler.QRCodeHandlerException;
     void flyUpToAltitude(int altitude);
     void flyDownToAltitude(int altitude);
 
+    QRImg searchForQRCode() throws DroneCommanderException;
+    void circleAroundObject() throws DroneCommanderException;
+    void rotateDrone(int targetYaw) throws DroneCommanderException;
+    void adjustToCenterFromQR() throws DroneCommanderException;
+    boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;
+
+    /************************
+     * MESSAGES
+     ***********************/
+    void addMessage(String msg);
+    List<String> getNewMessages();
+
+    /************************
+     * GETTERS & SETTERS
+     ***********************/
+    void setSpeed(int speed);
+    int getSpeed();
     IARDrone getDrone() throws DroneCommanderException;
-
-    /* QR Code Mapping */
-    void updateQrCodeMapData(int mapNumber, QRImg qrImg) throws DroneCommanderException;
-    QRImg getQrCodeWithGreatestHeight() throws DroneCommanderException;
-    int getTargetQrCode();
-    Map<Integer, QRImg> getQrCodeMap();
-    boolean isQrCodeTarget(int possibleTarget);
-    void incQrCodeTarget();
-
-    /* OpenCV */
-    ArrayList<QRImg> getQrImgs();
-
-
-    /* Getters and setters */
     boolean isQRCodeScanningEnabled();
     void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled);
     boolean isRingScanningEnabled();
     void setRingScanningEnabled(boolean isRingScanningEnabled);
+
     float getPitch();
     float getRoll();
     float getYaw();
@@ -75,6 +63,16 @@ public interface IDroneCommander {
     int getMaxAltitude();
     int getBattery();
     BufferedImage getLatestReceivedImage();
+
+    /*******************
+     * QR CODE MAPPING
+     ********************/
+    void updateQRMap(int qrNumber, QRImg qrImg) throws DroneCommanderException;
+    QRImg getTallestQRCode() throws DroneCommanderException;
+    int getTargetQRCode();
+    Map<Integer, QRImg> getQRMap();
+    boolean isQRCodeTarget(int target);
+    void incQRCodeTarget();
 
     class DroneCommanderException extends Exception {
 

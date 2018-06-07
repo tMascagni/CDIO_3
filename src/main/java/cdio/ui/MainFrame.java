@@ -135,26 +135,22 @@ public final class MainFrame extends JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                try {
-                    statusPanel.setPitch((int) droneCommander.getPitch());
-                    statusPanel.setRoll((int) droneCommander.getRoll());
-                    statusPanel.setYaw((int) droneCommander.getYaw());
-                    statusPanel.setCorrectedYaw((int) droneCommander.getCorrectYaw(droneCommander.getYaw()));
-                    statusPanel.setAltitude((int) droneCommander.getAltitude());
-                    statusPanel.setBattery(droneCommander.getBattery());
-                    statusPanel.setSpeed(droneCommander.getSpeed());
+                statusPanel.setPitch((int) droneCommander.getPitch());
+                statusPanel.setRoll((int) droneCommander.getRoll());
+                statusPanel.setYaw((int) droneCommander.getYaw());
+                statusPanel.setCorrectedYaw((int) droneCommander.getCorrectYaw(droneCommander.getYaw()));
+                statusPanel.setAltitude((int) droneCommander.getAltitude());
+                statusPanel.setBattery(droneCommander.getBattery());
+                statusPanel.setSpeed(droneCommander.getSpeed());
 
-                    List<String> messages = droneCommander.getNewMessages();
+                List<String> messages = droneCommander.getNewMessages();
 
-                    for (String str : messages) {
-                        commandPanel.appendText("############### Drone Command ###############");
-                        commandPanel.appendText(str);
-                    }
-
-                    messages.clear();
-                } catch (IDroneCommander.DroneCommanderException e) {
-                    e.printStackTrace();
+                for (String str : messages) {
+                    commandPanel.appendText("############### Drone Command ###############");
+                    commandPanel.appendText(str);
                 }
+
+                messages.clear();
             }
         }, 0, 100);
     }

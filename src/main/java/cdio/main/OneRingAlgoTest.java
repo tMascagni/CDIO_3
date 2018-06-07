@@ -21,27 +21,22 @@ public class OneRingAlgoTest {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
 
-        try {
-            droneCommander.startDrone();
-            droneCommander.initDrone();
-            droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(5000);
-            while (droneCommander.getLatestReceivedImage() == null) ; // venter på videofeed
+        droneCommander.startDrone();
+        droneCommander.initDrone();
+        droneCommander.takeOffDrone();
+        droneCommander.hoverDrone(5000);
+        while (droneCommander.getLatestReceivedImage() == null) ; // venter på videofeed
 
-            droneCommander.adjustToCenterFromQR();
+        droneCommander.adjustToCenterFromQR();
 
-            droneCommander.flyToTagetQRCode((QRCodeHandler) qrCodeHandler, true); // fly hen til ring
+        droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
-            droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
+        droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
 
-            droneCommander.flyForward(3000); // flyv gennem ringen
+        droneCommander.flyForward(3000); // flyv gennem ringen
 
-            droneCommander.hoverDrone(2000);
-            droneCommander.landDrone();
-
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
-            e.printStackTrace();
-        }
+        droneCommander.hoverDrone(2000);
+        droneCommander.landDrone();
 
     }
 }

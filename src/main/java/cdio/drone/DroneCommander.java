@@ -1,7 +1,5 @@
 package cdio.drone;
 
-import cdio.cv.CVHelper;
-import cdio.cv.QRDetector;
 import cdio.cv.QRImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
@@ -23,47 +21,50 @@ import java.util.Map;
 
 public final class DroneCommander implements IDroneCommander {
 
+    /* Native library link for OpenCV. */
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    private final int MAX_ALTITUDE = 2500; /* millimeters. */
-    private final int MIN_ALTITUDE = 1000; /* millimeters. */
+    /*
+     * Global fields for the DroneCommander.
+     */
+    private final int MAX_ALTITUDE = 2500;            /* millimeters. */
+    private final int MIN_ALTITUDE = 1000;            /* millimeters. */
 
-    private final int MAX_SPEED = 100; /* percentage (%) */
-    private final int MIN_SPEED = 10;  /* percentage (%) */
+    private final int MAX_SPEED = 100;                /* percentage (%) */
+    private final int MIN_SPEED = 10;                 /* percentage (%) */
 
-    private final int INITIAL_SPEED = 20; /* In %, speed goes from 0 to 100. */
+    private final int INITIAL_SPEED = 20;             /* In %, speed goes from 0 to 100. */
     private final int LANDING_SPEED = 20;
 
-    private float pitch, roll, yaw;
-    private float altitude;
-    private int battery;
+    private float pitch, roll, yaw, altitude;         /* Drone data. */
+    private int battery;                              /* Drone battery. */
 
-    private final IARDrone drone;
+    private final IARDrone drone;                     /* Yadankdrone, drone object. */
 
-    private final CommandManager commandManager;
+    private final CommandManager commandManager;      /* Drone managers. */
     private final VideoManager videoManager;
     private final NavDataManager navDataManager;
 
     private final IQRCodeHandler qrCodeHandler = QRCodeHandler.getInstance();
-    private BufferedImage latestReceivedImage;
 
-    private List<String> messageList = new ArrayList<>();
+    private int targetQrCode = 0;                     /* Current target QR code, 0, 1, 2, 3, ..., 7. */
+    private Map<Integer, QRImg> qrCodeMap = new HashMap<>(); /* Code mapping. 0 to 7. */
 
-    private int targetQrCode = 0;
-    private Map<Integer, QRImg> qrCodeMap = new HashMap<>();
+    private boolean isQRCodeScanningEnabled = false;  /* Always scans for QR codes if true. */
+    private boolean isRingScanningEnabled = false;    /* Always scans for rings if true. */
 
-    private ArrayList<QRImg> qrImgs = new ArrayList<>();
+    private BufferedImage latestReceivedImage;        /* Latest received image from the camera. */
 
-    private static IDroneCommander instance;
+    private List<String> messageList = new ArrayList<>(); /* A list (queue) with all the recent
+                                                             messages from the commander. */
 
-    private boolean isQRCodeScanningEnabled = true;
-    private boolean isRingScanningEnabled = false;
+    private static IDroneCommander instance;              /* Singleton DroneCommander object. */
 
-    private QRDetector qrDetector = new QRDetector();
-    private CVHelper cvHelper = new CVHelper();
-
+    /**
+     * Static block that instantiates the Singleton instance.
+     */
     static {
         try {
             instance = new DroneCommander();
@@ -72,54 +73,83 @@ public final class DroneCommander implements IDroneCommander {
         }
     }
 
+    /**
+     * Default constructor. Private since we don't
+     * want the commander to be instantiated.
+     * <p>
+     * Used to initialize commander objects
+     * and start various initializing routines.
+     */
     private DroneCommander() {
-        /* Instantiate Drone object */
+        /* Instantiate Drone object. */
         drone = new ARDrone();
         drone.reset();
 
-        /* Instantiate manager objects */
+        /* Instantiate manager objects. */
         commandManager = drone.getCommandManager();
         videoManager = drone.getVideoManager();
         navDataManager = drone.getNavDataManager();
 
-        /* Start listeners */
-        startAcceleroListener();
+        /* Start listeners. */
         startAttitudeListener();
         startAltitudeListener();
         startBatteryListener();
         startImageListener();
 
-        /* Initialize QR code map */
-        initQrCodeMap();
+        /* Initialize QR map. */
+        initQRMap();
     }
 
     /**
-     * Singleton instance getter method.
+     * Getter for the Singleton commander instance.
+     *
+     * @return The Singleton IDroneCommander instance.
      */
     public static synchronized IDroneCommander getInstance() {
         return instance;
     }
 
     /**
-     * Method to start the drone.
-     * NOTICE: This method does not make the drone fly, only turns it on.
+     * Starts the drone, establishes connection, etc.
+     * <p>
+     * NOTICE: Safe method, does not make the take flight.
      */
     @Override
     public final void startDrone() {
         addMessage("Drone starting...");
+        setLEDAnimation(LEDAnimation.BLINK_GREEN, 3, 5);
 
-        setLEDAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
         /* Start the drone */
         drone.start();
         /* Wait to settle for commands... */
-        sleep(2000);
+        sleep(1000);
 
+        setLEDAnimation(LEDAnimation.BLANK, 1, 1);
         addMessage("Drone started!");
     }
 
     /**
-     * Method to initialize the drone.
-     * This method should be called before flying.
+     * Stops the drone.
+     * <p>
+     * NOTICE: This stops the drone, it does not make the drone fly.
+     * DO NOT use this method while the drone is in flight.
+     */
+    @Override
+    public final void stopDrone() {
+        addMessage("Drone stopping...");
+        setLEDAnimation(LEDAnimation.BLINK_RED, 3, 5);
+
+        drone.stop();
+        sleep(1000);
+
+        setLEDAnimation(LEDAnimation.BLANK, 1, 1);
+        addMessage("Drone stopped!");
+    }
+
+    /**
+     * Initializes the drone. Sets the max/min altitudes, speed, etc.
+     * <p>
+     * NOTICE: Safe method, does not make the drone take flight.
      */
     @Override
     public final void initDrone() {
@@ -129,60 +159,70 @@ public final class DroneCommander implements IDroneCommander {
         commandManager.setMinAltitude(MIN_ALTITUDE);
         commandManager.setMaxAltitude(MAX_ALTITUDE);
         /* Wait to settle for commands... */
-        sleep(2000);
+        sleep(1000);
 
         addMessage("Drone initialized!");
     }
 
     /**
-     * Method to stop the drone.
-     * NOTICE: This method does NOT land the drone. It only stops it/turns it off.
+     * Resets the drone.
+     * <p>
+     * NOTICE: DO NOT CALL this method while the drone is in flight. It will fall down!
      */
     @Override
-    public final void stopDrone() {
-        addMessage("Drone stopping...");
+    public final void resetDrone() {
+        addMessage("Resetting drone...");
 
-        setLEDAnimation(LEDAnimation.BLINK_RED, 3, 10);
-        drone.stop();
+        drone.reset();
         sleep(1000);
 
-        addMessage("Drone stopped!");
+        addMessage("Drone reset!");
     }
 
     /**
-     * Method to make the drone take off.
+     * Makes the drone take off. The drone takes flight and stays in its place.
+     * <p>
+     * NOTICE: The drone will take flight.
      */
     @Override
     public final void takeOffDrone() {
         addMessage("Drone taking off...");
+        setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 5);
 
-        setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
         commandManager.setOutdoor(false, true);
         commandManager.flatTrim();
         /* Wait to settle for commands... */
         sleep(1000);
         commandManager.takeOff().doFor(200);
 
+        setLEDAnimation(LEDAnimation.BLANK, 1, 1);
         addMessage("Drone taken off!");
     }
 
     /**
-     * Method to make the drone land.
+     * Lands the drone.
+     * <p>
+     * NOTICE: This makes the drone land wherever it currently is.
+     * Make sure its a safe place!
      */
     @Override
     public final void landDrone() {
         addMessage("Drone landing...");
+        setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 5);
 
-        setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
         setSpeed(LANDING_SPEED);
         sleep(500);
         commandManager.landing().doFor(200);
 
+        setLEDAnimation(LEDAnimation.BLANK, 1, 1);
         addMessage("Drone landed!");
     }
 
     /**
-     * Method to make the drone hover for timeMillis ms.
+     * Make the drone hover and stay in its place,
+     * for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should hover.
      */
     @Override
     public final void hoverDrone(int timeMillis) {
@@ -194,7 +234,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     /**
-     * Method to make the drone hover.
+     * Hovers the drone until further commands.
      */
     @Override
     public void hoverDrone() {
@@ -205,12 +245,140 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone finished hovering!");
     }
 
-
     /**
-     * Method to make the drone rotate to a target yaw.
+     * Makes the drone fly forward for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly forward.
      */
     @Override
-    public final QRImg searchForQRCode() throws IQRCodeHandler.QRCodeHandlerException {
+    public final void flyForward(int timeMillis) {
+        addMessage("Drone flying forward for " + timeMillis + " ms...");
+
+        commandManager.forward(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying forward!");
+    }
+
+    /**
+     * Makes the drone fly backward for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly backward.
+     */
+    @Override
+    public final void flyBackward(int timeMillis) {
+        addMessage("Drone flying backward for " + timeMillis + " ms...");
+
+        commandManager.backward(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying backward!");
+    }
+
+    /**
+     * Makes the drone fly upwards for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly upwards.
+     */
+    @Override
+    public final void flyUp(int timeMillis) {
+        addMessage("Drone flying upwards for " + timeMillis + " ms...");
+
+        commandManager.up(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying upwards!");
+    }
+
+    /**ar
+     * Makes the drone fly downwards for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly downwards.
+     */
+    @Override
+    public final void flyDown(int timeMillis) {
+        addMessage("Drone flying downwards for " + timeMillis + " ms...");
+
+        commandManager.down(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying downwards!");
+    }
+
+    /**
+     * Makes the drone fly left for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly left.
+     */
+    @Override
+    public final void flyLeft(int timeMillis) {
+        addMessage("Drone flying left for " + timeMillis + " ms...");
+
+        commandManager.goLeft(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying left!");
+    }
+
+    /**
+     * Makes the drone fly right for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the drone should fly right.
+     */
+    @Override
+    public final void flyRight(int timeMillis) {
+        addMessage("Drone flying right for " + timeMillis + " ms...");
+
+        commandManager.goRight(INITIAL_SPEED).doFor(timeMillis);
+        sleep(100);
+
+        addMessage("Drone done flying right!");
+    }
+
+    /**
+     * Makes the drone fly upwards until it has reached
+     * a specific altitude.
+     *
+     * @param altitude The target altitude for the drone.
+     */
+    @Override
+    public void flyUpToAltitude(int altitude) {
+        addMessage("Flying upwards to altitude: " + altitude + "...");
+
+        while (getAltitude() <= altitude)
+            flyUp(350);
+
+        addMessage("Done flying upwards to altitude: " + altitude + "!");
+    }
+
+    /**
+     * Makes the drone fly downwards until it has reached
+     * a specific altitude.
+     *
+     * @param altitude The target altitude for the drone.
+     */
+    @Override
+    public void flyDownToAltitude(int altitude) {
+        addMessage("Flying downwards to altitude: " + altitude + "...");
+
+        while (getAltitude() >= altitude)
+            flyDown(350);
+
+        addMessage("Done flying downwards to altitude: " + altitude + "!");
+    }
+
+    /**
+     * Makes the drone rotate 180 degrees right, scanning for QR codes meanwhile,
+     * and maps them giving the yaw they've been found at.
+     * <p>
+     * If the targeted QR code is found, it is returned. If the target QR code is not found,
+     * null is returned.
+     *
+     * @return QRImg if correct QR code is scanned and read, null if not.
+     * @throws DroneCommanderException Currently not used.
+     */
+    @Override
+    public final QRImg searchForQRCode() throws DroneCommanderException {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -241,29 +409,32 @@ public final class DroneCommander implements IDroneCommander {
 
             if (latestReceivedImage != null) {
 
-                    QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                QRImg qrImg = null;
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                    //??
+                }
 
-                    if (qrImg != null && qrImg.getQrCodeData() != null) {
+                if (qrImg != null && qrImg.getQrCodeData() != null) {
 
-                        int qrCodeResult = qrImg.getQrCodeData().getResult();
+                    int qrCodeResult = qrImg.getQrCodeData().getResult();
 
-                        // QR CODE TARGET FOUND!
-                        if (isQrCodeTarget(qrCodeResult)) {
-                            updateQrCodeMapData(qrCodeResult, qrImg);
-                            incQrCodeTarget(); // TODO: Do this after the ring has been passed.
-                            addMessage("Found correct QR code: " + qrCodeResult + ", Yaw: " + yaw + ", New QR Code target: " + targetQrCode);
-                            return qrImg;
-                            // TODO: Fly to the code.
-                            // clear the map after the drone has flown through the ring.
-                            // qrCodeMap.clear();
-                        } else {
-                            // FOUND QR CODE, BUT NOT TARGET!
-                            updateQrCodeMapData(qrCodeResult, qrImg);
-                            addMessage("Found incorrect QR code: " + qrCodeResult + ", Yaw: " + yaw + ", Correct QR code: " + targetQrCode);
-                            continue;
-                        }
-
-
+                    // QR CODE TARGET FOUND!
+                    if (isQRCodeTarget(qrCodeResult)) {
+                        updateQRMap(qrCodeResult, qrImg);
+                        incQRCodeTarget(); // TODO: Do this after the ring has been passed.
+                        addMessage("Found correct QR code: " + qrCodeResult + ", Yaw: " + yaw + ", New QR Code target: " + targetQrCode);
+                        return qrImg;
+                        // TODO: Fly to the code.
+                        // clear the map after the drone has flown through the ring.
+                        // qrCodeMap.clear();
+                    } else {
+                        // FOUND QR CODE, BUT NOT TARGET!
+                        updateQRMap(qrCodeResult, qrImg);
+                        addMessage("Found incorrect QR code: " + qrCodeResult + ", Yaw: " + yaw + ", Correct QR code: " + targetQrCode);
+                        continue;
+                    }
                 }
             }
 
@@ -277,114 +448,78 @@ public final class DroneCommander implements IDroneCommander {
             sleep(500);
         }
 
+        addMessage("Did not find any QR code.");
         return null;
     }
 
+    /**
+     * Undefined functionality. :)
+     *
+     * @throws DroneCommanderException
+     */
     @Override
-    public final void circleAroundObject() {
+    public final void circleAroundObject() throws DroneCommanderException {
 
     }
 
     /**
-     * Method to make the drone fly forwards.
+     * Make the drone rotate right until it has reached the target yaw.
+     *
+     * @param targetYaw The yaw the drone should rotate to.
+     * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public final void flyForward(int timeMillis) {
-        addMessage("Drone flying forward for " + timeMillis + " ms...");
+    public void rotateDrone(int targetYaw) throws DroneCommanderException {
+        targetYaw = getCorrectTargetYaw(targetYaw);
+        addMessage("Rotating to targetYaw: " + targetYaw + "...");
 
-        commandManager.forward(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying forward!");
-    }
-
-    public void flyDroneTest(double dist) {
-        while (dist > 50) {
-            try {
-                commandManager.forward(INITIAL_SPEED);
-                dist = dist - 100; // Dronen er flyttet ca. 1 meter
-                Thread.sleep(1000);
-            } catch (InterruptedException ignored) {
-
-            }
+        if (targetYaw < 0) {
+            targetYaw -= 20;
+        } else {
+            targetYaw += 20;
         }
+
+        targetYaw = getCorrectTargetYaw(targetYaw);
+
+        int negativeBound = -5;
+        int positiveBound = 5;
+
+        while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
+                || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+            yaw = getCorrectYaw(yaw);
+
+            commandManager.hover().doFor(50);
+
+            commandManager.spinRight(80).doFor(40);
+            commandManager.spinLeft(80).doFor(20);
+
+            commandManager.hover().doFor(50);
+        }
+
+        addMessage("Done rotating to targetYaw: " + targetYaw + "!");
     }
 
     /**
-     * Method to make the drone fly backwards.
+     * Attempts to scan for QR codes, if found, the drone
+     * will be centered right across from the QR code.
+     *
+     * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public final void flyBackward(int timeMillis) {
-        addMessage("Drone flying backward for " + timeMillis + " ms...");
+    public void adjustToCenterFromQR() throws DroneCommanderException {
+        addMessage("Centering on QR code...");
 
-        commandManager.backward(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying backward!");
-    }
-
-    /**
-     * Method to make the drone fly upwards.
-     */
-    @Override
-    public final void flyUp(int timeMillis) {
-        addMessage("Drone flying upwards for " + timeMillis + " ms...");
-
-        commandManager.up(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying upwards!");
-    }
-
-    /**
-     * Method to make the drone fly downwards.
-     */
-    @Override
-    public final void flyDown(int timeMillis) {
-        addMessage("Drone flying downwards for " + timeMillis + " ms...");
-
-        commandManager.down(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying downwards!");
-    }
-
-    /**
-     * Method to make the drone fly left.
-     */
-    @Override
-    public final void flyLeft(int timeMillis) {
-        addMessage("Drone flying left for " + timeMillis + " ms...");
-
-        commandManager.goLeft(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying left!");
-    }
-
-    /**
-     * Method to make the drone fly right.
-     */
-    @Override
-    public final void flyRight(int timeMillis) {
-        addMessage("Drone flying right for " + timeMillis + " ms...");
-
-        commandManager.goRight(INITIAL_SPEED).doFor(timeMillis);
-        sleep(100);
-
-        addMessage("Drone done flying right!");
-    }
-
-    public void adjustToCenterFromQR() throws IQRCodeHandler.QRCodeHandlerException {
         int centerOfFrameX = latestReceivedImage.getWidth() / 2;
         QRImg qrImg = null;
 
         do {
-
             do {
-                qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                    e.printStackTrace();
+                }
             } while (qrImg == null);
-
 
             if (qrImg.getPosition().x > centerOfFrameX) {
                 flyRight(200);
@@ -396,41 +531,129 @@ public final class DroneCommander implements IDroneCommander {
             sleep(500);
 
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+
+        addMessage("Centered on QR code! : QR code: " + qrImg.getQrCodeData().getResult());
     }
 
+    /**
+     * Makes the drone fly forward until it is right infront of a scanned QR code.
+     *
+     * @param centerOnTheWay Should the drone center infront of the QR code?
+     * @return True if infront of QR code, false if not.
+     * @throws DroneCommanderException Thrown if any errors occur.
+     */
+    @Override
+    public boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException {
+        QRImg qrImg = null;
+
+        int count = 0;
+        while (qrImg == null) {
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                e.printStackTrace();
+            }
+
+            count++;
+            if (count >= 1000) {
+                addMessage("Could not find any QR code to fly to!");
+                return false;
+            }
+        }
+
+        double dist = qrImg.getDistance();
+
+        while (dist > 80) {
+
+            addMessage("Flying to QR code. Distance: " + dist);
+
+            flyForward(400);
+
+            if (centerOnTheWay) {
+                adjustToCenterFromQR();
+            }
+
+            hoverDrone(200);
+
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                e.printStackTrace();
+            }
+
+            dist = qrImg.getDistance();
+        }
+
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Reached QR code: " + qrImg.getQrCodeData().toString() + ". Distance: " + dist);
+        } else {
+            addMessage("Reached QR code. Not read. Distance: " + dist);
+        }
+
+        return true;
+    }
+
+    /******************************************************
+     *                     MESSAGES
+     ******************************************************/
+
+    /**
+     * Adds a message to the GUI message queue list.
+     *
+     * @param msg The message to be added to the queue.
+     */
+    @Override
+    public void addMessage(String msg) {
+        messageList.add(msg);
+    }
+
+    /**
+     * Get all the new messages from the queue.
+     *
+     * @return All the messages that haven't been shown to the GUI so far.
+     */
+    @Override
+    public List<String> getNewMessages() {
+        List<String> msgs = new ArrayList<>(messageList);
+        messageList.clear();
+        return msgs;
+    }
+
+    /******************************************************
+     *                 GETTERS & SETTERS
+     ******************************************************/
+
+    /**
+     * Returns the current speed of the drone.
+     *
+     * @return Current speed of the drone.
+     */
     @Override
     public int getSpeed() {
         return drone.getSpeed();
     }
 
+    /**
+     * Sets the speed of the drone. (10-100%)
+     *
+     * @param speed Desired speed of the drone.
+     */
     @Override
     public void setSpeed(int speed) {
-
         if (speed > MAX_SPEED || speed < MIN_SPEED) {
             addMessage("Attempted to set illegal drone speed: " + speed + "!");
             return;
         }
 
         drone.setSpeed(speed);
-
-        addMessage("Sat drone speed: " + speed + "!");
+        addMessage("New drone speed: " + speed + "!");
     }
 
     /**
-     * Method to reset the drone.
-     */
-    @Override
-    public final void resetDrone() {
-        addMessage("Resetting drone...");
-
-        drone.reset();
-        sleep(1000);
-
-        addMessage("Drone reset!");
-    }
-
-    /**
-     * Method to get the controllers internal drone object.
+     * Getter for the yadankdrone object.
+     *
+     * @return yadankdrone object.
+     * @throws DroneCommanderException Thrown if the object is null.
      */
     @Override
     public final IARDrone getDrone() throws DroneCommanderException {
@@ -439,31 +662,247 @@ public final class DroneCommander implements IDroneCommander {
         return drone;
     }
 
-    private void scanImageForQRCode(BufferedImage bufferedImage) throws IQRCodeHandler.QRCodeHandlerException {
-        ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
-
-
-        QRImg qrImg = null;
-
-        qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
-
-        if (qrImg != null) {
-
-                addMessage(qrImg.toString());
-                System.out.println(qrCodes.toString());
-
-            } else {
-                addMessage("qrImg is null!");
-                System.out.println("qrImg is null!");
-            }
-
-
-        this.qrImgs = qrCodes;
+    /**
+     * @return True if scanning for QR codes, false if not scanning.
+     */
+    @Override
+    public boolean isQRCodeScanningEnabled() {
+        return isQRCodeScanningEnabled;
     }
 
+    /**
+     * Sets whether the drone is scanning for QR codes or not.
+     *
+     * @param isQRCodeScanningEnabled True if scanning, false if not.
+     */
+    @Override
+    public void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled) {
+        this.isQRCodeScanningEnabled = isQRCodeScanningEnabled;
+    }
 
     /**
-     * Method to start the attitude listener.
+     * @return True if scanning for rings, false if not.
+     */
+    @Override
+    public boolean isRingScanningEnabled() {
+        return isRingScanningEnabled;
+    }
+
+    /**
+     * @param isRingScanningEnabled True if scanning for rings, false if not.
+     */
+    @Override
+    public void setRingScanningEnabled(boolean isRingScanningEnabled) {
+        this.isRingScanningEnabled = isRingScanningEnabled;
+    }
+
+    /**
+     * @return Get current pitch of the drone.
+     */
+    @Override
+    public float getPitch() {
+        return pitch;
+    }
+
+    /**
+     * @return Get current roll of the drone.
+     */
+    @Override
+    public float getRoll() {
+        return roll;
+    }
+
+    /**
+     * Correct a target yaw, to make sure it does not overflow.
+     *
+     * @param targetYaw The targetYaw to correct.
+     * @return The corrected targetYaw.
+     */
+    @Override
+    public int getCorrectTargetYaw(int targetYaw) {
+        if (targetYaw >= 180) {
+            targetYaw = targetYaw - 360;
+        } else if (targetYaw <= -180) {
+            targetYaw = 360 - targetYaw;
+        }
+        return targetYaw;
+    }
+
+    /**
+     * Correct a yaw, to make sure it does not overflow.
+     *
+     * @param yaw The yaw to correct.
+     * @return The corrected yaw.
+     */
+    @Override
+    public float getCorrectYaw(float yaw) {
+        if (yaw >= 180)
+            yaw = yaw - 360;
+        else if (yaw <= -180)
+            yaw = 360 - yaw;
+
+        return yaw;
+    }
+
+    /**
+     * @return The current yaw of the drone.
+     */
+    @Override
+    public float getYaw() {
+        return yaw;
+    }
+
+    /**
+     * @return The current altitude of the drone.
+     */
+    @Override
+    public float getAltitude() {
+        return altitude;
+    }
+
+    /**
+     * @return The maximum allowed altitude.
+     */
+    @Override
+    public int getMaxAltitude() {
+        return MAX_ALTITUDE;
+    }
+
+    /**
+     * @return The minimum allowed altitude.
+     */
+    @Override
+    public int getMinAltitude() {
+        return MIN_ALTITUDE;
+    }
+
+    /**
+     * @return The current battery of the drone.
+     */
+    @Override
+    public int getBattery() {
+        return battery;
+    }
+
+    /**
+     * @return The latest received image from the camera.
+     */
+    public BufferedImage getLatestReceivedImage() {
+        return latestReceivedImage;
+    }
+
+    /******************************************************
+     *                   QR CODE MAPPING
+     ******************************************************/
+
+    /**
+     * Updates the QR code map with qrNumber and qrImg.
+     *
+     * @param qrNumber QR code (ring) number
+     * @param qrImg    The actual QR code data
+     */
+    @Override
+    public void updateQRMap(int qrNumber, QRImg qrImg) {
+        /*
+         * If the qrCodeMap already contains QR Code data at the given mapNumber,
+         * do not update it, since we don't want to overwrite it.
+         *
+         * Only overwrite it, if the angle of the new QRImg is smaller than the
+         * previous QRImg, since that means we have a new, more centered, image of the
+         * same QRCode.
+         */
+        if (qrCodeMap.get(qrNumber) != null) {
+            // If the angle of the new image is smaller than the
+            // previous image angle, then update it, since it is a better picture.
+            if (qrImg.getAngle() < qrCodeMap.get(qrNumber).getAngle()) {
+                qrCodeMap.put(qrNumber, qrImg);
+            }
+        }
+
+        /*
+         * If the map does not contain it already, then put it into the map.
+         */
+        qrCodeMap.putIfAbsent(qrNumber, qrImg);
+    }
+
+    /**
+     * @return The current known tallest mapped QR code.
+     */
+    @Override
+    public QRImg getTallestQRCode() {
+        int index = -1;
+        double greatestHeight = -1;
+
+        for (int key : qrCodeMap.keySet()) {
+            QRImg qrImg = qrCodeMap.get(key);
+
+            if (qrImg == null || qrImg.getQrCodeData() == null)
+                continue;
+
+            if (qrImg.getH() > greatestHeight) {
+                greatestHeight = qrImg.getH();
+                index = key;
+            }
+        }
+
+        if (greatestHeight == -1 || index == -1) {
+            return null;
+        }
+
+        return qrCodeMap.get(index);
+    }
+
+    /**
+     * @return The current wanted QR code. (0-7.)
+     */
+    @Override
+    public int getTargetQRCode() {
+        return targetQrCode;
+    }
+
+    /**
+     * @return The QR code ring map.
+     */
+    @Override
+    public Map<Integer, QRImg> getQRMap() {
+        return qrCodeMap;
+    }
+
+    /**
+     * Check whether a QR code number is the wanted target.
+     *
+     * @param possibleTarget The QR code number to be checked.
+     * @return True if target, false if not.
+     */
+    @Override
+    public boolean isQRCodeTarget(int possibleTarget) {
+        return targetQrCode == possibleTarget;
+    }
+
+    /**
+     * Increment the current target QR code.
+     * Maximum is 7, because there's 7 rings.
+     * 0 is first, then 1, 2, 3, ... 7.
+     */
+    @Override
+    public void incQRCodeTarget() {
+        if (targetQrCode < 7) {
+            targetQrCode++;
+            addMessage("New QR code target: " + targetQrCode + "!");
+        }
+    }
+
+    /******************************************************
+     *                   PRIVATE METHODS
+     ******************************************************/
+
+    /******************************************************
+     *               START LISTENER METHODS
+     ******************************************************/
+
+    /**
+     * Start the attitude listener of the drone,
+     * and keep updating pitch, roll and yaw data.
      */
     private void startAttitudeListener() {
         navDataManager.addAttitudeListener(new AttitudeListener() {
@@ -488,7 +927,8 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     /**
-     * Method to start the altitude listener.
+     * Start the altitude listener of the drone,
+     * and keep updating the altitude data.
      */
     private void startAltitudeListener() {
         navDataManager.addAltitudeListener(new AltitudeListener() {
@@ -505,7 +945,8 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     /**
-     * Method to start the battery listener.
+     * Start the battery listener of the drone,
+     * and keep updating the battery data.
      */
     private void startBatteryListener() {
         navDataManager.addBatteryListener(new BatteryListener() {
@@ -521,8 +962,11 @@ public final class DroneCommander implements IDroneCommander {
         });
     }
 
+    /**
+     * Start the image listener of the drone,
+     * and keep updating the latest received image.
+     */
     private void startImageListener() {
-        //videoManager.addImageListener(new QRCodeScanner());
         videoManager.addImageListener(new ImageListener() {
             final int INITIAL_QR_SCAN_TIMER = 30;
             int qrScanTimer = INITIAL_QR_SCAN_TIMER;
@@ -543,7 +987,6 @@ public final class DroneCommander implements IDroneCommander {
                 }
                 */
 
-
                 /*
                 try {
                     QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, DroneCommander.this);
@@ -553,13 +996,13 @@ public final class DroneCommander implements IDroneCommander {
                         int qrCodeResult = qrImg.getQrCodeData().getResult();
 
                         // QR CODE TARGET FOUND!
-                        if (isQrCodeTarget(qrCodeResult)) {
-                            updateQrCodeMapData(qrCodeResult, qrImg);
-                            incQrCodeTarget(); // TODO: Do this after the ring has been passed.
+                        if (isQRCodeTarget(qrCodeResult)) {
+                            updateQRMap(qrCodeResult, qrImg);
+                            incQRCodeTarget(); // TODO: Do this after the ring has been passed.
                             addMessage("Found correct QR code: " + qrCodeResult);
                             addMessage("New Target QR: " + targetQrCode);
                             addMessage(qrCodeMap.toString());
-                            QRImg heightQR = getQrCodeWithGreatestHeight();
+                            QRImg heightQR = getTallestQRCode();
                             addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
                             //return qrImg;
                             // TODO: Fly to the code.
@@ -567,10 +1010,10 @@ public final class DroneCommander implements IDroneCommander {
                             // qrCodeMap.clear();
                         } else {
                             // FOUND QR CODE, BUT NOT TARGET!
-                            updateQrCodeMapData(qrCodeResult, qrImg);
+                            updateQRMap(qrCodeResult, qrImg);
                             addMessage("Found incorrect QR code: " + qrCodeResult + ", Target: " + targetQrCode);
                             addMessage(qrCodeMap.toString());
-                            QRImg heightQR = getQrCodeWithGreatestHeight();
+                            QRImg heightQR = getTallestQRCode();
                             addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
                             //continue;
                         }
@@ -582,321 +1025,45 @@ public final class DroneCommander implements IDroneCommander {
                     e.printStackTrace();
                 }
                 */
-
-
             }
         });
     }
 
-    private void startAcceleroListener() {
-        navDataManager.addAcceleroListener(new AcceleroListener() {
-            @Override
-            public void receivedRawData(AcceleroRawData acceleroRawData) {
-
-            }
-
-            @Override
-            public void receivedPhysData(AcceleroPhysData acceleroPhysData) {
-
-            }
-        });
-    }
-
-
-    private void startConLisner() {
-        navDataManager.addWifiListener(new WifiListener() {
-            @Override
-            public void received(long l) {
-                System.out.println("wifi Lis : " + l);
-            }
-        });
-    }
+    /******************************************************
+     *               OTHER PRIVATE METHODS
+     ******************************************************/
 
     /**
-     * Helper method used to sleep when neccessary.
+     * Initialize the QR code map with 8 objects, (0-7)
+     * since there's 7 rings. No more entries should ever be created.
      */
-    private void sleep(int timeMillis) {
-        try {
-            Thread.sleep(timeMillis);
-        } catch (InterruptedException ignored) {
-
-        }
-    }
-
-    private void initQrCodeMap() {
-        for (int mapNumber = 0; mapNumber <= 7; mapNumber++) {
-            qrCodeMap.put(mapNumber, null);
-        }
-
-        addMessage("QR Code Target: " + getTargetQrCode());
+    private void initQRMap() {
+        for (int qrNumber = 0; qrNumber <= 7; qrNumber++)
+            qrCodeMap.put(qrNumber, null);
     }
 
     /**
-     * Helper method to set a LED animation of the drone.
+     * Start a cool LED animation!
+     *
+     * @param ledAnimation The LED animation.
+     * @param freq         The frequency of the animation.
+     * @param duration     The duration of the animation.
      */
     private void setLEDAnimation(LEDAnimation ledAnimation, int freq, int duration) {
         commandManager.setLedsAnimation(ledAnimation, freq, duration);
     }
 
-    @Override
-    public void addMessage(String msg) {
-        messageList.add(msg);
-    }
-
-    @Override
-    public List<String> getNewMessages() {
-        List<String> msgs = new ArrayList<>(messageList);
-        messageList.clear();
-        return msgs;
-    }
-
-    @Override
-    public void updateQrCodeMapData(int mapNumber, QRImg qrImg) {
-        /*
-         * If the qrCodeMap already contains QR Code data at the given mapNumber,
-         * do not update it, since we don't want to overwrite it.
-         *
-         * Only overwrite it, if the angle of the new QRImg is smaller than the
-         * previous QRImg, since that means we have a new, more centered, image of the
-         * same QRCode.
-         */
-        if (qrCodeMap.get(mapNumber) != null) {
-            // If the angle of the new image is smaller than the
-            // previous image angle, then update it, since it is a better picture.
-            if (qrImg.getAngle() < qrCodeMap.get(mapNumber).getAngle()) {
-                qrCodeMap.put(mapNumber, qrImg);
-            }
-        }
-
-        /*
-         * If the map does not contain it already, then put it into the map.
-         */
-        qrCodeMap.putIfAbsent(mapNumber, qrImg);
-    }
-
-    @Override
-    public void rotateDrone(int targetYaw) {
-        /*
-         * First get the correct target yaw.
-         */
-        targetYaw = getCorrectTargetYaw(targetYaw);
-        addMessage("Rotating to targetYaw: " + targetYaw);
-
-
-        if (targetYaw < 0) {
-            targetYaw -= 20;
-        } else {
-            targetYaw += 20;
-        }
-
-
-        targetYaw = getCorrectTargetYaw(targetYaw);
-
-        int negativeBound = -5;
-        int positiveBound = 5;
-
-        while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
-                || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
-            yaw = getCorrectYaw(yaw);
-
-            commandManager.hover().doFor(50);
-
-            commandManager.spinRight(80).doFor(40);
-            commandManager.spinLeft(80).doFor(20);
-
-            commandManager.hover().doFor(50);
-        }
-
-    }
-
-    public void flyUpToAltitude(int altitude) {
-        while (getAltitude() <= altitude) {
-            flyUp(350);
+    /**
+     * Sleep the code for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the code should sleep.
+     */
+    private void sleep(int timeMillis) {
+        try {
+            Thread.sleep(timeMillis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException("SLEEP DID NOT WORK!");
         }
     }
 
-    public void flyDownToAltitude(int altitude) {
-        while (getAltitude() >= altitude) {
-            flyDown(350);
-        }
-    }
-
-    public Boolean flyToTagetQRCode(QRCodeHandler qrCodeHandler, Boolean centerOnTheWay) throws IQRCodeHandler.QRCodeHandlerException {
-        QRImg qrImg = null;
-
-        int count = 0;
-        while (qrImg == null) {
-            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
-            count++;
-            if (count >= 1000) {
-                addMessage("Kunne ikke finde en QR-kode at flyve til!");
-                return false;
-            }
-        }
-
-        double dist = qrImg.getDistance();
-
-        while (dist > 80) {
-
-            addMessage("Inflyver til Qr-kode -> Distance til QR-kode: " + dist);
-
-            flyForward(400);
-
-            if (centerOnTheWay) {
-                adjustToCenterFromQR();
-            }
-
-            hoverDrone(200);
-
-            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
-
-            dist = qrImg.getDistance();
-        }
-
-        if (qrImg.isQRCodeRead()) {
-            addMessage("Ankommet til QR-kode:" + qrImg.getQrCodeData().toString() + ", med en Distance til QR koden på: " + dist);
-        } else {
-            addMessage("Ankommet til QR-kode, med en Distance til QR koden på: " + dist);
-        }
-
-        return true;
-    }
-
-    /**************************
-     * QR Code Mapping Methods
-     **************************/
-    @Override
-    public QRImg getQrCodeWithGreatestHeight() {
-        int index = -1;
-        double greatestHeight = -1;
-
-        for (int key : qrCodeMap.keySet()) {
-            QRImg qrImg = qrCodeMap.get(key);
-
-            if (qrImg == null || qrImg.getQrCodeData() == null)
-                continue;
-
-            if (qrImg.getH() > greatestHeight) {
-                greatestHeight = qrImg.getH();
-                index = key;
-            }
-        }
-
-        if (greatestHeight == -1 || index == -1) {
-            return null;
-        }
-
-        return qrCodeMap.get(index);
-    }
-
-    @Override
-    public int getTargetQrCode() {
-        return targetQrCode;
-    }
-
-    @Override
-    public Map<Integer, QRImg> getQrCodeMap() {
-        return qrCodeMap;
-    }
-
-    @Override
-    public boolean isQrCodeTarget(int possibleTarget) {
-        return targetQrCode == possibleTarget;
-    }
-
-    @Override
-    public void incQrCodeTarget() {
-        if (targetQrCode < 7)
-            targetQrCode++;
-    }
-
-    /**************************
-     * OpenCV
-     **************************/
-    @Override
-    public ArrayList<QRImg> getQrImgs() {
-        return qrImgs;
-    }
-
-    /**************************
-     * Getters and Setters
-     **************************/
-    @Override
-    public boolean isQRCodeScanningEnabled() {
-        return isQRCodeScanningEnabled;
-    }
-
-    @Override
-    public void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled) {
-        this.isQRCodeScanningEnabled = isQRCodeScanningEnabled;
-    }
-
-    @Override
-    public boolean isRingScanningEnabled() {
-        return isRingScanningEnabled;
-    }
-
-    @Override
-    public void setRingScanningEnabled(boolean isRingScanningEnabled) {
-        this.isRingScanningEnabled = isRingScanningEnabled;
-    }
-
-    @Override
-    public float getPitch() {
-        return pitch;
-    }
-
-    @Override
-    public float getRoll() {
-        return roll;
-    }
-
-    @Override
-    public int getCorrectTargetYaw(int targetYaw) {
-        if (targetYaw >= 180) {
-            targetYaw = targetYaw - 360;
-        } else if (targetYaw <= -180) {
-            targetYaw = 360 - targetYaw;
-        }
-        return targetYaw;
-    }
-
-    @Override
-    public float getCorrectYaw(float yaw) {
-        if (yaw >= 180)
-            yaw = yaw - 360;
-        else if (yaw <= -180)
-            yaw = 360 - yaw;
-
-        return yaw;
-    }
-
-    @Override
-    public float getYaw() {
-        return yaw;
-    }
-
-    @Override
-    public float getAltitude() {
-        return altitude;
-    }
-
-    @Override
-    public int getMaxAltitude() {
-        return MAX_ALTITUDE;
-    }
-
-    @Override
-    public int getMinAltitude() {
-        return MIN_ALTITUDE;
-    }
-
-    @Override
-    public int getBattery() {
-        return battery;
-    }
-
-    public BufferedImage getLatestReceivedImage() {
-        return latestReceivedImage;
-    }
 }

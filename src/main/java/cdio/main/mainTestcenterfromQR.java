@@ -25,8 +25,6 @@ public class mainTestcenterfromQR {
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
-            e.printStackTrace();
         }
     }
 }

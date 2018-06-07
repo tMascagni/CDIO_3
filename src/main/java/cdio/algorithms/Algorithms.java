@@ -47,7 +47,7 @@ public final class Algorithms {
                 droneCommander.addMessage("qrImg is null : correct code was not found : rotating to tallest QR code!");
                 // still null after rotation
 
-                QRImg qrImgHeight = droneCommander.getQrCodeWithGreatestHeight();
+                QRImg qrImgHeight = droneCommander.getTallestQRCode();
 
                 if (qrImgHeight != null && qrImgHeight.getQrCodeData() != null) {
                     droneCommander.rotateDrone((int) qrImgHeight.getQrCodeData().getFoundYaw());
@@ -63,8 +63,6 @@ public final class Algorithms {
             droneCommander.landDrone();
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
 
@@ -103,7 +101,7 @@ public final class Algorithms {
              */
 
             try {
-                qrImg = droneCommander.getQrCodeWithGreatestHeight();
+                qrImg = droneCommander.getTallestQRCode();
                 droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
             } catch (IDroneCommander.DroneCommanderException e) {
                 // Hvis denne exception forekommer, er det fordi at der
@@ -121,8 +119,6 @@ public final class Algorithms {
             /* Og så gør dette igen. */
 
         } catch (DroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
     }
@@ -148,8 +144,6 @@ public final class Algorithms {
             droneCommander.landDrone();
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
     }

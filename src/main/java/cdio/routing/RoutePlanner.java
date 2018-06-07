@@ -36,8 +36,6 @@ public class RoutePlanner implements ImageListener {
             }
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
-            e.printStackTrace();
         }
 
         if ((++imageCount % 2) == 0)
