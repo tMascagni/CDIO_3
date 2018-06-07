@@ -30,8 +30,11 @@ public interface IDroneCommander {
     void flyDown(int distanceMilli) throws DroneCommanderException;
     void flyLeft(int distanceMilli) throws DroneCommanderException;
     void flyRight(int distanceMilli) throws DroneCommanderException;
+    void flyUpToAltitude(int targetAltitude);
+    void flyDownToAltitude(int targetAltitude);
+    boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;
 
-    void adjustToCenterFromQR() throws DroneCommanderException, IQRCodeHandler.QRCodeHandlerException;
+    void adjustToCenterFromQR() throws DroneCommanderException;
 
     void setSpeed(int speed) throws DroneCommanderException;
     int getSpeed() throws DroneCommanderException;

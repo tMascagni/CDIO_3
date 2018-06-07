@@ -241,27 +241,27 @@ public final class DroneCommander implements IDroneCommander {
 
             if (latestReceivedImage != null) {
 
-                    QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
 
-                    if (qrImg != null && qrImg.getQrCodeData() != null) {
+                if (qrImg != null && qrImg.getQrCodeData() != null) {
 
-                        int qrCodeResult = qrImg.getQrCodeData().getResult();
+                    int qrCodeResult = qrImg.getQrCodeData().getResult();
 
-                        // QR CODE TARGET FOUND!
-                        if (isQrCodeTarget(qrCodeResult)) {
-                            updateQrCodeMapData(qrCodeResult, qrImg);
-                            incQrCodeTarget(); // TODO: Do this after the ring has been passed.
-                            addMessage("Found correct QR code: " + qrCodeResult + ", Yaw: " + yaw + ", New QR Code target: " + targetQrCode);
-                            return qrImg;
-                            // TODO: Fly to the code.
-                            // clear the map after the drone has flown through the ring.
-                            // qrCodeMap.clear();
-                        } else {
-                            // FOUND QR CODE, BUT NOT TARGET!
-                            updateQrCodeMapData(qrCodeResult, qrImg);
-                            addMessage("Found incorrect QR code: " + qrCodeResult + ", Yaw: " + yaw + ", Correct QR code: " + targetQrCode);
-                            continue;
-                        }
+                    // QR CODE TARGET FOUND!
+                    if (isQrCodeTarget(qrCodeResult)) {
+                        updateQrCodeMapData(qrCodeResult, qrImg);
+                        incQrCodeTarget(); // TODO: Do this after the ring has been passed.
+                        addMessage("Found correct QR code: " + qrCodeResult + ", Yaw: " + yaw + ", New QR Code target: " + targetQrCode);
+                        return qrImg;
+                        // TODO: Fly to the code.
+                        // clear the map after the drone has flown through the ring.
+                        // qrCodeMap.clear();
+                    } else {
+                        // FOUND QR CODE, BUT NOT TARGET!
+                        updateQrCodeMapData(qrCodeResult, qrImg);
+                        addMessage("Found incorrect QR code: " + qrCodeResult + ", Yaw: " + yaw + ", Correct QR code: " + targetQrCode);
+                        continue;
+                    }
 
 
                 }
@@ -375,14 +375,84 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone done flying right!");
     }
 
-    public void adjustToCenterFromQR() throws IQRCodeHandler.QRCodeHandlerException {
+    @Override
+    public void flyUpToAltitude(int targetAltitude) {
+        while (getAltitude() <= targetAltitude) {
+            flyUp(350);
+        }
+    }
+
+    @Override
+    public void flyDownToAltitude(int targetAltitude) {
+        while (getAltitude() >= targetAltitude) {
+            flyDown(350);
+        }
+    }
+
+    @Override
+    public boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException {
+        QRImg qrImg = null;
+
+        int count = 0;
+        while (qrImg == null) {
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                // ?? Klar exception her eller kast videre.
+            }
+            count++;
+            if (count >= 1000) {
+                addMessage("Could not find any QR code to fly to!");
+                return false;
+            }
+        }
+
+        double dist = qrImg.getDistance();
+
+        while (dist > 80) {
+
+            addMessage("Flying to QR code -> Distance to QR code: " + dist);
+
+            flyForward(400);
+
+            if (centerOnTheWay) {
+                adjustToCenterFromQR();
+            }
+
+            hoverDrone(200);
+
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                //?? e.printStackTrace();
+            }
+
+            dist = qrImg.getDistance();
+        }
+
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Reached QR code: " + qrImg.getQrCodeData().toString());
+            addMessage("Distance: " + dist);
+        } else {
+            addMessage("Reached QR code, with a distance: " + dist);
+        }
+
+        return true;
+    }
+
+    @Override
+    public void adjustToCenterFromQR() throws DroneCommanderException {
         int centerOfFrameX = latestReceivedImage.getWidth() / 2;
         QRImg qrImg = null;
 
         do {
 
             do {
-                qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                    throw new DroneCommanderException(e.getMessage());
+                }
             } while (qrImg == null);
 
 
@@ -449,13 +519,13 @@ public final class DroneCommander implements IDroneCommander {
 
         if (qrImg != null) {
 
-                addMessage(qrImg.toString());
-                System.out.println(qrCodes.toString());
+            addMessage(qrImg.toString());
+            System.out.println(qrCodes.toString());
 
-            } else {
-                addMessage("qrImg is null!");
-                System.out.println("qrImg is null!");
-            }
+        } else {
+            addMessage("qrImg is null!");
+            System.out.println("qrImg is null!");
+        }
 
 
         this.qrImgs = qrCodes;
@@ -707,59 +777,6 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover().doFor(50);
         }
 
-    }
-
-    public void flyUpToAltitude(int altitude) {
-        while (getAltitude() <= altitude) {
-            flyUp(350);
-        }
-    }
-
-    public void flyDownToAltitude(int altitude) {
-        while (getAltitude() >= altitude) {
-            flyDown(350);
-        }
-    }
-
-    public Boolean flyToTagetQRCode(QRCodeHandler qrCodeHandler, Boolean centerOnTheWay) throws IQRCodeHandler.QRCodeHandlerException {
-        QRImg qrImg = null;
-
-        int count = 0;
-        while (qrImg == null) {
-            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
-            count++;
-            if (count >= 1000) {
-                addMessage("Kunne ikke finde en QR-kode at flyve til!");
-                return false;
-            }
-        }
-
-        double dist = qrImg.getDistance();
-
-        while (dist > 80) {
-
-            addMessage("Inflyver til Qr-kode -> Distance til QR-kode: " + dist);
-
-            flyForward(400);
-
-            if (centerOnTheWay) {
-                adjustToCenterFromQR();
-            }
-
-            hoverDrone(200);
-
-            qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
-
-            dist = qrImg.getDistance();
-        }
-
-        if (qrImg.isQRCodeRead()) {
-            addMessage("Ankommet til QR-kode:" + qrImg.getQrCodeData().toString() + ", med en Distance til QR koden på: " + dist);
-        } else {
-            addMessage("Ankommet til QR-kode, med en Distance til QR koden på: " + dist);
-        }
-
-        return true;
     }
 
     /**************************
