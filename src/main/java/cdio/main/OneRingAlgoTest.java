@@ -1,7 +1,6 @@
 package cdio.main;
 
 import cdio.cv.QRDetector;
-import cdio.cv.QRImg;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
