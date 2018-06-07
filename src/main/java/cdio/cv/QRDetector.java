@@ -242,7 +242,7 @@ public class QRDetector implements ICV {
     }
 
     public double distanceFromHeight(double qrCodeHeight) {
-        return Math.pow(48722 * qrCodeHeight, -1.021);
+        return 0.8* 48722 * Math.pow(qrCodeHeight, -1.021);
     }
 
 }

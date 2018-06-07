@@ -42,6 +42,7 @@ public class WebcamDemo {
 
             ArrayList<QRImg> qrImgs = qrDetector.processAll(image);
 
+
             for(QRImg qr : qrImgs) {
                 Imgproc.drawContours(image, Arrays.asList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
                 Imgproc.drawMarker(image, qr.getPosition(), new Scalar(10, 250, 200), 0, 20, 5, 8);
@@ -51,6 +52,7 @@ public class WebcamDemo {
             if(qrImg != null) {
                 Imgproc.drawContours(image, Arrays.asList(qrImg.getContour()), -1, new Scalar(255, 50, 10), 4);
                 Imgproc.drawMarker(image, qrImg.getPosition(), new Scalar(255, 10, 0), 0, 20, 5, 8);
+                System.out.println("H:" + qrImg.getH() + "\t D: " + qrImg.getDistance());
 
             }
             ImageIcon icon = new ImageIcon(cvHelper.mat2buf(image));
