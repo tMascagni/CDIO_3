@@ -56,7 +56,12 @@ public class QRCodeHandler implements IQRCodeHandler {
 
     public QRImg scanImageForBest(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
         ArrayList<QRImg> qrCodes = scanImageForAll(image, droneCommander);
-        return qrDetector.findBest(qrCodes);
+        QRImg qrImg = qrDetector.findBest(qrCodes);
+
+        if (qrImg == null)
+            throw new QRCodeHandlerException("NO QR Code found!");
+
+        return qrImg;
     }
 
     private QRCodeData scanImgForQrCode(final Mat mat, IDroneCommander droneCommander) throws QRCodeHandlerException {

@@ -1,6 +1,6 @@
 package cdio.main;
 
-import cdio.controller.DisCal;
+import cdio.cv.QRDetector;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
@@ -11,13 +11,14 @@ public final class TestDis {
 
     private final static IDroneCommander droneCommander = DroneCommander.getInstance();
 
+    private static QRDetector qrDetector = new QRDetector();
+
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
 
-        DisCal disCal = new DisCal();
 
                /* droneCommander.startDrone();
                 droneCommander.initDrone();
@@ -36,7 +37,7 @@ public final class TestDis {
             }
         }
 
-        while (disCal.distanceFromHeight(droneCommander.getQrImgs().get(0).getH()) <= 100) {
+        while (qrDetector.distanceFromHeight(droneCommander.getQrImgs().get(0).getH()) <= 100) {
             // droneCommander.flyForward(200);
             // droneCommander.hoverDrone(200);
             droneCommander.addMessage("Height af QR kode: " + droneCommander.getQrImgs().get(0).getH());

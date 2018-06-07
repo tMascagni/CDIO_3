@@ -3,7 +3,6 @@ package cdio.algorithms;
 import cdio.cv.QRImg;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
-import cdio.model.QRCodeData;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -45,7 +44,7 @@ public final class Algorithms {
                 droneCommander.addMessage("qrCodeData is null! : correct code was not found : rotating to first code in list ");
                 // still null after rotation
                 for (int key : droneCommander.getQrCodeMap().keySet()) {
-                    QRImg qrImgObj= droneCommander.getQrCodeMap().get(key);
+                    QRImg qrImgObj = droneCommander.getQrCodeMap().get(key);
 
                     if (qrImgObj != null && qrImgObj.getQrCodeData() != null) {
                         qrImg = qrImgObj;
@@ -121,6 +120,26 @@ public final class Algorithms {
             /* Og så gør dette igen. */
 
         } catch (DroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void test(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(5000);
+
+
+            droneCommander.hoverDrone(5000);
+            droneCommander.landDrone();
+            droneCommander.stopDrone();
+        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
     }

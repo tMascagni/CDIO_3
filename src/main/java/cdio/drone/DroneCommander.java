@@ -6,7 +6,6 @@ import cdio.cv.QRImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
-import cdio.model.QRCodeData;
 import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
@@ -16,7 +15,6 @@ import yadankdrone.navdata.*;
 import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -242,27 +240,12 @@ public final class DroneCommander implements IDroneCommander {
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             try {
-                List<QRImg> qrCodes = qrCodeHandler.scanImageForAll(latestReceivedImage, this);
+                QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
 
-                if (qrCodes.size() == 0) {
-                    throw new DroneCommanderException("Empty QR codes list!");
-                }
-
-                QRImg qrImg = null;
-
-                for (int i = 0; i < qrCodes.size(); i++) {
-                    if (qrCodes.get(i).getQrCodeData() == null) {
-                        if (i + 1 < qrCodes.size())
-                            qrImg = qrCodes.get(i + 1);
-                    }
-                }
-
-                if (qrImg == null)
+                if (qrImg == null || qrImg.getQrCodeData() == null)
                     throw new DroneCommanderException("No QR Code found!");
 
                 int qrCodeResult = qrImg.getQrCodeData().getResult();
-
-                // REWRITE HER FRA
 
                 // QR CODE TARGET FOUND!
                 if (isQrCodeTarget(qrCodeResult)) {
@@ -393,26 +376,26 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     public void adjustToCenterFromQR() throws DroneCommanderException {
-        int centerOfFrameX = latestReceivedImage.getWidth()/2;
+        int centerOfFrameX = latestReceivedImage.getWidth() / 2;
         QRImg qrImg;
 
         do {
             try {
-                 qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
             } catch (IQRCodeHandler.QRCodeHandlerException e) {
                 e.printStackTrace();
                 break;
             }
 
-            if(qrImg.getPosition().x < 0){
+            if (qrImg.getPosition().x < 0) {
                 flyRight(200);
-            }else {
+            } else {
                 flyLeft(200);
             }
-                hoverDrone(100);
-                sleep(500);
+            hoverDrone(100);
+            sleep(500);
 
-        }while (qrImg.getPosition().x <= centerOfFrameX-50 || qrImg.getPosition().x >= centerOfFrameX+50);
+        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
     }
 
     @Override
@@ -460,17 +443,20 @@ public final class DroneCommander implements IDroneCommander {
         ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
         try {
-            ArrayList<QRImg> qrImgList = qrCodeHandler.scanImageForAll(cvHelper.mat2buf(qrCodes.get(0).getImg()), this);
-            if (qrImgList != null) {
-                QRImg firstQRImg = qrImgList.get(0);
-                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(firstQRImg));
-                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(firstQRImg));
+            QRImg qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
+            if (qrImg != null) {
 
-                addMessage("Result: " + firstQRImg.getQrCodeData().getResult() + ", Width: " + firstQRImg.getW() + ", Height: " + firstQRImg.getH() + ", Orientation: " + firstQRImg.getQrCodeData().getOrientation());
-                System.out.println("Result: " + firstQRImg.getQrCodeData().getResult() + ", Width: " + firstQRImg.getW() + ", Height: " + firstQRImg.getH() + ", Orientation: " + firstQRImg.getQrCodeData().getOrientation());
+                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrImg));
+                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrImg));
 
-                addMessage("Distance til QR: " + qrDetector.distanceFromHeight(firstQRImg.getH()));
-                System.out.println("Distance til QR: " + qrDetector.distanceFromHeight(firstQRImg.getH()));
+                addMessage("Result: " + qrImg.getQrCodeData().getResult() + ", Width: " + qrImg.getW() + ", Height: " + qrImg.getH() + ", Orientation: " + qrImg.getQrCodeData().getOrientation());
+                System.out.println("Result: " + qrImg.getQrCodeData().getResult() + ", Width: " + qrImg.getW() + ", Height: " + qrImg.getH() + ", Orientation: " + qrImg.getQrCodeData().getOrientation());
+
+                addMessage("Distance til QR: " + qrDetector.distanceFromHeight(qrImg.getH()));
+                System.out.println("Distance til QR: " + qrDetector.distanceFromHeight(qrImg.getH()));
+            } else {
+                addMessage("qrImg is null!");
+                System.out.println("qrImg is null!");
             }
 
         } catch (IQRCodeHandler.QRCodeHandlerException e) {
