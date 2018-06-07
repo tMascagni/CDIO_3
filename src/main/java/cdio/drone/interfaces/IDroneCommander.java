@@ -30,6 +30,8 @@ public interface IDroneCommander {
     void flyLeft(int distanceMilli) throws DroneCommanderException;
     void flyRight(int distanceMilli) throws DroneCommanderException;
 
+    void adjustToCenterFromQR() throws DroneCommanderException;
+
     void setSpeed(int speed) throws DroneCommanderException;
     int getSpeed() throws DroneCommanderException;
     void resetDrone() throws DroneCommanderException;
@@ -51,6 +53,7 @@ public interface IDroneCommander {
 
     /* OpenCV */
     ArrayList<QRImg> getQrImgs();
+
 
     /* Getters and setters */
     boolean isQRCodeScanningEnabled();

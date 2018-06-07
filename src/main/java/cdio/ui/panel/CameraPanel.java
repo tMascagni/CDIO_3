@@ -1,5 +1,11 @@
 package cdio.ui.panel;
 
+import cdio.cv.CVHelper;
+import cdio.cv.QRDetector;
+import cdio.cv.QRImg;
+import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 import yadankdrone.IARDrone;
 import yadankdrone.command.VideoCodec;
 import yadankdrone.video.ImageListener;
@@ -9,12 +15,17 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class CameraPanel extends JPanel implements ImageListener {
 
     private BufferedImage image = null;
     private long timestampLastUpdate = 0;
     private boolean showWaiting = true;
+
+    private QRDetector qrDetector = new QRDetector();
+    private CVHelper cvHelper = new CVHelper();
 
     private IARDrone drone;
 
@@ -54,7 +65,7 @@ public final class CameraPanel extends JPanel implements ImageListener {
 
     public void paint(Graphics g) {
         if ((image != null) && !showWaiting) {
-            g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+            g.drawImage(drawWithConturs(image), 0, 0, image.getWidth(), image.getHeight(), null);
         } else {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -67,6 +78,18 @@ public final class CameraPanel extends JPanel implements ImageListener {
             g.drawString("If afterwards no video is displayed,", 120, 160);
             g.drawString("try to change the video codec!", 120, 180);
         }
+    }
+
+    private BufferedImage drawWithConturs(BufferedImage image){
+        Mat imgMat = cvHelper.buf2mat(image);
+
+        ArrayList<QRImg> qrImgs = qrDetector.processAll(imgMat);
+        for(QRImg qr : qrImgs) {
+            Imgproc.drawContours(imgMat, Arrays.asList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
+            Imgproc.drawMarker(imgMat, qr.getPosition(), new Scalar(10, 250, 200), 0, 20, 5, 8);
+        }
+
+        return cvHelper.mat2buf(imgMat);
     }
 
     public void imageUpdated(BufferedImage image) {
