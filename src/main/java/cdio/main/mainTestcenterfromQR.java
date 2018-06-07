@@ -2,6 +2,7 @@ package cdio.main;
 
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
+import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -23,6 +24,8 @@ public class mainTestcenterfromQR {
             droneCommander.landDrone();
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
     }

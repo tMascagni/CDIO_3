@@ -2,6 +2,7 @@ package cdio.routing;
 
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
+import cdio.handler.interfaces.IQRCodeHandler;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import yadankdrone.video.ImageListener;
@@ -34,6 +35,8 @@ public class RoutePlanner implements ImageListener {
 
             }
         } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
 

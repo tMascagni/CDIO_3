@@ -3,6 +3,7 @@ package cdio.algorithms;
 import cdio.cv.QRImg;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
+import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -63,6 +64,8 @@ public final class Algorithms {
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
+            e.printStackTrace();
         }
 
     }
@@ -119,6 +122,8 @@ public final class Algorithms {
 
         } catch (DroneCommander.DroneCommanderException e) {
             e.printStackTrace();
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
+            e.printStackTrace();
         }
     }
 
@@ -143,6 +148,8 @@ public final class Algorithms {
             droneCommander.landDrone();
             droneCommander.stopDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        } catch (IQRCodeHandler.QRCodeHandlerException e) {
             e.printStackTrace();
         }
     }

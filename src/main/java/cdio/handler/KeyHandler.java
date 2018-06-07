@@ -3,6 +3,7 @@ package cdio.handler;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IKeyHandler;
+import cdio.handler.interfaces.IQRCodeHandler;
 
 import java.awt.event.KeyEvent;
 
@@ -100,7 +101,11 @@ public final class KeyHandler implements IKeyHandler {
     public void keyPressed(KeyEvent e) {
         keyPool[e.getKeyCode()] = true;
         try {
-            handleCommand(e);
+            try {
+                handleCommand(e);
+            } catch (IQRCodeHandler.QRCodeHandlerException e1) {
+                e1.printStackTrace();
+            }
         } catch (IDroneCommander.DroneCommanderException e1) {
             e1.printStackTrace();
         }
@@ -111,7 +116,7 @@ public final class KeyHandler implements IKeyHandler {
         keyPool[e.getKeyCode()] = false;
     }
 
-    private void handleCommand(KeyEvent e) throws IDroneCommander.DroneCommanderException {
+    private void handleCommand(KeyEvent e) throws IDroneCommander.DroneCommanderException, IQRCodeHandler.QRCodeHandlerException {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_W:

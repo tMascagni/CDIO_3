@@ -48,11 +48,7 @@ public class QRCodeHandler implements IQRCodeHandler {
         qrCodes = qrDetector.processAll(qrDetector.orgImg);
 
         for (QRImg img : qrCodes) {
-            try {
-                img.setQrCodeData(scanImgForQrCode(img.getImg(), droneCommander));
-            } catch (QRCodeHandlerException e) {
-
-            }
+            img.setQrCodeData(scanImgForQrCode(img.getImg(), droneCommander));
         }
 
         return qrCodes;
