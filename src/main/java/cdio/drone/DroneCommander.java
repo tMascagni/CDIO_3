@@ -122,7 +122,7 @@ public final class DroneCommander implements IDroneCommander {
      * This method should be called before flying.
      */
     @Override
-    public final void initDrone() throws DroneCommanderException {
+    public final void initDrone() {
         addMessage("Drone initializing...");
 
         setSpeed(INITIAL_SPEED);
@@ -170,7 +170,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone land.
      */
     @Override
-    public final void landDrone() throws DroneCommanderException {
+    public final void landDrone() {
         addMessage("Drone landing...");
 
         setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
@@ -210,7 +210,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone rotate to a target yaw.
      */
     @Override
-    public final QRImg searchForQRCode() {
+    public final QRImg searchForQRCode() throws IQRCodeHandler.QRCodeHandlerException {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -375,12 +375,15 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone done flying right!");
     }
 
-    public void adjustToCenterFromQR() throws DroneCommanderException {
+    public void adjustToCenterFromQR() throws IQRCodeHandler.QRCodeHandlerException {
         int centerOfFrameX = latestReceivedImage.getWidth() / 2;
-        QRImg qrImg;
+        QRImg qrImg = null;
 
         do {
+
+            do {
                 qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+            } while (qrImg == null);
 
 
             if (qrImg.getPosition().x > centerOfFrameX) {
@@ -388,6 +391,7 @@ public final class DroneCommander implements IDroneCommander {
             } else {
                 flyLeft(200);
             }
+
             hoverDrone(100);
             sleep(500);
 
@@ -435,12 +439,15 @@ public final class DroneCommander implements IDroneCommander {
         return drone;
     }
 
-    private void scanImageForQRCode(BufferedImage bufferedImage) {
+    private void scanImageForQRCode(BufferedImage bufferedImage) throws IQRCodeHandler.QRCodeHandlerException {
         ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
 
-            QRImg qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
-            if (qrImg != null) {
+        QRImg qrImg = null;
+
+        qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
+
+        if (qrImg != null) {
 
                 addMessage(qrImg.toString());
                 System.out.println(qrCodes.toString());

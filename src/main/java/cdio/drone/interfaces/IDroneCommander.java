@@ -1,7 +1,7 @@
 package cdio.drone.interfaces;
 
 import cdio.cv.QRImg;
-import cdio.model.QRCodeData;
+import cdio.handler.interfaces.IQRCodeHandler;
 import yadankdrone.IARDrone;
 
 import java.awt.image.BufferedImage;
@@ -20,7 +20,7 @@ public interface IDroneCommander {
     void hoverDrone(int timeMillis) throws DroneCommanderException;
     void hoverDrone() throws DroneCommanderException;
 
-    QRImg searchForQRCode() throws DroneCommanderException;
+    QRImg searchForQRCode() throws DroneCommanderException, IQRCodeHandler.QRCodeHandlerException;
     void rotateDrone(int targetYaw) throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
 
@@ -31,7 +31,7 @@ public interface IDroneCommander {
     void flyLeft(int distanceMilli) throws DroneCommanderException;
     void flyRight(int distanceMilli) throws DroneCommanderException;
 
-    void adjustToCenterFromQR() throws DroneCommanderException;
+    void adjustToCenterFromQR() throws DroneCommanderException, IQRCodeHandler.QRCodeHandlerException;
 
     void setSpeed(int speed) throws DroneCommanderException;
     int getSpeed() throws DroneCommanderException;

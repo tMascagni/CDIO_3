@@ -42,13 +42,17 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     @Override
-    public ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+    public ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) {
         qrDetector.orgImg = helper.buf2mat(image);
         ArrayList<QRImg> qrCodes;
         qrCodes = qrDetector.processAll(qrDetector.orgImg);
 
         for (QRImg img : qrCodes) {
-            img.setQrCodeData(scanImgForQrCode(img.getImg(), droneCommander));
+            try {
+                img.setQrCodeData(scanImgForQrCode(img.getImg(), droneCommander));
+            } catch (QRCodeHandlerException e) {
+
+            }
         }
 
         return qrCodes;
@@ -64,7 +68,7 @@ public class QRCodeHandler implements IQRCodeHandler {
         return qrImg;
     }
 
-    private QRCodeData scanImgForQrCode(final Mat mat, IDroneCommander droneCommander) throws QRCodeHandlerException {
+    private QRCodeData scanImgForQrCode(final Mat mat, IDroneCommander droneCommander) {
         /* Try to detect QR code */
         LuminanceSource source = new BufferedImageLuminanceSource(helper.mat2buf(mat));
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -103,7 +107,7 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     @Override
-    public BufferedImage getImageLocal(String path) throws QRCodeHandlerException {
+    public BufferedImage getImageLocal(String path) {
         BufferedImage img = null;
 
         try {
