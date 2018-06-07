@@ -1,6 +1,7 @@
 package cdio.drone.interfaces;
 
 import cdio.cv.QRImg;
+import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import yadankdrone.IARDrone;
 
@@ -44,6 +45,9 @@ public interface IDroneCommander {
     List<String> getNewMessages();
 
     void flyDroneTest(double distance);
+    Boolean flyToTagetQRCode(QRCodeHandler qrCodeHandler, Boolean centerOnTheWay) throws IQRCodeHandler.QRCodeHandlerException;
+    void flyUpToAltitude(int altitude);
+    void flyDownToAltitude(int altitude);
 
     IARDrone getDrone() throws DroneCommanderException;
 
