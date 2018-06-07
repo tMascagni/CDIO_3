@@ -105,7 +105,7 @@ public final class DroneCommander implements IDroneCommander {
      * NOTICE: This method does not make the drone fly, only turns it on.
      */
     @Override
-    public final void startDrone() throws DroneCommanderException {
+    public final void startDrone() {
         addMessage("Drone starting...");
 
         setLEDAnimation(LEDAnimation.BLINK_GREEN, 3, 10);
@@ -139,7 +139,7 @@ public final class DroneCommander implements IDroneCommander {
      * NOTICE: This method does NOT land the drone. It only stops it/turns it off.
      */
     @Override
-    public final void stopDrone() throws DroneCommanderException {
+    public final void stopDrone() {
         addMessage("Drone stopping...");
 
         setLEDAnimation(LEDAnimation.BLINK_RED, 3, 10);
@@ -153,7 +153,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone take off.
      */
     @Override
-    public final void takeOffDrone() throws DroneCommanderException {
+    public final void takeOffDrone() {
         addMessage("Drone taking off...");
 
         setLEDAnimation(LEDAnimation.BLINK_GREEN_RED, 3, 10);
@@ -185,7 +185,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone hover for timeMillis ms.
      */
     @Override
-    public final void hoverDrone(int timeMillis) throws DroneCommanderException {
+    public final void hoverDrone(int timeMillis) {
         addMessage("Drone hovering for " + timeMillis + " ms...");
 
         commandManager.hover().waitFor(timeMillis);
@@ -197,7 +197,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone hover.
      */
     @Override
-    public void hoverDrone() throws DroneCommanderException {
+    public void hoverDrone() {
         addMessage("Drone hovering...");
 
         commandManager.hover();
@@ -210,7 +210,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone rotate to a target yaw.
      */
     @Override
-    public final QRImg searchForQRCode() throws DroneCommanderException {
+    public final QRImg searchForQRCode() {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -240,7 +240,7 @@ public final class DroneCommander implements IDroneCommander {
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             if (latestReceivedImage != null) {
-                try {
+
                     QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
 
                     if (qrImg != null && qrImg.getQrCodeData() != null) {
@@ -262,10 +262,8 @@ public final class DroneCommander implements IDroneCommander {
                             addMessage("Found incorrect QR code: " + qrCodeResult + ", Yaw: " + yaw + ", Correct QR code: " + targetQrCode);
                             continue;
                         }
-                    }
 
-                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-                    // no qr detected which is fine.
+
                 }
             }
 
@@ -283,7 +281,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public final void circleAroundObject() throws DroneCommanderException {
+    public final void circleAroundObject() {
 
     }
 
@@ -291,7 +289,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly forwards.
      */
     @Override
-    public final void flyForward(int timeMillis) throws DroneCommanderException {
+    public final void flyForward(int timeMillis) {
         addMessage("Drone flying forward for " + timeMillis + " ms...");
 
         commandManager.forward(INITIAL_SPEED).doFor(timeMillis);
@@ -316,7 +314,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly backwards.
      */
     @Override
-    public final void flyBackward(int timeMillis) throws DroneCommanderException {
+    public final void flyBackward(int timeMillis) {
         addMessage("Drone flying backward for " + timeMillis + " ms...");
 
         commandManager.backward(INITIAL_SPEED).doFor(timeMillis);
@@ -329,7 +327,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly upwards.
      */
     @Override
-    public final void flyUp(int timeMillis) throws DroneCommanderException {
+    public final void flyUp(int timeMillis) {
         addMessage("Drone flying upwards for " + timeMillis + " ms...");
 
         commandManager.up(INITIAL_SPEED).doFor(timeMillis);
@@ -342,7 +340,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly downwards.
      */
     @Override
-    public final void flyDown(int timeMillis) throws DroneCommanderException {
+    public final void flyDown(int timeMillis) {
         addMessage("Drone flying downwards for " + timeMillis + " ms...");
 
         commandManager.down(INITIAL_SPEED).doFor(timeMillis);
@@ -355,7 +353,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly left.
      */
     @Override
-    public final void flyLeft(int timeMillis) throws DroneCommanderException {
+    public final void flyLeft(int timeMillis) {
         addMessage("Drone flying left for " + timeMillis + " ms...");
 
         commandManager.goLeft(INITIAL_SPEED).doFor(timeMillis);
@@ -368,7 +366,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone fly right.
      */
     @Override
-    public final void flyRight(int timeMillis) throws DroneCommanderException {
+    public final void flyRight(int timeMillis) {
         addMessage("Drone flying right for " + timeMillis + " ms...");
 
         commandManager.goRight(INITIAL_SPEED).doFor(timeMillis);
@@ -382,14 +380,10 @@ public final class DroneCommander implements IDroneCommander {
         QRImg qrImg;
 
         do {
-            try {
                 qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
-            } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                e.printStackTrace();
-                break;
-            }
 
-            if (qrImg.getPosition().x < 0) {
+
+            if (qrImg.getPosition().x > centerOfFrameX) {
                 flyRight(200);
             } else {
                 flyLeft(200);
@@ -401,7 +395,12 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public void setSpeed(int speed) throws DroneCommanderException {
+    public int getSpeed() {
+        return drone.getSpeed();
+    }
+
+    @Override
+    public void setSpeed(int speed) {
 
         if (speed > MAX_SPEED || speed < MIN_SPEED) {
             addMessage("Attempted to set illegal drone speed: " + speed + "!");
@@ -413,16 +412,11 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Sat drone speed: " + speed + "!");
     }
 
-    @Override
-    public int getSpeed() throws DroneCommanderException {
-        return drone.getSpeed();
-    }
-
     /**
      * Method to reset the drone.
      */
     @Override
-    public final void resetDrone() throws DroneCommanderException {
+    public final void resetDrone() {
         addMessage("Resetting drone...");
 
         drone.reset();
@@ -444,7 +438,7 @@ public final class DroneCommander implements IDroneCommander {
     private void scanImageForQRCode(BufferedImage bufferedImage) {
         ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
-        try {
+
             QRImg qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
             if (qrImg != null) {
 
@@ -456,9 +450,6 @@ public final class DroneCommander implements IDroneCommander {
                 System.out.println("qrImg is null!");
             }
 
-        } catch (IQRCodeHandler.QRCodeHandlerException e) {
-            // failed to scan QR code which is OK
-        }
 
         this.qrImgs = qrCodes;
     }
@@ -604,6 +595,16 @@ public final class DroneCommander implements IDroneCommander {
         });
     }
 
+
+    private void startConLisner() {
+        navDataManager.addWifiListener(new WifiListener() {
+            @Override
+            public void received(long l) {
+                System.out.println("wifi Lis : " + l);
+            }
+        });
+    }
+
     /**
      * Helper method used to sleep when neccessary.
      */
@@ -661,7 +662,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public void rotateDrone(int targetYaw) throws DroneCommanderException {
+    public void rotateDrone(int targetYaw) {
         /*
          * First get the correct target yaw.
          */
@@ -699,7 +700,7 @@ public final class DroneCommander implements IDroneCommander {
      * QR Code Mapping Methods
      **************************/
     @Override
-    public QRImg getQrCodeWithGreatestHeight() throws DroneCommanderException {
+    public QRImg getQrCodeWithGreatestHeight() {
         int index = -1;
         double greatestHeight = -1;
 
