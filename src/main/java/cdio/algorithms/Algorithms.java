@@ -1,8 +1,8 @@
 package cdio.algorithms;
 
+import cdio.cv.QRImg;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
-import cdio.model.QRCodeData;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -27,7 +27,7 @@ public final class Algorithms {
             /*
              * Start med at søge efter en QR kode.
              */
-            QRCodeData qrCodeData = droneCommander.searchForQRCode();
+            QRImg qrImg = droneCommander.searchForQRCode();
 
             /*
              * Hvis den korrekte QR kode ikke blev fundet, så
@@ -35,30 +35,27 @@ public final class Algorithms {
              * laver vi en ny rotation, i håb om at finde den
              * korrekte QR kode. (den næste kode)
              */
-            if (qrCodeData == null) {
+            if (qrImg == null || qrImg.getQrCodeData() == null) {
                 droneCommander.hoverDrone(5000);
-                qrCodeData = droneCommander.searchForQRCode();
+                qrImg = droneCommander.searchForQRCode();
             }
 
-
-            QRCodeData qrCodeData1 = null;
-
-            if (qrCodeData == null) {
+            if (qrImg == null || qrImg.getQrCodeData() == null) {
                 droneCommander.addMessage("qrCodeData is null! : correct code was not found : rotating to first code in list ");
                 // still null after rotation
                 for (int key : droneCommander.getQrCodeMap().keySet()) {
-                    QRCodeData data = droneCommander.getQrCodeMap().get(key);
+                    QRImg qrImgObj = droneCommander.getQrCodeMap().get(key);
 
-                    if (data != null) {
-                        qrCodeData1 = data;
-                        droneCommander.addMessage("Rotating to: " + qrCodeData1.getFoundYaw());
+                    if (qrImgObj != null && qrImgObj.getQrCodeData() != null) {
+                        qrImg = qrImgObj;
+                        droneCommander.addMessage("Rotating to: " + qrImg.getQrCodeData().getFoundYaw());
                         break;
                     }
 
                 }
 
-                if (qrCodeData1 != null) {
-                    //droneCommander.rotateDrone((int) qrCodeData1.getFoundYaw());
+                if (qrImg != null || qrImg.getQrCodeData() != null) {
+                    droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
                 }
 
             } else {
@@ -87,7 +84,7 @@ public final class Algorithms {
             /*
              * Start med at søge efter en QR kode.
              */
-            QRCodeData qrCodeData = droneCommander.searchForQRCode();
+            QRImg qrImg = droneCommander.searchForQRCode();
 
             /*
              * Hvis den korrekte QR kode ikke blev fundet, så
@@ -95,8 +92,8 @@ public final class Algorithms {
              * laver vi en ny rotation, i håb om at finde den
              * korrekte QR kode. (den næste kode)
              */
-            if (qrCodeData == null) {
-                qrCodeData = droneCommander.searchForQRCode();
+            if (qrImg == null || qrImg.getQrCodeData() == null) {
+                qrImg = droneCommander.searchForQRCode();
             }
 
             /*
@@ -106,7 +103,7 @@ public final class Algorithms {
              */
 
             try {
-                qrCodeData = droneCommander.getQrCodeWithGreatestHeight();
+                qrImg = droneCommander.getQrCodeWithGreatestHeight();
             } catch (IDroneCommander.DroneCommanderException e) {
                 // Hvis denne exception forekommer, er det fordi at der
                 // aldrig er blevet fundet nogle QR koder i begge rotationer.
@@ -123,6 +120,26 @@ public final class Algorithms {
             /* Og så gør dette igen. */
 
         } catch (DroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void test(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(5000);
+
+
+            droneCommander.hoverDrone(5000);
+            droneCommander.landDrone();
+            droneCommander.stopDrone();
+        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
     }

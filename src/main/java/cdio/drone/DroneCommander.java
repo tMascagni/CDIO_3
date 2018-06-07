@@ -6,7 +6,6 @@ import cdio.cv.QRImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
-import cdio.model.QRCodeData;
 import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;
@@ -53,7 +52,7 @@ public final class DroneCommander implements IDroneCommander {
     private List<String> messageList = new ArrayList<>();
 
     private int targetQrCode = 0;
-    private Map<Integer, QRCodeData> qrCodeMap = new HashMap<>();
+    private Map<Integer, QRImg> qrCodeMap = new HashMap<>();
 
     private ArrayList<QRImg> qrImgs = new ArrayList<>();
 
@@ -211,7 +210,7 @@ public final class DroneCommander implements IDroneCommander {
      * Method to make the drone rotate to a target yaw.
      */
     @Override
-    public final QRCodeData searchForQRCode() throws DroneCommanderException {
+    public final QRImg searchForQRCode() throws DroneCommanderException {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -241,29 +240,26 @@ public final class DroneCommander implements IDroneCommander {
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
             try {
-                List<QRImg> qrCodes = qrCodeHandler.scanImage(latestReceivedImage, this);
+                QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
 
-                if (qrCodes.size() == 0) {
-                    throw new DroneCommanderException("Empty QR codes list!");
-                }
+                if (qrImg == null || qrImg.getQrCodeData() == null)
+                    throw new DroneCommanderException("No QR Code found!");
 
-                QRImg qrImg = qrCodes.get(0);
-
-                // REWRITE HER FRA
+                int qrCodeResult = qrImg.getQrCodeData().getResult();
 
                 // QR CODE TARGET FOUND!
-                if (isQrCodeTarget(qrCodeData.getResult())) {
-                    updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
+                if (isQrCodeTarget(qrCodeResult)) {
+                    updateQrCodeMapData(qrCodeResult, qrImg);
                     incQrCodeTarget(); // TODO: Do this after the ring has been passed.
-                    addMessage("Found correct QR code: " + qrCodeData.getResult());
-                    return qrCodeData;
+                    addMessage("Found correct QR code: " + qrCodeResult);
+                    return qrImg;
                     // TODO: Fly to the code.
                     // clear the map after the drone has flown through the ring.
                     // qrCodeMap.clear();
                 } else {
                     // FOUND QR CODE, BUT NOT TARGET!
-                    updateQrCodeMapData(qrCodeData.getResult(), qrCodeData);
-                    addMessage("Found incorrect QR code: " + qrCodeData.getResult());
+                    updateQrCodeMapData(qrCodeResult, qrImg);
+                    addMessage("Found incorrect QR code: " + qrCodeResult);
                     continue;
                 }
 
@@ -379,6 +375,29 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone done flying right!");
     }
 
+    public void adjustToCenterFromQR() throws DroneCommanderException {
+        int centerOfFrameX = latestReceivedImage.getWidth() / 2;
+        QRImg qrImg;
+
+        do {
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+            } catch (IQRCodeHandler.QRCodeHandlerException e) {
+                e.printStackTrace();
+                break;
+            }
+
+            if (qrImg.getPosition().x < 0) {
+                flyRight(200);
+            } else {
+                flyLeft(200);
+            }
+            hoverDrone(100);
+            sleep(500);
+
+        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+    }
+
     @Override
     public void setSpeed(int speed) throws DroneCommanderException {
 
@@ -424,17 +443,20 @@ public final class DroneCommander implements IDroneCommander {
         ArrayList<QRImg> qrCodes = qrDetector.processAll(cvHelper.buf2mat(bufferedImage));
 
         try {
+            QRImg qrImg = qrCodeHandler.scanImageForBest(bufferedImage, this);
+            if (qrImg != null) {
 
-            QRCodeData qrdata = qrCodeHandler.scanImage(cvHelper.mat2buf(qrCodes.get(0).getImg()), this);
-            if (qrdata != null) {
-                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
-                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrCodes.get(0)));
+                addMessage("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrImg));
+                System.out.println("Vinkel på QR kode: " + qrDetector.angleOfQRCode(qrImg));
 
-                addMessage("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
-                System.out.println("Result: " + qrdata.getResult() + ", Width: " + qrdata.getWidth() + ", Height: " + qrdata.getHeight() + ", Orientation: " + qrdata.getOrientation());
+                addMessage("Result: " + qrImg.getQrCodeData().getResult() + ", Width: " + qrImg.getW() + ", Height: " + qrImg.getH() + ", Orientation: " + qrImg.getQrCodeData().getOrientation());
+                System.out.println("Result: " + qrImg.getQrCodeData().getResult() + ", Width: " + qrImg.getW() + ", Height: " + qrImg.getH() + ", Orientation: " + qrImg.getQrCodeData().getOrientation());
 
-                addMessage("Distance til QR: " + qrDetector.distanceFromHeight(qrCodes.get(0).getH()));
-                System.out.println("Distance til QR: " + qrDetector.distanceFromHeight(qrCodes.get(0).getH()));
+                addMessage("Distance til QR: " + qrDetector.distanceFromHeight(qrImg.getH()));
+                System.out.println("Distance til QR: " + qrDetector.distanceFromHeight(qrImg.getH()));
+            } else {
+                addMessage("qrImg is null!");
+                System.out.println("qrImg is null!");
             }
 
         } catch (IQRCodeHandler.QRCodeHandlerException e) {
@@ -580,7 +602,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public void updateQrCodeMapData(int mapNumber, QRCodeData qrCodeData) {
+    public void updateQrCodeMapData(int mapNumber, QRImg qrImg) {
         /*
          * If the qrCodeMap already contains QR Code data at the given mapNumber,
          * do not update it, since we don't want to overwrite it.
@@ -594,7 +616,7 @@ public final class DroneCommander implements IDroneCommander {
          *
          * TODO: Update the data is the height is larger than the previous data.
          */
-        qrCodeMap.putIfAbsent(mapNumber, qrCodeData);
+        qrCodeMap.putIfAbsent(mapNumber, qrImg);
     }
 
     @Override
@@ -633,18 +655,18 @@ public final class DroneCommander implements IDroneCommander {
      * QR Code Mapping Methods
      **************************/
     @Override
-    public QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException {
+    public QRImg getQrCodeWithGreatestHeight() throws DroneCommanderException {
         int index = -1;
-        int greatestHeight = -1;
+        double greatestHeight = -1;
 
         for (int key : qrCodeMap.keySet()) {
-            QRCodeData qrCodeData = qrCodeMap.get(key);
+            QRImg qrImg = qrCodeMap.get(key);
 
-            if (qrCodeData == null)
+            if (qrImg == null || qrImg.getQrCodeData() == null)
                 continue;
 
-            if (qrCodeData.getHeight() > greatestHeight) {
-                greatestHeight = qrCodeData.getHeight();
+            if (qrImg.getH() > greatestHeight) {
+                greatestHeight = qrImg.getH();
                 index = key;
             }
         }
@@ -662,7 +684,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public Map<Integer, QRCodeData> getQrCodeMap() {
+    public Map<Integer, QRImg> getQrCodeMap() {
         return qrCodeMap;
     }
 

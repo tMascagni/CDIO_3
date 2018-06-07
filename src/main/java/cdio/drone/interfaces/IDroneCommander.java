@@ -19,7 +19,7 @@ public interface IDroneCommander {
     void hoverDrone(int timeMillis) throws DroneCommanderException;
     void hoverDrone() throws DroneCommanderException;
 
-    QRCodeData searchForQRCode() throws DroneCommanderException;
+    QRImg searchForQRCode() throws DroneCommanderException;
     void rotateDrone(int targetYaw) throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
 
@@ -29,6 +29,8 @@ public interface IDroneCommander {
     void flyDown(int distanceMilli) throws DroneCommanderException;
     void flyLeft(int distanceMilli) throws DroneCommanderException;
     void flyRight(int distanceMilli) throws DroneCommanderException;
+
+    void adjustToCenterFromQR() throws DroneCommanderException;
 
     void setSpeed(int speed) throws DroneCommanderException;
     int getSpeed() throws DroneCommanderException;
@@ -42,15 +44,16 @@ public interface IDroneCommander {
     IARDrone getDrone() throws DroneCommanderException;
 
     /* QR Code Mapping */
-    void updateQrCodeMapData(int mapNumber, QRCodeData qrCodeData) throws DroneCommanderException;
-    QRCodeData getQrCodeWithGreatestHeight() throws DroneCommanderException;
+    void updateQrCodeMapData(int mapNumber, QRImg qrImg) throws DroneCommanderException;
+    QRImg getQrCodeWithGreatestHeight() throws DroneCommanderException;
     int getTargetQrCode();
-    Map<Integer, QRCodeData> getQrCodeMap();
+    Map<Integer, QRImg> getQrCodeMap();
     boolean isQrCodeTarget(int possibleTarget);
     void incQrCodeTarget();
 
     /* OpenCV */
     ArrayList<QRImg> getQrImgs();
+
 
     /* Getters and setters */
     boolean isQRCodeScanningEnabled();
