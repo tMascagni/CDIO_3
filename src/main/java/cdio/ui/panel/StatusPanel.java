@@ -71,12 +71,24 @@ public final class StatusPanel extends JPanel {
         droneDataPanel.setYaw(yaw);
     }
 
-    public void setCorrectedYaw(int correctedYaw) {
-        droneDataPanel.setCorrectedYaw(correctedYaw);
+    public void setMaxAltitude(int maxAltitude) {
+        droneDataPanel.setMaxAltitude(maxAltitude);
+    }
+
+    public void setMinAltitude(int minAltitude) {
+        droneDataPanel.setMinAltitude(minAltitude);
     }
 
     public void setAltitude(int altitude) {
         droneDataPanel.setAltitude(altitude);
+    }
+
+    public void setRingFound(int ringNumber) {
+       hoopStatusPanel.setRingFound(ringNumber);
+    }
+
+    public void setRingPassed(int ringNumber) {
+        hoopStatusPanel.setRingPassed(ringNumber);
     }
 
 }

@@ -128,6 +128,9 @@ public final class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         requestFocus();
+
+        statusPanel.setMaxAltitude(droneCommander.getMaxAltitude());
+        statusPanel.setMinAltitude(droneCommander.getMinAltitude());
     }
 
     private void updateStatusPanel() {
@@ -138,21 +141,24 @@ public final class MainFrame extends JFrame {
                 statusPanel.setPitch((int) droneCommander.getPitch());
                 statusPanel.setRoll((int) droneCommander.getRoll());
                 statusPanel.setYaw((int) droneCommander.getYaw());
-                statusPanel.setCorrectedYaw((int) droneCommander.getCorrectYaw(droneCommander.getYaw()));
                 statusPanel.setAltitude((int) droneCommander.getAltitude());
                 statusPanel.setBattery(droneCommander.getBattery());
                 statusPanel.setSpeed(droneCommander.getSpeed());
 
+                // TEST
+                statusPanel.setRingFound(droneCommander.getTargetQRCode());
+                statusPanel.setRingPassed(droneCommander.getTargetQRCode());
+
                 List<String> messages = droneCommander.getNewMessages();
 
                 for (String str : messages) {
-                    commandPanel.appendText("############### Drone Command ###############");
+                    commandPanel.appendText("############### Message ###############");
                     commandPanel.appendText(str);
                 }
 
                 messages.clear();
             }
-        }, 0, 100);
+        }, 0, 300);
     }
 
 }

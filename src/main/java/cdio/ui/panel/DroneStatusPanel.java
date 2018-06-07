@@ -38,6 +38,11 @@ public final class DroneStatusPanel extends JPanel {
         isFlying.setBackground(Color.WHITE);
         isStopped.setBackground(Color.WHITE);
 
+        isStarted.setEnabled(false);
+        isAutonomous.setEnabled(false);
+        isFlying.setEnabled(false);
+        isStopped.setEnabled(false);
+
         initComponents();
     }
 

@@ -6,8 +6,8 @@ import java.awt.*;
 
 public final class DroneDataPanel extends JPanel {
 
-    private JLabel lblBattery, lblSpeed, lblPitch, lblRoll, lblYaw, lblYawCorrected, lblAltitude;
-    private JLabel lblBatteryValue, lblSpeedValue, lblPitchValue, lblRollValue, lblYawValue, getLblYawCorrectedValue, lblAltitudeValue;
+    private JLabel lblBattery, lblSpeed, lblPitch, lblRoll, lblYaw, lblMaxAltitude, lblMinAltitude, lblAltitude;
+    private JLabel lblBatteryValue, lblSpeedValue, lblPitchValue, lblRollValue, lblYawValue, lblMaxAltitudeValue, lblMinAltitudeValue, lblAltitudeValue;
 
     public DroneDataPanel() {
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Data", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
@@ -23,8 +23,10 @@ public final class DroneDataPanel extends JPanel {
         lblRoll.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
         lblYaw = new JLabel("Yaw: ");
         lblYaw.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
-        lblYawCorrected = new JLabel("C Yaw: ");
-        lblYawCorrected.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
+        lblMaxAltitude = new JLabel("Max Altitude: ");
+        lblMaxAltitude.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
+        lblMinAltitude = new JLabel("Min Altitude: ");
+        lblMinAltitude.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
         lblAltitude = new JLabel("Altitude: ");
         lblAltitude.setFont(lblBattery.getFont().deriveFont(lblBattery.getFont().getStyle() | Font.BOLD));
 
@@ -33,7 +35,8 @@ public final class DroneDataPanel extends JPanel {
         lblPitchValue = new JLabel("-1");
         lblRollValue = new JLabel("-1");
         lblYawValue = new JLabel("-1");
-        getLblYawCorrectedValue = new JLabel("-1");
+        lblMaxAltitudeValue = new JLabel("-1");
+        lblMinAltitudeValue = new JLabel("-1");
         lblAltitudeValue = new JLabel("-1");
 
         initComponents();
@@ -101,11 +104,11 @@ public final class DroneDataPanel extends JPanel {
 
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(0, leftOffset, 0, rightOffset);
+        gbc.insets = new Insets(0, leftOffset, 10, rightOffset);
         add(lblYaw, gbc);
 
         gbc.gridx = 1;
-        gbc.insets = new Insets(0, leftOffset, 0, rightBorderOffset);
+        gbc.insets = new Insets(0, leftOffset, 10, rightBorderOffset);
         add(lblYawValue, gbc);
 
         /* ---------------------------- Next Row ---------------------------- */
@@ -113,12 +116,24 @@ public final class DroneDataPanel extends JPanel {
 
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(0, leftOffset, 10, rightOffset);
-        add(lblYawCorrected, gbc);
+        gbc.insets = new Insets(0, leftOffset, 0, rightOffset);
+        add(lblMaxAltitude, gbc);
 
         gbc.gridx = 1;
-        gbc.insets = new Insets(0, leftOffset, 10, rightBorderOffset);
-        add(getLblYawCorrectedValue, gbc);
+        gbc.insets = new Insets(0, leftOffset, 0, rightBorderOffset);
+        add(lblMaxAltitudeValue, gbc);
+
+        /* ---------------------------- Next Row ---------------------------- */
+        gbc.gridy++;
+
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(0, leftOffset, 0, rightOffset);
+        add(lblMinAltitude, gbc);
+
+        gbc.gridx = 1;
+        gbc.insets = new Insets(0, leftOffset, 0, rightBorderOffset);
+        add(lblMinAltitudeValue, gbc);
 
         /* ---------------------------- Next Row ---------------------------- */
         gbc.gridy++;
@@ -153,8 +168,12 @@ public final class DroneDataPanel extends JPanel {
         lblYawValue.setText(yaw + " ");
     }
 
-    public void setCorrectedYaw(int correctedYaw) {
-        getLblYawCorrectedValue.setText(correctedYaw + " ");
+    public void setMaxAltitude(int maxAltitude) {
+
+    }
+
+    public void setMinAltitude(int minAltitude) {
+
     }
 
     public void setAltitude(int altitude) {

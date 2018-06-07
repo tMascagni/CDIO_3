@@ -155,9 +155,10 @@ public final class DroneCommander implements IDroneCommander {
     public final void initDrone() {
         addMessage("Drone initializing...");
 
-        setSpeed(INITIAL_SPEED);
+        drone.setSpeed(INITIAL_SPEED);
         commandManager.setMinAltitude(MIN_ALTITUDE);
         commandManager.setMaxAltitude(MAX_ALTITUDE);
+
         /* Wait to settle for commands... */
         sleep(1000);
 
@@ -290,7 +291,7 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone done flying upwards!");
     }
 
-    /**ar
+    /**
      * Makes the drone fly downwards for a specific amount of time.
      *
      * @param timeMillis The amount of milliseconds the drone should fly downwards.
