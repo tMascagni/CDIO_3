@@ -33,6 +33,7 @@ public final class TestDis {
 
         int timer = 200;
         while(droneCommander.getLatestReceivedImage() == null);
+
         while (qrCodeHandler.scanImageForAll(droneCommander.getLatestReceivedImage(), droneCommander).size() == 0) {
             timer--;
             if (timer == 0) {
@@ -56,7 +57,6 @@ public final class TestDis {
         //   } catch (IDroneCommander.DroneCommanderException e) {
         //       e.printStackTrace();
         //   }
-
 
     }
 }
