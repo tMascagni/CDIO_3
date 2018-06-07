@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="distance test">
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,9 +14,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CDIO_3$WebcamDemo__1_.coverage" NAME="WebcamDemo (1) Coverage Results" MODIFIED="1528302996845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>cdio.cv.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CDIO_3$WebcamDemo.coverage" NAME="WebcamDemo Coverage Results" MODIFIED="1528275571014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>cdio.computervision.*</FILTER>
     </SUITE>
@@ -31,22 +23,22 @@
       <file leaf-file-name="QRImg.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="221">
               <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QRDetector.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QRDetector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="95" column="35" lean-forward="false" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+            <state relative-caret-position="98">
+              <caret line="56" column="32" lean-forward="false" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7938#7939#0" expanded="true" />
-                <element signature="e#7999#8000#0" expanded="true" />
+                <element signature="e#8015#8016#0" expanded="true" />
+                <element signature="e#8076#8077#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,7 +47,7 @@
       <file leaf-file-name="WebcamDemo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
+            <state relative-caret-position="680">
               <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
               <folding />
             </state>
@@ -65,18 +57,147 @@
       <file leaf-file-name="ArrayList.class" pinned="false" current-in-tab="false">
         <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="15470">
               <caret line="968" column="0" lean-forward="false" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1520981091000" expanded="false" signature="0:104" ph="/.../" />
+                <marker date="1520981091000" expanded="false" signature="133:396" ph="..." />
+                <marker date="1520981091000" expanded="true" signature="933:1216" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="1240:1251" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="1304:1310" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="1363:1723" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="1754:1960" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="2003:2178" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="2246:2339" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="2391:2478" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="2530:2652" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="2686:2996" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="3044:3208" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="3231:3242" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="3259:3265" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="3295:3306" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="3328:3334" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="3376:3387" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="3418:3424" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="3462:3913" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="3955:4416" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="4444:4756" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="4787:4798" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="4848:4854" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="4893:5250" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="5279:5290" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="5320:5326" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="5355:5432" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="5469:5613" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="5646:5772" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="5812:6064" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="6096:6436" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="6477:7017" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="7057:7299" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="7325:7489" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="7547:7804" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="7872:8324" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="8377:8710" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="8750:8876" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="8922:9059" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="9104:9115" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="9164:9170" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="9221:9312" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="9363:9453" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="9521:11103" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="11178:11512" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="11609:12135" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="12187:12382" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="12425:12436" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="12468:12474" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="12509:12520" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="12547:12553" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="12602:12718" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="12784:13134" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="13186:13574" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="13615:13626" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="13684:13690" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="13747:15026" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="15078:15496" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="15547:15807" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="15882:19287" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="16096:16241" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="16274:16675" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="16737:17001" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="17063:17759" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="17824:19100" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="19136:19151" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="19195:19205" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="19243:19258" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="19271:19281" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="19363:28330" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="19572:19782" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="19823:20078" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="20111:20267" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="20295:20379" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="20423:20654" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="20690:20951" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="21008:21239" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="21300:21315" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="21351:21361" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="21433:21848" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="21887:21902" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="21929:21939" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="22001:27176" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="22170:27165" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="22296:22384" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="22426:22449" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="22489:22507" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="22541:23208" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="23254:23277" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="23301:23319" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="23357:24007" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="24081:24887" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="24927:24950" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="24969:24987" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="25031:25054" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="25077:25095" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="25134:25803" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="25846:26347" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="26390:26911" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="26965:27151" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="27229:27382" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="27426:27580" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="27630:27783" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="27832:27847" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="27896:27906" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="27954:28100" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="28146:28324" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="28410:30203" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="28438:28502" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="28540:28555" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="28579:28589" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="28621:28636" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="28655:28665" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="28701:28716" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="28739:28749" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="28779:29293" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="29327:29732" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="29766:30197" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="30250:32628" ph="{...}" />
+                <marker date="1520981091000" expanded="false" signature="30342:30357" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="30405:30415" ph=" }" />
+                <marker date="1520981091000" expanded="false" signature="30449:30464" ph=" { " />
+                <marker date="1520981091000" expanded="false" signature="30506:30516" ph=" }" />
+                <marker date="1520981091000" expanded="true" signature="30542:31075" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="31106:31664" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="31729:32422" ph="{...}" />
+                <marker date="1520981091000" expanded="true" signature="32468:32622" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QRCodeHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QRCodeHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="57" column="35" lean-forward="false" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="263">
+              <caret line="58" column="31" lean-forward="false" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,38 +208,12 @@
       <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11016">
-              <caret line="654" column="13" lean-forward="false" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
+            <state relative-caret-position="335">
+              <caret line="654" column="0" lean-forward="false" selection-start-line="654" selection-start-column="0" selection-end-line="654" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#17329#17330#0" expanded="true" />
-                <element signature="e#17365#17366#0" expanded="true" />
-                <element signature="e#19837#19838#0" expanded="true" />
+                <element signature="e#19840#19841#0" expanded="true" />
                 <element signature="e#19872#19873#0" expanded="true" />
-                <element signature="e#19940#19941#0" expanded="true" />
-                <element signature="e#19972#19973#0" expanded="true" />
-                <element signature="e#20043#20044#0" expanded="true" />
-                <element signature="e#20096#20097#0" expanded="true" />
-                <element signature="e#20347#20348#0" expanded="true" />
-                <element signature="e#20376#20377#0" expanded="true" />
-                <element signature="e#20530#20531#0" expanded="true" />
-                <element signature="e#20576#20577#0" expanded="true" />
-                <element signature="e#20797#20798#0" expanded="true" />
-                <element signature="e#20841#20842#0" expanded="true" />
-                <element signature="e#21039#21040#0" expanded="true" />
-                <element signature="e#21067#21068#0" expanded="true" />
-                <element signature="e#21111#21112#0" expanded="true" />
-                <element signature="e#21138#21139#0" expanded="true" />
-                <element signature="e#21642#21643#0" expanded="true" />
-                <element signature="e#21668#21669#0" expanded="true" />
-                <element signature="e#21716#21717#0" expanded="true" />
-                <element signature="e#21747#21748#0" expanded="true" />
-                <element signature="e#21796#21797#0" expanded="true" />
-                <element signature="e#21831#21832#0" expanded="true" />
-                <element signature="e#21880#21881#0" expanded="true" />
-                <element signature="e#21915#21916#0" expanded="true" />
-                <element signature="e#21960#21961#0" expanded="true" />
-                <element signature="e#21990#21991#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,6 +247,9 @@
       <find>qr</find>
       <find>ratio</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/java/cdio/cv</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,110 +259,6 @@
       </map>
     </option>
   </component>
-  <component name="GotoClassSymbolConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="$XSLT" />
-      <filtered-out-file-type name="AIDL" />
-      <filtered-out-file-type name="AndroidDataBinding" />
-      <filtered-out-file-type name="Angular2HTML" />
-      <filtered-out-file-type name="AngularJS" />
-      <filtered-out-file-type name="Apple JS" />
-      <filtered-out-file-type name="Asp" />
-      <filtered-out-file-type name="AspectJ" />
-      <filtered-out-file-type name="CFML" />
-      <filtered-out-file-type name="CSS" />
-      <filtered-out-file-type name="CoffeeScript" />
-      <filtered-out-file-type name="CoffeeScriptLiterate" />
-      <filtered-out-file-type name="DB2" />
-      <filtered-out-file-type name="DTD" />
-      <filtered-out-file-type name="Decompiled SWF" />
-      <filtered-out-file-type name="Derby" />
-      <filtered-out-file-type name="Drools" />
-      <filtered-out-file-type name="ECMA Script Level 4" />
-      <filtered-out-file-type name="ECMAScript 6" />
-      <filtered-out-file-type name="EJBQL" />
-      <filtered-out-file-type name="EL" />
-      <filtered-out-file-type name="EQL" />
-      <filtered-out-file-type name="FTL" />
-      <filtered-out-file-type name="Flow JS" />
-      <filtered-out-file-type name="GSP" />
-      <filtered-out-file-type name="GWT JavaScript" />
-      <filtered-out-file-type name="GenericSQL" />
-      <filtered-out-file-type name="Gherkin" />
-      <filtered-out-file-type name="Groovy" />
-      <filtered-out-file-type name="H2" />
-      <filtered-out-file-type name="HQL" />
-      <filtered-out-file-type name="HSQLDB" />
-      <filtered-out-file-type name="HTML" />
-      <filtered-out-file-type name="HTTP Request" />
-      <filtered-out-file-type name="Haml" />
-      <filtered-out-file-type name="InjectedFreeMarker" />
-      <filtered-out-file-type name="JAVA" />
-      <filtered-out-file-type name="JPAQL" />
-      <filtered-out-file-type name="JQL" />
-      <filtered-out-file-type name="JQuery-CSS" />
-      <filtered-out-file-type name="JSON" />
-      <filtered-out-file-type name="JSP" />
-      <filtered-out-file-type name="JSPX" />
-      <filtered-out-file-type name="JSRegexp" />
-      <filtered-out-file-type name="JSX Harmony" />
-      <filtered-out-file-type name="JShellLanguage" />
-      <filtered-out-file-type name="JavaScript" />
-      <filtered-out-file-type name="JavaScript 1.5" />
-      <filtered-out-file-type name="JavaScript 1.6" />
-      <filtered-out-file-type name="JavaScript 1.7" />
-      <filtered-out-file-type name="JavaScript 1.8" />
-      <filtered-out-file-type name="LESS" />
-      <filtered-out-file-type name="Manifest" />
-      <filtered-out-file-type name="Markdown" />
-      <filtered-out-file-type name="Mxml" />
-      <filtered-out-file-type name="MySQL" />
-      <filtered-out-file-type name="Nashorn JS" />
-      <filtered-out-file-type name="OGNL" />
-      <filtered-out-file-type name="Oracle" />
-      <filtered-out-file-type name="OracleSqlPlus" />
-      <filtered-out-file-type name="PROGUARD" />
-      <filtered-out-file-type name="Play" />
-      <filtered-out-file-type name="PointcutExpression" />
-      <filtered-out-file-type name="PostgreSQL" />
-      <filtered-out-file-type name="PostgresPLSQL" />
-      <filtered-out-file-type name="Properties" />
-      <filtered-out-file-type name="RELAX-NG" />
-      <filtered-out-file-type name="Redshift" />
-      <filtered-out-file-type name="RegExp" />
-      <filtered-out-file-type name="Renderscript" />
-      <filtered-out-file-type name="SASS" />
-      <filtered-out-file-type name="SCSS" />
-      <filtered-out-file-type name="SPI" />
-      <filtered-out-file-type name="SQL" />
-      <filtered-out-file-type name="SQL92" />
-      <filtered-out-file-type name="SQLite" />
-      <filtered-out-file-type name="SpEL" />
-      <filtered-out-file-type name="SpringDataQL" />
-      <filtered-out-file-type name="Stylus" />
-      <filtered-out-file-type name="Sybase" />
-      <filtered-out-file-type name="TEXT" />
-      <filtered-out-file-type name="TML" />
-      <filtered-out-file-type name="TSQL" />
-      <filtered-out-file-type name="ThymeleafExpressions" />
-      <filtered-out-file-type name="ThymeleafIterateExpressions" />
-      <filtered-out-file-type name="ThymeleafSpringSecurityExtras" />
-      <filtered-out-file-type name="ThymeleafTemplatesExpressions" />
-      <filtered-out-file-type name="ThymeleafUrlExpressions" />
-      <filtered-out-file-type name="TypeScript" />
-      <filtered-out-file-type name="TypeScript JSX" />
-      <filtered-out-file-type name="UAST" />
-      <filtered-out-file-type name="UastContextLanguage" />
-      <filtered-out-file-type name="VTL" />
-      <filtered-out-file-type name="XHTML" />
-      <filtered-out-file-type name="XML" />
-      <filtered-out-file-type name="XPath" />
-      <filtered-out-file-type name="XPath2" />
-      <filtered-out-file-type name="YouTrack" />
-      <filtered-out-file-type name="kotlin" />
-      <filtered-out-file-type name="yaml" />
-    </file-type-list>
-  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -273,10 +267,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/test/TestDriverWeek3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controlcenter/CCPropertyManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/VideoPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/YADroneControlCenter.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChartPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/attitudechart/AttitudeChartPanel.java" />
@@ -301,29 +291,33 @@
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/altitude/AltitudeChart.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/CCFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/test/MainOpenCVTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/Demo2.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/CVHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/model/QRCodeData.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/ContourTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/demo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/webCameDEMO2.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/ICV.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo2.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/QRDetector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/QRImg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/controller/DisCal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/QRImg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/ICV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/console/ConsolePanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/DisCal.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/demo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/RingDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
       </list>
     </option>
   </component>
@@ -356,10 +350,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="12" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="720" />
     <option name="y" value="23" />
-    <option name="width" value="1409" />
+    <option name="width" value="720" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -378,6 +372,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -483,10 +480,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,12 +489,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/DTU 4. semester/CDIO/opencv/build" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/opencv-341.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.27126437" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -510,849 +503,6 @@
       <recent name="$PROJECT_DIR$/qr_code_test" />
       <recent name="$PROJECT_DIR$/qr_code_test/pil" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/controlcenter.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/ICV.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainQRCodeTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/model/QRCodeData.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/MainFrame.java</PATH>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" />
-            <option name="myStatusName" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" />
-          <option name="myStatusName" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1594,10 +744,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.WebcamDemo (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.TestDis" />
-        <item index="2" class="java.lang.String" itemvalue="Application.WebcamDemo" />
-        <item index="3" class="java.lang.String" itemvalue="Application.MainGUI" />
-        <item index="4" class="java.lang.String" itemvalue="Application.WebcamDemo2" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MainGUI" />
+        <item index="2" class="java.lang.String" itemvalue="Application.TestDis" />
+        <item index="3" class="java.lang.String" itemvalue="Application.WebcamDemo2" />
+        <item index="4" class="java.lang.String" itemvalue="Application.WebcamDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -1632,9 +782,12 @@
       <workItem from="1524044317833" duration="335000" />
       <workItem from="1527769023047" duration="3577000" />
       <workItem from="1527840956778" duration="8435000" />
-      <workItem from="1528196760628" duration="17052000" />
-      <workItem from="1528281253205" duration="275000" />
-      <workItem from="1528281550149" duration="3032000" />
+      <workItem from="1528196760628" duration="15382000" />
+      <workItem from="1528280618422" duration="1911000" />
+      <workItem from="1528284457846" duration="4382000" />
+      <workItem from="1528309034676" duration="50000" />
+      <workItem from="1528347868180" duration="3804000" />
+      <workItem from="1528359940686" duration="570000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1734,29 +887,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528276314390</updated>
     </task>
-    <task id="LOCAL-00015" summary="Final CV QRkode">
-      <created>1528278492990</created>
+    <task id="LOCAL-00015" summary="qr scanning virker på grayimg">
+      <created>1528360154704</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1528278492990</updated>
+      <updated>1528360154704</updated>
     </task>
-    <task id="LOCAL-00016" summary="distance test">
-      <created>1528281417683</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1528281417683</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81272000" />
+    <option name="totallyTimeSpent" value="83606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="720" y="23" width="1366" height="739" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1764,51 +909,29 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36597112" sideWeight="0.36858007" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36597112" sideWeight="0.36858007" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.49169186" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36597112" sideWeight="0.63141996" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36597112" sideWeight="0.63141996" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3648036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18655589" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.49697885" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967898" sideWeight="0.4886707" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.49166667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36645964" sideWeight="0.364088" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.49166667" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19130434" sideWeight="0.46912703" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36645964" sideWeight="0.635912" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49444443" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17672108" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="6.9444446E-4" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905295" sideWeight="0.49697885" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1860,9 +983,7 @@
     <MESSAGE value="test vinkel virker" />
     <MESSAGE value="test vinkel virker - ser koder fra spise vinkler" />
     <MESSAGE value="qr scanning virker på grayimg" />
-    <MESSAGE value="Final CV QRkode" />
-    <MESSAGE value="distance test" />
-    <option name="LAST_COMMIT_MESSAGE" value="distance test" />
+    <option name="LAST_COMMIT_MESSAGE" value="qr scanning virker på grayimg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1882,7 +1003,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java</url>
           <line>10</line>
-          <properties class="cdio.main.MainGUI" method="main">
+          <properties class="cdio.main.MainGUI">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="16" />
@@ -1890,7 +1011,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java</url>
           <line>13</line>
-          <properties class="cdio.main.TestDis" method="main">
+          <properties class="cdio.main.TestDis">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="17" />
@@ -1901,7 +1022,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CDIO_3.iml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/test/MainOpenCVTest.java" />
     <entry file="file://$PROJECT_DIR$/qr_code_test/qr_web_1.jpg" />
     <entry file="file://$PROJECT_DIR$/qr_code_test/qr_web_0.jpg" />
@@ -1922,6 +1042,7 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DisCal.java" />
     <entry file="jar://$PROJECT_DIR$/lib/yadrone_032.jar!/de/yadrone/base/video/xuggler/XugglerDecoder.class" />
     <entry file="jar://$USER_HOME$/opencv-3.4.1/build/opencv-341.jar!/org/opencv/core/Mat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/qrcode/QRCodeScannerPanel.java">
@@ -1935,6 +1056,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="10" column="85" lean-forward="true" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -1952,116 +1087,336 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/ContourTree.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/utils/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/QRDetector.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/paperchase/QRCodeScanner.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/demo.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/Utils.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo2.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/QRDetector.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/model/QRCodeData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/ICV.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainLand.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="714">
+          <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/ICV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/QRImg.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="56" column="40" lean-forward="false" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="238">
+          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DisCal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#82#83#0" expanded="false" />
-            <element signature="e#134#135#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/console/ConsolePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/DisCal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/demo.java">
+    <entry file="file://$PROJECT_DIR$/CDIO_3_DRONE.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/ContourTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="0">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/console/ConsolePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/openpnp/opencv/3.2.0-0/opencv-3.2.0-0.jar!/org/opencv/imgcodecs/Imgcodecs.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/demo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" column="16" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/openpnp/opencv/3.2.0-0/opencv-3.2.0-0.jar!/org/opencv/utils/Converters.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3230">
+          <caret line="230" column="0" lean-forward="false" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+          <folding>
+            <marker date="1522823610715" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1522823610715" expanded="false" signature="140:640" ph="..." />
+            <marker date="1522823610715" expanded="true" signature="692:699" ph="{}" />
+            <marker date="1522823610715" expanded="false" signature="759:770" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="805:811" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="873:884" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="919:925" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="987:998" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="1033:1039" ph=" }" />
+            <marker date="1522823610715" expanded="true" signature="1115:2662" ph="{...}" />
+            <marker date="1522823610715" expanded="false" signature="2725:2736" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="2772:2778" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="2841:2852" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="2888:2894" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="2957:2968" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="3004:3010" ph=" }" />
+            <marker date="1522823610715" expanded="true" signature="3088:4780" ph="{...}" />
+            <marker date="1522823610715" expanded="false" signature="4850:4861" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="4889:4895" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="4965:4976" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="5004:5010" ph=" }" />
+            <marker date="1522823610715" expanded="true" signature="5079:6601" ph="{...}" />
+            <marker date="1522823610715" expanded="false" signature="6672:6683" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="6712:6718" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="6789:6800" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="6829:6835" ph=" }" />
+            <marker date="1522823610715" expanded="false" signature="6906:6917" ph=" { " />
+            <marker date="1522823610715" expanded="false" signature="6946:6952" ph=" }" />
+            <marker date="1522823610715" expanded="true" signature="7023:8615" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="8673:9204" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="9270:9957" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="10017:10457" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="10525:11103" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="11162:11597" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="11664:12253" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="12311:12746" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="12806:13242" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="13310:13884" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="13950:14539" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="14597:15167" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="15233:15876" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="15943:16720" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="16795:17566" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="17655:18061" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="18142:18758" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="18843:19463" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="19556:19966" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="20051:20671" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="20764:21174" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="21269:21681" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="21768:22392" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="22454:22898" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="22968:23548" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="23615:24259" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="24334:25037" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="25129:25540" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="25624:26272" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="26359:26761" ph="{...}" />
+            <marker date="1522823610715" expanded="true" signature="26841:27498" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
+          <caret line="40" column="80" lean-forward="false" selection-start-line="40" selection-start-column="80" selection-end-line="40" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#591#592#0" expanded="false" />
+            <element signature="e#642#643#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
           <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15470">
+          <caret line="968" column="0" lean-forward="false" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
+          <folding>
+            <marker date="1520981091000" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1520981091000" expanded="false" signature="133:396" ph="..." />
+            <marker date="1520981091000" expanded="true" signature="933:1216" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="1240:1251" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="1304:1310" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="1363:1723" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="1754:1960" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="2003:2178" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="2246:2339" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="2391:2478" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="2530:2652" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="2686:2996" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="3044:3208" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="3231:3242" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="3259:3265" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="3295:3306" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="3328:3334" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="3376:3387" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="3418:3424" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="3462:3913" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="3955:4416" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="4444:4756" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="4787:4798" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="4848:4854" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="4893:5250" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="5279:5290" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="5320:5326" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="5355:5432" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="5469:5613" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="5646:5772" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="5812:6064" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="6096:6436" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="6477:7017" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="7057:7299" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="7325:7489" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="7547:7804" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="7872:8324" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="8377:8710" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="8750:8876" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="8922:9059" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="9104:9115" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="9164:9170" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="9221:9312" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="9363:9453" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="9521:11103" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="11178:11512" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="11609:12135" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="12187:12382" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="12425:12436" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="12468:12474" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="12509:12520" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="12547:12553" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="12602:12718" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="12784:13134" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="13186:13574" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="13615:13626" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="13684:13690" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="13747:15026" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="15078:15496" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="15547:15807" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="15882:19287" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="16096:16241" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="16274:16675" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="16737:17001" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="17063:17759" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="17824:19100" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="19136:19151" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="19195:19205" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="19243:19258" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="19271:19281" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="19363:28330" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="19572:19782" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="19823:20078" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="20111:20267" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="20295:20379" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="20423:20654" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="20690:20951" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="21008:21239" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="21300:21315" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="21351:21361" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="21433:21848" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="21887:21902" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="21929:21939" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="22001:27176" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="22170:27165" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="22296:22384" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="22426:22449" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="22489:22507" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="22541:23208" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="23254:23277" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="23301:23319" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="23357:24007" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="24081:24887" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="24927:24950" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="24969:24987" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="25031:25054" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="25077:25095" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="25134:25803" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="25846:26347" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="26390:26911" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="26965:27151" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="27229:27382" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="27426:27580" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="27630:27783" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="27832:27847" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="27896:27906" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="27954:28100" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="28146:28324" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="28410:30203" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="28438:28502" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="28540:28555" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="28579:28589" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="28621:28636" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="28655:28665" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="28701:28716" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="28739:28749" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="28779:29293" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="29327:29732" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="29766:30197" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="30250:32628" ph="{...}" />
+            <marker date="1520981091000" expanded="false" signature="30342:30357" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="30405:30415" ph=" }" />
+            <marker date="1520981091000" expanded="false" signature="30449:30464" ph=" { " />
+            <marker date="1520981091000" expanded="false" signature="30506:30516" ph=" }" />
+            <marker date="1520981091000" expanded="true" signature="30542:31075" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="31106:31664" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="31729:32422" ph="{...}" />
+            <marker date="1520981091000" expanded="true" signature="32468:32622" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2075,76 +1430,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11016">
-          <caret line="654" column="13" lean-forward="false" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
+        <state relative-caret-position="335">
+          <caret line="654" column="0" lean-forward="false" selection-start-line="654" selection-start-column="0" selection-end-line="654" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17329#17330#0" expanded="true" />
-            <element signature="e#17365#17366#0" expanded="true" />
-            <element signature="e#19837#19838#0" expanded="true" />
+            <element signature="e#19840#19841#0" expanded="true" />
             <element signature="e#19872#19873#0" expanded="true" />
-            <element signature="e#19940#19941#0" expanded="true" />
-            <element signature="e#19972#19973#0" expanded="true" />
-            <element signature="e#20043#20044#0" expanded="true" />
-            <element signature="e#20096#20097#0" expanded="true" />
-            <element signature="e#20347#20348#0" expanded="true" />
-            <element signature="e#20376#20377#0" expanded="true" />
-            <element signature="e#20530#20531#0" expanded="true" />
-            <element signature="e#20576#20577#0" expanded="true" />
-            <element signature="e#20797#20798#0" expanded="true" />
-            <element signature="e#20841#20842#0" expanded="true" />
-            <element signature="e#21039#21040#0" expanded="true" />
-            <element signature="e#21067#21068#0" expanded="true" />
-            <element signature="e#21111#21112#0" expanded="true" />
-            <element signature="e#21138#21139#0" expanded="true" />
-            <element signature="e#21642#21643#0" expanded="true" />
-            <element signature="e#21668#21669#0" expanded="true" />
-            <element signature="e#21716#21717#0" expanded="true" />
-            <element signature="e#21747#21748#0" expanded="true" />
-            <element signature="e#21796#21797#0" expanded="true" />
-            <element signature="e#21831#21832#0" expanded="true" />
-            <element signature="e#21880#21881#0" expanded="true" />
-            <element signature="e#21915#21916#0" expanded="true" />
-            <element signature="e#21960#21961#0" expanded="true" />
-            <element signature="e#21990#21991#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="968" column="0" lean-forward="false" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="95" column="35" lean-forward="false" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7999#8000#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="57" column="35" lean-forward="false" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        <state relative-caret-position="263">
+          <caret line="58" column="31" lean-forward="false" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="56" column="32" lean-forward="false" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8015#8016#0" expanded="true" />
+            <element signature="e#8076#8077#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2189,7 +1502,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>9.0</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2201,7 +1514,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>CDIO_3</last-edited>
+          <last-edited>CDIO_3_DRONE</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2213,7 +1526,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>yadankdrone</last-edited>
+          <last-edited>Maven: org.openpnp:opencv:3.2.0-0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

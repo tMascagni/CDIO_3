@@ -53,6 +53,9 @@ public class QRDetector implements ICV {
     }
 
     public QRImg findBest(ArrayList<QRImg> qrImgs) {
+        if(qrImgs.size() == 1) {
+            return qrImgs.get(0);
+        }
         // Check if any of the codes have been read succefully
         // If only one have, return that, if multiple have, return largest
         QRImg returnCandidate = null;
