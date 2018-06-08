@@ -10,6 +10,8 @@ import yadankdrone.IARDrone;
 import yadankdrone.command.CommandManager;
 import yadankdrone.command.LEDAnimation;
 import yadankdrone.navdata.*;
+import yadankdrone.navdata.common.CommonNavdata;
+import yadankdrone.navdata.common.CommonNavdataListener;
 import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
 
@@ -998,6 +1000,13 @@ public final class DroneCommander implements IDroneCommander {
      */
     private void startWiFiListener() {
         navDataManager.addWifiListener(strength -> this.wifiStrength = strength);
+
+        navDataManager.addCommonNavdataListener((commonNavdata, i) -> {
+            System.out.println("1: " + commonNavdata.motor1);
+            System.out.println("2: " + commonNavdata.motor2);
+            System.out.println("3: " + commonNavdata.motor3);
+            System.out.println("4: " + commonNavdata.motor4);
+        });
     }
 
     /**
@@ -1006,14 +1015,32 @@ public final class DroneCommander implements IDroneCommander {
      */
     private void startImageListener() {
         videoManager.addImageListener(new ImageListener() {
+            int timer = 500;
             final int INITIAL_QR_SCAN_TIMER = 30;
             int qrScanTimer = INITIAL_QR_SCAN_TIMER;
 
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
+
                 if (bufferedImage != null) {
                     latestReceivedImage = bufferedImage;
                 }
+
+                   /*
+                if (bufferedImage != null) {
+                    latestReceivedImage = bufferedImage;
+                    timer = 500;
+                } else {
+                    timer--;
+                    if (timer == 0) {
+                        videoManager.reinitialize();
+                        addMessage("Reinitialized video stream!");
+                        timer = 500;
+                    }
+                }
+                */
+
+                /*
                 qrScanTimer--;
                 if (qrScanTimer == 0) {
                     qrScanTimer = INITIAL_QR_SCAN_TIMER;
@@ -1055,6 +1082,9 @@ public final class DroneCommander implements IDroneCommander {
 
                 }
 
+            }
+        });
+        */
             }
         });
     }
