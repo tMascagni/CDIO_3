@@ -512,20 +512,27 @@ public final class DroneCommander implements IDroneCommander {
     public void adjustToCenterFromQR() {
         addMessage("Centering on QR code...");
 
-        int centerOfFrameX = latestReceivedImage.getWidth() / 2;
         QRImg qrImg = null;
+        int centerOfFrameX;
 
         do {
-            while (!qrCodeHandler.detectQR(qrImg, this)) ;
+
+            while (!qrCodeHandler.detectQR(qrImg, this)) {
+                addMessage("looping....");
+            }
+
+            centerOfFrameX = latestReceivedImage.getWidth() / 2;
 
             if (qrImg.getPosition().x > centerOfFrameX) {
+                addMessage("Flying right");
                 flyRight(200);
             } else {
+                addMessage("Flying left");
                 flyLeft(200);
             }
 
             hoverDrone(100);
-            sleep(500);
+            sleep(400);
 
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
 
