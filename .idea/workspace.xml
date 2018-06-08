@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,48 +29,48 @@
             <state relative-caret-position="527">
               <caret line="433" column="44" lean-forward="false" selection-start-line="433" selection-start-column="44" selection-end-line="433" selection-end-column="44" />
               <folding>
-                <element signature="e#18735#18736#0" expanded="true" />
-                <element signature="e#18771#18772#0" expanded="true" />
-                <element signature="e#19408#19409#0" expanded="true" />
-                <element signature="e#19447#19448#0" expanded="true" />
-                <element signature="e#20402#20403#0" expanded="true" />
-                <element signature="e#20448#20449#0" expanded="true" />
-                <element signature="e#20898#20899#0" expanded="true" />
-                <element signature="e#20942#20943#0" expanded="true" />
-                <element signature="e#21317#21318#0" expanded="true" />
-                <element signature="e#21366#21367#0" expanded="true" />
-                <element signature="e#21505#21506#0" expanded="true" />
-                <element signature="e#21556#21557#0" expanded="true" />
-                <element signature="e#21664#21665#0" expanded="true" />
-                <element signature="e#21692#21693#0" expanded="true" />
-                <element signature="e#21798#21799#0" expanded="true" />
-                <element signature="e#21825#21826#0" expanded="true" />
-                <element signature="e#22719#22720#0" expanded="true" />
-                <element signature="e#22745#22746#0" expanded="true" />
-                <element signature="e#22859#22860#0" expanded="true" />
-                <element signature="e#22890#22891#0" expanded="true" />
-                <element signature="e#23000#23001#0" expanded="true" />
-                <element signature="e#23035#23036#0" expanded="true" />
-                <element signature="e#23145#23146#0" expanded="true" />
-                <element signature="e#23180#23181#0" expanded="true" />
-                <element signature="e#23290#23291#0" expanded="true" />
-                <element signature="e#23320#23321#0" expanded="true" />
-                <element signature="e#23429#23430#0" expanded="true" />
-                <element signature="e#23464#23465#0" expanded="true" />
-                <element signature="e#23591#23592#0" expanded="true" />
-                <element signature="e#23633#23634#0" expanded="true" />
-                <element signature="e#25673#25674#0" expanded="true" />
-                <element signature="e#25708#25709#0" expanded="true" />
-                <element signature="e#25820#25821#0" expanded="true" />
-                <element signature="e#25852#25853#0" expanded="true" />
-                <element signature="e#26114#26115#0" expanded="true" />
-                <element signature="e#26167#26168#0" expanded="true" />
-                <element signature="e#27963#27964#0" expanded="true" />
-                <element signature="e#28034#28035#0" expanded="true" />
-                <element signature="e#28522#28523#0" expanded="true" />
-                <element signature="e#28591#28592#0" expanded="true" />
-                <element signature="e#28842#28843#0" expanded="true" />
-                <element signature="e#28930#28931#0" expanded="true" />
+                <element signature="e#18840#18841#0" expanded="true" />
+                <element signature="e#18876#18877#0" expanded="true" />
+                <element signature="e#19513#19514#0" expanded="true" />
+                <element signature="e#19552#19553#0" expanded="true" />
+                <element signature="e#20507#20508#0" expanded="true" />
+                <element signature="e#20553#20554#0" expanded="true" />
+                <element signature="e#21003#21004#0" expanded="true" />
+                <element signature="e#21047#21048#0" expanded="true" />
+                <element signature="e#21422#21423#0" expanded="true" />
+                <element signature="e#21471#21472#0" expanded="true" />
+                <element signature="e#21610#21611#0" expanded="true" />
+                <element signature="e#21661#21662#0" expanded="true" />
+                <element signature="e#21769#21770#0" expanded="true" />
+                <element signature="e#21797#21798#0" expanded="true" />
+                <element signature="e#21903#21904#0" expanded="true" />
+                <element signature="e#21930#21931#0" expanded="true" />
+                <element signature="e#22824#22825#0" expanded="true" />
+                <element signature="e#22850#22851#0" expanded="true" />
+                <element signature="e#22964#22965#0" expanded="true" />
+                <element signature="e#22995#22996#0" expanded="true" />
+                <element signature="e#23105#23106#0" expanded="true" />
+                <element signature="e#23140#23141#0" expanded="true" />
+                <element signature="e#23250#23251#0" expanded="true" />
+                <element signature="e#23285#23286#0" expanded="true" />
+                <element signature="e#23395#23396#0" expanded="true" />
+                <element signature="e#23425#23426#0" expanded="true" />
+                <element signature="e#23534#23535#0" expanded="true" />
+                <element signature="e#23569#23570#0" expanded="true" />
+                <element signature="e#23696#23697#0" expanded="true" />
+                <element signature="e#23738#23739#0" expanded="true" />
+                <element signature="e#25778#25779#0" expanded="true" />
+                <element signature="e#25813#25814#0" expanded="true" />
+                <element signature="e#25925#25926#0" expanded="true" />
+                <element signature="e#25957#25958#0" expanded="true" />
+                <element signature="e#26219#26220#0" expanded="true" />
+                <element signature="e#26272#26273#0" expanded="true" />
+                <element signature="e#28068#28069#0" expanded="true" />
+                <element signature="e#28139#28140#0" expanded="true" />
+                <element signature="e#28627#28628#0" expanded="true" />
+                <element signature="e#28696#28697#0" expanded="true" />
+                <element signature="e#28947#28948#0" expanded="true" />
+                <element signature="e#29035#29036#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="235">
-              <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
+              <caret line="168" column="8" lean-forward="false" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,8 +103,8 @@
       <file leaf-file-name="QRDetector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+            <state relative-caret-position="2533">
+              <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
               <folding>
                 <element signature="e#8076#8077#0" expanded="true" />
                 <element signature="e#8142#8143#0" expanded="true" />
@@ -666,7 +666,7 @@
       <workItem from="1528280618422" duration="1911000" />
       <workItem from="1528284457846" duration="4382000" />
       <workItem from="1528377513256" duration="1054000" />
-      <workItem from="1528447599625" duration="4231000" />
+      <workItem from="1528447599625" duration="4293000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -829,11 +829,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528451358120</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Try/Catch på findContours da vi fik en masse fejl">
+      <created>1528452482171</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1528452482171</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100634000" />
+    <option name="totallyTimeSpent" value="100696000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="720" y="23" width="1366" height="739" extended-state="6" />
@@ -942,7 +949,8 @@
     <MESSAGE value="Rettede centerOnQR til nyt api" />
     <MESSAGE value="Opdater kun billeder hvis der er forbindelse" />
     <MESSAGE value="Rettede interface til qrhandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rettede interface til qrhandler" />
+    <MESSAGE value="Try/Catch på findContours da vi fik en masse fejl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try/Catch på findContours da vi fik en masse fejl" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1231,48 +1239,48 @@
         <state relative-caret-position="527">
           <caret line="433" column="44" lean-forward="false" selection-start-line="433" selection-start-column="44" selection-end-line="433" selection-end-column="44" />
           <folding>
-            <element signature="e#18735#18736#0" expanded="true" />
-            <element signature="e#18771#18772#0" expanded="true" />
-            <element signature="e#19408#19409#0" expanded="true" />
-            <element signature="e#19447#19448#0" expanded="true" />
-            <element signature="e#20402#20403#0" expanded="true" />
-            <element signature="e#20448#20449#0" expanded="true" />
-            <element signature="e#20898#20899#0" expanded="true" />
-            <element signature="e#20942#20943#0" expanded="true" />
-            <element signature="e#21317#21318#0" expanded="true" />
-            <element signature="e#21366#21367#0" expanded="true" />
-            <element signature="e#21505#21506#0" expanded="true" />
-            <element signature="e#21556#21557#0" expanded="true" />
-            <element signature="e#21664#21665#0" expanded="true" />
-            <element signature="e#21692#21693#0" expanded="true" />
-            <element signature="e#21798#21799#0" expanded="true" />
-            <element signature="e#21825#21826#0" expanded="true" />
-            <element signature="e#22719#22720#0" expanded="true" />
-            <element signature="e#22745#22746#0" expanded="true" />
-            <element signature="e#22859#22860#0" expanded="true" />
-            <element signature="e#22890#22891#0" expanded="true" />
-            <element signature="e#23000#23001#0" expanded="true" />
-            <element signature="e#23035#23036#0" expanded="true" />
-            <element signature="e#23145#23146#0" expanded="true" />
-            <element signature="e#23180#23181#0" expanded="true" />
-            <element signature="e#23290#23291#0" expanded="true" />
-            <element signature="e#23320#23321#0" expanded="true" />
-            <element signature="e#23429#23430#0" expanded="true" />
-            <element signature="e#23464#23465#0" expanded="true" />
-            <element signature="e#23591#23592#0" expanded="true" />
-            <element signature="e#23633#23634#0" expanded="true" />
-            <element signature="e#25673#25674#0" expanded="true" />
-            <element signature="e#25708#25709#0" expanded="true" />
-            <element signature="e#25820#25821#0" expanded="true" />
-            <element signature="e#25852#25853#0" expanded="true" />
-            <element signature="e#26114#26115#0" expanded="true" />
-            <element signature="e#26167#26168#0" expanded="true" />
-            <element signature="e#27963#27964#0" expanded="true" />
-            <element signature="e#28034#28035#0" expanded="true" />
-            <element signature="e#28522#28523#0" expanded="true" />
-            <element signature="e#28591#28592#0" expanded="true" />
-            <element signature="e#28842#28843#0" expanded="true" />
-            <element signature="e#28930#28931#0" expanded="true" />
+            <element signature="e#18840#18841#0" expanded="true" />
+            <element signature="e#18876#18877#0" expanded="true" />
+            <element signature="e#19513#19514#0" expanded="true" />
+            <element signature="e#19552#19553#0" expanded="true" />
+            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20553#20554#0" expanded="true" />
+            <element signature="e#21003#21004#0" expanded="true" />
+            <element signature="e#21047#21048#0" expanded="true" />
+            <element signature="e#21422#21423#0" expanded="true" />
+            <element signature="e#21471#21472#0" expanded="true" />
+            <element signature="e#21610#21611#0" expanded="true" />
+            <element signature="e#21661#21662#0" expanded="true" />
+            <element signature="e#21769#21770#0" expanded="true" />
+            <element signature="e#21797#21798#0" expanded="true" />
+            <element signature="e#21903#21904#0" expanded="true" />
+            <element signature="e#21930#21931#0" expanded="true" />
+            <element signature="e#22824#22825#0" expanded="true" />
+            <element signature="e#22850#22851#0" expanded="true" />
+            <element signature="e#22964#22965#0" expanded="true" />
+            <element signature="e#22995#22996#0" expanded="true" />
+            <element signature="e#23105#23106#0" expanded="true" />
+            <element signature="e#23140#23141#0" expanded="true" />
+            <element signature="e#23250#23251#0" expanded="true" />
+            <element signature="e#23285#23286#0" expanded="true" />
+            <element signature="e#23395#23396#0" expanded="true" />
+            <element signature="e#23425#23426#0" expanded="true" />
+            <element signature="e#23534#23535#0" expanded="true" />
+            <element signature="e#23569#23570#0" expanded="true" />
+            <element signature="e#23696#23697#0" expanded="true" />
+            <element signature="e#23738#23739#0" expanded="true" />
+            <element signature="e#25778#25779#0" expanded="true" />
+            <element signature="e#25813#25814#0" expanded="true" />
+            <element signature="e#25925#25926#0" expanded="true" />
+            <element signature="e#25957#25958#0" expanded="true" />
+            <element signature="e#26219#26220#0" expanded="true" />
+            <element signature="e#26272#26273#0" expanded="true" />
+            <element signature="e#28068#28069#0" expanded="true" />
+            <element signature="e#28139#28140#0" expanded="true" />
+            <element signature="e#28627#28628#0" expanded="true" />
+            <element signature="e#28696#28697#0" expanded="true" />
+            <element signature="e#28947#28948#0" expanded="true" />
+            <element signature="e#29035#29036#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1288,7 +1296,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
-          <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
+          <caret line="168" column="8" lean-forward="false" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1297,8 +1305,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+        <state relative-caret-position="2533">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding>
             <element signature="e#8076#8077#0" expanded="true" />
             <element signature="e#8142#8143#0" expanded="true" />
