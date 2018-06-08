@@ -466,27 +466,29 @@ public final class DroneCommander implements IDroneCommander {
      */
     @Override
     public final void circleAroundObject() {
-
-        for (int i = 0; i >= 4; i++) {
+        int centerOfQR = 0;
+/*        for (int i = 0; i >= 4; i++) {
             flyLeft(1);
-            qr.setDistance(100.00);
+            qr.setDistance(50.00);
             //commandManager.spinRight(10).doFor(10);
             commandManager.spinLeft(10).doFor(10);
-        }
+        }*/
+        qr= qrCodeHandler.detectQR(this);
+
         QRCodeHandler.getInstance();
-        if (qr.getAngle() >= 60.00) {
+        if (qr.getAngle() >= 40.00) {
             do {
-                commandManager.goLeft(1);
-                commandManager.spinLeft(1).doFor(1);
-            } while (qr.getAngle() >= 10.00);
-        } else if (qr.getAngle() <= 60.00) {
+                flyLeft(1);
+                commandManager.spinLeft(10).doFor(1);
+            } while (qr.getPosition().x <= centerOfQR - 50 || qr.getPosition().x >= centerOfQR + 50);
+        } else if (qr.getAngle() <= 40.00) {
             do {
-                commandManager.goRight(1);
-                commandManager.spinRight(1).doFor(1);
-            } while (qr.getAngle() >= 10.00);
-
-
+                flyRight(1);
+                commandManager.spinRight(10).doFor(1);
+            } while (qr.getPosition().x <= centerOfQR - 50 || qr.getPosition().x >= centerOfQR + 50);
         }
+
+
 
     }
 
