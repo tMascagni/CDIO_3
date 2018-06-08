@@ -9,7 +9,7 @@ import static java.lang.Math.sqrt;
 
 public final class CircleCalculations {
 
-    public static enum Type {
+    public enum Type {
 
         COINCIDENT(-1),
         CONCENTRIC_CONTAINED(0),
@@ -21,7 +21,7 @@ public final class CircleCalculations {
 
         private final int n;
 
-        private Type(int n) {
+        Type(int n) {
             this.n = n;
         }
 

@@ -1,8 +1,6 @@
 package cdio.ui;
 
 import cdio.drone.interfaces.IDroneCommander;
-import cdio.handler.KeyHandler;
-import cdio.handler.interfaces.IKeyHandler;
 import cdio.ui.panel.CameraPanel;
 import cdio.ui.panel.CommandPanel;
 import cdio.ui.panel.StatusPanel;
@@ -27,8 +25,6 @@ public final class MainFrame extends JFrame {
     private CameraPanel frontCamPanel;
 
     private final IDroneCommander droneCommander;
-
-    private final IKeyHandler keyHandler = KeyHandler.getInstance();
 
     public MainFrame(IDroneCommander droneCommander) {
         super("DroneX - Group 3 - CDIO Project");
@@ -58,13 +54,6 @@ public final class MainFrame extends JFrame {
             frontCamPanel.setSize(preferredPanelSize);
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
-        }
-
-        if (IS_KEYS_ENABLED) {
-            addKeyListener(keyHandler);
-            getRootPane().addKeyListener(keyHandler);
-        } else {
-            droneCommander.addMessage("KEYBOARD DISABLED!");
         }
 
         commandPanel.setFocusable(false);

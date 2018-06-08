@@ -12,7 +12,6 @@ public final class StatusPanel extends JPanel {
     private DroneStatusPanel droneStatusPanel;
     private HoopStatusPanel hoopStatusPanel;
     private DroneDataPanel droneDataPanel;
-    private KeyPanel keyPanel;
 
     private JPanel droneStatusHoopStatusPanel;
 
@@ -25,8 +24,6 @@ public final class StatusPanel extends JPanel {
         droneStatusHoopStatusPanel.setLayout(new BorderLayout());
         droneStatusHoopStatusPanel.add(droneStatusPanel, BorderLayout.NORTH);
         droneStatusHoopStatusPanel.add(hoopStatusPanel, BorderLayout.SOUTH);
-
-        keyPanel = new KeyPanel();
 
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Status", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
         setBackground(Color.WHITE);
@@ -48,10 +45,6 @@ public final class StatusPanel extends JPanel {
         /* ---------------------------- Next Col ---------------------------- */
         gbc.gridx++;
         add(droneDataPanel, gbc);
-
-        /* ---------------------------- Next Col ---------------------------- */
-        gbc.gridx++;
-        add(keyPanel, gbc);
     }
 
     public void setBattery(int battery) {
