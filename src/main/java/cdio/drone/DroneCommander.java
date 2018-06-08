@@ -381,7 +381,7 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public final QRImg searchForQRCode() throws DroneCommanderException {
+    public final QRImg searchForQRCode() {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -461,7 +461,7 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException
      */
     @Override
-    public final void circleAroundObject() throws DroneCommanderException {
+    public final void circleAroundObject() {
 
     }
 
@@ -472,7 +472,7 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public void rotateDrone(int targetYaw) throws DroneCommanderException {
+    public void rotateDrone(int targetYaw) {
         targetYaw = getCorrectTargetYaw(targetYaw);
         addMessage("Rotating to targetYaw: " + targetYaw + "...");
 
@@ -509,20 +509,14 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public void adjustToCenterFromQR() throws DroneCommanderException {
+    public void adjustToCenterFromQR() {
         addMessage("Centering on QR code...");
 
         int centerOfFrameX = latestReceivedImage.getWidth() / 2;
         QRImg qrImg = null;
 
         do {
-            do {
-                try {
-                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
-                } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                    e.printStackTrace();
-                }
-            } while (qrImg == null);
+            while (!qrCodeHandler.detectQR(qrImg, this)) ;
 
             if (qrImg.getPosition().x > centerOfFrameX) {
                 flyRight(200);
