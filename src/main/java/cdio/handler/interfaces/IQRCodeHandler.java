@@ -15,9 +15,8 @@ public interface IQRCodeHandler {
     BufferedImage getImageRemote(String url) throws QRCodeHandlerException;
     void saveImage(String imageUrl, String destinationFile) throws QRCodeHandlerException;
 
-    boolean detectQR(QRImg ret, IDroneCommander droneCommander);
+    QRImg detectQR(IDroneCommander droneCommander);
 
-    boolean detectReadQR(QRImg ret, IDroneCommander droneCommander);
 
     class QRCodeHandlerException extends Exception {
 

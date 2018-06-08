@@ -152,23 +152,20 @@ public class QRCodeHandler implements IQRCodeHandler {
         }
     }
 
-    public boolean detectQR(QRImg ret, IDroneCommander droneCommander) {
-        ret = null;
-        BufferedImage image = droneCommander.getLatestReceivedImage();
-        if (image == null) {
-            return false;
+    public QRImg detectQR(IDroneCommander droneCommander) {
+        QRImg ret = null;
+        while (ret == null) {
+            BufferedImage image = null;
+            while (image == null) {
+                image = droneCommander.getLatestReceivedImage();
+            }
+            try {
+                ret = scanImageForBest(image, droneCommander);
+            } catch (QRCodeHandlerException e) {
+                ret = null;
+            }
         }
-        try {
-            ret = scanImageForBest(image, droneCommander);
-            return true;
-        } catch (QRCodeHandlerException e) {
-            return false;
-        }
-    }
-
-    public boolean detectReadQR(QRImg ret, IDroneCommander droneCommander) {
-        boolean detected = detectQR(ret, droneCommander);
-        return detected && ret.getQrCodeData() != null;
+        return ret;
     }
 
 }
