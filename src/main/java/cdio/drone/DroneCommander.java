@@ -30,7 +30,7 @@ public final class DroneCommander implements IDroneCommander {
      * Global fields for the DroneCommander.
      */
     private final int MAX_ALTITUDE = 2500;            /* millimeters. */
-    private final int MIN_ALTITUDE = 1000;            /* millimeters. */
+    private final int MIN_ALTITUDE = 0;            /* millimeters. */
 
     private final int MAX_SPEED = 100;                /* percentage (%) */
     private final int MIN_SPEED = 10;                 /* percentage (%) */
@@ -413,8 +413,8 @@ public final class DroneCommander implements IDroneCommander {
                 QRImg qrImg = null;
                 try {
                     qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
-                } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                    //??
+                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+
                 }
 
                 if (qrImg != null && qrImg.getQrCodeData() != null) {
@@ -975,57 +975,47 @@ public final class DroneCommander implements IDroneCommander {
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
                 latestReceivedImage = bufferedImage;
+                qrScanTimer--;
+                if (qrScanTimer == 0) {
+                    qrScanTimer = INITIAL_QR_SCAN_TIMER;
 
-                /*
-                if (isQRCodeScanningEnabled) {
-                    qrScanTimer--;
-                    if (qrScanTimer == 0) {
-                        qrScanTimer = INITIAL_QR_SCAN_TIMER;
-                        scanImageForQRCode(bufferedImage);
-                    }
-                } else if (isRingScanningEnabled) {
-                    // søg efter ringe
-                }
-                */
+                    try {
+                        QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, DroneCommander.this);
 
-                /*
-                try {
-                    QRImg qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, DroneCommander.this);
+                        if (qrImg != null && qrImg.getQrCodeData() != null) {
 
-                    if (qrImg != null && qrImg.getQrCodeData() != null) {
+                            int qrCodeResult = qrImg.getQrCodeData().getResult();
 
-                        int qrCodeResult = qrImg.getQrCodeData().getResult();
-
-                        // QR CODE TARGET FOUND!
-                        if (isQRCodeTarget(qrCodeResult)) {
-                            updateQRMap(qrCodeResult, qrImg);
-                            incQRCodeTarget(); // TODO: Do this after the ring has been passed.
-                            addMessage("Found correct QR code: " + qrCodeResult);
-                            addMessage("New Target QR: " + targetQrCode);
-                            addMessage(qrCodeMap.toString());
-                            QRImg heightQR = getTallestQRCode();
-                            addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
-                            //return qrImg;
-                            // TODO: Fly to the code.
-                            // clear the map after the drone has flown through the ring.
-                            // qrCodeMap.clear();
-                        } else {
-                            // FOUND QR CODE, BUT NOT TARGET!
-                            updateQRMap(qrCodeResult, qrImg);
-                            addMessage("Found incorrect QR code: " + qrCodeResult + ", Target: " + targetQrCode);
-                            addMessage(qrCodeMap.toString());
-                            QRImg heightQR = getTallestQRCode();
-                            addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
-                            //continue;
+                            // QR CODE TARGET FOUND!
+                            if (isQRCodeTarget(qrCodeResult)) {
+                                updateQRMap(qrCodeResult, qrImg);
+                                incQRCodeTarget(); // TODO: Do this after the ring has been passed.
+                                addMessage("Found correct QR code: " + qrCodeResult);
+                                addMessage("New Target QR: " + targetQrCode);
+                                addMessage(qrCodeMap.toString());
+                                QRImg heightQR = getTallestQRCode();
+                                addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
+                                //return qrImg;
+                                // TODO: Fly to the code.
+                                // clear the map after the drone has flown through the ring.
+                                // qrCodeMap.clear();
+                            } else {
+                                // FOUND QR CODE, BUT NOT TARGET!
+                                updateQRMap(qrCodeResult, qrImg);
+                                addMessage("Found incorrect QR code: " + qrCodeResult + ", Target: " + targetQrCode);
+                                addMessage(qrCodeMap.toString());
+                                QRImg heightQR = getTallestQRCode();
+                                addMessage("Greatest height code: " + heightQR.getQrCodeData().getResult() + ", Height: " + heightQR.getH());
+                                //continue;
+                            }
                         }
+
+                    } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                        // no qr detected which is fine.
                     }
 
-                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-                    // no qr detected which is fine.
-                } catch (DroneCommanderException e) {
-                    e.printStackTrace();
                 }
-                */
+
             }
         });
     }

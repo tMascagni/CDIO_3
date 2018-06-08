@@ -169,11 +169,11 @@ public final class DroneDataPanel extends JPanel {
     }
 
     public void setMaxAltitude(int maxAltitude) {
-
+        lblMaxAltitudeValue.setText(maxAltitude + " ");
     }
 
     public void setMinAltitude(int minAltitude) {
-
+        lblMinAltitudeValue.setText(minAltitude + " ");
     }
 
     public void setAltitude(int altitude) {

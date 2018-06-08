@@ -1,8 +1,11 @@
 package cdio.ui.panel;
 
+import cdio.cv.QRImg;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Map;
 
 public final class StatusPanel extends JPanel {
 
@@ -83,8 +86,8 @@ public final class StatusPanel extends JPanel {
         droneDataPanel.setAltitude(altitude);
     }
 
-    public void setRingFound(int ringNumber) {
-       hoopStatusPanel.setRingFound(ringNumber);
+    public void setRingFound(Map<Integer, QRImg> qrMap) {
+        hoopStatusPanel.setRingFound(qrMap);
     }
 
     public void setRingPassed(int ringNumber) {

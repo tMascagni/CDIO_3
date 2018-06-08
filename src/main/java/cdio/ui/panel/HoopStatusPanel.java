@@ -1,8 +1,11 @@
 package cdio.ui.panel;
 
+import cdio.cv.QRImg;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Map;
 
 public final class HoopStatusPanel extends JPanel {
 
@@ -14,6 +17,7 @@ public final class HoopStatusPanel extends JPanel {
     private JLabel[] lblHoops = new JLabel[LENGTH];
     private JLabel[] lblHoopLocations = new JLabel[LENGTH];
     private JRadioButton[] btnPassedHoop = new JRadioButton[LENGTH];
+    private JRadioButton btnEnabled = new JRadioButton();
 
     public HoopStatusPanel() {
         setBackground(Color.WHITE);
@@ -27,7 +31,6 @@ public final class HoopStatusPanel extends JPanel {
         lblLocation.setFont(lblLocation.getFont().deriveFont(lblLocation.getFont().getStyle() | Font.BOLD));
         lblIsPassed = new JLabel("Passed");
         lblIsPassed.setFont(lblIsPassed.getFont().deriveFont(lblIsPassed.getFont().getStyle() | Font.BOLD));
-
 
         for (int i = 0; i < LENGTH; i++) {
             btnHoops[i] = new JRadioButton();
@@ -97,8 +100,14 @@ public final class HoopStatusPanel extends JPanel {
 
     }
 
-    public void setRingFound(int ringNumber) {
-        btnHoops[ringNumber].setSelected(true);
+    public void setRingFound(Map<Integer, QRImg> qrMap) {
+        for (int qrNumber : qrMap.keySet()) {
+            QRImg qrImg = qrMap.get(qrNumber);
+
+            if (qrImg != null) {
+                btnHoops[qrNumber].setSelected(true);
+            }
+        }
     }
 
     public void setRingPassed(int ringNumber) {

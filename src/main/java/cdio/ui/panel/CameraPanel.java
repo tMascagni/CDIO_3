@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public final class CameraPanel extends JPanel implements ImageListener {
 
@@ -85,7 +86,7 @@ public final class CameraPanel extends JPanel implements ImageListener {
 
         ArrayList<QRImg> qrImgs = qrDetector.processAll(imgMat);
         for(QRImg qr : qrImgs) {
-            Imgproc.drawContours(imgMat, Arrays.asList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
+            Imgproc.drawContours(imgMat, Collections.singletonList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
             Imgproc.drawMarker(imgMat, qr.getPosition(), new Scalar(10, 250, 200), 0, 20, 5, 8);
         }
 
