@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -89,13 +88,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QRCodeHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QRCodeHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+            <state relative-caret-position="235">
+              <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QRDetector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+              <folding>
+                <element signature="e#8076#8077#0" expanded="true" />
+                <element signature="e#8142#8143#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -217,7 +229,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/computervision/QRImg.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/ICV.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/console/ConsolePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/DisCal.java" />
@@ -237,6 +248,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
       </list>
     </option>
   </component>
@@ -299,6 +311,49 @@
             <path>
               <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
               <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cdio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cdio" type="462c0819:PsiDirectoryNode" />
+              <item name="cv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controlcenter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -611,7 +666,7 @@
       <workItem from="1528280618422" duration="1911000" />
       <workItem from="1528284457846" duration="4382000" />
       <workItem from="1528377513256" duration="1054000" />
-      <workItem from="1528447599625" duration="3318000" />
+      <workItem from="1528447599625" duration="4231000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -767,11 +822,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528449669016</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Rettede interface til qrhandler">
+      <created>1528451358120</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1528451358120</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99721000" />
+    <option name="totallyTimeSpent" value="100634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="720" y="23" width="1366" height="739" extended-state="6" />
@@ -879,7 +941,8 @@
     <MESSAGE value="Tilføjede lettere interface til qrHandler (interface)" />
     <MESSAGE value="Rettede centerOnQR til nyt api" />
     <MESSAGE value="Opdater kun billeder hvis der er forbindelse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Opdater kun billeder hvis der er forbindelse" />
+    <MESSAGE value="Rettede interface til qrhandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rettede interface til qrhandler" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -976,6 +1039,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2176">
           <caret line="138" column="41" lean-forward="false" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -984,6 +1048,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1007,14 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1228,10 +1287,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+        <state relative-caret-position="235">
+          <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding>
+            <element signature="e#8076#8077#0" expanded="true" />
+            <element signature="e#8142#8143#0" expanded="true" />
           </folding>
         </state>
       </provider>
