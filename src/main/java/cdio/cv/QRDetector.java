@@ -53,25 +53,25 @@ public class QRDetector implements ICV {
     }
 
     public QRImg findBest(ArrayList<QRImg> qrImgs) {
-        if(qrImgs.size() == 1) {
+        if (qrImgs.size() == 1) {
             return qrImgs.get(0);
         }
         // Check if any of the codes have been read succefully
         // If only one have, return that, if multiple have, return largest
         QRImg returnCandidate = null;
-        for(QRImg qrImg : qrImgs) {
-            if(qrImg.getQrCodeData() != null) {
-                if(returnCandidate == null) {
+        for (QRImg qrImg : qrImgs) {
+            if (qrImg.getQrCodeData() != null) {
+                if (returnCandidate == null) {
                     returnCandidate = qrImg;
                 } else {
-                    if(Imgproc.contourArea(qrImg.getContour()) >
+                    if (Imgproc.contourArea(qrImg.getContour()) >
                             Imgproc.contourArea(returnCandidate.getContour())) {
                         returnCandidate = qrImg;
                     }
                 }
             }
         }
-        if(returnCandidate != null) {
+        if (returnCandidate != null) {
             return returnCandidate;
         }
 
@@ -79,7 +79,7 @@ public class QRDetector implements ICV {
         // Find the average position and area
         double avg_x = 0, avg_y = 0, avg_a = 0;
         int count = 0;
-        for(QRImg qrImg : qrImgs) {
+        for (QRImg qrImg : qrImgs) {
             avg_x += qrImg.getPosition().x;
             avg_y += qrImg.getPosition().y;
             avg_a += Imgproc.contourArea(qrImg.getContour());
@@ -91,21 +91,21 @@ public class QRDetector implements ICV {
 
         // Remove outliers
         ArrayList<QRImg> toRemove = new ArrayList<>();
-        for(QRImg qrImg: qrImgs) {
+        for (QRImg qrImg : qrImgs) {
 
             // Distance for center of qr to average center
             double diff_x = avg_x - qrImg.getPosition().x;
             double diff_y = avg_y - qrImg.getPosition().y;
-            double dist = Math.sqrt(diff_x*diff_x + diff_y*diff_y);
+            double dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
 
             // If that distance is larger than the area, discard the qr code
-            if(dist > Math.sqrt(avg_a / Math.PI)) {
+            if (dist > Math.sqrt(avg_a / Math.PI)) {
                 toRemove.add(qrImg);
             }
         }
         qrImgs.removeAll(toRemove);
 
-        if(qrImgs.size() == 0) {
+        if (qrImgs.size() == 0) {
             return null;
         }
 
@@ -117,7 +117,7 @@ public class QRDetector implements ICV {
         avg_x = 0;
         avg_y = 0;
         count = 0;
-        for(QRImg qrImg: qrImgs) {
+        for (QRImg qrImg : qrImgs) {
             avg_h += qrImg.getH();
             avg_w += qrImg.getW();
             avg_angle += qrImg.getAngle();
@@ -128,10 +128,10 @@ public class QRDetector implements ICV {
         }
         avg_h /= count;
         avg_w /= count;
-        avg_angle  /= count;
-        avg_distance  /= count;
-        avg_x  /= count;
-        avg_y  /= count;
+        avg_angle /= count;
+        avg_distance /= count;
+        avg_x /= count;
+        avg_y /= count;
 
         QRImg averageQr = new QRImg(qrImgs.get(0).getImg(), avg_h, avg_w);
         averageQr.setAngle(avg_angle);
@@ -158,8 +158,8 @@ public class QRDetector implements ICV {
         Mat hir = new Mat();
         try {
             Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
+            System.out.println("getContours EXCEPTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
 
         if (contours.size() > 0) {
@@ -246,7 +246,7 @@ public class QRDetector implements ICV {
     }
 
     public double distanceFromHeight(double qrCodeHeight) {
-        return 0.8* 48722 * Math.pow(qrCodeHeight, -1.021);
+        return 0.8 * 48722 * Math.pow(qrCodeHeight, -1.021);
     }
 
 }

@@ -154,13 +154,20 @@ public class QRCodeHandler implements IQRCodeHandler {
 
     public QRImg detectQR(IDroneCommander droneCommander) {
         QRImg ret = null;
+        BufferedImage image = null;
+
         while (ret == null) {
             System.out.println("ret is null!");
-            BufferedImage image = null;
+
+            image = droneCommander.getLatestReceivedImage();
+
+            /*
             while (image == null) {
                 image = droneCommander.getLatestReceivedImage();
                 System.out.println("image is null!");
             }
+            */
+
             try {
                 ret = scanImageForBest(image, droneCommander);
             } catch (QRCodeHandlerException e) {

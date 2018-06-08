@@ -3,7 +3,6 @@ package cdio.algorithms;
 import cdio.cv.QRImg;
 import cdio.drone.DroneCommander;
 import cdio.drone.interfaces.IDroneCommander;
-import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -15,6 +14,7 @@ public final class Algorithms {
     }
 
     public static void runSingleRing(IDroneCommander droneCommander) {
+
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
@@ -25,17 +25,15 @@ public final class Algorithms {
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(5000);
 
-            /*
-             * Start med at søge efter en QR kode.
-             */
+            //Start med at søge efter en QR kode.
+
             QRImg qrImg = droneCommander.searchForQRCode();
 
-            /*
-             * Hvis den korrekte QR kode ikke blev fundet, så
-             * vil qrImg være lig med null, så derfor
-             * laver vi en ny rotation, i håb om at finde den
-             * korrekte QR kode. (den næste kode)
-             */
+
+            // Hvis den korrekte QR kode ikke blev fundet, så
+            // vil qrImg være lig med null, så derfor
+            // laver vi en ny rotation, i håb om at finde den
+            // korrekte QR kode. (den næste kode)
             if (qrImg == null) {
                 droneCommander.addMessage("Starting next rotation....");
                 droneCommander.hoverDrone(2000);
@@ -66,6 +64,34 @@ public final class Algorithms {
             e.printStackTrace();
         }
 
+    }
+
+    public static void oneRingAlgoTest(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(10000);
+
+            while (droneCommander.getLatestReceivedImage() == null);
+
+            droneCommander.adjustToCenterFromQR();
+
+            droneCommander.flyToTargetQRCode(false); // fly hen til ring
+
+            //droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
+
+            //droneCommander.flyForward(3000); // flyv gennem ringen
+
+            droneCommander.hoverDrone(2000);
+            droneCommander.landDrone();
+        } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void runAllRings(IDroneCommander droneCommander) {
@@ -119,31 +145,6 @@ public final class Algorithms {
             /* Og så gør dette igen. */
 
         } catch (DroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void test(IDroneCommander droneCommander) {
-        SwingUtilities.invokeLater(() -> {
-            MainFrame mainFrame = new MainFrame(droneCommander);
-        });
-
-        try {
-            droneCommander.startDrone();
-            droneCommander.initDrone();
-            droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(5000);
-
-            QRImg qrImg = droneCommander.searchForQRCode();
-
-            if (qrImg == null) {
-                droneCommander.addMessage("Found no QR code!");
-            }
-
-            droneCommander.hoverDrone(5000);
-            droneCommander.landDrone();
-            droneCommander.stopDrone();
-        } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
     }
