@@ -516,10 +516,8 @@ public final class DroneCommander implements IDroneCommander {
         int centerOfFrameX;
 
         do {
-
-            while (!qrCodeHandler.detectQR(qrImg, this)) {
-                addMessage("looping....");
-            }
+            qrImg = qrCodeHandler.detectQR(this);
+            addMessage("qrImg found!");
 
             centerOfFrameX = latestReceivedImage.getWidth() / 2;
 
@@ -536,7 +534,11 @@ public final class DroneCommander implements IDroneCommander {
 
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
 
-        addMessage("Centered on QR code! : QR code: " + qrImg.getQrCodeData().getResult());
+        if (qrImg.getQrCodeData() == null) {
+            addMessage("Centered on QR code! Not read.");
+        } else {
+            addMessage("Centered on QR code! QR code: " + qrImg.getQrCodeData().getResult());
+        }
     }
 
     /**

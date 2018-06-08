@@ -156,6 +156,7 @@ public class QRDetector implements ICV {
         ContourTree ct = null;
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hir = new Mat();
+
         Imgproc.findContours(binImg, contours, hir, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
 
         if (contours.size() > 0) {
