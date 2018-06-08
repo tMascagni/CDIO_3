@@ -540,7 +540,7 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Thrown if any errors occur.
      */
     @Override
-    public boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException {
+    public boolean flyToTargetQRCode(boolean centerOnTheWay) {
         QRImg qrImg = null;
 
         int count = 0;
@@ -1002,7 +1002,9 @@ public final class DroneCommander implements IDroneCommander {
 
             @Override
             public void imageUpdated(BufferedImage bufferedImage) {
-                latestReceivedImage = bufferedImage;
+                if (bufferedImage != null) {
+                    latestReceivedImage = bufferedImage;
+                }
                 qrScanTimer--;
                 if (qrScanTimer == 0) {
                     qrScanTimer = INITIAL_QR_SCAN_TIMER;
