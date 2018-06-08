@@ -6,30 +6,33 @@ import java.awt.*;
 
 public final class DroneStatusPanel extends JPanel {
 
-    private JLabel lblIsStarted, lblIsAutonomous;
-    private JLabel lblIsStartedStatus, lblIsAutonomousStatus;
-    private JRadioButton isStarted, isAutonomous;
+    private JLabel lblVideoManager, lblNavManager, lblWiFiStrength, lblWiFiStrengthValue;
+    private JRadioButton btnVideoManager, btnNavManager, btnWiFiStrength;
 
     public DroneStatusPanel() {
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Drone", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
 
-        lblIsStarted = new JLabel("    Started");
-        lblIsStarted.setFont(lblIsStarted.getFont().deriveFont(lblIsStarted.getFont().getStyle() | Font.BOLD));
-        lblIsAutonomous = new JLabel("    Autonomous");
-        lblIsAutonomous.setFont(lblIsAutonomous.getFont().deriveFont(lblIsAutonomous.getFont().getStyle() | Font.BOLD));
+        lblVideoManager = new JLabel("    Video Manager");
+        lblVideoManager.setFont(lblVideoManager.getFont().deriveFont(lblVideoManager.getFont().getStyle() | Font.BOLD));
+        lblNavManager = new JLabel("    Nav Manager");
+        lblNavManager.setFont(lblNavManager.getFont().deriveFont(lblNavManager.getFont().getStyle() | Font.BOLD));
+        lblWiFiStrength = new JLabel("    WiFi Strength:   ");
+        lblWiFiStrength.setFont(lblWiFiStrength.getFont().deriveFont(lblWiFiStrength.getFont().getStyle() | Font.BOLD));
 
-        lblIsStartedStatus = new JLabel("None");
-        lblIsAutonomousStatus = new JLabel("None");
+        lblWiFiStrengthValue = new JLabel("-1");
 
-        isStarted = new JRadioButton();
-        isAutonomous = new JRadioButton();
+        btnVideoManager = new JRadioButton();
+        btnNavManager = new JRadioButton();
+        btnWiFiStrength = new JRadioButton();
 
-        isStarted.setBackground(Color.WHITE);
-        isAutonomous.setBackground(Color.WHITE);
+        btnVideoManager.setBackground(Color.WHITE);
+        btnNavManager.setBackground(Color.WHITE);
+        btnWiFiStrength.setBackground(Color.WHITE);
 
-        isStarted.setEnabled(false);
-        isAutonomous.setEnabled(false);
+        btnVideoManager.setEnabled(false);
+        btnNavManager.setEnabled(false);
+        btnWiFiStrength.setEnabled(false);
 
         initComponents();
     }
@@ -47,17 +50,12 @@ public final class DroneStatusPanel extends JPanel {
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
         gbc.insets = new Insets(0, 0, 0, 0);
-        add(isStarted, gbc);
+        add(btnVideoManager, gbc);
 
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
         gbc.insets = new Insets(4, 0, 0, 0);
-        add(lblIsStarted, gbc);
-
-        gbc.gridx = 2;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(4, 15, 0, 0);
-        add(lblIsStartedStatus, gbc);
+        add(lblVideoManager, gbc);
 
         /* ---------------------------- Next Row ---------------------------- */
         gbc.gridy++;
@@ -65,17 +63,48 @@ public final class DroneStatusPanel extends JPanel {
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0, 0, 0, 0);
-        add(isAutonomous, gbc);
+        add(btnNavManager, gbc);
 
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(1, 0, 0, 0);
-        add(lblIsAutonomous, gbc);
+        add(lblNavManager, gbc);
+
+        /* ---------------------------- Next Row ---------------------------- */
+        gbc.gridy++;
+
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        add(btnWiFiStrength, gbc);
+
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(1, 0, 0, 0);
+        add(lblWiFiStrength, gbc);
 
         gbc.gridx = 2;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(5, 15, 0, 0);
-        add(lblIsAutonomousStatus, gbc);
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(1, 0, 0, 0);
+        add(lblWiFiStrengthValue, gbc);
+    }
+
+    public void setVideoManagerConnection(boolean isConnected) {
+        btnVideoManager.setSelected(isConnected);
+    }
+
+    public void setNavManagerConnection(boolean isConnected) {
+        btnNavManager.setSelected(isConnected);
+    }
+
+    public void setWiFiConnection(long strength) {
+        lblWiFiStrengthValue.setText(strength + " ");
+
+        if (strength == 500) {
+            btnWiFiStrength.setSelected(true);
+        } else {
+            btnWiFiStrength.setSelected(false);
+        }
     }
 
 }

@@ -87,4 +87,16 @@ public final class StatusPanel extends JPanel {
         hoopStatusPanel.setRingPassed(ringNumber);
     }
 
+    public void setVideoManagerConnection(boolean isConnected) {
+        droneStatusPanel.setVideoManagerConnection(isConnected);
+    }
+
+    public void setNavManagerConnection(boolean isConnected) {
+        droneStatusPanel.setNavManagerConnection(isConnected);
+    }
+
+    public void setWiFiConnection(long strength) {
+        droneStatusPanel.setWiFiConnection(strength);
+    }
+
 }

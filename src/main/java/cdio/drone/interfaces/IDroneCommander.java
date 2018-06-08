@@ -52,6 +52,8 @@ public interface IDroneCommander {
     void setQRCodeScanningEnabled(boolean isQRCodeScanningEnabled);
     boolean isRingScanningEnabled();
     void setRingScanningEnabled(boolean isRingScanningEnabled);
+    boolean isVideoConnected();
+    boolean isNavManagerConnected();
 
     float getPitch();
     float getRoll();
@@ -62,6 +64,7 @@ public interface IDroneCommander {
     int getMinAltitude();
     int getMaxAltitude();
     int getBattery();
+    long getWiFiStrength();
     BufferedImage getLatestReceivedImage();
 
     /*******************

@@ -132,6 +132,9 @@ public final class MainFrame extends JFrame {
                 statusPanel.setMinAltitude(droneCommander.getMinAltitude());
                 statusPanel.setBattery(droneCommander.getBattery());
                 statusPanel.setSpeed(droneCommander.getSpeed());
+                statusPanel.setVideoManagerConnection(droneCommander.isVideoConnected());
+                statusPanel.setNavManagerConnection(droneCommander.isNavManagerConnected());
+                statusPanel.setWiFiConnection(droneCommander.getWiFiStrength());
 
                 // TEST
                 statusPanel.setRingFound(droneCommander.getQRMap());

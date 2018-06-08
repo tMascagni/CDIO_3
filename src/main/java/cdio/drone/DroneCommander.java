@@ -40,6 +40,7 @@ public final class DroneCommander implements IDroneCommander {
 
     private float pitch, roll, yaw, altitude;         /* Drone data. */
     private int battery;                              /* Drone battery. */
+    private long wifiStrength;
 
     private final IARDrone drone;                     /* Yadankdrone, drone object. */
 
@@ -95,6 +96,7 @@ public final class DroneCommander implements IDroneCommander {
         startAltitudeListener();
         startBatteryListener();
         startImageListener();
+        startWiFiListener();
 
         /* Initialize QR map. */
         initQRMap();
@@ -698,6 +700,22 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     /**
+     * @return True if video is connected, false if not.
+     */
+    @Override
+    public boolean isVideoConnected() {
+        return videoManager.isConnected();
+    }
+
+    /**
+     * @return True if nav manager is connected, false if not.
+     */
+    @Override
+    public boolean isNavManagerConnected() {
+        return navDataManager.isConnected();
+    }
+
+    /**
      * @return Get current pitch of the drone.
      */
     @Override
@@ -783,6 +801,14 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public int getBattery() {
         return battery;
+    }
+
+    /**
+     * @return The current WiFi strength.
+     */
+    @Override
+    public long getWiFiStrength() {
+        return wifiStrength;
     }
 
     /**
@@ -961,6 +987,14 @@ public final class DroneCommander implements IDroneCommander {
 
             }
         });
+    }
+
+    /**
+     * Start the WiFi listener of the drone,
+     * and keep updating the WiFi data.
+     */
+    private void startWiFiListener() {
+        navDataManager.addWifiListener(strength -> this.wifiStrength = strength);
     }
 
     /**
