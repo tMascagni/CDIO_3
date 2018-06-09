@@ -43,6 +43,15 @@ public class QRCodeHandler implements IQRCodeHandler {
 
     @Override
     public ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) {
+
+        if (image == null) {
+            throw new IllegalArgumentException("Image is null!");
+        }
+
+        if (droneCommander == null) {
+            throw new IllegalArgumentException("DroneCommander is null!");
+        }
+
         qrDetector.orgImg = helper.buf2mat(image);
         ArrayList<QRImg> qrCodes;
         qrCodes = qrDetector.processAll(qrDetector.orgImg);
@@ -55,6 +64,15 @@ public class QRCodeHandler implements IQRCodeHandler {
     }
 
     public QRImg scanImageForBest(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException {
+
+        if (image == null) {
+            throw new IllegalArgumentException("Image is null!");
+        }
+
+        if (droneCommander == null) {
+            throw new IllegalArgumentException("DroneCommander is null!");
+        }
+
         ArrayList<QRImg> qrCodes = scanImageForAll(image, droneCommander);
         QRImg qrImg = qrDetector.findBest(qrCodes);
 
@@ -98,7 +116,6 @@ public class QRCodeHandler implements IQRCodeHandler {
             return new QRCodeData(qrCodeValue, orientation, droneCommander.getCorrectYaw(droneCommander.getYaw()));
         } catch (ReaderException e) {
             return null;
-            //throw new QRCodeHandlerException("Failed to scan for QR Code!");
         }
     }
 
@@ -161,12 +178,10 @@ public class QRCodeHandler implements IQRCodeHandler {
 
             image = droneCommander.getLatestReceivedImage();
 
-            /*
             while (image == null) {
                 image = droneCommander.getLatestReceivedImage();
                 System.out.println("image is null!");
             }
-            */
 
             try {
                 ret = scanImageForBest(image, droneCommander);

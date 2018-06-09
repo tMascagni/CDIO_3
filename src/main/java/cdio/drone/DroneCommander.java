@@ -466,17 +466,18 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException
      */
     @Override
-    public final boolean leftSideCheck(){
+    public final boolean leftSideCheck() {
 
         boolean lSide;
-        qr= qrCodeHandler.detectQR(this);
+        qr = qrCodeHandler.detectQR(this);
         Double lTempAngle = qr.getAngle();
-        for (int i= 0; i<=5; i++){
+        for (int i = 0; i <= 5; i++) {
             flyLeft(i);
             commandManager.spinRight(10).doFor(10);
-        }if (lTempAngle < qr.getAngle()){
+        }
+        if (lTempAngle < qr.getAngle()) {
             lSide = true;
-        }else {
+        } else {
             lSide = false;
         }
         return lSide;
@@ -488,17 +489,18 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException
      */
     @Override
-    public final boolean rightSideCheck(){
+    public final boolean rightSideCheck() {
 
         boolean rSide;
-        qr= qrCodeHandler.detectQR(this);
+        qr = qrCodeHandler.detectQR(this);
         Double lTempAngle = qr.getAngle();
-        for (int i= 0; i<=5; i++){
+        for (int i = 0; i <= 5; i++) {
             flyRight(i);
             commandManager.spinLeft(10).doFor(10);
-        }if (lTempAngle < qr.getAngle()){
+        }
+        if (lTempAngle < qr.getAngle()) {
             rSide = true;
-        }else {
+        } else {
             rSide = false;
         }
         return rSide;
@@ -511,10 +513,10 @@ public final class DroneCommander implements IDroneCommander {
      */
     @Override
     public final void circleAroundObject() {
-        qr= qrCodeHandler.detectQR(this);
+        qr = qrCodeHandler.detectQR(this);
         int centerOfQR = latestReceivedImage.getWidth() / 2;
-        Double x =  centerOfQR + cos(qr.getAngle())* qr.getDistance();
-        Double y =  centerOfQR + sin(qr.getAngle())* qr.getDistance();
+        Double x = centerOfQR + cos(qr.getAngle()) * qr.getDistance();
+        Double y = centerOfQR + sin(qr.getAngle()) * qr.getDistance();
         if (leftSideCheck() == true) {
             do {
                 flyRight(x.intValue());
@@ -584,13 +586,24 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Centering on QR code...");
 
         QRImg qrImg = null;
-        int centerOfFrameX;
+        int centerOfFrameX = -1;
 
         do {
-            qrImg = qrCodeHandler.detectQR(this);
-            addMessage("qrImg found!");
+            if (latestReceivedImage != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            } else {
+                continue;
+            }
 
-            centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            qrImg = qrCodeHandler.detectQR(this);
+
+            // continue her laver null pointer
+            if (qrImg == null) {
+                addMessage("qrImg is null!");
+                continue;
+            } else {
+                addMessage("qrImg found!");
+            }
 
             if (qrImg.getPosition().x > centerOfFrameX) {
                 addMessage("Flying right");
@@ -622,14 +635,18 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public boolean flyToTargetQRCode(boolean centerOnTheWay) {
         QRImg qrImg = null;
-
         int count = 0;
+
         while (qrImg == null) {
+
             try {
                 qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
             } catch (IQRCodeHandler.QRCodeHandlerException e) {
                 e.printStackTrace();
+            } /*catch (IllegalArgumentException ignored) {
+                qrImg = null;
             }
+            */
 
             count++;
             if (count >= 1000) {
@@ -641,7 +658,6 @@ public final class DroneCommander implements IDroneCommander {
         double dist = qrImg.getDistance();
 
         while (dist > 80) {
-
             addMessage("Flying to QR code. Distance: " + dist);
 
             flyForward(400);
@@ -1069,13 +1085,6 @@ public final class DroneCommander implements IDroneCommander {
      */
     private void startWiFiListener() {
         navDataManager.addWifiListener(strength -> this.wifiStrength = strength);
-
-        navDataManager.addCommonNavdataListener((commonNavdata, i) -> {
-            System.out.println("1: " + commonNavdata.motor1);
-            System.out.println("2: " + commonNavdata.motor2);
-            System.out.println("3: " + commonNavdata.motor3);
-            System.out.println("4: " + commonNavdata.motor4);
-        });
     }
 
     /**
@@ -1150,10 +1159,8 @@ public final class DroneCommander implements IDroneCommander {
                     }
 
                 }
+            */
 
-            }
-        });
-        */
             }
         });
     }
