@@ -32,6 +32,8 @@ public interface IDroneCommander {
 
     QRImg searchForQRCode() throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
+    boolean leftSideCheck() throws DroneCommanderException;
+    boolean rightSideCheck() throws DroneCommanderException;
     void rotateDrone(int targetYaw) throws DroneCommanderException;
     void adjustToCenterFromQR() throws DroneCommanderException;
     boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;

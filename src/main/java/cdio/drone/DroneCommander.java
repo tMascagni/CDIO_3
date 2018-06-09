@@ -10,8 +10,6 @@ import yadankdrone.IARDrone;
 import yadankdrone.command.CommandManager;
 import yadankdrone.command.LEDAnimation;
 import yadankdrone.navdata.*;
-import yadankdrone.navdata.common.CommonNavdata;
-import yadankdrone.navdata.common.CommonNavdataListener;
 import yadankdrone.video.ImageListener;
 import yadankdrone.video.VideoManager;
 
@@ -20,6 +18,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 
 public final class DroneCommander implements IDroneCommander {
 
@@ -465,29 +466,72 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException
      */
     @Override
-    public final void circleAroundObject() {
-        int centerOfQR = 0;
-/*        for (int i = 0; i >= 4; i++) {
-            flyLeft(1);
-            qr.setDistance(50.00);
-            //commandManager.spinRight(10).doFor(10);
-            commandManager.spinLeft(10).doFor(10);
-        }*/
+    public final boolean leftSideCheck(){
+
+        boolean lSide;
         qr= qrCodeHandler.detectQR(this);
-
-        QRCodeHandler.getInstance();
-        if (qr.getAngle() >= 40.00) {
-            do {
-                flyLeft(1);
-                commandManager.spinLeft(10).doFor(1);
-            } while (qr.getPosition().x <= centerOfQR - 50 || qr.getPosition().x >= centerOfQR + 50);
-        } else if (qr.getAngle() <= 40.00) {
-            do {
-                flyRight(1);
-                commandManager.spinRight(10).doFor(1);
-            } while (qr.getPosition().x <= centerOfQR - 50 || qr.getPosition().x >= centerOfQR + 50);
+        Double lTempAngle = qr.getAngle();
+        for (int i= 0; i<=5; i++){
+            flyLeft(i);
+            commandManager.spinRight(10).doFor(10);
+        }if (lTempAngle < qr.getAngle()){
+            lSide = true;
+        }else {
+            lSide = false;
         }
+        return lSide;
+    }
 
+    /**
+     * Undefined functionality. :)
+     *
+     * @throws DroneCommanderException
+     */
+    @Override
+    public final boolean rightSideCheck(){
+
+        boolean rSide;
+        qr= qrCodeHandler.detectQR(this);
+        Double lTempAngle = qr.getAngle();
+        for (int i= 0; i<=5; i++){
+            flyRight(i);
+            commandManager.spinLeft(10).doFor(10);
+        }if (lTempAngle < qr.getAngle()){
+            rSide = true;
+        }else {
+            rSide = false;
+        }
+        return rSide;
+    }
+
+    /**
+     * Undefined functionality. :)
+     *
+     * @throws DroneCommanderException
+     */
+    @Override
+    public final void circleAroundObject() {
+        qr= qrCodeHandler.detectQR(this);
+        int centerOfQR = latestReceivedImage.getWidth() / 2;
+        Double x =  centerOfQR + cos(qr.getAngle())* qr.getDistance();
+        Double y =  centerOfQR + sin(qr.getAngle())* qr.getDistance();
+        if (leftSideCheck() == true) {
+            do {
+                flyRight(x.intValue());
+                flyForward(1);
+                commandManager.spinRight(10).doFor(10);
+            } while (qr.getAngle() == 12.01 && qr.getDistance() == 70.00);
+            landDrone();
+            stopDrone();
+        } else if (rightSideCheck() == true) {
+            do {
+                flyLeft(y.intValue());
+                flyForward(1);
+                commandManager.spinRight(10).doFor(10);
+            } while (qr.getAngle() == 12.01 && qr.getDistance() == 70.00);
+            landDrone();
+            stopDrone();
+        }
 
 
     }
