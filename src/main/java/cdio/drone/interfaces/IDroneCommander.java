@@ -15,7 +15,7 @@ public interface IDroneCommander {
     void stopDrone() throws DroneCommanderException;
     void initDrone() throws DroneCommanderException;
     void resetDrone() throws DroneCommanderException;
-
+    void smoothInit() throws DroneCommanderException;
     void takeOffDrone() throws DroneCommanderException;
     void landDrone() throws DroneCommanderException;
     void hoverDrone(int timeMillis) throws DroneCommanderException;

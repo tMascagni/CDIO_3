@@ -37,6 +37,7 @@ public final class DroneCommander implements IDroneCommander {
 
     private final int MAX_SPEED = 100;                /* percentage (%) */
     private final int MIN_SPEED = 10;                 /* percentage (%) */
+    private int SPEED_ON_TAKE_OFF = 0;
 
     private final int INITIAL_SPEED = 20;             /* In %, speed goes from 0 to 100. */
     private final int LANDING_SPEED = 20;
@@ -205,6 +206,28 @@ public final class DroneCommander implements IDroneCommander {
 
         setLEDAnimation(LEDAnimation.BLANK, 1, 1);
         addMessage("Drone taken off!");
+    }
+
+    /**
+     * Makes the drone takeoff smoothly.
+     *
+     * Notice: drone should takeoff smooth.
+     */
+    @Override
+    public final void smoothInit() {
+        addMessage("Drone Initializing...");
+        int speedOntakeOff = 0;
+        do {
+            speedOntakeOff ++;
+            drone.setSpeed(speedOntakeOff);
+        }while (speedOntakeOff == 20);
+        commandManager.setMinAltitude(MIN_ALTITUDE);
+        commandManager.setMaxAltitude(MAX_ALTITUDE);
+
+        /* Wait to settle for commands... */
+        sleep(1000);
+
+        addMessage("Drone initialized!");
     }
 
     /**
@@ -459,6 +482,8 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Did not find any QR code.");
         return null;
     }
+
+
 
     /**
      * Undefined functionality. :)
