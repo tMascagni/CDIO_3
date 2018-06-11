@@ -1,6 +1,7 @@
 package cdio.drone;
 
 import cdio.cv.QRImg;
+import cdio.cv.RingImg;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
@@ -502,11 +503,7 @@ public final class DroneCommander implements IDroneCommander {
             flyLeft(i);
             commandManager.spinRight(10).doFor(10);
         }
-        if (lTempAngle < qr.getAngle()) {
-            lSide = true;
-        } else {
-            lSide = false;
-        }
+        lSide = lTempAngle < qr.getAngle();
         return lSide;
     }
 
@@ -525,11 +522,7 @@ public final class DroneCommander implements IDroneCommander {
             flyRight(i);
             commandManager.spinLeft(10).doFor(10);
         }
-        if (lTempAngle < qr.getAngle()) {
-            rSide = true;
-        } else {
-            rSide = false;
-        }
+        rSide = lTempAngle < qr.getAngle();
         return rSide;
     }
 
@@ -732,6 +725,45 @@ public final class DroneCommander implements IDroneCommander {
         }
 
         return true;
+    }
+
+    /**
+     * Makes the drone adjust to the center of the ring right in front.
+     *
+     * @throws DroneCommanderException Thrown if any errors occur.
+     */
+    @Override
+    public void centerOnRing() {
+        QRImg qr = null;
+        RingImg ring = null;
+        BufferedImage image = null;
+        int target = 0;
+
+        int tries = 0;
+        int range = 50;
+
+        do {
+            while (ring == null) {
+                image = getLatestReceivedImage();
+                if (image != null) {
+                    target = image.getHeight() / 2;
+                    qr = qrCodeHandler.detectQR(this);
+                    ring = qrCodeHandler.findRing(image, qr);
+                }
+                tries++;
+                if (tries > 200) {
+                    return;
+                }
+                sleep(200);
+            }
+            if (target > ring.getPosition().y) {
+                addMessage("Higher");
+            } else {
+                addMessage("Lower");
+            }
+        } while (target + range > ring.getPosition().y || target - range < ring.getPosition().y);
+
+
     }
 
     /******************************************************
