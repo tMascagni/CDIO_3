@@ -210,17 +210,20 @@ public final class DroneCommander implements IDroneCommander {
 
     /**
      * Makes the drone takeoff smoothly.
-     *
+     * <p>
      * Notice: drone should takeoff smooth.
      */
     @Override
     public final void smoothInit() {
         addMessage("Drone Initializing...");
+
         int speedOntakeOff = 0;
+
         do {
-            speedOntakeOff ++;
+            speedOntakeOff++;
             drone.setSpeed(speedOntakeOff);
-        }while (speedOntakeOff == 20);
+        } while (speedOntakeOff < 20);
+
         commandManager.setMinAltitude(MIN_ALTITUDE);
         commandManager.setMaxAltitude(MAX_ALTITUDE);
 
@@ -482,7 +485,6 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Did not find any QR code.");
         return null;
     }
-
 
 
     /**
