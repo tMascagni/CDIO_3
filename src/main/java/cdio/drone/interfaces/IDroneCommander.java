@@ -15,7 +15,7 @@ public interface IDroneCommander {
     void stopDrone() throws DroneCommanderException;
     void initDrone() throws DroneCommanderException;
     void resetDrone() throws DroneCommanderException;
-
+    void smoothInit() throws DroneCommanderException;
     void takeOffDrone() throws DroneCommanderException;
     void landDrone() throws DroneCommanderException;
     void hoverDrone(int timeMillis) throws DroneCommanderException;
@@ -32,6 +32,8 @@ public interface IDroneCommander {
 
     QRImg searchForQRCode() throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
+    boolean leftSideCheck() throws DroneCommanderException;
+    boolean rightSideCheck() throws DroneCommanderException;
     void rotateDrone(int targetYaw) throws DroneCommanderException;
     void adjustToCenterFromQR() throws DroneCommanderException;
     boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;
