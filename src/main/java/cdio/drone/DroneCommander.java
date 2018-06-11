@@ -131,6 +131,8 @@ public final class DroneCommander implements IDroneCommander {
         drone.start();
         /* Wait to settle for commands... */
         sleep(1000);
+        drone.reset();
+        sleep(1000);
 
         setLEDAnimation(LEDAnimation.BLANK, 1, 1);
         addMessage("Drone started!");
@@ -450,7 +452,7 @@ public final class DroneCommander implements IDroneCommander {
 
                 }
 
-                if (qrImg != null && qrImg.getQrCodeData() != null) {
+                if (qrImg != null && qrImg.isQRCodeRead()) {
 
                     int qrCodeResult = qrImg.getQrCodeData().getResult();
 
@@ -614,11 +616,9 @@ public final class DroneCommander implements IDroneCommander {
 
         QRImg qrImg = null;
         int centerOfFrameX = -1;
-        boolean qrSeenLastTick = false;
 
         do {
             while (latestReceivedImage == null) {
-                System.out.println("adjustToCenterFromQR: Latest image is null!");
                 sleep(200);
             }
 
@@ -626,7 +626,7 @@ public final class DroneCommander implements IDroneCommander {
                 centerOfFrameX = latestReceivedImage.getWidth() / 2;
             }
 
-            while (qrImg == null) {
+            do {
                 qrImg = qrCodeHandler.detectQR(this);
 
                 if (qrImg == null) {
@@ -634,31 +634,16 @@ public final class DroneCommander implements IDroneCommander {
                 }
 
                 if (latestReceivedImage != null && qrImg != null) {
-                    qrSeenLastTick = true;
                     centerOfFrameX = latestReceivedImage.getWidth() / 2;
-                } else {
-                    qrSeenLastTick = false;
                 }
 
                 sleep(200);
-            }
+            } while (qrImg == null);
 
             if (qrImg.getPosition().x > centerOfFrameX) {
-                //addMessage("Flying right!");
-                if (qrSeenLastTick) {
-                    flyRight(200);
-                } else {
-                    landDrone();
-                    addMessage("DID NOT SEE QR CODE SAAAAAAAAAAAAAAD");
-                }
+                flyRight(200);
             } else {
-                //addMessage("Flying left!");
-                if (qrSeenLastTick) {
-                    flyLeft(200);
-                } else {
-                    landDrone();
-                    addMessage("DID NOT SEE QR CODE SAAAAAAAAAAAAAAD");
-                }
+                flyLeft(200);
             }
 
             commandManager.hover().waitFor(100);
@@ -667,9 +652,9 @@ public final class DroneCommander implements IDroneCommander {
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
 
         if (qrImg.isQRCodeRead()) {
-            addMessage("Centered on QR code! QR code not read.");
-        } else {
             addMessage("Centered on QR code! QR code read: " + qrImg.getQrCodeData().getResult());
+        } else {
+            addMessage("Centered on QR code! QR code not read.");
         }
     }
 
@@ -687,14 +672,15 @@ public final class DroneCommander implements IDroneCommander {
 
         while (qrImg == null) {
 
+            while (latestReceivedImage == null) {
+                sleep(200);
+            }
+
             try {
                 qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
             } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                e.printStackTrace();
-            } /*catch (IllegalArgumentException ignored) {
-                qrImg = null;
+                // did not read QR code
             }
-            */
 
             count++;
             if (count >= 1000) {
@@ -705,24 +691,38 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 80) {
+        while (dist > 90) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            flyForward(400);
+            flyForward(50);
+            sleep(100);
 
             if (centerOnTheWay) {
                 adjustToCenterFromQR();
+                commandManager.hover().waitFor(300);
             }
 
-            hoverDrone(200);
+            commandManager.hover().waitFor(200);
 
-            try {
-                qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
-            } catch (IQRCodeHandler.QRCodeHandlerException e) {
-                e.printStackTrace();
+            do {
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
+                    dist = qrImg.getDistance();
+                    addMessage("New distance: " + dist);
+                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                    qrImg = null;
+                }
+            } while (qrImg == null);
+
+            if (dist < 60) {
+                flyBackward(200);
+                sleep(100);
             }
+        }
 
-            dist = qrImg.getDistance();
+        if (centerOnTheWay) {
+            adjustToCenterFromQR();
+            commandManager.hover().waitFor(200);
         }
 
         if (qrImg.isQRCodeRead()) {
@@ -730,6 +730,8 @@ public final class DroneCommander implements IDroneCommander {
         } else {
             addMessage("Reached QR code. Not read. Distance: " + dist);
         }
+
+        commandManager.hover().waitFor(200);
 
         return true;
     }

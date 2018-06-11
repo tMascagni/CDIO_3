@@ -77,9 +77,9 @@ public final class Algorithms {
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(8000);
 
-            //droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR();
 
-            droneCommander.flyToTargetQRCode(false); // fly hen til ring
+            droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
             //droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
 
@@ -114,7 +114,7 @@ public final class Algorithms {
              * laver vi en ny rotation, i håb om at finde den
              * korrekte QR kode. (den næste kode)
              */
-            if (qrImg == null || qrImg.getQrCodeData() == null) {
+            if (qrImg == null || !qrImg.isQRCodeRead()) {
                 qrImg = droneCommander.searchForQRCode();
             }
 
@@ -123,6 +123,58 @@ public final class Algorithms {
              * (360 grader rundt), så roterer vi hen til graden af den kode der har den
              * største højde.
              */
+
+            /*
+             * Hvis qrImg er forskellig fra null, og den er læst,
+             * så ved vi at det er den næste QRKode som vi skal have.
+             */
+            if (qrImg != null && qrImg.isQRCodeRead()) {
+
+                /*
+                 * Vi sikrer os at dronens camera er ca. foran QR koden
+                 */
+                droneCommander.adjustToCenterFromQR();
+
+                /*
+                 * Vi flyver hen til QR koden
+                 */
+                droneCommander.flyToTargetQRCode(true);
+
+                /*
+                 * Flyv op til midten af ringen.
+                 * Flyv op ind til midten
+                 * af ringen er blevet detekteret.
+                 */
+                //droneCommander.flyUpToAltitude(0);
+
+
+                /*
+                 * flyv igennem ring :)
+                 */
+
+                /*
+                 * flyv ned til samme altitude som før.
+                 */
+
+            } else {
+                /*
+                 * Hvis qrImg er null så betyder det at dronen ikke fandt den
+                 * korrekte QR kode.
+                 *
+                 * Flyv op til en ny højde og søg igen efter QRKoder.
+                 */
+
+                // flyv op
+
+                // searchRotation
+
+                // igen searchRotation
+
+                // samme algo som ovenover
+
+                // ellers, så flyv hen til QR koden med den største højde.
+            }
+
 
             try {
                 qrImg = droneCommander.getTallestQRCode();
