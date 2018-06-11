@@ -528,6 +528,7 @@ public final class DroneCommander implements IDroneCommander {
         return rSide;
     }
 
+
     /**
      * Undefined functionality. :)
      *
@@ -539,25 +540,73 @@ public final class DroneCommander implements IDroneCommander {
         int centerOfQR = latestReceivedImage.getWidth() / 2;
         Double x = centerOfQR + cos(qr.getAngle()) * qr.getDistance();
         Double y = centerOfQR + sin(qr.getAngle()) * qr.getDistance();
+        qr = qrCodeHandler.detectQR(this);
+/*        do {
+            flyForward(5);
+            hoverDrone(10);
+        }while (qr.getDistance() <= 70);
+        addMessage("fly to point 1");
+        do {
+            flyRight(x.intValue()+5);
+            commandManager.spinLeft(7).doFor(7);
+            hoverDrone(10);
+        }while (qr.getAngle() <= 20);
+        addMessage("Vinkeln er om. 20" + qr.getAngle());
+        addMessage("fly to point 2");
+        do {
+            flyRight(x.intValue()+5);
+            commandManager.spinLeft(7).doFor(7);
+            hoverDrone(10);
+        }while (qr.getAngle() >= 70);
+        addMessage("point 3 reached");
+        hoverDrone(1000); // fly stealth
+        addMessage("start to back to point 2");
+        do {
+            flyLeft(x.intValue()+5);
+            commandManager.spinRight(7).doFor(7);
+            hoverDrone(10);
+        }while (qr.getAngle() >= 20);
+        addMessage("Vinkel er om. 20,  point 2 reached" + qr.getAngle());
+        addMessage("start to back to point 1");
+        do {
+            flyLeft(x.intValue()+5);
+            commandManager.spinRight(7).doFor(7);
+            hoverDrone(10);
+        }while (qr.getAngle() >= 70);
+        hoverDrone(1000); // fly stealth
+        }*/
+
+/*       addMessage("vinkel"+ qr.getAngle());
+        for (int i= 0; i<= 20; i++){
+            qr = qrCodeHandler.detectQR(this);
+            flyRight(x.intValue()+10);
+            addMessage("vinkel"+ qr.getAngle());
+            commandManager.spinRight(10).doFor(10);
+            if (qr.getAngle() <= 20.01){
+                landDrone();
+                stopDrone();
+            }
+        }*/
+
         if (leftSideCheck() == true) {
             do {
                 flyRight(x.intValue());
-                flyForward(1);
+                flyForward(2);
+                hoverDrone(5);
                 commandManager.spinRight(10).doFor(10);
-            } while (qr.getAngle() == 12.01 && qr.getDistance() == 70.00);
+            } while (qr.getAngle() < 20.01 && qr.getDistance() < 70.00);
             landDrone();
             stopDrone();
         } else if (rightSideCheck() == true) {
             do {
-                flyLeft(y.intValue());
-                flyForward(1);
-                commandManager.spinRight(10).doFor(10);
-            } while (qr.getAngle() == 12.01 && qr.getDistance() == 70.00);
+                flyLeft(x.intValue());
+                flyForward(3);
+                hoverDrone(5);
+                commandManager.spinRight(20).doFor(20);
+            } while (qr.getAngle() < 20.01 && qr.getDistance() < 50.00);
             landDrone();
             stopDrone();
         }
-
-
     }
 
     /**
