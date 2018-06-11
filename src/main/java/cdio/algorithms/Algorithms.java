@@ -75,11 +75,9 @@ public final class Algorithms {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(10000);
+            droneCommander.hoverDrone(8000);
 
-            while (droneCommander.getLatestReceivedImage() == null);
-
-            droneCommander.adjustToCenterFromQR();
+            //droneCommander.adjustToCenterFromQR();
 
             droneCommander.flyToTargetQRCode(false); // fly hen til ring
 

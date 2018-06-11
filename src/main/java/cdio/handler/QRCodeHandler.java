@@ -179,6 +179,7 @@ public class QRCodeHandler implements IQRCodeHandler {
             while (image == null) {
                 image = droneCommander.getLatestReceivedImage();
                 System.out.println("image is null!");
+                droneCommander.sleep(200);
             }
 
             try {

@@ -79,6 +79,8 @@ public interface IDroneCommander {
     boolean isQRCodeTarget(int target);
     void incQRCodeTarget();
 
+    void sleep(int timeMillis);
+
     class DroneCommanderException extends Exception {
 
         public DroneCommanderException(String msg) {

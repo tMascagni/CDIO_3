@@ -614,41 +614,62 @@ public final class DroneCommander implements IDroneCommander {
 
         QRImg qrImg = null;
         int centerOfFrameX = -1;
+        boolean qrSeenLastTick = false;
 
         do {
-            if (latestReceivedImage != null) {
-                centerOfFrameX = latestReceivedImage.getWidth() / 2;
-            } else {
-                continue;
+            while (latestReceivedImage == null) {
+                System.out.println("adjustToCenterFromQR: Latest image is null!");
+                sleep(200);
             }
 
-            qrImg = qrCodeHandler.detectQR(this);
+            if (latestReceivedImage != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            }
 
-            // continue her laver null pointer
-            if (qrImg == null) {
-                addMessage("qrImg is null!");
-                continue;
-            } else {
-                addMessage("qrImg found!");
+            while (qrImg == null) {
+                qrImg = qrCodeHandler.detectQR(this);
+
+                if (qrImg == null) {
+                    addMessage("Failed to detect QR code!");
+                }
+
+                if (latestReceivedImage != null && qrImg != null) {
+                    qrSeenLastTick = true;
+                    centerOfFrameX = latestReceivedImage.getWidth() / 2;
+                } else {
+                    qrSeenLastTick = false;
+                }
+
+                sleep(200);
             }
 
             if (qrImg.getPosition().x > centerOfFrameX) {
-                addMessage("Flying right");
-                flyRight(200);
+                //addMessage("Flying right!");
+                if (qrSeenLastTick) {
+                    flyRight(200);
+                } else {
+                    landDrone();
+                    addMessage("DID NOT SEE QR CODE SAAAAAAAAAAAAAAD");
+                }
             } else {
-                addMessage("Flying left");
-                flyLeft(200);
+                //addMessage("Flying left!");
+                if (qrSeenLastTick) {
+                    flyLeft(200);
+                } else {
+                    landDrone();
+                    addMessage("DID NOT SEE QR CODE SAAAAAAAAAAAAAAD");
+                }
             }
 
-            hoverDrone(100);
+            commandManager.hover().waitFor(100);
             sleep(400);
 
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
 
-        if (qrImg.getQrCodeData() == null) {
-            addMessage("Centered on QR code! Not read.");
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Centered on QR code! QR code not read.");
         } else {
-            addMessage("Centered on QR code! QR code: " + qrImg.getQrCodeData().getResult());
+            addMessage("Centered on QR code! QR code read: " + qrImg.getQrCodeData().getResult());
         }
     }
 
@@ -1036,6 +1057,20 @@ public final class DroneCommander implements IDroneCommander {
         }
     }
 
+    /**
+     * Sleep the code for a specific amount of time.
+     *
+     * @param timeMillis The amount of milliseconds the code should sleep.
+     */
+    @Override
+    public void sleep(int timeMillis) {
+        try {
+            Thread.sleep(timeMillis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException("SLEEP DID NOT WORK!");
+        }
+    }
+
     /******************************************************
      *                   PRIVATE METHODS
      ******************************************************/
@@ -1214,19 +1249,6 @@ public final class DroneCommander implements IDroneCommander {
      */
     private void setLEDAnimation(LEDAnimation ledAnimation, int freq, int duration) {
         commandManager.setLedsAnimation(ledAnimation, freq, duration);
-    }
-
-    /**
-     * Sleep the code for a specific amount of time.
-     *
-     * @param timeMillis The amount of milliseconds the code should sleep.
-     */
-    private void sleep(int timeMillis) {
-        try {
-            Thread.sleep(timeMillis);
-        } catch (InterruptedException e) {
-            throw new RuntimeException("SLEEP DID NOT WORK!");
-        }
     }
 
 }
