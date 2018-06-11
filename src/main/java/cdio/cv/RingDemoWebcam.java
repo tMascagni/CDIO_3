@@ -9,6 +9,7 @@ import org.opencv.videoio.VideoCapture;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RingDemoWebcam {
 
@@ -33,17 +34,23 @@ public class RingDemoWebcam {
             Mat image = new Mat();
             cam.read(image);
 
-            RingDetector rd = new RingDetector(image);
-            ArrayList<RingImg> rings = rd.processAll(rd.orgImg);
+            QRDetector qrDetector = new QRDetector(image);
+            QRImg qr = qrDetector.findBest(qrDetector.processAll(image));
+            if (qr != null) {
+                Imgproc.drawContours(image, Arrays.asList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
+                RingDetector rd = new RingDetector(image);
+                RingImg ring = rd.findFromQR(image, qr);
 
-            for (RingImg ring : rings) {
-                System.out.println("Found a circle!");
-                Imgproc.circle(rd.grayImg, ring.getPosition(), 1, new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
-                Imgproc.circle(rd.grayImg, ring.getPosition(), (int) ring.getRadius(), new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
+                if (ring != null) {
+                    System.out.println("Found a circle!");
+                    Imgproc.circle(image, ring.getPosition(), 1, new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
+                    Imgproc.circle(image, ring.getPosition(), (int) ring.getRadius(), new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
+                }
             }
-            ImageIcon icon = new ImageIcon(cvHelper.mat2buf(rd.grayImg));
+            ImageIcon icon = new ImageIcon(cvHelper.mat2buf(image));
             label.setIcon(icon);
             webCamView.repaint();
+
             Thread.sleep(100);
 
         }

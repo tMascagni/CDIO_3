@@ -1,6 +1,7 @@
 package cdio.handler.interfaces;
 
 import cdio.cv.QRImg;
+import cdio.cv.RingImg;
 import cdio.drone.interfaces.IDroneCommander;
 
 import java.awt.image.BufferedImage;
@@ -10,6 +11,7 @@ public interface IQRCodeHandler {
 
     ArrayList<QRImg> scanImageForAll(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException;
 
+    RingImg findRing(BufferedImage image, QRImg qr);
     QRImg scanImageForBest(final BufferedImage image, IDroneCommander droneCommander) throws QRCodeHandlerException;
     BufferedImage getImageLocal(String path) throws QRCodeHandlerException;
     BufferedImage getImageRemote(String url) throws QRCodeHandlerException;

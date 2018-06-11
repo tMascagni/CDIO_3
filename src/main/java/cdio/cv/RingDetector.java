@@ -25,19 +25,35 @@ public class RingDetector {
         orgImg = Imgcodecs.imread(filePath);
     }
 
+    public RingImg findFromQR(Mat img, QRImg qr) {
+        ArrayList<RingImg> allRings = processAll(img);
+        ArrayList<RingImg> firstPass = new ArrayList<>();
+        for (RingImg r : allRings) {
+            Point rPos = r.getPosition();
+            Point qrPos = qr.getPosition();
+            if (qrPos.x + qr.getW() * 2 > rPos.x && qrPos.x - qr.getW() * 2 < rPos.x) {
+                firstPass.add(r);
+            }
+        }
+        if (firstPass.size() > 0) {
+            return firstPass.get(0);
+        }
+        return null;
+    }
+
     public ArrayList<RingImg> processAll(Mat mat) {
         ArrayList<RingImg> rings = new ArrayList<>();
         orgImg = mat;
         getGray();
 
         Imgproc.blur(grayImg, grayImg, new Size(3, 3));
-        edgeDetection();
+        //edgeDetection();
         //thresholding(200);
-        Dilate(1);
-        Erode(1);
-        Dilate(2);
-        Erode(2);
-        Dilate(3);
+        //Dilate(1);
+        //Erode(1);
+        //Dilate(2);
+        //Erode(2);
+        //Dilate(3);
 
         Mat newImg = grayImg.clone();
 
@@ -69,7 +85,6 @@ public class RingDetector {
                 new Point(size, size));
         Imgproc.erode(binImg, binImg, element);
     }
-
 
     private void edgeDetection() {
         Mat img = grayImg.clone();

@@ -1,8 +1,6 @@
 package cdio.handler;
 
-import cdio.cv.CVHelper;
-import cdio.cv.QRDetector;
-import cdio.cv.QRImg;
+import cdio.cv.*;
 import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
@@ -175,6 +173,19 @@ public class QRCodeHandler implements IQRCodeHandler {
             }
         }
         return ret;
+    }
+
+    public RingImg findRing(BufferedImage image, QRImg qr) {
+        if (image == null || qr == null) {
+            return null;
+        }
+
+        CVHelper cvHelper = new CVHelper();
+        Mat img = cvHelper.buf2mat(image);
+        RingDetector ringDetector = new RingDetector(img);
+
+        return ringDetector.findFromQR(img, qr);
+
     }
 
 }
