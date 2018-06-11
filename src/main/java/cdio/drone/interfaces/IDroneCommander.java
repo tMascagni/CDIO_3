@@ -30,6 +30,8 @@ public interface IDroneCommander {
     void flyUpToAltitude(int altitude);
     void flyDownToAltitude(int altitude);
 
+    void PointToQRSpin();
+
     void flyUpAltitudePlus(int altitudePlus);
 
     QRImg searchForQRCode() throws DroneCommanderException;

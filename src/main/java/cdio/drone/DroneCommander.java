@@ -712,6 +712,59 @@ public final class DroneCommander implements IDroneCommander {
         }
     }
 
+    /**
+     * Attempts to scan for QR codes, if found, the drone
+     * will be centered right across from the QR code.
+     * and uses spin
+     */
+
+    public void PointToQRSpin() {
+        addMessage("Centering on QR code...");
+
+        QRImg qrImg = null;
+        int centerOfFrameX = -1;
+
+        do {
+            while (latestReceivedImage == null) {
+                sleep(200);
+            }
+
+            if (latestReceivedImage != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            }
+
+            do {
+                qrImg = qrCodeHandler.detectQR(this);
+
+                if (qrImg == null) {
+                    addMessage("Failed to detect QR code!");
+                }
+
+                if (latestReceivedImage != null && qrImg != null) {
+                    centerOfFrameX = latestReceivedImage.getWidth() / 2;
+                }
+
+                sleep(200);
+            } while (qrImg == null);
+
+            if (qrImg.getPosition().x > centerOfFrameX) {
+                commandManager.spinLeft(200);
+            } else {
+                commandManager.spinRight(200);
+            }
+
+            commandManager.hover().waitFor(100);
+            sleep(300);
+
+        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Centered on QR code! QR code read: " + qrImg.getQrCodeData().getResult());
+        } else {
+            addMessage("Centered on QR code! QR code not read.");
+        }
+    }
+
     public void adjustHightToCenterFromQR() {
         addMessage("Centering Verticly on QR code...");
 
