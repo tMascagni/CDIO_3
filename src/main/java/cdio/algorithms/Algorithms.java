@@ -81,9 +81,9 @@ public final class Algorithms {
 
             droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
-            //droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
+            droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
 
-            //droneCommander.flyForward(3000); // flyv gennem ringen
+            droneCommander.flyForward(3000); // flyv gennem ringen
 
             droneCommander.hoverDrone(2000);
             droneCommander.landDrone();

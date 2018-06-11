@@ -37,6 +37,8 @@ public interface IDroneCommander {
     void rotateDrone(int targetYaw) throws DroneCommanderException;
     void adjustToCenterFromQR() throws DroneCommanderException;
 
+    void adjustHightToCenterFromQR() throws DroneCommanderException;
+
     void centerOnRing() throws DroneCommanderException;
     boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;
 

@@ -700,6 +700,60 @@ public final class DroneCommander implements IDroneCommander {
         }
     }
 
+    public void adjustHightToCenterFromQR() {
+        addMessage("Centering Verticly on QR code...");
+
+        QRImg qrImg = null;
+        int centerOfFrameY = -1;
+
+        do {
+            while (latestReceivedImage == null) {
+                sleep(200);
+            }
+
+            if (latestReceivedImage != null) {
+                centerOfFrameY = latestReceivedImage.getHeight() / 2;
+            }
+
+            do {
+                qrImg = qrCodeHandler.detectQR(this);
+
+                if (qrImg == null) {
+                    addMessage("Failed to detect QR code!");
+                }
+
+                if (latestReceivedImage != null && qrImg != null) {
+                    centerOfFrameY = latestReceivedImage.getHeight() / 2;
+                }
+
+                sleep(200);
+            } while (qrImg == null);
+
+
+            if (qrImg.getPosition().y <= centerOfFrameY) {
+                flyUp(300);
+            } else if (qrImg.getPosition().y >= centerOfFrameY) {
+                flyDown(300);
+            } else {
+                if (getAltitude() > 2040) {
+                    flyDown(400);
+                    addMessage("down");
+                } else {
+                    flyUp(400);
+                    addMessage("up");
+                }
+            }
+
+
+            commandManager.hover().waitFor(100);
+            sleep(400);
+
+            addMessage("Drone vertikalt centreret, Altitude: " + getAltitude());
+
+        } while (qrImg.getPosition().y <= centerOfFrameY - 20 || qrImg.getPosition().y >= centerOfFrameY + 20);
+
+    }
+
     /**
      * Makes the drone fly forward until it is right infront of a scanned QR code.
      *
