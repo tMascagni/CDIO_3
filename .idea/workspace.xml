@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java" />
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="tilføjet centreing vertikalt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,145 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="754" column="108" lean-forward="false" selection-start-line="754" selection-start-column="108" selection-end-line="754" selection-end-column="108" />
+            <state relative-caret-position="120">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="38" />
               <folding>
-                <element signature="e#26916#26917#0" expanded="true" />
-                <element signature="e#26952#26953#0" expanded="true" />
-                <element signature="e#27589#27590#0" expanded="true" />
-                <element signature="e#27628#27629#0" expanded="true" />
-                <element signature="e#28583#28584#0" expanded="true" />
-                <element signature="e#28629#28630#0" expanded="true" />
-                <element signature="e#29079#29080#0" expanded="true" />
-                <element signature="e#29123#29124#0" expanded="true" />
-                <element signature="e#29498#29499#0" expanded="true" />
-                <element signature="e#29547#29548#0" expanded="true" />
-                <element signature="e#29686#29687#0" expanded="true" />
-                <element signature="e#29737#29738#0" expanded="true" />
-                <element signature="e#29845#29846#0" expanded="true" />
-                <element signature="e#29873#29874#0" expanded="true" />
-                <element signature="e#29979#29980#0" expanded="true" />
-                <element signature="e#30006#30007#0" expanded="true" />
-                <element signature="e#30900#30901#0" expanded="true" />
-                <element signature="e#30926#30927#0" expanded="true" />
-                <element signature="e#31040#31041#0" expanded="true" />
-                <element signature="e#31071#31072#0" expanded="true" />
-                <element signature="e#31181#31182#0" expanded="true" />
-                <element signature="e#31216#31217#0" expanded="true" />
-                <element signature="e#31326#31327#0" expanded="true" />
-                <element signature="e#31361#31362#0" expanded="true" />
-                <element signature="e#31471#31472#0" expanded="true" />
-                <element signature="e#31501#31502#0" expanded="true" />
-                <element signature="e#31610#31611#0" expanded="true" />
-                <element signature="e#31645#31646#0" expanded="true" />
-                <element signature="e#31772#31773#0" expanded="true" />
-                <element signature="e#31814#31815#0" expanded="true" />
-                <element signature="e#33854#33855#0" expanded="true" />
-                <element signature="e#33889#33890#0" expanded="true" />
-                <element signature="e#34001#34002#0" expanded="true" />
-                <element signature="e#34033#34034#0" expanded="true" />
-                <element signature="e#34295#34296#0" expanded="true" />
-                <element signature="e#34348#34349#0" expanded="true" />
-                <element signature="e#37403#37404#0" expanded="true" />
-                <element signature="e#37491#37492#0" expanded="true" />
+                <marker date="1528728572297" expanded="true" signature="6599:6605" ph="{}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HoverOffsetFix.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="27" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDroneCommander.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AltitudeTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIAngleTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="21" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QRDetector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebcamDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QRCodeHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QRImg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -190,9 +68,9 @@
       <find>center</find>
       <find>try</find>
       <find>up</find>
-      <find>alti</find>
       <find>wifi</find>
       <find>spin</find>
+      <find>alti</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/cdio/cv</dir>
@@ -260,11 +138,11 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/routing/RoutePlanner.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/mainTestcenterfromQR.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/OneRingAlgoTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
       </list>
     </option>
   </component>
@@ -367,15 +245,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cdio" type="462c0819:PsiDirectoryNode" />
               <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cdio" type="462c0819:PsiDirectoryNode" />
-              <item name="cv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
@@ -635,7 +504,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HoverOffsetFix">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
@@ -862,10 +731,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.HoverOffsetFix" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
         <item index="1" class="java.lang.String" itemvalue="Application.MainLand" />
         <item index="2" class="java.lang.String" itemvalue="Application.AltitudeTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="3" class="java.lang.String" itemvalue="Application.HoverOffsetFix" />
         <item index="4" class="java.lang.String" itemvalue="Application.TestDis" />
       </list>
     </recent_temporary>
@@ -906,7 +775,7 @@
       <workItem from="1528284457846" duration="4382000" />
       <workItem from="1528377513256" duration="1054000" />
       <workItem from="1528462776932" duration="3333000" />
-      <workItem from="1528653696398" duration="3435000" />
+      <workItem from="1528653696398" duration="4960000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1041,11 +910,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528396667389</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="tilføjet centreing vertikalt">
+      <created>1528726666094</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1528726666095</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107967000" />
+    <option name="totallyTimeSpent" value="109492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1140,7 +1016,8 @@
     <MESSAGE value="skulle virke" />
     <MESSAGE value="Tilføjet disse metoder til commander:&#10; * flyDownToAltitude&#10; * flyUpToAltitude&#10; * flyToTagetQRCode" />
     <MESSAGE value="ny test klasse til en ring." />
-    <option name="LAST_COMMIT_MESSAGE" value="ny test klasse til en ring." />
+    <MESSAGE value="tilføjet centreing vertikalt" />
+    <option name="LAST_COMMIT_MESSAGE" value="tilføjet centreing vertikalt" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1174,8 +1051,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/paperchase/QRCodeScanner.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/demo.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/Utils.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/computervision/WebcamDemo2.java" />
@@ -1217,35 +1092,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/ContourTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="138" column="41" lean-forward="false" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/demo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/CVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDemo.java" />
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Runnable.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/ui/panel/QRCodePanel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1356,30 +1203,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/mainTestcenterfromQR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="85" column="12" lean-forward="false" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
-          <folding>
-            <marker date="1528723129086" expanded="true" signature="6408:6414" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -1400,34 +1229,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="21" column="5" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1444,73 +1257,171 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="754" column="108" lean-forward="false" selection-start-line="754" selection-start-column="108" selection-end-line="754" selection-end-column="108" />
-          <folding>
-            <element signature="e#26916#26917#0" expanded="true" />
-            <element signature="e#26952#26953#0" expanded="true" />
-            <element signature="e#27589#27590#0" expanded="true" />
-            <element signature="e#27628#27629#0" expanded="true" />
-            <element signature="e#28583#28584#0" expanded="true" />
-            <element signature="e#28629#28630#0" expanded="true" />
-            <element signature="e#29079#29080#0" expanded="true" />
-            <element signature="e#29123#29124#0" expanded="true" />
-            <element signature="e#29498#29499#0" expanded="true" />
-            <element signature="e#29547#29548#0" expanded="true" />
-            <element signature="e#29686#29687#0" expanded="true" />
-            <element signature="e#29737#29738#0" expanded="true" />
-            <element signature="e#29845#29846#0" expanded="true" />
-            <element signature="e#29873#29874#0" expanded="true" />
-            <element signature="e#29979#29980#0" expanded="true" />
-            <element signature="e#30006#30007#0" expanded="true" />
-            <element signature="e#30900#30901#0" expanded="true" />
-            <element signature="e#30926#30927#0" expanded="true" />
-            <element signature="e#31040#31041#0" expanded="true" />
-            <element signature="e#31071#31072#0" expanded="true" />
-            <element signature="e#31181#31182#0" expanded="true" />
-            <element signature="e#31216#31217#0" expanded="true" />
-            <element signature="e#31326#31327#0" expanded="true" />
-            <element signature="e#31361#31362#0" expanded="true" />
-            <element signature="e#31471#31472#0" expanded="true" />
-            <element signature="e#31501#31502#0" expanded="true" />
-            <element signature="e#31610#31611#0" expanded="true" />
-            <element signature="e#31645#31646#0" expanded="true" />
-            <element signature="e#31772#31773#0" expanded="true" />
-            <element signature="e#31814#31815#0" expanded="true" />
-            <element signature="e#33854#33855#0" expanded="true" />
-            <element signature="e#33889#33890#0" expanded="true" />
-            <element signature="e#34001#34002#0" expanded="true" />
-            <element signature="e#34033#34034#0" expanded="true" />
-            <element signature="e#34295#34296#0" expanded="true" />
-            <element signature="e#34348#34349#0" expanded="true" />
-            <element signature="e#37403#37404#0" expanded="true" />
-            <element signature="e#37491#37492#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="309">
+          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="180">
+          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="377" column="22" lean-forward="true" selection-start-line="377" selection-start-column="22" selection-end-line="377" selection-end-column="22" />
+          <folding>
+            <element signature="e#27184#27185#0" expanded="true" />
+            <element signature="e#27220#27221#0" expanded="true" />
+            <element signature="e#27857#27858#0" expanded="true" />
+            <element signature="e#27896#27897#0" expanded="true" />
+            <element signature="e#28851#28852#0" expanded="true" />
+            <element signature="e#28897#28898#0" expanded="true" />
+            <element signature="e#29347#29348#0" expanded="true" />
+            <element signature="e#29391#29392#0" expanded="true" />
+            <element signature="e#29766#29767#0" expanded="true" />
+            <element signature="e#29815#29816#0" expanded="true" />
+            <element signature="e#29954#29955#0" expanded="true" />
+            <element signature="e#30005#30006#0" expanded="true" />
+            <element signature="e#30113#30114#0" expanded="true" />
+            <element signature="e#30141#30142#0" expanded="true" />
+            <element signature="e#30247#30248#0" expanded="true" />
+            <element signature="e#30274#30275#0" expanded="true" />
+            <element signature="e#31168#31169#0" expanded="true" />
+            <element signature="e#31194#31195#0" expanded="true" />
+            <element signature="e#31308#31309#0" expanded="true" />
+            <element signature="e#31339#31340#0" expanded="true" />
+            <element signature="e#31449#31450#0" expanded="true" />
+            <element signature="e#31484#31485#0" expanded="true" />
+            <element signature="e#31594#31595#0" expanded="true" />
+            <element signature="e#31629#31630#0" expanded="true" />
+            <element signature="e#31739#31740#0" expanded="true" />
+            <element signature="e#31769#31770#0" expanded="true" />
+            <element signature="e#31878#31879#0" expanded="true" />
+            <element signature="e#31913#31914#0" expanded="true" />
+            <element signature="e#32040#32041#0" expanded="true" />
+            <element signature="e#32082#32083#0" expanded="true" />
+            <element signature="e#34122#34123#0" expanded="true" />
+            <element signature="e#34157#34158#0" expanded="true" />
+            <element signature="e#34269#34270#0" expanded="true" />
+            <element signature="e#34301#34302#0" expanded="true" />
+            <element signature="e#34563#34564#0" expanded="true" />
+            <element signature="e#34616#34617#0" expanded="true" />
+            <element signature="e#37671#37672#0" expanded="true" />
+            <element signature="e#37759#37760#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/demo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/Demo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/ContourTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="138" column="41" lean-forward="false" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/CVHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDemoWebcam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/WebcamDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/RingDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="38" />
+          <folding>
+            <marker date="1528728572297" expanded="true" signature="6599:6605" ph="{}" />
           </folding>
         </state>
       </provider>

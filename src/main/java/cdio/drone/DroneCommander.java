@@ -373,6 +373,18 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     /**
+     * Makes the drone fly upwards a fixed amount from it's current position
+     *
+     * @param altitudePlus The target altitude for the drone.
+     */
+    public void flyUpAltitudePlus(int altitudePlus) {
+        int altitude = (int) getAltitude();
+        flyUpToAltitude(altitude + altitudePlus);
+    }
+
+
+
+    /**
      * Makes the drone fly upwards until it has reached
      * a specific altitude.
      *

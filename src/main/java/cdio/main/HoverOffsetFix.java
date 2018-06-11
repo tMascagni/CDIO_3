@@ -18,7 +18,7 @@ public class HoverOffsetFix {
             Thread.sleep(200);
             droneCommander.takeOffDrone();
             Thread.sleep(4000);
-            droneCommander.resetDrone();
+            droneCommander.hoverDrone(5000);
             Thread.sleep(200);
             droneCommander.landDrone();
 
