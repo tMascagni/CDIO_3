@@ -733,7 +733,7 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 90) {
+        while (dist > 120) {
             addMessage("Flying to QR code. Distance: " + dist);
 
             flyForward(50);
