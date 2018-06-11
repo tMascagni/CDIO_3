@@ -761,7 +761,10 @@ public final class DroneCommander implements IDroneCommander {
             } else {
                 addMessage("Lower");
             }
-        } while (target + range > ring.getPosition().y || target - range < ring.getPosition().y);
+
+            sleep(1000);
+        } while (true);
+        //while (target + range > ring.getPosition().y || target - range < ring.getPosition().y);
 
 
     }
