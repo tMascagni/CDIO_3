@@ -20,9 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-
 public final class DroneCommander implements IDroneCommander {
 
     /* Native library link for OpenCV. */
@@ -513,13 +510,9 @@ public final class DroneCommander implements IDroneCommander {
         //qr.getPosition();
 
         qr = qrCodeHandler.detectQR(this);
-        commandManager.spinLeft(30).doFor(30);
+        commandManager.spinLeft(20).doFor(300);
         hoverDrone(1000);
-        if (qr.getPosition().x <= 1300.0 && qr.getPosition().y >= 1200) {
-            return true;
-        }else {
-            return false;
-        }
+        return qr.getPosition().x <= 1300.0 && qr.getPosition().x >= 1200;
 
     }
 
@@ -534,11 +527,7 @@ public final class DroneCommander implements IDroneCommander {
         qr = qrCodeHandler.detectQR(this);
         commandManager.spinRight(30).doFor(30);
         hoverDrone(1000);
-        if (qr.getPosition().x >= 1500.0 && qr.getPosition().y >= 1200) {
-            return true;
-        }else {
-            return false;
-        }
+        return qr.getPosition().x >= 1500.0 && qr.getPosition().x >= 1200;
 
 /*        boolean rSide;
         qr = qrCodeHandler.detectQR(this);
@@ -565,7 +554,7 @@ public final class DroneCommander implements IDroneCommander {
         int centerOfQR = -1;
         if (leftSideCheck() == true) {
             do {
-                if (qr.getPosition().y <= 1300.0 && qr.getPosition().y >= 1200){
+                if (qr.getPosition().x <= 1300.0 && qr.getPosition().x >= 1200) {
                     flyRight(100);
                     hoverDrone(100);
                 }
@@ -600,6 +589,72 @@ public final class DroneCommander implements IDroneCommander {
             }while (qr.getDistance() <= 300);*/
         }
     }
+
+
+    public void circleAroundObjectV2() {
+
+        boolean right = false;
+
+        double lastAngle = 0;
+        boolean first = true;
+
+        double angle;
+        QRImg qrImg = null;
+        int centerOfFrameX = -1;
+
+        do {
+            while (latestReceivedImage == null) {
+                sleep(200);
+            }
+
+            if (latestReceivedImage != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            }
+
+            do {
+                qrImg = qrCodeHandler.detectQR(this);
+                angle = qrImg.getAngle();
+                addMessage("vinkel: " + angle);
+
+                if (qrImg == null) {
+                    addMessage("Failed to detect QR code!");
+                }
+
+                if (latestReceivedImage != null && qrImg != null) {
+                    centerOfFrameX = latestReceivedImage.getWidth() / 2;
+                }
+
+                commandManager.hover();
+                sleep(200);
+            } while (qrImg == null);
+
+            if (first) {
+                flyLeft(200);
+                drone.getCommandManager().spinRight(80).doFor(200);
+                adjustToCenterFromQR();
+            } else {
+                right = !(lastAngle < angle);
+
+                if (right) {
+                    flyRight(200);
+                    drone.getCommandManager().spinLeft(80).doFor(200);
+                } else {
+                    flyLeft(200);
+                    drone.getCommandManager().spinRight(80).doFor(200);
+                }
+
+                adjustToCenterFromQR();
+
+            }
+
+            lastAngle = angle;
+
+            sleep(400);
+
+        } while (lastAngle <= 15);
+
+    }
+
     /**
      * Make the drone rotate right until it has reached the target yaw.
      *
