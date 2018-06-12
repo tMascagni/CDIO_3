@@ -81,7 +81,6 @@ public final class Algorithms {
 
             droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
-            // droneCommander.flyUpToAltitude(1450); // flyv op i højde af ringen
             droneCommander.adjustHightToCenterFromQR();
             droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
 
@@ -99,86 +98,95 @@ public final class Algorithms {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
 
+
         try {
-            droneCommander.startDrone();
-            droneCommander.initDrone();
-            droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(7000);
-
-            /*
-             * Start med at søge efter en QR kode.
-             */
-            QRImg qrImg = droneCommander.searchForQRCode();
-
-            /*
-             * Hvis den korrekte QR kode ikke blev fundet, så
-             * vil qrCodeData være lig med null, så derfor
-             * laver vi en ny rotation, i håb om at finde den
-             * korrekte QR kode. (den næste kode)
-             */
-            if (qrImg == null || !qrImg.isQRCodeRead()) {
-                qrImg = droneCommander.searchForQRCode();
-            }
-
-            /*
-             * Hvis vi ikke har fundet nogle QR koder efter ANDEN søgning,
-             * (360 grader rundt), så roterer vi hen til graden af den kode der har den
-             * største højde.
-             */
-
-            /*
-             * Hvis qrImg er forskellig fra null, og den er læst,
-             * så ved vi at det er den næste QRKode som vi skal have.
-             */
-            if (qrImg != null && qrImg.isQRCodeRead()) {
+            do {
+                droneCommander.startDrone();
+                droneCommander.initDrone();
+                droneCommander.takeOffDrone();
+                droneCommander.hoverDrone(7000);
 
                 /*
-                 * Vi sikrer os at dronens camera er ca. foran QR koden
+                 * Start med at søge efter en QR kode.
                  */
-                droneCommander.adjustToCenterFromQR();
+                QRImg qrImg = droneCommander.searchForQRCode();
 
                 /*
-                 * Vi flyver hen til QR koden
+                 * Hvis den korrekte QR kode ikke blev fundet, så
+                 * vil qrCodeData være lig med null, så derfor
+                 * laver vi en ny rotation, i håb om at finde den
+                 * korrekte QR kode. (den næste kode)
                  */
-                droneCommander.flyToTargetQRCode(true);
+                if (qrImg == null || !qrImg.isQRCodeRead()) {
+                    qrImg = droneCommander.searchForQRCode();
+                }
 
                 /*
-                 * Flyv op til midten af ringen.
-                 * Flyv op ind til midten
-                 * af ringen er blevet detekteret.
+                 * Hvis qrImg er forskellig fra null, og den er læst,
+                 * så ved vi at det er den næste QRKode som vi skal have.
                  */
-                //droneCommander.flyUpToAltitude(0);
+                if (qrImg != null && qrImg.isQRCodeRead()) {
+
+                    /*
+                     * Vi sikrer os at dronens camera er ca. foran QR koden
+                     */
+                    droneCommander.adjustToCenterFromQR();
+
+                    /*
+                     * Vi flyver hen til QR koden
+                     */
+                    droneCommander.flyToTargetQRCode(true);
+
+                    /*
+                     * Flyv op til midten af ringen.
+                     * Flyv op ind til midten
+                     * af ringen er blevet detekteret.
+                     */
+                    droneCommander.adjustHightToCenterFromQR();
+                    droneCommander.flyUpAltitudePlus(650);
+
+                    /*
+                     * flyv igennem ring :)
+                     */
+                    droneCommander.flyForward(2000);
+
+                    /*
+                     * flyv ned til samme altitude som før.
+                     */
+                    float wantedAltitude = droneCommander.getAltitude() - 650;
+                    droneCommander.flyDownToAltitude((int) wantedAltitude);
+
+                } else {
+                    /*
+                     * Hvis qrImg er null så betyder det at dronen ikke fandt den
+                     * korrekte QR kode.
+                     *
+                     * Flyv op til en ny højde og søg igen efter QRKoder.
+                     */
+
+                    // flyv op
+
+                    // searchRotation
+
+                    // igen searchRotation
+
+                    // samme algo som ovenover
+
+                    // ellers, så flyv hen til QR koden med den største højde.
+                }
+
+            } while (droneCommander.getTargetQRCode() < 8);
+        } catch (DroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+/*
 
 
-                /*
-                 * flyv igennem ring :)
-                 */
-
-                /*
-                 * flyv ned til samme altitude som før.
-                 */
-
-            } else {
-                /*
-                 * Hvis qrImg er null så betyder det at dronen ikke fandt den
-                 * korrekte QR kode.
-                 *
-                 * Flyv op til en ny højde og søg igen efter QRKoder.
-                 */
-
-                // flyv op
-
-                // searchRotation
-
-                // igen searchRotation
-
-                // samme algo som ovenover
-
-                // ellers, så flyv hen til QR koden med den største højde.
-            }
-
-
-            try {
+ try {
                 qrImg = droneCommander.getTallestQRCode();
                 droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
             } catch (IDroneCommander.DroneCommanderException e) {
@@ -190,15 +198,9 @@ public final class Algorithms {
             /* TODO: Flyv hen til denne QRCode, og roter rundt om det indtil QR koden har den
              * største bredde (width) da det så betyder at vi står lige foran den. */
 
-            /* Flyv op */
+/* Flyv op */
 
-            /* Flyv igennem ring */
+/* Flyv igennem ring */
 
-            /* Og så gør dette igen. */
+/* Og så gør dette igen. */
 
-        } catch (DroneCommander.DroneCommanderException e) {
-            e.printStackTrace();
-        }
-    }
-
-}
