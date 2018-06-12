@@ -380,7 +380,6 @@ public final class DroneCommander implements IDroneCommander {
     }
 
 
-
     /**
      * Makes the drone fly upwards until it has reached
      * a specific altitude.
@@ -558,7 +557,7 @@ public final class DroneCommander implements IDroneCommander {
                     flyRight(100);
                     hoverDrone(100);
                 }
-                if (qr.getDistance() >20){
+                if (qr.getDistance() > 20) {
                     flyForward(100);
                     hoverDrone(100);
                 }
@@ -569,14 +568,14 @@ public final class DroneCommander implements IDroneCommander {
                 flyForward(100);
             }while (qr.getDistance() <= 300);*/
 
-        }else if (rightSideCheck() == true){
+        } else if (rightSideCheck() == true) {
             do {
 
-                if (qr.getPosition().x >= 1500.0 && qr.getPosition().x >= 1200){
+                if (qr.getPosition().x >= 1500.0 && qr.getPosition().x >= 1200) {
                     flyLeft(100);
                     hoverDrone(100);
                 }
-                if (qr.getDistance() >20){
+                if (qr.getDistance() > 20) {
                     flyForward(100);
                     hoverDrone(100);
                 }
@@ -630,17 +629,17 @@ public final class DroneCommander implements IDroneCommander {
 
             if (first) {
                 flyLeft(200);
-                drone.getCommandManager().spinRight(40).doFor(100);
+                drone.getCommandManager().spinRight(40).doFor(50);
                 adjustToCenterFromQR();
             } else {
                 right = !(lastAngle < angle);
 
                 if (right) {
                     flyRight(200);
-                    drone.getCommandManager().spinLeft(40).doFor(100);
+                    drone.getCommandManager().spinLeft(40).doFor(50);
                 } else {
                     flyLeft(200);
-                    drone.getCommandManager().spinRight(40).doFor(100);
+                    drone.getCommandManager().spinRight(40).doFor(50);
                 }
 
                 adjustToCenterFromQR();
@@ -683,8 +682,13 @@ public final class DroneCommander implements IDroneCommander {
 
             commandManager.hover().doFor(50);
 
-            commandManager.spinRight(80).doFor(40);
-            commandManager.spinLeft(80).doFor(20);
+            if (yaw > 0) {
+                commandManager.spinLeft(80).doFor(40);
+                commandManager.spinRight(80).doFor(10);
+            } else {
+                commandManager.spinRight(80).doFor(40);
+                commandManager.spinLeft(80).doFor(10);
+            }
 
             commandManager.hover().doFor(50);
         }
@@ -737,6 +741,58 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover().waitFor(100);
             sleep(400);
 
+            // Er dette center?
+        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+
+        if (qrImg.isQRCodeRead()) {
+            addMessage("Centered on QR code! QR code read: " + qrImg.getQrCodeData().getResult());
+        } else {
+            addMessage("Centered on QR code! QR code not read.");
+        }
+    }
+
+    @Override
+    public void adjustToCenterFromQRRotate() {
+        addMessage("Centering on QR code...");
+
+        QRImg qrImg = null;
+        int centerOfFrameX = -1;
+
+        do {
+            while (latestReceivedImage == null) {
+                sleep(200);
+            }
+
+            if (latestReceivedImage != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            }
+
+            do {
+                qrImg = qrCodeHandler.detectQR(this);
+
+                if (qrImg == null) {
+                    addMessage("Failed to detect QR code!");
+                }
+
+                if (latestReceivedImage != null && qrImg != null) {
+                    float foundYaw = getCorrectYaw(yaw);
+                    rotateDrone((int) foundYaw);
+                    centerOfFrameX = latestReceivedImage.getWidth() / 2;
+                }
+
+                sleep(200);
+            } while (qrImg == null);
+
+            if (qrImg.getPosition().x > centerOfFrameX) {
+                flyRight(200);
+            } else {
+                flyLeft(200);
+            }
+
+            commandManager.hover().waitFor(100);
+            sleep(400);
+
+            // Er dette center?
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
 
         if (qrImg.isQRCodeRead()) {
