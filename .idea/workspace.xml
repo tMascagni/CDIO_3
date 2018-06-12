@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,50 +23,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="604" column="11" lean-forward="true" selection-start-line="604" selection-start-column="11" selection-end-line="604" selection-end-column="38" />
+            <state relative-caret-position="368">
+              <caret line="642" column="67" lean-forward="false" selection-start-line="642" selection-start-column="67" selection-end-line="642" selection-end-column="67" />
               <folding>
-                <element signature="e#29554#29555#0" expanded="true" />
-                <element signature="e#29590#29591#0" expanded="true" />
-                <element signature="e#30227#30228#0" expanded="true" />
-                <element signature="e#30266#30267#0" expanded="true" />
-                <element signature="e#31221#31222#0" expanded="true" />
-                <element signature="e#31267#31268#0" expanded="true" />
-                <element signature="e#31717#31718#0" expanded="true" />
-                <element signature="e#31761#31762#0" expanded="true" />
-                <element signature="e#32136#32137#0" expanded="true" />
-                <element signature="e#32185#32186#0" expanded="true" />
-                <element signature="e#32324#32325#0" expanded="true" />
-                <element signature="e#32375#32376#0" expanded="true" />
-                <element signature="e#32483#32484#0" expanded="true" />
-                <element signature="e#32511#32512#0" expanded="true" />
-                <element signature="e#32617#32618#0" expanded="true" />
-                <element signature="e#32644#32645#0" expanded="true" />
-                <element signature="e#33538#33539#0" expanded="true" />
-                <element signature="e#33564#33565#0" expanded="true" />
-                <element signature="e#33678#33679#0" expanded="true" />
-                <element signature="e#33709#33710#0" expanded="true" />
-                <element signature="e#33819#33820#0" expanded="true" />
-                <element signature="e#33854#33855#0" expanded="true" />
-                <element signature="e#33964#33965#0" expanded="true" />
-                <element signature="e#33999#34000#0" expanded="true" />
-                <element signature="e#34109#34110#0" expanded="true" />
-                <element signature="e#34139#34140#0" expanded="true" />
-                <element signature="e#34248#34249#0" expanded="true" />
-                <element signature="e#34283#34284#0" expanded="true" />
-                <element signature="e#34410#34411#0" expanded="true" />
-                <element signature="e#34452#34453#0" expanded="true" />
-                <element signature="e#36492#36493#0" expanded="true" />
-                <element signature="e#36527#36528#0" expanded="true" />
-                <element signature="e#36639#36640#0" expanded="true" />
-                <element signature="e#36671#36672#0" expanded="true" />
-                <element signature="e#36933#36934#0" expanded="true" />
-                <element signature="e#36986#36987#0" expanded="true" />
-                <element signature="e#40041#40042#0" expanded="true" />
-                <element signature="e#40129#40130#0" expanded="true" />
+                <element signature="e#29231#29232#0" expanded="true" />
+                <element signature="e#29267#29268#0" expanded="true" />
+                <element signature="e#29904#29905#0" expanded="true" />
+                <element signature="e#29943#29944#0" expanded="true" />
+                <element signature="e#30898#30899#0" expanded="true" />
+                <element signature="e#30944#30945#0" expanded="true" />
+                <element signature="e#31394#31395#0" expanded="true" />
+                <element signature="e#31438#31439#0" expanded="true" />
+                <element signature="e#31813#31814#0" expanded="true" />
+                <element signature="e#31862#31863#0" expanded="true" />
+                <element signature="e#32001#32002#0" expanded="true" />
+                <element signature="e#32052#32053#0" expanded="true" />
+                <element signature="e#32160#32161#0" expanded="true" />
+                <element signature="e#32188#32189#0" expanded="true" />
+                <element signature="e#32294#32295#0" expanded="true" />
+                <element signature="e#32321#32322#0" expanded="true" />
+                <element signature="e#33215#33216#0" expanded="true" />
+                <element signature="e#33241#33242#0" expanded="true" />
+                <element signature="e#33355#33356#0" expanded="true" />
+                <element signature="e#33386#33387#0" expanded="true" />
+                <element signature="e#33496#33497#0" expanded="true" />
+                <element signature="e#33531#33532#0" expanded="true" />
+                <element signature="e#33641#33642#0" expanded="true" />
+                <element signature="e#33676#33677#0" expanded="true" />
+                <element signature="e#33786#33787#0" expanded="true" />
+                <element signature="e#33816#33817#0" expanded="true" />
+                <element signature="e#33925#33926#0" expanded="true" />
+                <element signature="e#33960#33961#0" expanded="true" />
+                <element signature="e#34087#34088#0" expanded="true" />
+                <element signature="e#34129#34130#0" expanded="true" />
+                <element signature="e#36169#36170#0" expanded="true" />
+                <element signature="e#36204#36205#0" expanded="true" />
+                <element signature="e#36316#36317#0" expanded="true" />
+                <element signature="e#36348#36349#0" expanded="true" />
+                <element signature="e#36610#36611#0" expanded="true" />
+                <element signature="e#36663#36664#0" expanded="true" />
+                <element signature="e#39718#39719#0" expanded="true" />
+                <element signature="e#39806#39807#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,17 +99,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="129">
-              <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+              <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rotTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rotTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="300">
+              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -268,9 +266,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
       </list>
     </option>
   </component>
@@ -890,7 +888,7 @@
       <workItem from="1528284457846" duration="4382000" />
       <workItem from="1528377513256" duration="1054000" />
       <workItem from="1528462776932" duration="3333000" />
-      <workItem from="1528653696398" duration="10987000" />
+      <workItem from="1528653696398" duration="11281000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1046,11 +1044,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528739048655</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="obj rot">
+      <created>1528791594806</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1528791594806</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115519000" />
+    <option name="totallyTimeSpent" value="115813000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1148,7 +1153,8 @@
     <MESSAGE value="tilføjet centreing vertikalt" />
     <MESSAGE value="oneRingAlgoTest ændrigner" />
     <MESSAGE value="PointToQRSpin() added" />
-    <option name="LAST_COMMIT_MESSAGE" value="PointToQRSpin() added" />
+    <MESSAGE value="obj rot" />
+    <option name="LAST_COMMIT_MESSAGE" value="obj rot" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1494,57 +1500,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="604" column="11" lean-forward="true" selection-start-line="604" selection-start-column="11" selection-end-line="604" selection-end-column="38" />
-          <folding>
-            <element signature="e#29554#29555#0" expanded="true" />
-            <element signature="e#29590#29591#0" expanded="true" />
-            <element signature="e#30227#30228#0" expanded="true" />
-            <element signature="e#30266#30267#0" expanded="true" />
-            <element signature="e#31221#31222#0" expanded="true" />
-            <element signature="e#31267#31268#0" expanded="true" />
-            <element signature="e#31717#31718#0" expanded="true" />
-            <element signature="e#31761#31762#0" expanded="true" />
-            <element signature="e#32136#32137#0" expanded="true" />
-            <element signature="e#32185#32186#0" expanded="true" />
-            <element signature="e#32324#32325#0" expanded="true" />
-            <element signature="e#32375#32376#0" expanded="true" />
-            <element signature="e#32483#32484#0" expanded="true" />
-            <element signature="e#32511#32512#0" expanded="true" />
-            <element signature="e#32617#32618#0" expanded="true" />
-            <element signature="e#32644#32645#0" expanded="true" />
-            <element signature="e#33538#33539#0" expanded="true" />
-            <element signature="e#33564#33565#0" expanded="true" />
-            <element signature="e#33678#33679#0" expanded="true" />
-            <element signature="e#33709#33710#0" expanded="true" />
-            <element signature="e#33819#33820#0" expanded="true" />
-            <element signature="e#33854#33855#0" expanded="true" />
-            <element signature="e#33964#33965#0" expanded="true" />
-            <element signature="e#33999#34000#0" expanded="true" />
-            <element signature="e#34109#34110#0" expanded="true" />
-            <element signature="e#34139#34140#0" expanded="true" />
-            <element signature="e#34248#34249#0" expanded="true" />
-            <element signature="e#34283#34284#0" expanded="true" />
-            <element signature="e#34410#34411#0" expanded="true" />
-            <element signature="e#34452#34453#0" expanded="true" />
-            <element signature="e#36492#36493#0" expanded="true" />
-            <element signature="e#36527#36528#0" expanded="true" />
-            <element signature="e#36639#36640#0" expanded="true" />
-            <element signature="e#36671#36672#0" expanded="true" />
-            <element signature="e#36933#36934#0" expanded="true" />
-            <element signature="e#36986#36987#0" expanded="true" />
-            <element signature="e#40041#40042#0" expanded="true" />
-            <element signature="e#40129#40130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
-          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1567,10 +1526,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        <state relative-caret-position="300">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="642" column="67" lean-forward="false" selection-start-line="642" selection-start-column="67" selection-end-line="642" selection-end-column="67" />
+          <folding>
+            <element signature="e#29231#29232#0" expanded="true" />
+            <element signature="e#29267#29268#0" expanded="true" />
+            <element signature="e#29904#29905#0" expanded="true" />
+            <element signature="e#29943#29944#0" expanded="true" />
+            <element signature="e#30898#30899#0" expanded="true" />
+            <element signature="e#30944#30945#0" expanded="true" />
+            <element signature="e#31394#31395#0" expanded="true" />
+            <element signature="e#31438#31439#0" expanded="true" />
+            <element signature="e#31813#31814#0" expanded="true" />
+            <element signature="e#31862#31863#0" expanded="true" />
+            <element signature="e#32001#32002#0" expanded="true" />
+            <element signature="e#32052#32053#0" expanded="true" />
+            <element signature="e#32160#32161#0" expanded="true" />
+            <element signature="e#32188#32189#0" expanded="true" />
+            <element signature="e#32294#32295#0" expanded="true" />
+            <element signature="e#32321#32322#0" expanded="true" />
+            <element signature="e#33215#33216#0" expanded="true" />
+            <element signature="e#33241#33242#0" expanded="true" />
+            <element signature="e#33355#33356#0" expanded="true" />
+            <element signature="e#33386#33387#0" expanded="true" />
+            <element signature="e#33496#33497#0" expanded="true" />
+            <element signature="e#33531#33532#0" expanded="true" />
+            <element signature="e#33641#33642#0" expanded="true" />
+            <element signature="e#33676#33677#0" expanded="true" />
+            <element signature="e#33786#33787#0" expanded="true" />
+            <element signature="e#33816#33817#0" expanded="true" />
+            <element signature="e#33925#33926#0" expanded="true" />
+            <element signature="e#33960#33961#0" expanded="true" />
+            <element signature="e#34087#34088#0" expanded="true" />
+            <element signature="e#34129#34130#0" expanded="true" />
+            <element signature="e#36169#36170#0" expanded="true" />
+            <element signature="e#36204#36205#0" expanded="true" />
+            <element signature="e#36316#36317#0" expanded="true" />
+            <element signature="e#36348#36349#0" expanded="true" />
+            <element signature="e#36610#36611#0" expanded="true" />
+            <element signature="e#36663#36664#0" expanded="true" />
+            <element signature="e#39718#39719#0" expanded="true" />
+            <element signature="e#39806#39807#0" expanded="true" />
           </folding>
         </state>
       </provider>

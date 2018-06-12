@@ -630,17 +630,17 @@ public final class DroneCommander implements IDroneCommander {
 
             if (first) {
                 flyLeft(200);
-                drone.getCommandManager().spinRight(80).doFor(200);
+                drone.getCommandManager().spinRight(40).doFor(100);
                 adjustToCenterFromQR();
             } else {
                 right = !(lastAngle < angle);
 
                 if (right) {
                     flyRight(200);
-                    drone.getCommandManager().spinLeft(80).doFor(200);
+                    drone.getCommandManager().spinLeft(40).doFor(100);
                 } else {
                     flyLeft(200);
-                    drone.getCommandManager().spinRight(80).doFor(200);
+                    drone.getCommandManager().spinRight(40).doFor(100);
                 }
 
                 adjustToCenterFromQR();
