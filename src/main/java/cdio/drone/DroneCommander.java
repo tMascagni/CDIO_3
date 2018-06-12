@@ -782,9 +782,9 @@ public final class DroneCommander implements IDroneCommander {
             } while (qrImg == null);
 
             if (qrImg.getPosition().x > centerOfFrameX) {
-                commandManager.spinLeft(200);
+                commandManager.spinLeft(50);
             } else {
-                commandManager.spinRight(200);
+                commandManager.spinRight(50);
             }
 
             commandManager.hover().waitFor(100);
