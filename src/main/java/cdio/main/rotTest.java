@@ -17,11 +17,12 @@ public class rotTest {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(7000);
+            droneCommander.hoverDrone(2000);
 
             droneCommander.circleAroundObjectV2();
+            droneCommander.lockOn();
 
-            droneCommander.hoverDrone(5000);
+            droneCommander.hoverDrone(2000);
             droneCommander.landDrone();
             droneCommander.stopDrone();
 

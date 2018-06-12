@@ -32,7 +32,9 @@ public interface IDroneCommander {
 
     void circleAroundObjectV2();
 
-    void PointToQRSpin();
+    void pointToQRSpin();
+
+    void lockOn();
 
     void flyUpAltitudePlus(int altitudePlus);
 

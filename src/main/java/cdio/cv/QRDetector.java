@@ -38,7 +38,7 @@ public class QRDetector implements ICV {
         orgImg = mat;
         getGray();
         ArrayList<QRImg> qr_codes = new ArrayList<>();
-        for (int i = 5; i < 240; i += 10) {
+        for (int i = 5; i < 245; i += 10) {
             thresholding(i);
 
             ContourTree con = getContours();
