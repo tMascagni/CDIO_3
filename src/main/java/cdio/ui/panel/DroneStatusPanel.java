@@ -131,6 +131,8 @@ public final class DroneStatusPanel extends JPanel implements ActionListener {
         if (e.getSource() == btnLand) {
             try {
                 droneCommander.landDrone();
+                droneCommander.sleep(500);
+                droneCommander.stopDrone();
             } catch (IDroneCommander.DroneCommanderException e1) {
                 e1.printStackTrace();
             }

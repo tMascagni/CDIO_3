@@ -181,6 +181,25 @@ public final class Algorithms {
         }
     }
 
+    public static void test(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+
+            droneCommander.hoverDrone(5000);
+
+            droneCommander.landDrone();
+        } catch (DroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
 /*
