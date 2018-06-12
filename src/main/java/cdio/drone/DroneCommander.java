@@ -636,10 +636,10 @@ public final class DroneCommander implements IDroneCommander {
                 right = !(lastAngle < angle);
 
                 if (right) {
-                    flyRight(200);
+                    flyRight(300);
                     drone.getCommandManager().spinLeft(40).doFor(10);
                 } else {
-                    flyLeft(200);
+                    flyLeft(300);
                     drone.getCommandManager().spinRight(40).doFor(10);
                 }
 
@@ -651,7 +651,7 @@ public final class DroneCommander implements IDroneCommander {
 
             sleep(550);
 
-        } while (lastAngle <= 15);
+        } while (lastAngle <= 20);
 
     }
 
@@ -862,10 +862,11 @@ public final class DroneCommander implements IDroneCommander {
                 sleep(10);
             }
 
-
             do {
                 qrImg = qrCodeHandler.detectQR(this);
                 angle = qrImg.getAngle();
+
+                addMessage("Angle: " + angle);
 
                 if (qrImg == null) {
                     addMessage("Failed to detect QR code!");
@@ -877,12 +878,12 @@ public final class DroneCommander implements IDroneCommander {
             pointToQRSpin();
             adjustToCenterFromQR();
 
-        } while (angle < 15);
+        } while (angle < 20);
 
     }
 
     public void adjustHightToCenterFromQR() {
-        addMessage("Centering Verticly on QR code...");
+        addMessage("Centering vertically on QR code...");
 
         QRImg qrImg = null;
         int centerOfFrameY = -1;
