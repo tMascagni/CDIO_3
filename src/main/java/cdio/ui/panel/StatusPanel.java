@@ -1,6 +1,7 @@
 package cdio.ui.panel;
 
 import cdio.cv.QRImg;
+import cdio.drone.interfaces.IDroneCommander;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -15,8 +16,8 @@ public final class StatusPanel extends JPanel {
 
     private JPanel droneStatusHoopStatusPanel;
 
-    public StatusPanel() {
-        droneStatusPanel = new DroneStatusPanel();
+    public StatusPanel(IDroneCommander droneCommander) {
+        droneStatusPanel = new DroneStatusPanel(droneCommander);
         hoopStatusPanel = new HoopStatusPanel();
         droneDataPanel = new DroneDataPanel();
 

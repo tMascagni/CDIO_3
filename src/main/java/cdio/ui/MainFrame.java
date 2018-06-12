@@ -44,7 +44,7 @@ public final class MainFrame extends JFrame {
         commandPanel.setPreferredSize(preferredPanelSize);
         commandPanel.setSize(preferredPanelSize);
 
-        statusPanel = new StatusPanel();
+        statusPanel = new StatusPanel(droneCommander);
         statusPanel.setPreferredSize(new Dimension((width / 2) / 3, height / 2));
         statusPanel.setSize(new Dimension(width / 2, height / 2));
 

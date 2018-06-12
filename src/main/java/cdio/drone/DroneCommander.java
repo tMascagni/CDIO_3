@@ -244,7 +244,7 @@ public final class DroneCommander implements IDroneCommander {
         addMessage("Drone landing...");
         setLEDAnimation(LEDAnimation.BLINK_ORANGE, 3, 5);
 
-        setSpeed(LANDING_SPEED);
+        drone.setSpeed(LANDING_SPEED);
         sleep(500);
         commandManager.landing().doFor(200);
 

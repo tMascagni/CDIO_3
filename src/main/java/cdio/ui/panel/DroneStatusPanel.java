@@ -1,15 +1,21 @@
 package cdio.ui.panel;
 
+import cdio.drone.interfaces.IDroneCommander;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public final class DroneStatusPanel extends JPanel {
+public final class DroneStatusPanel extends JPanel implements ActionListener {
 
     private JLabel lblVideoManager, lblNavManager, lblWiFiStrength, lblWiFiStrengthValue;
     private JRadioButton btnVideoManager, btnNavManager, btnWiFiStrength;
+    private final IDroneCommander droneCommander;
+    private JButton btnLand;
 
-    public DroneStatusPanel() {
+    public DroneStatusPanel(IDroneCommander droneCommander) {
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Drone", TitledBorder.CENTER, TitledBorder.CENTER, new Font("Sans Serif", Font.BOLD, 15)));
 
@@ -25,14 +31,19 @@ public final class DroneStatusPanel extends JPanel {
         btnVideoManager = new JRadioButton();
         btnNavManager = new JRadioButton();
         btnWiFiStrength = new JRadioButton();
+        btnLand = new JButton("Land Drone");
+        btnLand.addActionListener(this);
 
         btnVideoManager.setBackground(Color.WHITE);
         btnNavManager.setBackground(Color.WHITE);
         btnWiFiStrength.setBackground(Color.WHITE);
+        btnLand.setBackground(Color.WHITE);
 
         btnVideoManager.setEnabled(false);
         btnNavManager.setEnabled(false);
         btnWiFiStrength.setEnabled(false);
+
+        this.droneCommander = droneCommander;
 
         initComponents();
     }
@@ -85,8 +96,16 @@ public final class DroneStatusPanel extends JPanel {
 
         gbc.gridx = 2;
         gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(1, 0, 0, 0);
+        gbc.insets = new Insets(1, 0, 0, 50);
         add(lblWiFiStrengthValue, gbc);
+
+        /* ---------------------------- Next Row ---------------------------- */
+        gbc.gridy++;
+
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        add(btnLand, gbc);
     }
 
     public void setVideoManagerConnection(boolean isConnected) {
@@ -104,6 +123,17 @@ public final class DroneStatusPanel extends JPanel {
             btnWiFiStrength.setSelected(true);
         } else {
             btnWiFiStrength.setSelected(false);
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnLand) {
+            try {
+                droneCommander.landDrone();
+            } catch (IDroneCommander.DroneCommanderException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
