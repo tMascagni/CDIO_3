@@ -511,7 +511,7 @@ public final class DroneCommander implements IDroneCommander {
         qr = qrCodeHandler.detectQR(this);
         commandManager.spinLeft(20).doFor(300);
         hoverDrone(1000);
-        return qr.getPosition().x <= 1300.0 && qr.getPosition().x >= 1200;
+        return qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200;
 
     }
 
@@ -526,7 +526,7 @@ public final class DroneCommander implements IDroneCommander {
         qr = qrCodeHandler.detectQR(this);
         commandManager.spinRight(30).doFor(30);
         hoverDrone(1000);
-        return qr.getPosition().x >= 1500.0 && qr.getPosition().x >= 1200;
+        return qr.getPosition().x >= 500.0 && qr.getPosition().y >= 200;
 
 /*        boolean rSide;
         qr = qrCodeHandler.detectQR(this);
@@ -553,16 +553,17 @@ public final class DroneCommander implements IDroneCommander {
         int centerOfQR = -1;
         if (leftSideCheck() == true) {
             do {
-                if (qr.getPosition().x <= 1300.0 && qr.getPosition().x >= 1200) {
+                if (qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200) {
                     flyRight(100);
                     hoverDrone(100);
+                    adjustToCenterFromQR();
                 }
                 if (qr.getDistance() > 20) {
                     flyForward(100);
                     hoverDrone(100);
                 }
                 //commandManager.spinRight(5).doFor(10);
-            } while (qr.getPosition().x <= 1200.0 && qr.getPosition().x <= 1200);
+            } while (qr.getPosition().x <= 200.0 && qr.getPosition().y <= 200);
 /*            do {
                 flyForward(100);
                 flyForward(100);
@@ -571,9 +572,10 @@ public final class DroneCommander implements IDroneCommander {
         } else if (rightSideCheck() == true) {
             do {
 
-                if (qr.getPosition().x >= 1500.0 && qr.getPosition().x >= 1200) {
+                if (qr.getPosition().x >= 500.0 && qr.getPosition().x >= 200) {
                     flyLeft(100);
                     hoverDrone(100);
+                    adjustToCenterFromQR();
                 }
                 if (qr.getDistance() > 20) {
                     flyForward(100);
