@@ -34,6 +34,8 @@ public interface IDroneCommander {
 
     void pointToQRSpin();
 
+    void spinToQR();
+
     void lockOn();
 
     void flyUpAltitudePlus(int altitudePlus);

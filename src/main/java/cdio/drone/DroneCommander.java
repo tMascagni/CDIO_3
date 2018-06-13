@@ -851,6 +851,30 @@ public final class DroneCommander implements IDroneCommander {
         } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
     }
 
+    public void spinToQR() {
+        double angle = 180;
+
+        while (angle > 30) {
+            QRImg qrImg = null;
+            while (qrImg == null) {
+                qrImg = qrCodeHandler.detectQR(this);
+                sleep(200);
+            }
+            angle = qrImg.getAngle();
+            commandManager.spinLeft(80).doFor(15);
+            sleep(200);
+            qrImg = null;
+            while (qrImg == null) {
+                qrImg = qrCodeHandler.detectQR(this);
+
+            }
+            double new_angle = qrImg.getAngle();
+            if (new_angle > angle) {
+                commandManager.spinRight(80).doFor(30);
+            }
+        }
+    }
+
 
     public void lockOn() {
 
