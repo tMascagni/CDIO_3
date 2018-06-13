@@ -999,15 +999,15 @@ public final class DroneCommander implements IDroneCommander {
         while (dist > 120) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            flyForward(50);
-            sleep(100);
+            flyForward(40);
+            sleep(1100);
 
             if (centerOnTheWay) {
+                commandManager.hover().waitFor(600);
                 adjustToCenterFromQR();
-                commandManager.hover().waitFor(300);
             }
 
-            commandManager.hover().waitFor(200);
+            commandManager.hover().waitFor(600);
 
             do {
                 try {
@@ -1017,12 +1017,14 @@ public final class DroneCommander implements IDroneCommander {
                 } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
                     qrImg = null;
                 }
+
+                if (dist < 60) {
+                    flyBackward(50);
+                    sleep(100);
+                }
+
             } while (qrImg == null);
 
-            if (dist < 60) {
-                flyBackward(200);
-                sleep(100);
-            }
         }
 
         if (centerOnTheWay) {
