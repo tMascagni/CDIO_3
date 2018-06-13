@@ -977,13 +977,12 @@ public final class DroneCommander implements IDroneCommander {
                 }
             }
 
-
             commandManager.hover().waitFor(100);
             sleep(400);
 
             addMessage("Drone vertikalt centreret, Altitude: " + getAltitude());
 
-        } while (qrImg.getPosition().y <= centerOfFrameY - 20 || qrImg.getPosition().y >= centerOfFrameY + 20);
+        } while (qrImg.getPosition().y <= centerOfFrameY - 50 || qrImg.getPosition().y >= centerOfFrameY + 50);
 
     }
 
@@ -1020,11 +1019,16 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 100) {
+        while (dist > 90) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            flyForward(30);
-            sleep(1100);
+            if (dist < 115) {
+                flyForward(500);
+            } else {
+                flyForward(800);
+            }
+
+            commandManager.hover().doFor(200);
 
             if (centerOnTheWay) {
                 commandManager.hover().waitFor(600);
