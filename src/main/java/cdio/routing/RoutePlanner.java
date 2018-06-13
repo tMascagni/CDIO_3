@@ -37,9 +37,13 @@ public final class RoutePlanner {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(5000);
+            droneCommander.circleAroundObjectV2();
             droneCommander.hoverDrone(1000);
-            droneCommander.circleAroundObject();
-            droneCommander.hoverDrone(1000);
+
+
+
+
             droneCommander.landDrone();
             droneCommander.stopDrone();
 

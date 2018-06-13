@@ -548,49 +548,69 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public final void circleAroundObject() {
 
+        /*
+        if(qr.getDistance() < 600) {
+            do {
+                if(qr.getDistance() < 600) {
+                    flyForward(100);
+                }
+                qr.getDistance();
+            } while (qr.getDistance() < 450);
+
+        }
+*/
+
+
         qr = qrCodeHandler.detectQR(this);
         QRImg qrImg = null;
         int centerOfQR = -1;
+
+
+
+        rightSideCheck();
+        hoverDrone(1000);
+        leftSideCheck();
+
+
+        if(qr.getDistance() < 600) {
+            flyForward(800);
+            hoverDrone(1000);
+        }
+
         if (leftSideCheck() == true) {
             do {
-                if (qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200) {
-                    flyRight(100);
-                    hoverDrone(100);
-                    adjustToCenterFromQR();
-                }
-                if (qr.getDistance() > 20) {
-                    flyForward(100);
-                    hoverDrone(100);
-                }
-                //commandManager.spinRight(5).doFor(10);
-            } while (qr.getPosition().x <= 200.0 && qr.getPosition().y <= 200);
-/*            do {
-                flyForward(100);
-                flyForward(100);
-            }while (qr.getDistance() <= 300);*/
 
-        } else if (rightSideCheck() == true) {
+                flyLeft(600) ;
+                drone.getCommandManager().spinLeft(50).doFor(180);
+                hoverDrone(100);
+/*
+                if (qr.getDistance() < 600) {
+                    flyForward(100);
+                }
+*/              leftSideCheck();
+
+            } while (leftSideCheck()== true);
+        }
+
+        if (rightSideCheck() == true){
             do {
 
-                if (qr.getPosition().x >= 500.0 && qr.getPosition().x >= 200) {
-                    flyLeft(100);
-                    hoverDrone(100);
-                    adjustToCenterFromQR();
-                }
-                if (qr.getDistance() > 20) {
+
+                flyRight(600);
+                drone.getCommandManager().spinLeft(25).doFor(80);
+                hoverDrone(100);
+
+                /*
+                if (qr.getDistance() < 600) {
                     flyForward(100);
-                    hoverDrone(100);
                 }
+                */
+                rightSideCheck();
 
-
-                //commandManager.spinRight(5).doFor(10);
-            } while (qr.getPosition().x <= 200.0 && qr.getPosition().y <= 200);
-/*            do {
-                flyForward(100);
-            }while (qr.getDistance() <= 300);*/
+            }while (rightSideCheck() == true);
         }
-    }
 
+    }
 
     public void circleAroundObjectV2() {
 
