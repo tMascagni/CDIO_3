@@ -403,7 +403,7 @@ public final class DroneCommander implements IDroneCommander {
      * @param altitude The target altitude for the drone.
      */
     @Override
-    public void flyDownToAltitude(int altitude) {
+    public void flyDownToAltitude(float altitude) {
         addMessage("Flying downwards to altitude: " + altitude + "...");
 
         while (getAltitude() >= altitude)
@@ -856,14 +856,16 @@ public final class DroneCommander implements IDroneCommander {
     public void spinToQR() {
         double angle = 180;
 
-        while (angle > 30) {
+        while (angle > 25) {
             QRImg qrImg = null;
             while (qrImg == null) {
                 qrImg = qrCodeHandler.detectQR(this);
                 sleep(200);
             }
             angle = qrImg.getAngle();
-            commandManager.spinLeft(80).doFor(15);
+            addMessage("Angle: " + angle);
+            commandManager.spinLeft(80).doFor(60);
+            commandManager.hover().doFor(500);
             sleep(200);
             qrImg = null;
             while (qrImg == null) {
@@ -871,9 +873,11 @@ public final class DroneCommander implements IDroneCommander {
 
             }
             double new_angle = qrImg.getAngle();
+            addMessage("New Angle: " + new_angle);
             if (new_angle > angle) {
-                commandManager.spinRight(80).doFor(30);
+                commandManager.spinRight(80).doFor(120);
                 addMessage("Spun wrong way. Adjusting");
+                commandManager.hover().doFor(500);
             }
         }
     }
@@ -996,10 +1000,10 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 120) {
+        while (dist > 100) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            flyForward(40);
+            flyForward(30);
             sleep(1100);
 
             if (centerOnTheWay) {

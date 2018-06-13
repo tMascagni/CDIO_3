@@ -84,7 +84,24 @@ public final class Algorithms {
             droneCommander.adjustHightToCenterFromQR();
             droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
 
-            droneCommander.flyForward(2000); // flyv gennem ringen
+            droneCommander.flyForward(1500); // flyv gennem ringen
+            droneCommander.hoverDrone(1000);
+
+
+            float downAltitude = droneCommander.getAltitude() - 650;
+            droneCommander.flyDownToAltitude(downAltitude);
+
+
+            droneCommander.adjustToCenterFromQR();
+
+            droneCommander.flyToTargetQRCode(true); // fly hen til ring
+
+            droneCommander.adjustHightToCenterFromQR();
+            droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
+
+            droneCommander.flyForward(1500); // flyv gennem ringen
+            droneCommander.hoverDrone(1000);
+
 
             droneCommander.hoverDrone(2000);
             droneCommander.landDrone();
