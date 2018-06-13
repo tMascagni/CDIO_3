@@ -548,67 +548,45 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public final void circleAroundObject() {
 
-        /*
-        if(qr.getDistance() < 600) {
-            do {
-                if(qr.getDistance() < 600) {
-                    flyForward(100);
-                }
-                qr.getDistance();
-            } while (qr.getDistance() < 450);
-
-        }
-*/
-
-
-        qr = qrCodeHandler.detectQR(this);
+        double tempVink = 0;
+        boolean first = true;
+        double angle;
         QRImg qrImg = null;
-        int centerOfQR = -1;
-
-
-
-        rightSideCheck();
-        hoverDrone(1000);
-        leftSideCheck();
-
+        int centerOfFrameX = -1;
+        qrImg = qrCodeHandler.detectQR(this);
 
         if(qr.getDistance() < 600) {
-            flyForward(800);
-            hoverDrone(1000);
-        }
-
-        if (leftSideCheck() == true) {
             do {
-
-                flyLeft(600) ;
-                drone.getCommandManager().spinLeft(50).doFor(180);
-                hoverDrone(100);
-/*
-                if (qr.getDistance() < 600) {
-                    flyForward(100);
-                }
-*/              leftSideCheck();
-
-            } while (leftSideCheck()== true);
-        }
-
-        if (rightSideCheck() == true){
+                qrImg = qrCodeHandler.detectQR(this);
+                flyForward(100);
+                hoverDrone(200);
+            } while (qr.getDistance() <= 300);
             do {
-
-
-                flyRight(600);
-                drone.getCommandManager().spinLeft(25).doFor(80);
-                hoverDrone(100);
-
-                /*
-                if (qr.getDistance() < 600) {
-                    flyForward(100);
+                angle = qr.getAngle();
+                addMessage("vinkel: " + angle);
+                if (latestReceivedImage != null && qrImg != null) {
+                    centerOfFrameX = latestReceivedImage.getWidth() / 2;
                 }
-                */
-                rightSideCheck();
-
-            }while (rightSideCheck() == true);
+                commandManager.hover();
+                sleep(20);
+            } while (qrImg == null);
         }
+        if (rightSideCheck()) {
+            do {
+                angle = qr.getAngle();
+                flyRight(200);
+                commandManager.hover().doFor(100);
+                adjustToCenterFromQR();
+            }while (angle <= 20);
+        }else if (leftSideCheck()) {
+            do {
+                angle= qr.getAngle();
+                flyLeft(200);
+                commandManager.hover().doFor(100);
+                adjustToCenterFromQR();
+            }while (angle <= 20);
+        }adjustToCenterFromQR();
+
 
     }
 
