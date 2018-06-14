@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,10 +29,47 @@
       <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1159">
-              <caret line="762" column="24" lean-forward="false" selection-start-line="762" selection-start-column="24" selection-end-line="762" selection-end-column="24" />
+            <state relative-caret-position="-4365">
+              <caret line="1067" column="38" lean-forward="false" selection-start-line="1067" selection-start-column="38" selection-end-line="1067" selection-end-column="38" />
               <folding>
-                <marker date="1528987169027" expanded="true" signature="29083:30585" ph="{...}" />
+                <element signature="e#34901#34902#0" expanded="true" />
+                <element signature="e#34937#34938#0" expanded="true" />
+                <element signature="e#35574#35575#0" expanded="true" />
+                <element signature="e#35613#35614#0" expanded="true" />
+                <element signature="e#36568#36569#0" expanded="true" />
+                <element signature="e#36614#36615#0" expanded="true" />
+                <element signature="e#37064#37065#0" expanded="true" />
+                <element signature="e#37108#37109#0" expanded="true" />
+                <element signature="e#37483#37484#0" expanded="true" />
+                <element signature="e#37532#37533#0" expanded="true" />
+                <element signature="e#37671#37672#0" expanded="true" />
+                <element signature="e#37722#37723#0" expanded="true" />
+                <element signature="e#37830#37831#0" expanded="true" />
+                <element signature="e#37858#37859#0" expanded="true" />
+                <element signature="e#37964#37965#0" expanded="true" />
+                <element signature="e#37991#37992#0" expanded="true" />
+                <element signature="e#38885#38886#0" expanded="true" />
+                <element signature="e#38911#38912#0" expanded="true" />
+                <element signature="e#39025#39026#0" expanded="true" />
+                <element signature="e#39056#39057#0" expanded="true" />
+                <element signature="e#39166#39167#0" expanded="true" />
+                <element signature="e#39201#39202#0" expanded="true" />
+                <element signature="e#39311#39312#0" expanded="true" />
+                <element signature="e#39346#39347#0" expanded="true" />
+                <element signature="e#39456#39457#0" expanded="true" />
+                <element signature="e#39486#39487#0" expanded="true" />
+                <element signature="e#39595#39596#0" expanded="true" />
+                <element signature="e#39630#39631#0" expanded="true" />
+                <element signature="e#39757#39758#0" expanded="true" />
+                <element signature="e#39799#39800#0" expanded="true" />
+                <element signature="e#41839#41840#0" expanded="true" />
+                <element signature="e#41874#41875#0" expanded="true" />
+                <element signature="e#41986#41987#0" expanded="true" />
+                <element signature="e#42018#42019#0" expanded="true" />
+                <element signature="e#42280#42281#0" expanded="true" />
+                <element signature="e#42333#42334#0" expanded="true" />
+                <element signature="e#45387#45388#0" expanded="true" />
+                <element signature="e#45475#45476#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,21 +97,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
+      <file leaf-file-name="testSpinToQR.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+            <state relative-caret-position="221">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDis.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -97,8 +132,8 @@
       <file leaf-file-name="IDroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+            <state relative-caret-position="132">
+              <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -114,11 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="184" column="0" lean-forward="true" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -182,7 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/qrcode/QRCodeScannerPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/speed/SpeedPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/state/StatePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/statistics/StatisticsPanel.java" />
@@ -230,9 +264,10 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/RejeHopTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java" />
       </list>
     </option>
   </component>
@@ -692,7 +727,7 @@
       <workItem from="1528462776932" duration="3333000" />
       <workItem from="1528653696398" duration="14867000" />
       <workItem from="1528878468627" duration="5939000" />
-      <workItem from="1528983801169" duration="2463000" />
+      <workItem from="1528983801169" duration="4418000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -890,11 +925,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528987160577</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Merge branch 'dev' of https://github.com/tMascagni/CDIO_3 into dev&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/cdio/algorithms/Algorithms.java">
+      <created>1528987300669</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1528987300669</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Better lockon">
+      <created>1528987965848</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1528987965848</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129704000" />
+    <option name="totallyTimeSpent" value="131659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="23" width="1366" height="739" extended-state="6" />
@@ -905,16 +954,16 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905295" sideWeight="0.5113293" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32744783" sideWeight="0.5143505" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3652174" sideWeight="0.6180556" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905295" sideWeight="0.4886707" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32744783" sideWeight="0.48564956" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35347432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.49169186" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.4886707" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -974,7 +1023,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="Added development branch." />
     <MESSAGE value="Update development." />
     <MESSAGE value="Package refactoring. Added javadrone 1.3 lib without Maven." />
     <MESSAGE value="Added TODO: questions." />
@@ -998,7 +1046,9 @@
     <MESSAGE value="spin updates ha" />
     <MESSAGE value="Made flyToTagetQRCode easier to adjust" />
     <MESSAGE value="Added arguments to functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added arguments to functions" />
+    <MESSAGE value="Merge branch 'dev' of https://github.com/tMascagni/CDIO_3 into dev&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/cdio/algorithms/Algorithms.java" />
+    <MESSAGE value="Better lockon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better lockon" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1032,13 +1082,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/model/QRCodeData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/ICV.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/cv/DisCal.java" />
     <entry file="file://$PROJECT_DIR$/CDIO_3_DRONE.iml">
@@ -1369,26 +1412,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+        <state relative-caret-position="132">
+          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="762" column="24" lean-forward="false" selection-start-line="762" selection-start-column="24" selection-end-line="762" selection-end-column="24" />
+        <state relative-caret-position="-4365">
+          <caret line="1067" column="38" lean-forward="false" selection-start-line="1067" selection-start-column="38" selection-end-line="1067" selection-end-column="38" />
           <folding>
-            <marker date="1528987169027" expanded="true" signature="29083:30585" ph="{...}" />
+            <element signature="e#34901#34902#0" expanded="true" />
+            <element signature="e#34937#34938#0" expanded="true" />
+            <element signature="e#35574#35575#0" expanded="true" />
+            <element signature="e#35613#35614#0" expanded="true" />
+            <element signature="e#36568#36569#0" expanded="true" />
+            <element signature="e#36614#36615#0" expanded="true" />
+            <element signature="e#37064#37065#0" expanded="true" />
+            <element signature="e#37108#37109#0" expanded="true" />
+            <element signature="e#37483#37484#0" expanded="true" />
+            <element signature="e#37532#37533#0" expanded="true" />
+            <element signature="e#37671#37672#0" expanded="true" />
+            <element signature="e#37722#37723#0" expanded="true" />
+            <element signature="e#37830#37831#0" expanded="true" />
+            <element signature="e#37858#37859#0" expanded="true" />
+            <element signature="e#37964#37965#0" expanded="true" />
+            <element signature="e#37991#37992#0" expanded="true" />
+            <element signature="e#38885#38886#0" expanded="true" />
+            <element signature="e#38911#38912#0" expanded="true" />
+            <element signature="e#39025#39026#0" expanded="true" />
+            <element signature="e#39056#39057#0" expanded="true" />
+            <element signature="e#39166#39167#0" expanded="true" />
+            <element signature="e#39201#39202#0" expanded="true" />
+            <element signature="e#39311#39312#0" expanded="true" />
+            <element signature="e#39346#39347#0" expanded="true" />
+            <element signature="e#39456#39457#0" expanded="true" />
+            <element signature="e#39486#39487#0" expanded="true" />
+            <element signature="e#39595#39596#0" expanded="true" />
+            <element signature="e#39630#39631#0" expanded="true" />
+            <element signature="e#39757#39758#0" expanded="true" />
+            <element signature="e#39799#39800#0" expanded="true" />
+            <element signature="e#41839#41840#0" expanded="true" />
+            <element signature="e#41874#41875#0" expanded="true" />
+            <element signature="e#41986#41987#0" expanded="true" />
+            <element signature="e#42018#42019#0" expanded="true" />
+            <element signature="e#42280#42281#0" expanded="true" />
+            <element signature="e#42333#42334#0" expanded="true" />
+            <element signature="e#45387#45388#0" expanded="true" />
+            <element signature="e#45475#45476#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="184" column="0" lean-forward="true" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding />
         </state>
       </provider>
