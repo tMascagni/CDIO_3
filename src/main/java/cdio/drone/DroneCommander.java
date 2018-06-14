@@ -876,6 +876,19 @@ public final class DroneCommander implements IDroneCommander {
         if (latestReceivedImage != null) {
             centerOfFrameX = latestReceivedImage.getWidth() / 2;
         }
+        do {
+            qrImg = qrCodeHandler.detectQR(this);
+
+            if (qrImg == null) {
+                addMessage("Failed to detect QR code!");
+            }
+
+            if (latestReceivedImage != null && qrImg != null) {
+                centerOfFrameX = latestReceivedImage.getWidth() / 2;
+            }
+
+            sleep(20);
+        } while (qrImg == null);
 
 
         while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range) {
