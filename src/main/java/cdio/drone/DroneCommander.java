@@ -869,15 +869,17 @@ public final class DroneCommander implements IDroneCommander {
         QRImg qrImg = null;
         int centerOfFrameX = -1;
 
-        do {
-            while (latestReceivedImage == null) {
-                sleep(10);
-            }
+        while (latestReceivedImage == null) {
+            sleep(10);
+        }
 
-            if (latestReceivedImage != null) {
-                centerOfFrameX = latestReceivedImage.getWidth() / 2;
-            }
+        if (latestReceivedImage != null) {
+            centerOfFrameX = latestReceivedImage.getWidth() / 2;
+        }
 
+
+        while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range) {
+            int count = 0;
             do {
                 qrImg = qrCodeHandler.detectQR(this);
 
@@ -890,6 +892,10 @@ public final class DroneCommander implements IDroneCommander {
                 }
 
                 sleep(20);
+                count++;
+                if (count > 500) {
+                    return;
+                }
             } while (qrImg == null);
 
             if (qrImg.getPosition().x > centerOfFrameX) {
@@ -904,7 +910,7 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover();
             sleep(20);
 
-        } while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range);
+        }
     }
 
     public void spinToQR() {
