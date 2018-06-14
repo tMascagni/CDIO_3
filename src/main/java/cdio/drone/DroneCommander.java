@@ -762,33 +762,37 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public void adjustToCenterFromQR(int range) {
         addMessage("Centering on QR code...");
-        commandManager.hover();
 
+        hoverDrone(300);
 
         QRImg qrImg = null;
         int centerOfFrameX = -1;
 
         do {
             while (latestReceivedImage == null) {
-                sleep(200);
+                sleep(10);
             }
 
             if (latestReceivedImage != null) {
                 centerOfFrameX = latestReceivedImage.getWidth() / 2;
             }
-
+            int count = 0;
             do {
                 qrImg = qrCodeHandler.detectQR(this);
 
                 if (qrImg == null) {
                     addMessage("Failed to detect QR code!");
+                    count++;
+                    if (count > 500) {
+                        return;
+                    }
                 }
 
                 if (latestReceivedImage != null && qrImg != null) {
                     centerOfFrameX = latestReceivedImage.getWidth() / 2;
                 }
 
-                sleep(200);
+                sleep(20);
             } while (qrImg == null);
 
             if (qrImg.getPosition().x > centerOfFrameX) {
@@ -797,8 +801,7 @@ public final class DroneCommander implements IDroneCommander {
                 flyLeft(200);
             }
 
-            commandManager.hover().waitFor(100);
-            sleep(400);
+            commandManager.hover().waitFor(500);
 
             // Er dette center?
         } while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range);
@@ -973,13 +976,13 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public void adjustHeightToCenterFromQR() {
         addMessage("Centering vertically on QR code...");
-
+        hoverDrone(500);
         QRImg qrImg = null;
         int centerOfFrameY = -1;
 
         do {
             while (latestReceivedImage == null) {
-                sleep(200);
+                sleep(10);
             }
 
             if (latestReceivedImage != null) {
@@ -997,7 +1000,7 @@ public final class DroneCommander implements IDroneCommander {
                     centerOfFrameY = latestReceivedImage.getHeight() / 2;
                 }
 
-                sleep(200);
+                sleep(10);
             } while (qrImg == null);
 
 
@@ -1015,12 +1018,11 @@ public final class DroneCommander implements IDroneCommander {
                 }
             }
 
-            commandManager.hover().waitFor(100);
-            sleep(400);
+            commandManager.hover().waitFor(500);
 
             addMessage("Drone vertikalt centreret, Altitude: " + getAltitude());
 
-        } while (qrImg.getPosition().y <= centerOfFrameY - 50 || qrImg.getPosition().y >= centerOfFrameY + 50);
+        } while (qrImg.getPosition().y <= centerOfFrameY - 70 || qrImg.getPosition().y >= centerOfFrameY + 70);
 
     }
 
@@ -1040,7 +1042,7 @@ public final class DroneCommander implements IDroneCommander {
         //int accept_range = 10;
 
         // When to enter slow-mode
-        int slow_range = 60;
+        int slow_range = 70;
 
         // The speeds for fast and slow mode
         int fast_speed = 800;
@@ -1106,10 +1108,13 @@ public final class DroneCommander implements IDroneCommander {
 
                 if (qrImg == null) {
                     nullCounter++;
+                    addMessage("QR is null");
                 }
 
                 if (nullCounter > 50) {
+                    addMessage("Backoff");
                     flyBackward(300);
+                    hoverDrone(500);
                 }
 
             } while (qrImg == null);
@@ -1118,7 +1123,7 @@ public final class DroneCommander implements IDroneCommander {
 
         if (centerOnTheWay) {
             //lockOn(50, 50, 50);
-            adjustToCenterFromQR(20);
+            adjustToCenterFromQR(50);
             commandManager.hover().waitFor(200);
         }
 

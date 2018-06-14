@@ -77,17 +77,17 @@ public final class Algorithms {
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(5000);
 
-            droneCommander.flyToTargetQRCode(true, 90, 15); // fly hen til ring
+            droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
 
             droneCommander.adjustHeightToCenterFromQR();
 
-            droneCommander.adjustToCenterFromQR(50);
+            //droneCommander.adjustToCenterFromQR(50);
 
             droneCommander.rejeHop();
 
             droneCommander.hoverDrone(5000);
 
-            droneCommander.landDrone();
+            //droneCommander.landDrone();
             // igennem first ring
 
             float downAltitude = droneCommander.getAltitude() - 650;
@@ -103,7 +103,7 @@ public final class Algorithms {
 
             droneCommander.adjustToCenterFromQR(50);
 
-            droneCommander.flyToTargetQRCode(true, 80, 10); // fly hen til ring
+            droneCommander.flyToTargetQRCode(true, 100, 50); // fly hen til ring
 
             droneCommander.adjustHeightToCenterFromQR();
             droneCommander.adjustToCenterFromQR(50);
