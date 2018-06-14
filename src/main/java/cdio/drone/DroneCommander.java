@@ -497,6 +497,63 @@ public final class DroneCommander implements IDroneCommander {
         return null;
     }
 
+    @Override
+    public final QRImg searchForQRCodeDetect() {
+        addMessage("Searching for a QR code...");
+        /*
+         * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
+         * hvor meget den skal dreje. Det er den vinkel den skal opnå at pege
+         * hen til med dens front.
+         *
+         * Vi adderer dronens nuværende yaw med 180 (grader), for altid at dreje 180 grader
+         * når denne metode bliver kørt.
+         *
+         * Måske burde dette laves om til at den altid drejer 360 heletiden?
+         */
+
+        /*
+         * Here we get a corrected targetYaw, wrapping around 180 and -180.
+         *
+         */
+        addMessage("Start yaw: " + yaw);
+        int targetYaw = (int) (getCorrectYaw(yaw) + 180);
+        addMessage("TargetYaw: " + targetYaw);
+        targetYaw = getCorrectTargetYaw(targetYaw);
+        addMessage("Corrected TargetYaw: " + targetYaw);
+
+        int negativeBound = -8;
+        int positiveBound = 8;
+
+        while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
+                || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+
+            if (latestReceivedImage != null) {
+
+                QRImg qrImg = null;
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+
+                }
+
+                if (qrImg != null) {
+                    return qrImg;
+                }
+            }
+
+            commandManager.hover().doFor(20);
+
+            yaw = getCorrectYaw(yaw);
+            commandManager.spinRight(80).doFor(40);
+            commandManager.spinLeft(80).doFor(10);
+
+            commandManager.hover().doFor(20);
+            sleep(500);
+        }
+
+        addMessage("Did not detect any QR code.");
+        return null;
+    }
 
     /**
      * Undefined functionality. :)
@@ -545,7 +602,7 @@ public final class DroneCommander implements IDroneCommander {
         int centerOfFrameX = -1;
         qrImg = qrCodeHandler.detectQR(this);
 
-        if(qr.getDistance() < 600) {
+        if (qr.getDistance() < 600) {
             do {
                 qrImg = qrCodeHandler.detectQR(this);
                 flyForward(100);
@@ -562,30 +619,28 @@ public final class DroneCommander implements IDroneCommander {
                 sleep(20);
             } while (qrImg == null);
         }
-        if (rightSideCheck())
-        {
+        if (rightSideCheck()) {
 
             addMessage(" rScHeck: " + rightSideCheck());
             do {
-                angle= qr.getAngle();
+                angle = qr.getAngle();
                 if (qr.getAngle() > angle) {
                     flyRight(200);
                     hoverDrone(100);
                     adjustToCenterFromQR();
                 }
-            }while (qr.getAngle() <= 20.0);
-        }else if (leftSideCheck())
-            {
+            } while (qr.getAngle() <= 20.0);
+        } else if (leftSideCheck()) {
             addMessage(" lScHeck: " + leftSideCheck());
             do {
                 qrImg = qrCodeHandler.detectQR(this);
-                angle2= qr.getAngle();
+                angle2 = qr.getAngle();
                 if (qr.getAngle() > angle2) {
                     flyLeft(200);
                     hoverDrone(100);
                     adjustToCenterFromQR();
                 }
-            }while (qr.getAngle() <= 25.0);
+            } while (qr.getAngle() <= 25.0);
         }
 
 
@@ -912,7 +967,8 @@ public final class DroneCommander implements IDroneCommander {
 
     }
 
-    public void adjustHightToCenterFromQR() {
+    @Override
+    public void adjustHeightToCenterFromQR() {
         addMessage("Centering vertically on QR code...");
 
         QRImg qrImg = null;

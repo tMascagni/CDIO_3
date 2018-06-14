@@ -44,6 +44,8 @@ public interface IDroneCommander {
     void flyUpAltitudePlus(int altitudePlus);
 
     QRImg searchForQRCode() throws DroneCommanderException;
+
+    QRImg searchForQRCodeDetect() throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
     boolean leftSideCheck() throws DroneCommanderException;
     boolean rightSideCheck() throws DroneCommanderException;
@@ -52,7 +54,7 @@ public interface IDroneCommander {
     void adjustToCenterFromQR(int range) throws DroneCommanderException;
     void adjustToCenterFromQRRotate() throws DroneCommanderException;
 
-    void adjustHightToCenterFromQR() throws DroneCommanderException;
+    void adjustHeightToCenterFromQR() throws DroneCommanderException;
 
     void centerOnRing() throws DroneCommanderException;
 

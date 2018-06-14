@@ -16,7 +16,7 @@ public class AltitudeTest {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.adjustHightToCenterFromQR();
+            droneCommander.adjustHeightToCenterFromQR();
 
             /*
             while (true){
