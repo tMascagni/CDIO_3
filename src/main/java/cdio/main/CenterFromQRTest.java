@@ -21,7 +21,7 @@ public class CenterFromQRTest {
 
         while (!droneCommander.isVideoConnected()) ; // venter på videofeed
 
-        droneCommander.adjustToCenterFromQR();
+        droneCommander.adjustToCenterFromQR(50);
 
         droneCommander.hoverDrone(2000);
         droneCommander.landDrone();
