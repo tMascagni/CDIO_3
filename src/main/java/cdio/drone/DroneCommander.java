@@ -974,6 +974,19 @@ public final class DroneCommander implements IDroneCommander {
      */
     @Override
     public boolean flyToTargetQRCode(boolean centerOnTheWay) {
+        // Target distance
+        int target = 80;
+
+        // Acceptable range from target
+        int accept_range = 10;
+
+        // When to enter slow-mode
+        int slow_range = 20;
+
+        // The speeds for fast and slow mode
+        int fast_speed = 800;
+        int slow_speed = 500;
+
         QRImg qrImg = null;
         int count = 0;
 
@@ -998,19 +1011,19 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 90 || dist < 70) {
+        while (dist > target + accept_range || dist < target - accept_range) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            if (dist > 80) {
-                if (dist < 115) {
-                    flyForward(500);
+            if (dist > target) {
+                if (dist < target + slow_range) {
+                    flyForward(slow_speed);
                 } else {
-                    flyForward(800);
+                    flyForward(fast_speed);
                 }
-            } else if (dist < 60) {
-                flyBackward(800);
+            } else if (dist < target - slow_range) {
+                flyBackward(fast_speed);
             } else {
-                flyBackward(500);
+                flyBackward(slow_range);
             }
 
             commandManager.hover().doFor(600);
