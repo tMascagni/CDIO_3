@@ -705,7 +705,7 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Currently not used.
      */
     @Override
-    public void adjustToCenterFromQR() {
+    public void adjustToCenterFromQR(int range) {
         addMessage("Centering on QR code...");
 
         QRImg qrImg = null;
@@ -744,7 +744,7 @@ public final class DroneCommander implements IDroneCommander {
             sleep(400);
 
             // Er dette center?
-        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+        } while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range);
 
         if (qrImg.isQRCodeRead()) {
             addMessage("Centered on QR code! QR code read: " + qrImg.getQrCodeData().getResult());
@@ -973,12 +973,12 @@ public final class DroneCommander implements IDroneCommander {
      * @throws DroneCommanderException Thrown if any errors occur.
      */
     @Override
-    public boolean flyToTargetQRCode(boolean centerOnTheWay) {
+    public boolean flyToTargetQRCode(boolean centerOnTheWay, int target, int accept_range) {
         // Target distance
-        int target = 80;
+        //int target = 80;
 
         // Acceptable range from target
-        int accept_range = 10;
+        //int accept_range = 10;
 
         // When to enter slow-mode
         int slow_range = 20;

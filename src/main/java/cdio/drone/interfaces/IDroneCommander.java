@@ -48,13 +48,15 @@ public interface IDroneCommander {
     boolean leftSideCheck() throws DroneCommanderException;
     boolean rightSideCheck() throws DroneCommanderException;
     void rotateDrone(int targetYaw) throws DroneCommanderException;
-    void adjustToCenterFromQR() throws DroneCommanderException;
+
+    void adjustToCenterFromQR(int range) throws DroneCommanderException;
     void adjustToCenterFromQRRotate() throws DroneCommanderException;
 
     void adjustHightToCenterFromQR() throws DroneCommanderException;
 
     void centerOnRing() throws DroneCommanderException;
-    boolean flyToTargetQRCode(boolean centerOnTheWay) throws DroneCommanderException;
+
+    boolean flyToTargetQRCode(boolean centerOnTheWay, int target, int range) throws DroneCommanderException;
 
     /************************
      * MESSAGES

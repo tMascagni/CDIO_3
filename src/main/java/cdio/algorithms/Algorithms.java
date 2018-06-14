@@ -77,13 +77,13 @@ public final class Algorithms {
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(5000);
 
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
 
 
-            droneCommander.flyToTargetQRCode(true); // fly hen til ring
+            droneCommander.flyToTargetQRCode(true, 80, 10); // fly hen til ring
 
             droneCommander.adjustHightToCenterFromQR();
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
 
             droneCommander.rejeHop();
             // droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
@@ -99,12 +99,12 @@ public final class Algorithms {
 
             droneCommander.hoverDrone(1000);
 
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
 
-            droneCommander.flyToTargetQRCode(true); // fly hen til ring
+            droneCommander.flyToTargetQRCode(true, 80, 10); // fly hen til ring
 
             droneCommander.adjustHightToCenterFromQR();
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
             droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
             droneCommander.hoverDrone(1000);
 
@@ -156,12 +156,12 @@ public final class Algorithms {
                     /*
                      * Vi sikrer os at dronens camera er ca. foran QR koden
                      */
-                    droneCommander.adjustToCenterFromQR();
+                    droneCommander.adjustToCenterFromQR(50);
 
                     /*
                      * Vi flyver hen til QR koden
                      */
-                    droneCommander.flyToTargetQRCode(true);
+                    droneCommander.flyToTargetQRCode(true, 80, 10);
 
                     /*
                      * Flyv op til midten af ringen.
