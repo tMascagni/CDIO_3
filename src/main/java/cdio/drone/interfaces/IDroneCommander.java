@@ -29,6 +29,8 @@ public interface IDroneCommander {
     void flyRight(int distanceMilli) throws DroneCommanderException;
     void flyUpToAltitude(int altitude);
 
+    void rejeHop();
+
     void flyDownToAltitude(float altitude);
 
     void circleAroundObjectV2();

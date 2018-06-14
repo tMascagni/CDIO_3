@@ -998,19 +998,24 @@ public final class DroneCommander implements IDroneCommander {
 
         double dist = qrImg.getDistance();
 
-        while (dist > 90) {
+        while (dist > 90 || dist < 70) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            if (dist < 115) {
-                flyForward(500);
+            if (dist > 80) {
+                if (dist < 115) {
+                    flyForward(500);
+                } else {
+                    flyForward(800);
+                }
+            } else if (dist < 60) {
+                flyBackward(800);
             } else {
-                flyForward(800);
+                flyBackward(500);
             }
 
-            commandManager.hover().doFor(200);
+            commandManager.hover().doFor(600);
 
             if (centerOnTheWay) {
-                commandManager.hover().waitFor(600);
                 adjustToCenterFromQR();
             }
 
@@ -1025,10 +1030,12 @@ public final class DroneCommander implements IDroneCommander {
                     qrImg = null;
                 }
 
+                /*
                 if (dist < 60) {
                     flyBackward(50);
                     sleep(100);
                 }
+                */
 
             } while (qrImg == null);
 
@@ -1048,6 +1055,14 @@ public final class DroneCommander implements IDroneCommander {
         commandManager.hover().waitFor(200);
 
         return true;
+    }
+
+    public void rejeHop() {
+        addMessage("rejehop!!");
+        commandManager.up(80).doFor(500);
+        commandManager.forward(80).doFor(300);
+        sleep(700);
+        hoverDrone();
     }
 
     /**
