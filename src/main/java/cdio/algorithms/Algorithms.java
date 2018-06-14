@@ -82,7 +82,7 @@ public final class Algorithms {
 
             droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
-            droneCommander.adjustHightToCenterFromQR();
+            droneCommander.adjustHeightToCenterFromQR();
             droneCommander.adjustToCenterFromQR();
 
             droneCommander.rejeHop();
@@ -91,7 +91,6 @@ public final class Algorithms {
             // droneCommander.flyForward(2000); // flyv gennem ringen
             droneCommander.hoverDrone(1000);
 
-            droneCommander.landDrone();
 
             float downAltitude = droneCommander.getAltitude() - 650;
             droneCommander.flyDownToAltitude(downAltitude);
@@ -99,11 +98,14 @@ public final class Algorithms {
 
             droneCommander.hoverDrone(1000);
 
+
+            QRImg qrImg = droneCommander.searchForQRCodeDetect();
+
             droneCommander.adjustToCenterFromQR();
 
             droneCommander.flyToTargetQRCode(true); // fly hen til ring
 
-            droneCommander.adjustHightToCenterFromQR();
+            droneCommander.adjustHeightToCenterFromQR();
             droneCommander.adjustToCenterFromQR();
             droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
             droneCommander.hoverDrone(1000);
@@ -168,7 +170,7 @@ public final class Algorithms {
                      * Flyv op ind til midten
                      * af ringen er blevet detekteret.
                      */
-                    droneCommander.adjustHightToCenterFromQR();
+                    droneCommander.adjustHeightToCenterFromQR();
                     droneCommander.flyUpAltitudePlus(650);
 
                     /*
