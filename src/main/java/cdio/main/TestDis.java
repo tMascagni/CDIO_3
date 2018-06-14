@@ -32,7 +32,7 @@ public final class TestDis {
             droneCommander.hoverDrone(8000);
 
 
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
 
 
             int timer = 200;
@@ -53,7 +53,7 @@ public final class TestDis {
 
             while (dist > 80) {
                 droneCommander.flyForward(400);
-                droneCommander.adjustToCenterFromQR();
+                droneCommander.adjustToCenterFromQR(50);
                 droneCommander.hoverDrone(200);
                 droneCommander.addMessage("Dist: " + dist);
                 QRImg qrImg2 = null;
