@@ -39,7 +39,7 @@ public interface IDroneCommander {
 
     void spinToQR();
 
-    void lockOn();
+    void lockOn(int maxRange, int minRange, int step);
 
     void flyUpAltitudePlus(int altitudePlus);
 

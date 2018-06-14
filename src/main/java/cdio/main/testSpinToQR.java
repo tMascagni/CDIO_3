@@ -25,7 +25,7 @@ public class testSpinToQR {
 
         droneCommander.hoverDrone(8000);
         //droneCommander.spinToQR();
-        droneCommander.lockOn();
+        //droneCommander.lockOn();
         droneCommander.landDrone();
 
     }

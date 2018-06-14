@@ -943,9 +943,9 @@ public final class DroneCommander implements IDroneCommander {
     }
 
 
-    public void lockOn() {
+    public void lockOn(int maxRange, int minRange, int step) {
 
-        for (int i = 200; i >= 50; i -= 50) {
+        for (int i = maxRange; i >= minRange; i -= step) {
             pointToQRSpin(i);
             adjustToCenterFromQR(i);
         }

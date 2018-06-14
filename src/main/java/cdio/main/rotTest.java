@@ -21,7 +21,7 @@ public class rotTest {
 
             droneCommander.circleAroundObject();
             droneCommander.addMessage("CIRCLE AROUND OBJECT V2 DONE #######################################");
-            droneCommander.lockOn();
+            //droneCommander.lockOn();
 
             droneCommander.hoverDrone(2000);
             droneCommander.landDrone();
