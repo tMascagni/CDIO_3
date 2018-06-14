@@ -627,7 +627,7 @@ public final class DroneCommander implements IDroneCommander {
                 if (qr.getAngle() > angle) {
                     flyRight(200);
                     hoverDrone(100);
-                    adjustToCenterFromQR();
+                    adjustToCenterFromQR(50);
                 }
             } while (qr.getAngle() <= 20.0);
         } else if (leftSideCheck()) {
@@ -638,7 +638,7 @@ public final class DroneCommander implements IDroneCommander {
                 if (qr.getAngle() > angle2) {
                     flyLeft(200);
                     hoverDrone(100);
-                    adjustToCenterFromQR();
+                    adjustToCenterFromQR(50);
                 }
             } while (qr.getAngle() <= 25.0);
         }
@@ -687,7 +687,7 @@ public final class DroneCommander implements IDroneCommander {
                 flyLeft(200);
                 commandManager.hover().doFor(100);
                 //drone.getCommandManager().spinRight(40).doFor(10);
-                adjustToCenterFromQR();
+                adjustToCenterFromQR(50);
             } else {
                 right = !(lastAngle < angle);
 
@@ -699,7 +699,7 @@ public final class DroneCommander implements IDroneCommander {
                     drone.getCommandManager().spinRight(40).doFor(10);
                 }
 
-                adjustToCenterFromQR();
+                adjustToCenterFromQR(50);
 
             }
 
@@ -865,7 +865,7 @@ public final class DroneCommander implements IDroneCommander {
      * and uses spin
      */
 
-    public void pointToQRSpin() {
+    public void pointToQRSpin(int range) {
         QRImg qrImg = null;
         int centerOfFrameX = -1;
 
@@ -904,7 +904,7 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover();
             sleep(20);
 
-        } while (qrImg.getPosition().x <= centerOfFrameX - 50 || qrImg.getPosition().x >= centerOfFrameX + 50);
+        } while (qrImg.getPosition().x <= centerOfFrameX - range || qrImg.getPosition().x >= centerOfFrameX + range);
     }
 
     public void spinToQR() {
@@ -939,31 +939,11 @@ public final class DroneCommander implements IDroneCommander {
 
     public void lockOn() {
 
-        QRImg qrImg = null;
-        double angle = 5000;
+        for (int i = 200; i >= 50; i -= 50) {
+            pointToQRSpin(i);
+            adjustToCenterFromQR(i);
+        }
 
-        do {
-            while (latestReceivedImage == null) {
-                sleep(10);
-            }
-
-            do {
-                qrImg = qrCodeHandler.detectQR(this);
-                angle = qrImg.getAngle();
-
-                addMessage("Angle: " + angle);
-
-                if (qrImg == null) {
-                    addMessage("Failed to detect QR code!");
-                }
-
-                sleep(20);
-            } while (qrImg == null);
-
-            pointToQRSpin();
-            adjustToCenterFromQR();
-
-        } while (angle < 20);
 
     }
 
@@ -1085,7 +1065,7 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover().doFor(600);
 
             if (centerOnTheWay) {
-                adjustToCenterFromQR();
+                adjustToCenterFromQR(50);
             }
 
             commandManager.hover().waitFor(600);
@@ -1111,7 +1091,7 @@ public final class DroneCommander implements IDroneCommander {
         }
 
         if (centerOnTheWay) {
-            adjustToCenterFromQR();
+            adjustToCenterFromQR(50);
             commandManager.hover().waitFor(200);
         }
 

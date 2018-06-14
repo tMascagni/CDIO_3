@@ -35,7 +35,7 @@ public interface IDroneCommander {
 
     void circleAroundObjectV2();
 
-    void pointToQRSpin();
+    void pointToQRSpin(int range);
 
     void spinToQR();
 

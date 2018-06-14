@@ -82,10 +82,8 @@ public final class Algorithms {
 
             droneCommander.flyToTargetQRCode(true, 80, 10); // fly hen til ring
 
-            droneCommander.adjustHightToCenterFromQR();
-            droneCommander.adjustToCenterFromQR(50);
             droneCommander.adjustHeightToCenterFromQR();
-            droneCommander.adjustToCenterFromQR();
+            droneCommander.adjustToCenterFromQR(50);
 
             droneCommander.rejeHop();
             // droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
