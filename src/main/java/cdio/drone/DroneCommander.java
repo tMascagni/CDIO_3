@@ -762,6 +762,8 @@ public final class DroneCommander implements IDroneCommander {
     @Override
     public void adjustToCenterFromQR(int range) {
         addMessage("Centering on QR code...");
+        commandManager.hover();
+
 
         QRImg qrImg = null;
         int centerOfFrameX = -1;
@@ -867,6 +869,8 @@ public final class DroneCommander implements IDroneCommander {
 
     public void pointToQRSpin(int range) {
         QRImg qrImg = null;
+        commandManager.hover();
+
         int centerOfFrameX = -1;
 
         while (latestReceivedImage == null) {
@@ -1036,11 +1040,11 @@ public final class DroneCommander implements IDroneCommander {
         //int accept_range = 10;
 
         // When to enter slow-mode
-        int slow_range = 20;
+        int slow_range = 60;
 
         // The speeds for fast and slow mode
         int fast_speed = 800;
-        int slow_speed = 500;
+        int slow_speed = 400;
 
         QRImg qrImg = null;
         int count = 0;
@@ -1072,8 +1076,9 @@ public final class DroneCommander implements IDroneCommander {
         while (dist > target + accept_range || dist < target - accept_range) {
             addMessage("Flying to QR code. Distance: " + dist);
 
-            lockOn((int) dist, 50, 50);
+            //lockOn((int) dist, 50, 50);
 
+            adjustToCenterFromQR(50);
             commandManager.hover().doFor(600);
 
             if (dist > target) {
@@ -1112,7 +1117,8 @@ public final class DroneCommander implements IDroneCommander {
         }
 
         if (centerOnTheWay) {
-            lockOn(50, 50, 50);
+            //lockOn(50, 50, 50);
+            adjustToCenterFromQR(20);
             commandManager.hover().waitFor(200);
         }
 
@@ -1130,8 +1136,8 @@ public final class DroneCommander implements IDroneCommander {
     public void rejeHop() {
         addMessage("rejehop!!");
         commandManager.up(80).doFor(500);
-        commandManager.forward(80).doFor(300);
-        sleep(700);
+        commandManager.forward(80).doFor(600);
+        sleep(900);
         hoverDrone();
     }
 

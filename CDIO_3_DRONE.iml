@@ -12,51 +12,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/build/java/opencv-341.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/DTU 4. semester/CDIO/opencv/build/java/opencv-341.jar!/" />
         </CLASSES>
         <JAVADOC />
         <NATIVE>
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/build" />
+          <root url="file://$USER_HOME$/Documents/DTU 4. semester/CDIO/opencv/build/x64" />
         </NATIVE>
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/build/java/opencv-341.jar!/" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/generator/android-21/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/generator/android/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/generator/src/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/test/android_test/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/test/common_test/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/modules/java/test/pure_test/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/platforms/android/service/engine/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/platforms/maven/opencv-it/src/test/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/15-puzzle/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/camera-calibration/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/color-blob-detection/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/face-detection/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/image-manipulations/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/mobilenet-objdetect/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/tutorial-1-camerapreview/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/tutorial-2-mixedprocessing/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/tutorial-3-cameracontrol/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/android/tutorial-4-opencl/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/ant/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/eclipse/HelloCV/src" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/sbt/src/main/java" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgProc/HitMiss" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgProc/Pyramids" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgProc/Smoothing" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgProc/morph_lines_detection" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgProc/tutorial_template_matching" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgTrans/Filter2D" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgTrans/HoughLine" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgTrans/LaPlace" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgTrans/MakeBorder" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/ImgTrans/SobelDemo" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/core/AddingImages" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/core/BasicGeometricDrawing" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/core/discrete_fourier_transform" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/core/mat_mask_operations" />
-          <root url="file://$MODULE_DIR$/../DTU 4. semester/CDIO/opencv/sources/samples/java/tutorial_code/introduction/documentation" />
+          <root url="jar://$USER_HOME$/Documents/DTU 4. semester/CDIO/opencv/build/java/opencv-341.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
