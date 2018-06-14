@@ -511,11 +511,7 @@ public final class DroneCommander implements IDroneCommander {
         qr = qrCodeHandler.detectQR(this);
         commandManager.spinLeft(20).doFor(100);
         hoverDrone(1000);
-        if (qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200){
-            return true;
-        }
-        else
-            return false;
+        return qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200;
     }
 
     /**
@@ -529,10 +525,7 @@ public final class DroneCommander implements IDroneCommander {
         qr = qrCodeHandler.detectQR(this);
         commandManager.spinRight(10).doFor(100);
         hoverDrone(1000);
-        if (qr.getPosition().x <= 500.0 && qr.getPosition().y >= 200) {
-            return true;
-        }else
-            return false;
+        return qr.getPosition().x <= 500.0 && qr.getPosition().y >= 200;
     }
 
 
@@ -1411,12 +1404,12 @@ public final class DroneCommander implements IDroneCommander {
 
     /**
      * Increment the current target QR code.
-     * Maximum is 7, because there's 7 rings.
-     * 0 is first, then 1, 2, 3, ... 7.
+     * Maximum is 5, because there's 6 rings.
+     * 0 is first, then 1, 2, 3, 4, 5.
      */
     @Override
     public void incQRCodeTarget() {
-        if (targetQrCode < 7) {
+        if (targetQrCode < 5) {
             targetQrCode++;
             addMessage("New QR code target: " + targetQrCode + "!");
         }
@@ -1601,7 +1594,7 @@ public final class DroneCommander implements IDroneCommander {
      * since there's 7 rings. No more entries should ever be created.
      */
     private void initQRMap() {
-        for (int qrNumber = 0; qrNumber <= 7; qrNumber++)
+        for (int qrNumber = 0; qrNumber <= 5; qrNumber++)
             qrCodeMap.put(qrNumber, null);
     }
 

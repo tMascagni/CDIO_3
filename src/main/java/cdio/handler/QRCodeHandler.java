@@ -201,7 +201,6 @@ public class QRCodeHandler implements IQRCodeHandler {
         RingDetector ringDetector = new RingDetector(img);
 
         return ringDetector.findFromQR(img, qr);
-
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 
 public final class HoopStatusPanel extends JPanel {
 
-    private final int LENGTH = 8;
+    private final int LENGTH = 6;
 
     private JLabel lblFound, lblHoop, lblLocation, lblIsPassed;
 
