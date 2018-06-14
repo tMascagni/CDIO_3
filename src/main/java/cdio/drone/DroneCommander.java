@@ -509,10 +509,13 @@ public final class DroneCommander implements IDroneCommander {
         //qr.getPosition();
 
         qr = qrCodeHandler.detectQR(this);
-        commandManager.spinLeft(20).doFor(300);
+        commandManager.spinLeft(20).doFor(100);
         hoverDrone(1000);
-        return qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200;
-
+        if (qr.getPosition().x <= 300.0 && qr.getPosition().y >= 200){
+            return true;
+        }
+        else
+            return false;
     }
 
     /**
@@ -524,19 +527,12 @@ public final class DroneCommander implements IDroneCommander {
     public final boolean rightSideCheck() {
 
         qr = qrCodeHandler.detectQR(this);
-        commandManager.spinRight(30).doFor(30);
+        commandManager.spinRight(10).doFor(100);
         hoverDrone(1000);
-        return qr.getPosition().x >= 500.0 && qr.getPosition().y >= 200;
-
-/*        boolean rSide;
-        qr = qrCodeHandler.detectQR(this);
-        Double lTempAngle = qr.getAngle();
-            flyRight(50);
-            commandManager.spinLeft(10).doFor(40);
-        if (rSide = lTempAngle < qr.getAngle()){
-            return rSide;
+        if (qr.getPosition().x <= 500.0 && qr.getPosition().y >= 200) {
+            return true;
         }else
-            return false;*/
+            return false;
     }
 
 
@@ -551,6 +547,7 @@ public final class DroneCommander implements IDroneCommander {
         double tempVink = 0;
         boolean first = true;
         double angle;
+        double angle2;
         QRImg qrImg = null;
         int centerOfFrameX = -1;
         qrImg = qrCodeHandler.detectQR(this);
@@ -562,6 +559,7 @@ public final class DroneCommander implements IDroneCommander {
                 hoverDrone(200);
             } while (qr.getDistance() <= 300);
             do {
+                qrImg = qrCodeHandler.detectQR(this);
                 angle = qr.getAngle();
                 addMessage("vinkel: " + angle);
                 if (latestReceivedImage != null && qrImg != null) {
@@ -571,21 +569,31 @@ public final class DroneCommander implements IDroneCommander {
                 sleep(20);
             } while (qrImg == null);
         }
-        if (rightSideCheck()) {
-            do {
-                angle = qr.getAngle();
-                flyRight(200);
-                commandManager.hover().doFor(100);
-                adjustToCenterFromQR();
-            }while (angle <= 20);
-        }else if (leftSideCheck()) {
+        if (rightSideCheck())
+        {
+
+            addMessage(" rScHeck: " + rightSideCheck());
             do {
                 angle= qr.getAngle();
-                flyLeft(200);
-                commandManager.hover().doFor(100);
-                adjustToCenterFromQR();
-            }while (angle <= 20);
-        }adjustToCenterFromQR();
+                if (qr.getAngle() > angle) {
+                    flyRight(200);
+                    hoverDrone(100);
+                    adjustToCenterFromQR();
+                }
+            }while (qr.getAngle() <= 20.0);
+        }else if (leftSideCheck())
+            {
+            addMessage(" lScHeck: " + leftSideCheck());
+            do {
+                qrImg = qrCodeHandler.detectQR(this);
+                angle2= qr.getAngle();
+                if (qr.getAngle() > angle2) {
+                    flyLeft(200);
+                    hoverDrone(100);
+                    adjustToCenterFromQR();
+                }
+            }while (qr.getAngle() <= 25.0);
+        }
 
 
     }
