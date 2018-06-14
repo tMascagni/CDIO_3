@@ -1061,6 +1061,8 @@ public final class DroneCommander implements IDroneCommander {
 
             lockOn((int) dist, 50, 50);
 
+            commandManager.hover().doFor(600);
+
             if (dist > target) {
                 if (dist < target + slow_range) {
                     flyForward(slow_speed);
@@ -1097,7 +1099,7 @@ public final class DroneCommander implements IDroneCommander {
         }
 
         if (centerOnTheWay) {
-            adjustToCenterFromQR(50);
+            lockOn(50, 50, 50);
             commandManager.hover().waitFor(200);
         }
 
