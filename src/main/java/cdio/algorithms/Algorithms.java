@@ -137,7 +137,7 @@ public final class Algorithms {
                 /*
                  * Start med at søge efter en QR kode.
                  */
-                QRImg qrImg = droneCommander.searchForQRCode();
+                QRImg qrImg = droneCommander.searchForQRCodeDetect();
 
                 /*
                  * Hvis den korrekte QR kode ikke blev fundet, så
@@ -145,16 +145,15 @@ public final class Algorithms {
                  * laver vi en ny rotation, i håb om at finde den
                  * korrekte QR kode. (den næste kode)
                  */
-                if (qrImg == null || !qrImg.isQRCodeRead()) {
-                    qrImg = droneCommander.searchForQRCode();
+                if (qrImg == null) {
+                    qrImg = droneCommander.searchForQRCodeDetect();
                 }
 
                 /*
                  * Hvis qrImg er forskellig fra null, og den er læst,
                  * så ved vi at det er den næste QRKode som vi skal have.
                  */
-                if (qrImg != null && qrImg.isQRCodeRead()) {
-
+                if (qrImg != null) {
                     /*
                      * Vi sikrer os at dronens camera er ca. foran QR koden
                      */
