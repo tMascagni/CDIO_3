@@ -1080,9 +1080,11 @@ public final class DroneCommander implements IDroneCommander {
             }
 
             count++;
-            if (count >= 1000) {
+            if (count >= 300) {
                 addMessage("Could not find any QR code to fly to!");
-                return false;
+                flyBackward(300);
+                hoverDrone(2000);
+                count = 0;
             }
         }
 

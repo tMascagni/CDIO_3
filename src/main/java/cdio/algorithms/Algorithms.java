@@ -94,8 +94,8 @@ public final class Algorithms {
                 //droneCommander.landDrone();
                 // igennem first ring
 
-                float downAltitude = droneCommander.getAltitude() - 650;
-                droneCommander.flyDownToAltitude(downAltitude);
+                //float downAltitude = droneCommander.getAltitude() - 650;
+                //droneCommander.flyDownToAltitude(downAltitude);
 
                 droneCommander.searchForQRCodeDetect(false);
             }
