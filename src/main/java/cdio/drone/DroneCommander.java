@@ -1160,9 +1160,10 @@ public final class DroneCommander implements IDroneCommander {
         //commandManager.up(80).doFor(500);
         //commandManager.forward(80).doFor(600);
         //sleep(900);
+
+        float downAltitude = altitude - 150;
         commandManager.move(80, 0, -70, 0).doFor(1200);
         commandManager.forward(400);
-        float downAltitude = altitude - 450;
         flyDownToAltitude(downAltitude);
         hoverDrone(1500);
     }
