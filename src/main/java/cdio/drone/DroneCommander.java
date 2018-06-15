@@ -791,6 +791,7 @@ public final class DroneCommander implements IDroneCommander {
                     addMessage("Failed to detect QR code!");
                     count++;
                     if (count > 500) {
+                        flyBackward(400);
                         return;
                     }
                 }
