@@ -15,7 +15,7 @@ public class RejeHopTest {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(10000);
+            droneCommander.hoverDrone(5000);
             droneCommander.rejeHop();
             droneCommander.hoverDrone(2000);
             droneCommander.landDrone();
