@@ -169,6 +169,8 @@ public final class DroneCommander implements IDroneCommander {
 
         /* Wait to settle for commands... */
         sleep(1000);
+        commandManager.flatTrim();
+        sleep(500);
 
         addMessage("Drone initialized!");
     }
