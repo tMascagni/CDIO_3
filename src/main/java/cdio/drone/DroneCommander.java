@@ -529,11 +529,16 @@ public final class DroneCommander implements IDroneCommander {
         while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
 
-            if (latestReceivedImage != null) {
+            BufferedImage image = null;
+            while (image == null) {
+                image = latestReceivedImage;
+                sleep(20);
+            }
+            if (image != null) {
 
                 QRImg qrImg = null;
                 try {
-                    qrImg = qrCodeHandler.scanImageForBest(latestReceivedImage, this);
+                    qrImg = qrCodeHandler.scanImageForBest(image, this);
                 } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
 
                 }
