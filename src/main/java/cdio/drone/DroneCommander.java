@@ -1109,6 +1109,10 @@ public final class DroneCommander implements IDroneCommander {
                     qrImg = qrCodeHandler.scanImageForBest(getLatestReceivedImage(), this);
                     dist = qrImg.getDistance();
                     addMessage("New distance: " + dist);
+                    if (dist < target - accept_range) {
+                        flyBackward(400);
+                        hoverDrone(500);
+                    }
                 } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
                     qrImg = null;
                 }
