@@ -75,11 +75,10 @@ public final class Algorithms {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
+            droneCommander.searchForQRCodeDetect(true);
             while (true) {
                 droneCommander.hoverDrone(5000);
 
-                droneCommander.searchForQRCodeDetect();
-                droneCommander.hoverDrone(1000);
 
                 droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
 
@@ -96,6 +95,8 @@ public final class Algorithms {
 
                 float downAltitude = droneCommander.getAltitude() - 650;
                 droneCommander.flyDownToAltitude(downAltitude);
+
+                droneCommander.searchForQRCodeDetect(false);
             }
 
 
@@ -120,7 +121,7 @@ public final class Algorithms {
                 /*
                  * Start med at søge efter en QR kode.
                  */
-                QRImg qrImg = droneCommander.searchForQRCodeDetect();
+                QRImg qrImg = droneCommander.searchForQRCodeDetect(false);
 
                 /*
                  * Hvis den korrekte QR kode ikke blev fundet, så
@@ -129,7 +130,7 @@ public final class Algorithms {
                  * korrekte QR kode. (den næste kode)
                  */
                 if (qrImg == null) {
-                    qrImg = droneCommander.searchForQRCodeDetect();
+                    qrImg = droneCommander.searchForQRCodeDetect(false);
                 }
 
                 /*

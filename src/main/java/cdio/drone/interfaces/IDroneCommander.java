@@ -45,7 +45,7 @@ public interface IDroneCommander {
 
     QRImg searchForQRCode() throws DroneCommanderException;
 
-    QRImg searchForQRCodeDetect() throws DroneCommanderException;
+    QRImg searchForQRCodeDetect(boolean reverseDirection) throws DroneCommanderException;
     void circleAroundObject() throws DroneCommanderException;
     boolean leftSideCheck() throws DroneCommanderException;
     boolean rightSideCheck() throws DroneCommanderException;

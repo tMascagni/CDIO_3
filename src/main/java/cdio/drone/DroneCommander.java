@@ -500,7 +500,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     @Override
-    public final QRImg searchForQRCodeDetect() {
+    public final QRImg searchForQRCodeDetect(boolean reverseDirection) {
         addMessage("Searching for a QR code...");
         /*
          * TargetYaw er den vinkel som dronen skal dreje hen til. Altså ikke
@@ -546,8 +546,13 @@ public final class DroneCommander implements IDroneCommander {
             commandManager.hover().doFor(20);
 
             yaw = getCorrectYaw(yaw);
-            commandManager.spinRight(80).doFor(40);
-            commandManager.spinLeft(80).doFor(10);
+            if (!reverseDirection) {
+                commandManager.spinRight(80).doFor(40);
+                commandManager.spinLeft(80).doFor(10);
+            } else {
+                commandManager.spinLeft(80).doFor(40);
+                commandManager.spinRight(80).doFor(10);
+            }
 
             commandManager.hover().doFor(20);
             sleep(500);
