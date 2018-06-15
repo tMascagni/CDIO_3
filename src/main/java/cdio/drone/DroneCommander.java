@@ -1142,10 +1142,12 @@ public final class DroneCommander implements IDroneCommander {
 
     public void rejeHop() {
         addMessage("rejehop!!");
-        commandManager.up(80).doFor(500);
-        commandManager.forward(80).doFor(600);
-        sleep(900);
-        hoverDrone();
+        //commandManager.up(80).doFor(500);
+        //commandManager.forward(80).doFor(600);
+        //sleep(900);
+        commandManager.move(80, 0, -70, 0).doFor(1200);
+        commandManager.forward(400);
+        hoverDrone(500);
     }
 
     /**
