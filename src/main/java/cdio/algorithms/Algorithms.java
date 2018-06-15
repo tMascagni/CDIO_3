@@ -75,47 +75,30 @@ public final class Algorithms {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(5000);
+            while (true) {
+                droneCommander.hoverDrone(5000);
 
-            droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
+                droneCommander.searchForQRCodeDetect();
+                droneCommander.hoverDrone(1000);
 
-            droneCommander.adjustHeightToCenterFromQR();
+                droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
 
-            //droneCommander.adjustToCenterFromQR(50);
+                droneCommander.adjustHeightToCenterFromQR();
 
-            droneCommander.rejeHop();
+                //droneCommander.adjustToCenterFromQR(50);
 
-            droneCommander.hoverDrone(5000);
+                droneCommander.rejeHop();
 
-            //droneCommander.landDrone();
-            // igennem first ring
+                droneCommander.hoverDrone(1000);
 
-            float downAltitude = droneCommander.getAltitude() - 650;
-            droneCommander.flyDownToAltitude(downAltitude);
-            droneCommander.searchForQRCodeDetect();
+                //droneCommander.landDrone();
+                // igennem first ring
 
-            // 2 ring
-
-            droneCommander.hoverDrone(1000);
-
-
-            QRImg qrImg = droneCommander.searchForQRCodeDetect();
-
-            droneCommander.adjustToCenterFromQR(50);
-
-            droneCommander.flyToTargetQRCode(true, 100, 50); // fly hen til ring
-
-            droneCommander.adjustHeightToCenterFromQR();
-            droneCommander.adjustToCenterFromQR(50);
-            droneCommander.flyUpAltitudePlus(650); // 650 er højden fra positionen foran qr koden og op til cirka centeret af ringen
-            droneCommander.hoverDrone(1000);
-
-            droneCommander.flyForward(2000); // flyv gennem ringen
-            droneCommander.hoverDrone(1000);
+                float downAltitude = droneCommander.getAltitude() - 650;
+                droneCommander.flyDownToAltitude(downAltitude);
+            }
 
 
-            droneCommander.hoverDrone(2000);
-            droneCommander.landDrone();
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
