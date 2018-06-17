@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
@@ -43,15 +42,15 @@ public class ConsolePanel extends JPanel implements ICCPlugin {
     private void redirectSystemStreams(boolean enableRedirect) {
         if (enableRedirect) {
             OutputStream out = new OutputStream() {
-                public void write(int b) throws IOException {
+                public void write(int b) {
                     updateTextArea(String.valueOf((char) b));
                 }
 
-                public void write(byte[] b, int off, int len) throws IOException {
+                public void write(byte[] b, int off, int len) {
                     updateTextArea(new String(b, off, len));
                 }
 
-                public void write(byte[] b) throws IOException {
+                public void write(byte[] b) {
                     write(b, 0, b.length);
                 }
             };

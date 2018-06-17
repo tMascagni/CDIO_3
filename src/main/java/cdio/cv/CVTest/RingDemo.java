@@ -1,5 +1,8 @@
-package cdio.cv;
+package cdio.cv.CVTest;
 
+import cdio.cv.CVHelper;
+import cdio.cv.RingDetector;
+import cdio.cv.RingImg;
 import org.opencv.core.Core;
 
 import java.awt.image.BufferedImage;

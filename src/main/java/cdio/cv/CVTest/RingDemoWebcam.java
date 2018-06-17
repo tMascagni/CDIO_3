@@ -1,10 +1,6 @@
-package cdio.cv;
+package cdio.cv.CVTest;
 
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
-import cdio.handler.QRCodeHandler;
-import cdio.handler.interfaces.IQRCodeHandler;
-import cdio.model.QRCodeData;
+import cdio.cv.*;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
@@ -16,19 +12,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class WebcamDemo {
+public class RingDemoWebcam {
 
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    //private static IDroneCommander droneCommander = DroneCommander.getInstance();
-
     public static void main(String[] args) throws InterruptedException {
+        CVHelper cvHelper = new CVHelper();
 
         VideoCapture cam = new VideoCapture(0);
-        QRDetector qrDetector = new QRDetector();
-        CVHelper cvHelper = new CVHelper();
+        // write your code here
+        //init();
         ArrayList<JFrame> windows = new ArrayList<>();
         JFrame webCamView = new JFrame();
         webCamView.setLayout(new FlowLayout());
@@ -40,25 +35,25 @@ public class WebcamDemo {
             Mat image = new Mat();
             cam.read(image);
 
-            ArrayList<QRImg> qrImgs = qrDetector.processAll(image);
-
-
-            for(QRImg qr : qrImgs) {
+            QRDetector qrDetector = new QRDetector(image);
+            QRImg qr = qrDetector.findBest(qrDetector.processAll(image));
+            if (qr != null) {
                 Imgproc.drawContours(image, Arrays.asList(qr.getContour()), -1, new Scalar(15, 250, 200), 3);
-                Imgproc.drawMarker(image, qr.getPosition(), new Scalar(10, 250, 200), 0, 20, 5, 8);
-            }
+                RingDetector rd = new RingDetector(image);
+                RingImg ring = rd.findFromQR(image, qr);
 
-            QRImg qrImg = qrDetector.findBest(qrImgs);
-            if(qrImg != null) {
-                Imgproc.drawContours(image, Arrays.asList(qrImg.getContour()), -1, new Scalar(255, 50, 10), 4);
-                Imgproc.drawMarker(image, qrImg.getPosition(), new Scalar(255, 10, 0), 0, 20, 5, 8);
-                System.out.println("H:" + qrImg.getH() + "\t D: " + qrImg.getDistance());
-
+                if (ring != null) {
+                    System.out.println("Found a circle!");
+                    Imgproc.circle(image, ring.getPosition(), 1, new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
+                    Imgproc.circle(image, ring.getPosition(), (int) ring.getRadius(), new Scalar(255, 100, 250), 3, Imgproc.LINE_AA, 0);
+                }
             }
             ImageIcon icon = new ImageIcon(cvHelper.mat2buf(image));
             label.setIcon(icon);
             webCamView.repaint();
+
             Thread.sleep(100);
+
         }
 
     }

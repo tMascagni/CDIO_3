@@ -90,7 +90,7 @@ public class QRCodeGeneratorPanel extends JPanel implements ICCPlugin {
     private void print() {
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setPrintable(new Printable() {
-            public int print(Graphics g, PageFormat pf, int page) throws PrinterException {
+            public int print(Graphics g, PageFormat pf, int page) {
                 // We have only one page, and 'page' is zero-based
                 if (page > 0) {
                     return NO_SUCH_PAGE;
