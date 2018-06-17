@@ -31,7 +31,7 @@ public final class DroneCommander implements IDroneCommander {
      * Global fields for the DroneCommander.
      */
     private final int MAX_ALTITUDE = 1100;            /* millimeters. */
-    private final int MIN_ALTITUDE = 0;            /* millimeters. */
+    private final int MIN_ALTITUDE = 400;            /* millimeters. */
 
     private final int MAX_SPEED = 100;                /* percentage (%) */
     private final int MIN_SPEED = 10;                 /* percentage (%) */
@@ -531,23 +531,23 @@ public final class DroneCommander implements IDroneCommander {
             BufferedImage image = null;
             while (image == null) {
                 image = latestReceivedImage;
-                sleep(20);
+                sleep(10);
             }
-            if (image != null) {
 
-                QRImg qrImg = null;
-                try {
-                    qrImg = qrCodeHandler.scanImageForBest(image, this);
-                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-                    qrImg = null;
-                    addMessage("Search for QR: No QR");
-                }
-
-                if (qrImg != null) {
-                    addMessage("Search for QR: QR found");
-                    return qrImg;
-                }
+            QRImg qrImg;
+            try {
+                qrImg = qrCodeHandler.scanImageForBest(image, this);
+            } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                qrImg = null;
             }
+
+            if (qrImg != null) {
+                addMessage("Search for QR: QR found");
+                return qrImg;
+            } else {
+                addMessage("Search for QR: No QR found");
+            }
+
 
             commandManager.hover().doFor(20);
 
@@ -560,8 +560,7 @@ public final class DroneCommander implements IDroneCommander {
                 commandManager.spinRight(80).doFor(10);
             }
 
-            hoverDrone(2000);
-            sleep(500);
+            hoverDrone(4000);
         }
 
         addMessage("Did not detect any QR code.");

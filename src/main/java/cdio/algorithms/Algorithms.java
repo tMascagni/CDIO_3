@@ -201,15 +201,16 @@ public final class Algorithms {
             droneCommander.startDrone();
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(5500);
+            droneCommander.hoverDrone(6500);
             // droneCommander.searchForQRCodeDetect(true);
             //droneCommander.pointToQRSpin(50);
             while (true) {
+                droneCommander.addMessage("target --> ring nr 0");
                 droneCommander.hoverDrone(5000);
 
-                droneCommander.flyToTargetQRCode(true, 100, 15); // fly hen til ring
+                droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
                 droneCommander.adjustHeightToCenterFromQR();
-                droneCommander.flyToTargetQRCode(true, 90, 10); // fly hen til ring
+                droneCommander.flyToTargetQRCode(true, 80, 20); // fly hen til ring
                 droneCommander.adjustToCenterFromQR(50);
                 droneCommander.rejeHop();
                 droneCommander.incQRCodeTarget();
@@ -223,18 +224,24 @@ public final class Algorithms {
 
                 if (droneCommander.getTargetQRCode() == 1) {
                     droneCommander.searchForQRCodeDetect(false);
+                    droneCommander.addMessage("target --> ring nr 1");
                 } else if (droneCommander.getTargetQRCode() == 2) {
+                    droneCommander.addMessage("target --> ring nr 2");
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
                 } else if (droneCommander.getTargetQRCode() == 3) {
+                    droneCommander.addMessage("target --> ring nr 3");
                     droneCommander.flyForward(350);
                     droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 4) {
+                    droneCommander.addMessage("target --> ring nr 4");
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
                 } else if (droneCommander.getTargetQRCode() == 5) {
                     // drej ikke
+                    droneCommander.addMessage("target --> ring nr 5");
                 } else {
+                    droneCommander.addMessage("target --> ring nr ?");
                     droneCommander.searchForQRCodeDetect(false);
                 }
 
