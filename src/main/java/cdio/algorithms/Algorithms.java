@@ -226,6 +226,9 @@ public final class Algorithms {
                 } else if (droneCommander.getTargetQRCode() == 2) {
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
+                } else if (droneCommander.getTargetQRCode() == 3) {
+                    droneCommander.flyForward(350);
+                    droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 4) {
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
