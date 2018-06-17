@@ -657,7 +657,7 @@
       <workItem from="1528878468627" duration="17496000" />
       <workItem from="1529157957892" duration="1254000" />
       <workItem from="1529227102480" duration="14301000" />
-      <workItem from="1529243070603" duration="1686000" />
+      <workItem from="1529243070603" duration="1709000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -897,11 +897,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529244692031</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="oprydning små ændringer">
+      <created>1529244769753</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1529244769753</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156039000" />
+    <option name="totallyTimeSpent" value="156062000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="877" extended-state="0" />
