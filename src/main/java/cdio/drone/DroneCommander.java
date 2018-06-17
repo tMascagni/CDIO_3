@@ -539,10 +539,12 @@ public final class DroneCommander implements IDroneCommander {
                 try {
                     qrImg = qrCodeHandler.scanImageForBest(image, this);
                 } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-
+                    qrImg = null;
+                    addMessage("Search for QR: No QR");
                 }
 
                 if (qrImg != null) {
+                    addMessage("Search for QR: QR found");
                     return qrImg;
                 }
             }
@@ -558,7 +560,7 @@ public final class DroneCommander implements IDroneCommander {
                 commandManager.spinRight(80).doFor(10);
             }
 
-            commandManager.hover().doFor(20);
+            hoverDrone(2000);
             sleep(500);
         }
 
