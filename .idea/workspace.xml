@@ -4,7 +4,6 @@
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/TestRoute.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -90,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="208" column="56" lean-forward="false" selection-start-line="208" selection-start-column="56" selection-end-line="208" selection-end-column="56" />
+            <state relative-caret-position="-124">
+              <caret line="205" column="47" lean-forward="false" selection-start-line="205" selection-start-column="47" selection-end-line="205" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -203,8 +202,8 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
       </list>
     </option>
   </component>
@@ -658,7 +657,7 @@
       <workItem from="1528878468627" duration="17496000" />
       <workItem from="1529157957892" duration="1254000" />
       <workItem from="1529227102480" duration="14301000" />
-      <workItem from="1529243070603" duration="1583000" />
+      <workItem from="1529243070603" duration="1686000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -891,11 +890,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529242255828</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="oprydning små ændringer">
+      <created>1529244692030</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1529244692031</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155936000" />
+    <option name="totallyTimeSpent" value="156039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="877" extended-state="0" />
@@ -910,7 +916,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3652174" sideWeight="0.39985433" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27890626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49166667" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3652174" sideWeight="0.60014564" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3652174" sideWeight="0.60014564" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -976,7 +982,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="Refactoring." />
     <MESSAGE value="Added log4j library via Maven." />
     <MESSAGE value="Correction of Trolle." />
     <MESSAGE value="Attempting to fix merge conflict." />
@@ -1001,7 +1006,8 @@
     <MESSAGE value="ny algo update til ring 3" />
     <MESSAGE value="ny algo update" />
     <MESSAGE value="oprydning" />
-    <option name="LAST_COMMIT_MESSAGE" value="oprydning" />
+    <MESSAGE value="oprydning små ændringer" />
+    <option name="LAST_COMMIT_MESSAGE" value="oprydning små ændringer" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1379,14 +1385,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="208" column="56" lean-forward="false" selection-start-line="208" selection-start-column="56" selection-end-line="208" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1435,6 +1433,14 @@
             <element signature="e#47277#47278#0" expanded="true" />
             <element signature="e#47365#47366#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124">
+          <caret line="205" column="47" lean-forward="false" selection-start-line="205" selection-start-column="47" selection-end-line="205" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
