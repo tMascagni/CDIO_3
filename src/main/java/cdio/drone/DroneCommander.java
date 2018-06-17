@@ -30,7 +30,7 @@ public final class DroneCommander implements IDroneCommander {
     /*
      * Global fields for the DroneCommander.
      */
-    private final int MAX_ALTITUDE = 2500;            /* millimeters. */
+    private final int MAX_ALTITUDE = 1100;            /* millimeters. */
     private final int MIN_ALTITUDE = 0;            /* millimeters. */
 
     private final int MAX_SPEED = 100;                /* percentage (%) */
@@ -406,11 +406,10 @@ public final class DroneCommander implements IDroneCommander {
      */
     @Override
     public void flyDownToAltitude(float altitude) {
-        addMessage("Flying downwards to altitude: " + altitude + "...");
-
-        while (getAltitude() >= altitude)
+        while (getAltitude() >= altitude) {
             flyDown(350);
-
+            addMessage("Flying downwards to altitude: " + altitude + "...");
+        }
         addMessage("Done flying downwards to altitude: " + altitude + "!");
     }
 
@@ -809,9 +808,9 @@ public final class DroneCommander implements IDroneCommander {
             } while (qrImg == null);
 
             if (qrImg.getPosition().x > centerOfFrameX) {
-                flyRight(200);
+                flyRight(260);
             } else {
-                flyLeft(200);
+                flyLeft(260);
             }
 
             commandManager.hover().waitFor(500);
@@ -1095,7 +1094,7 @@ public final class DroneCommander implements IDroneCommander {
 
             //lockOn((int) dist, 50, 50);
 
-            adjustToCenterFromQR(50);
+            adjustToCenterFromQR(90);
             commandManager.hover().doFor(600);
 
             if (dist > target) {
@@ -1163,9 +1162,10 @@ public final class DroneCommander implements IDroneCommander {
         //commandManager.forward(80).doFor(600);
         //sleep(900);
 
-        float downAltitude = altitude - 150;
-        commandManager.move(80, 0, -70, 0).doFor(1200);
-        commandManager.forward(400);
+        float downAltitude = altitude - 120;
+        commandManager.move(40, 0, -70, 0).doFor(1000);
+        commandManager.move(-80, 0, 0, 0).doFor(400);
+
         flyDownToAltitude(downAltitude);
         hoverDrone(1500);
     }

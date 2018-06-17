@@ -15,14 +15,19 @@ public class AltitudeTest {
         try {
             droneCommander.startDrone();
             droneCommander.initDrone();
-            droneCommander.takeOffDrone();
-            droneCommander.adjustHeightToCenterFromQR();
+            // droneCommander.takeOffDrone();
+            // droneCommander.adjustHeightToCenterFromQR();
 
-            /*
+
             while (true){
                 System.out.println(droneCommander.getAltitude());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            */
+
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();

@@ -76,19 +76,16 @@ public final class Algorithms {
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(5500);
-            droneCommander.searchForQRCodeDetect(true);
+            // droneCommander.searchForQRCodeDetect(true);
             //droneCommander.pointToQRSpin(50);
             while (true) {
                 droneCommander.hoverDrone(5000);
 
                 droneCommander.flyToTargetQRCode(true, 100, 15); // fly hen til ring
-
                 droneCommander.adjustHeightToCenterFromQR();
-
+                droneCommander.flyToTargetQRCode(true, 90, 10); // fly hen til ring
                 //droneCommander.adjustToCenterFromQR(50);
-
                 droneCommander.rejeHop();
-
                 droneCommander.hoverDrone(5000);
 
                 //droneCommander.landDrone();
@@ -98,6 +95,8 @@ public final class Algorithms {
                 //droneCommander.flyDownToAltitude(downAltitude);
 
                 droneCommander.searchForQRCodeDetect(false);
+                droneCommander.hoverDrone(4000);
+                droneCommander.pointToQRSpin(40);
             }
 
 
@@ -191,6 +190,61 @@ public final class Algorithms {
         } catch (DroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void testAl(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(5500);
+            // droneCommander.searchForQRCodeDetect(true);
+            //droneCommander.pointToQRSpin(50);
+            while (true) {
+                droneCommander.hoverDrone(5000);
+
+                droneCommander.flyToTargetQRCode(true, 100, 15); // fly hen til ring
+                droneCommander.adjustHeightToCenterFromQR();
+                droneCommander.flyToTargetQRCode(true, 90, 10); // fly hen til ring
+                droneCommander.adjustToCenterFromQR(50);
+                droneCommander.rejeHop();
+                droneCommander.incQRCodeTarget();
+                droneCommander.hoverDrone(5000);
+
+                //droneCommander.landDrone();
+                // igennem first ring
+
+                //float downAltitude = droneCommander.getAltitude() - 650;
+                //droneCommander.flyDownToAltitude(downAltitude);
+
+                if (droneCommander.getTargetQRCode() == 1) {
+                    droneCommander.searchForQRCodeDetect(false);
+                } else if (droneCommander.getTargetQRCode() == 2) {
+                    droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
+                    droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
+                } else if (droneCommander.getTargetQRCode() == 4) {
+                    droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
+                    droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
+                } else if (droneCommander.getTargetQRCode() == 5) {
+                    // drej ikke
+                } else {
+                    droneCommander.searchForQRCodeDetect(false);
+                }
+
+
+                droneCommander.hoverDrone(4000);
+                droneCommander.pointToQRSpin(40);
+            }
+
+
+        } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void test(IDroneCommander droneCommander) {

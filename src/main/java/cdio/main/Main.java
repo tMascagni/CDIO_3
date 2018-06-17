@@ -9,7 +9,7 @@ public final class Main {
     private static final IDroneCommander droneCommander = DroneCommander.getInstance();
 
     public static void main(String[] args) {
-        Algorithms.oneRingAlgoTest(droneCommander);
+        Algorithms.testAl(droneCommander);
     }
 
 }
