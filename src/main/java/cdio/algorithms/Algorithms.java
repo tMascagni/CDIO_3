@@ -204,13 +204,16 @@ public final class Algorithms {
             droneCommander.hoverDrone(6500);
             // droneCommander.searchForQRCodeDetect(true);
             //droneCommander.pointToQRSpin(50);
+            droneCommander.incQRCodeTarget();
+            droneCommander.incQRCodeTarget();
+            droneCommander.searchForQRCodeDetect(false);
             while (true) {
                 droneCommander.addMessage("target --> ring nr 0");
                 droneCommander.hoverDrone(5000);
 
                 droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
                 droneCommander.adjustHeightToCenterFromQR();
-                droneCommander.flyToTargetQRCode(true, 80, 20); // fly hen til ring
+                droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
                 droneCommander.adjustToCenterFromQR(50);
                 droneCommander.rejeHop();
                 droneCommander.incQRCodeTarget();
