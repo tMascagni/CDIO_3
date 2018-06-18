@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="ny algo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,17 +27,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="321" column="24" lean-forward="true" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="24" />
+            <state relative-caret-position="184">
+              <caret line="294" column="64" lean-forward="true" selection-start-line="294" selection-start-column="64" selection-end-line="294" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
@@ -52,8 +50,8 @@
       <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="1145" column="48" lean-forward="true" selection-start-line="1145" selection-start-column="48" selection-end-line="1145" selection-end-column="48" />
+            <state relative-caret-position="280">
+              <caret line="1168" column="0" lean-forward="true" selection-start-line="1168" selection-start-column="0" selection-end-line="1168" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+              <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -96,13 +94,13 @@
       <find>cir</find>
       <find>fly</find>
       <find>move</find>
-      <find>reje</find>
       <find>rejehop</find>
       <find>flyDown</find>
       <find>getdr</find>
       <find>max</find>
       <find>min</find>
       <find>altitude</find>
+      <find>reje</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/cdio/cv</dir>
@@ -172,9 +170,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
       </list>
     </option>
   </component>
@@ -797,7 +795,7 @@
       <workItem from="1528878468627" duration="17496000" />
       <workItem from="1529157957892" duration="1254000" />
       <workItem from="1529227102480" duration="14301000" />
-      <workItem from="1529243070603" duration="4695000" />
+      <workItem from="1529243070603" duration="5400000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1051,11 +1049,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529244795791</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="ny algo">
+      <created>1529304611117</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1529304611117</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159048000" />
+    <option name="totallyTimeSpent" value="159753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="877" extended-state="0" />
@@ -1156,12 +1161,12 @@
     <MESSAGE value="rejehop" />
     <MESSAGE value="rejehop update" />
     <MESSAGE value="Algo update" />
-    <MESSAGE value="ny algo" />
     <MESSAGE value="ny algo update til ring 3" />
     <MESSAGE value="ny algo update" />
     <MESSAGE value="oprydning" />
     <MESSAGE value="oprydning små ændringer" />
-    <option name="LAST_COMMIT_MESSAGE" value="oprydning små ændringer" />
+    <MESSAGE value="ny algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ny algo" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1634,23 +1639,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="1145" column="48" lean-forward="true" selection-start-line="1145" selection-start-column="48" selection-end-line="1145" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="321" column="24" lean-forward="true" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="24" />
+          <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1659,6 +1648,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="79" lean-forward="false" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="1168" column="0" lean-forward="true" selection-start-line="1168" selection-start-column="0" selection-end-line="1168" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="294" column="64" lean-forward="true" selection-start-line="294" selection-start-column="64" selection-end-line="294" selection-end-column="64" />
           <folding />
         </state>
       </provider>

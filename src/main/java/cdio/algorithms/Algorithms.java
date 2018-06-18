@@ -291,6 +291,8 @@ public final class Algorithms {
                 droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
                 if (droneCommander.getTargetQRCode() == 5) {
                     droneCommander.adjustHeightToCenterFromQR();
+                } else if (droneCommander.getTargetQRCode() == 1) {
+                    droneCommander.adjustHeightToCenterFromQR();
                 } else {
                     droneCommander.flyDownToAltitude(1020);
                 }
