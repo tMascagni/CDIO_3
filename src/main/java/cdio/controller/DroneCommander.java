@@ -895,6 +895,7 @@ public final class DroneCommander implements IDroneCommander {
         QRImg qrImg = null;
         commandManager.hover();
 
+
         int centerOfFrameX = -1;
 
         while (latestReceivedImage == null) {

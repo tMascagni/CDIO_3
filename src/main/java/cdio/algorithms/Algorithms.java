@@ -301,7 +301,7 @@ public final class Algorithms {
                 droneCommander.adjustToCenterFromQR(35);
                 droneCommander.rejeHop();
                 droneCommander.incQRCodeTarget();
-                droneCommander.hoverDrone(5000);
+                droneCommander.hoverDrone(3000);
 
                 if (droneCommander.getTargetQRCode() == 1) {
                     droneCommander.flyToAltitude(1100);
@@ -309,26 +309,24 @@ public final class Algorithms {
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 } else if (droneCommander.getTargetQRCode() == 2) {
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
-                    droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
-                    droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
+                    droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 3) {
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.flyForward(350);
                     droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 4) {
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
-                    droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
-                    droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
+                    droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 5) {
-                    // drej ikke
+                    droneCommander.getDrone().setMinAltitude(350);
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 } else {
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.searchForQRCodeDetect(false);
                 }
 
-                droneCommander.hoverDrone(4000);
-                // droneCommander.pointToQRSpin(80);
+                droneCommander.hoverDrone(3000);
+                droneCommander.pointToQRSpin(50);
             }
 
         } catch (IDroneCommander.DroneCommanderException e) {
