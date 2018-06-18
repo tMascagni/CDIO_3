@@ -1,6 +1,5 @@
-package cdio.cv;
+package cdio.model;
 
-import cdio.model.QRCodeData;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;

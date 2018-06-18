@@ -1,6 +1,10 @@
 package cdio.cv.CVTest;
 
-import cdio.cv.*;
+import cdio.cv.CVHelper;
+import cdio.cv.QRDetector;
+import cdio.cv.RingDetector;
+import cdio.model.QRImg;
+import cdio.model.RingImg;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;

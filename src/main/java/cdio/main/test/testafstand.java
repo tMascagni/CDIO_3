@@ -1,4 +1,4 @@
-package cdio.main;
+package cdio.main.test;
 
 public class testafstand {
 

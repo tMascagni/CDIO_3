@@ -1,8 +1,8 @@
 package cdio.algorithms;
 
-import cdio.cv.QRImg;
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
+import cdio.model.QRImg;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;
@@ -202,10 +202,12 @@ public final class Algorithms {
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(6500);
-            // droneCommander.searchForQRCodeDetect(true);
+
+            //droneCommander.searchForQRCodeDetect(true);
             //droneCommander.pointToQRSpin(50);
+
             while (true) {
-                droneCommander.addMessage("target --> ring nr 0");
+                droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 droneCommander.hoverDrone(5000);
 
                 droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
@@ -224,40 +226,37 @@ public final class Algorithms {
 
                 if (droneCommander.getTargetQRCode() == 1) {
                     droneCommander.searchForQRCodeDetect(false);
-                    droneCommander.addMessage("target --> ring nr 1");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 } else if (droneCommander.getTargetQRCode() == 2) {
-                    droneCommander.addMessage("target --> ring nr 2");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
                 } else if (droneCommander.getTargetQRCode() == 3) {
-                    droneCommander.addMessage("target --> ring nr 3");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.flyForward(350);
                     droneCommander.searchForQRCodeDetect(false);
                 } else if (droneCommander.getTargetQRCode() == 4) {
-                    droneCommander.addMessage("target --> ring nr 4");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.getDrone().getCommandManager().spinRight(80).doFor(40);
                     droneCommander.getDrone().getCommandManager().spinLeft(80).doFor(10);
                 } else if (droneCommander.getTargetQRCode() == 5) {
                     // drej ikke
-                    droneCommander.addMessage("target --> ring nr 5");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 } else {
-                    droneCommander.addMessage("target --> ring nr ?");
+                    droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                     droneCommander.searchForQRCodeDetect(false);
                 }
-
 
                 droneCommander.hoverDrone(4000);
                 droneCommander.pointToQRSpin(40);
             }
 
-
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
-
     }
 
-    public static void test(IDroneCommander droneCommander) {
+    public static void testHover(IDroneCommander droneCommander) {
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
@@ -277,25 +276,3 @@ public final class Algorithms {
 
 
 }
-
-/*
-
-
- try {
-                qrImg = droneCommander.getTallestQRCode();
-                droneCommander.rotateDrone((int) qrImg.getQrCodeData().getFoundYaw());
-            } catch (IDroneCommander.DroneCommanderException e) {
-                // Hvis denne exception forekommer, er det fordi at der
-                // aldrig er blevet fundet nogle QR koder i begge rotationer.
-                e.printStackTrace();
-            }
-
-            /* TODO: Flyv hen til denne QRCode, og roter rundt om det indtil QR koden har den
-             * største bredde (width) da det så betyder at vi står lige foran den. */
-
-/* Flyv op */
-
-/* Flyv igennem ring */
-
-/* Og så gør dette igen. */
-

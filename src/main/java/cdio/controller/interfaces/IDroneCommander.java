@@ -1,6 +1,6 @@
-package cdio.drone.interfaces;
+package cdio.controller.interfaces;
 
-import cdio.cv.QRImg;
+import cdio.model.QRImg;
 import yadankdrone.IARDrone;
 
 import java.awt.image.BufferedImage;
@@ -30,17 +30,11 @@ public interface IDroneCommander {
     void flyUpToAltitude(int altitude);
 
     void rejeHop();
-
     void flyDownToAltitude(float altitude);
-
     void circleAroundObjectV2();
-
     void pointToQRSpin(int range);
-
     void spinToQR();
-
     void lockOn(int maxRange, int minRange, int step);
-
     void flyUpAltitudePlus(int altitudePlus);
 
     QRImg searchForQRCode() throws DroneCommanderException;

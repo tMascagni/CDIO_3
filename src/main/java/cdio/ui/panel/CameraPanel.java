@@ -2,7 +2,7 @@ package cdio.ui.panel;
 
 import cdio.cv.CVHelper;
 import cdio.cv.QRDetector;
-import cdio.cv.QRImg;
+import cdio.model.QRImg;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;

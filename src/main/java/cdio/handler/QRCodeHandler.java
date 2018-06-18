@@ -1,9 +1,13 @@
 package cdio.handler;
 
-import cdio.cv.*;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
+import cdio.cv.CVHelper;
+import cdio.cv.QRDetector;
+import cdio.cv.RingDetector;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.model.QRCodeData;
+import cdio.model.QRImg;
+import cdio.model.RingImg;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;

@@ -1,6 +1,7 @@
 package cdio.cv;
 
-import cdio.cv.interfaces.ICV;
+import cdio.cv.interfaces.IQRDetector;
+import cdio.model.QRImg;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class QRDetector implements ICV {
+public class QRDetector implements IQRDetector {
 
     private static final double CV_PI = 3.14159;
 

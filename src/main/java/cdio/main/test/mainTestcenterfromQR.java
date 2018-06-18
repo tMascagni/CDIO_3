@@ -1,7 +1,7 @@
-package cdio.main;
+package cdio.main.test;
 
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
 
 import javax.swing.*;

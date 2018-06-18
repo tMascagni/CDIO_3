@@ -1,6 +1,6 @@
 package cdio.ui.panel;
 
-import cdio.cv.QRImg;
+import cdio.model.QRImg;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

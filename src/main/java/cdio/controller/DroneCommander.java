@@ -1,10 +1,10 @@
-package cdio.drone;
+package cdio.controller;
 
-import cdio.cv.QRImg;
-import cdio.cv.RingImg;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
+import cdio.model.QRImg;
+import cdio.model.RingImg;
 import org.opencv.core.Core;
 import yadankdrone.ARDrone;
 import yadankdrone.IARDrone;

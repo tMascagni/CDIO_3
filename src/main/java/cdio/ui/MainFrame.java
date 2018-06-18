@@ -1,6 +1,6 @@
 package cdio.ui;
 
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.ui.panel.CameraPanel;
 import cdio.ui.panel.CommandPanel;
 import cdio.ui.panel.StatusPanel;
@@ -27,7 +27,7 @@ public final class MainFrame extends JFrame {
     private final IDroneCommander droneCommander;
 
     public MainFrame(IDroneCommander droneCommander) {
-        super("DroneX - Group 3 - CDIO Project");
+        super("Drone - Group 3 - CDIO Project");
         this.droneCommander = droneCommander;
         setBackground(Color.WHITE);
         getRootPane().setBackground(Color.WHITE);

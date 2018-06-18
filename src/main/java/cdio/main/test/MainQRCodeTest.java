@@ -1,4 +1,4 @@
-package cdio.main;
+package cdio.main.test;
 
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;

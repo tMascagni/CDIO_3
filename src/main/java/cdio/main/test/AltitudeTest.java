@@ -1,11 +1,10 @@
-package cdio.main;
+package cdio.main.test;
 
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.ui.MainFrame;
 
-public class rotTest {
-
+public class AltitudeTest {
 
     private static final IDroneCommander droneCommander = DroneCommander.getInstance();
 
@@ -16,27 +15,23 @@ public class rotTest {
         try {
             droneCommander.startDrone();
             droneCommander.initDrone();
-            droneCommander.takeOffDrone();
-            droneCommander.hoverDrone(2000);
+            // droneCommander.takeOffDrone();
+            // droneCommander.adjustHeightToCenterFromQR();
 
-            droneCommander.circleAroundObject();
-            droneCommander.addMessage("CIRCLE AROUND OBJECT V2 DONE #######################################");
-            //droneCommander.lockOn();
 
-            droneCommander.hoverDrone(2000);
-            droneCommander.landDrone();
-            droneCommander.stopDrone();
-
-            /*
             while (true){
                 System.out.println(droneCommander.getAltitude());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            */
+
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
         }
 
     }
-
 }

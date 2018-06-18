@@ -1,8 +1,8 @@
 package cdio.handler.interfaces;
 
-import cdio.cv.QRImg;
-import cdio.cv.RingImg;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
+import cdio.model.QRImg;
+import cdio.model.RingImg;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;

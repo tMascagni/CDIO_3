@@ -6,12 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+
 import static org.opencv.core.CvType.CV_8U;
 import static org.opencv.core.CvType.CV_8UC3;
 
 public class CVHelper {
 
-   public Mat buf2mat(BufferedImage in) {
+    public Mat buf2mat(BufferedImage in) {
         Mat out = null;
         if (in.getType() == BufferedImage.TYPE_3BYTE_BGR) {
             out = Mat.zeros(in.getHeight(), in.getWidth(), CV_8UC3);
@@ -23,7 +24,7 @@ public class CVHelper {
         return out;
     }
 
-   public BufferedImage mat2buf(Mat in) {
+    public BufferedImage mat2buf(Mat in) {
         BufferedImage out = null;
 
         if (in.type() == CV_8UC3) {

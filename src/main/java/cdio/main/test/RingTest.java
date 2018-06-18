@@ -1,8 +1,8 @@
-package cdio.main;
+package cdio.main.test;
 
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 import cdio.cv.QRDetector;
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
 import cdio.handler.QRCodeHandler;
 import cdio.handler.interfaces.IQRCodeHandler;
 import cdio.ui.MainFrame;

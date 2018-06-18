@@ -1,6 +1,6 @@
 package cdio.ui.panel;
 
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

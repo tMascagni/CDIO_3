@@ -1,7 +1,7 @@
 package cdio.ui.panel;
 
-import cdio.cv.QRImg;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
+import cdio.model.QRImg;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

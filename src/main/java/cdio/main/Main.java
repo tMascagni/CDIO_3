@@ -1,8 +1,8 @@
 package cdio.main;
 
 import cdio.algorithms.Algorithms;
-import cdio.drone.DroneCommander;
-import cdio.drone.interfaces.IDroneCommander;
+import cdio.controller.DroneCommander;
+import cdio.controller.interfaces.IDroneCommander;
 
 public final class Main {
 

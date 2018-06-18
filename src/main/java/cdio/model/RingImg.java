@@ -1,4 +1,4 @@
-package cdio.cv;
+package cdio.model;
 
 import org.opencv.core.Point;
 
@@ -26,4 +26,3 @@ public class RingImg {
     }
 
 }
-
