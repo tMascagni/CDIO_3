@@ -1142,7 +1142,7 @@ public final class DroneCommander implements IDroneCommander {
 
         if (centerOnTheWay) {
             //lockOn(50, 50, 50);
-            adjustToCenterFromQR(50);
+            adjustToCenterFromQR(70);
             commandManager.hover().waitFor(200);
         }
 
@@ -1730,4 +1730,14 @@ public final class DroneCommander implements IDroneCommander {
         commandManager.setLedsAnimation(ledAnimation, freq, duration);
     }
 
+    public void flyToAltitude(int altitude) {
+        while (this.altitude - 20 >= altitude && this.altitude + 20 <= altitude) {
+            if (this.altitude < altitude) {
+                flyUp(20);
+            } else {
+                flyDown(20);
+            }
+            hoverDrone(200);
+        }
+    }
 }

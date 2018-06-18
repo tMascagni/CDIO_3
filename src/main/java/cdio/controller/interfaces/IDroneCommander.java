@@ -37,6 +37,8 @@ public interface IDroneCommander {
     void lockOn(int maxRange, int minRange, int step);
     void flyUpAltitudePlus(int altitudePlus);
 
+    void flyToAltitude(int altitude);
+
     QRImg searchForQRCode() throws DroneCommanderException;
 
     QRImg searchForQRCodeDetect(boolean reverseDirection) throws DroneCommanderException;

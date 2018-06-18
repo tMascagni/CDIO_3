@@ -4,6 +4,9 @@
     <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,74 +29,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
+      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-              <folding>
-                <element signature="e#36791#36792#0" expanded="true" />
-                <element signature="e#36827#36828#0" expanded="true" />
-                <element signature="e#37464#37465#0" expanded="true" />
-                <element signature="e#37503#37504#0" expanded="true" />
-                <element signature="e#38458#38459#0" expanded="true" />
-                <element signature="e#38504#38505#0" expanded="true" />
-                <element signature="e#38954#38955#0" expanded="true" />
-                <element signature="e#38998#38999#0" expanded="true" />
-                <element signature="e#39373#39374#0" expanded="true" />
-                <element signature="e#39422#39423#0" expanded="true" />
-                <element signature="e#39561#39562#0" expanded="true" />
-                <element signature="e#39612#39613#0" expanded="true" />
-                <element signature="e#39720#39721#0" expanded="true" />
-                <element signature="e#39748#39749#0" expanded="true" />
-                <element signature="e#39854#39855#0" expanded="true" />
-                <element signature="e#39881#39882#0" expanded="true" />
-                <element signature="e#40775#40776#0" expanded="true" />
-                <element signature="e#40801#40802#0" expanded="true" />
-                <element signature="e#40915#40916#0" expanded="true" />
-                <element signature="e#40946#40947#0" expanded="true" />
-                <element signature="e#41056#41057#0" expanded="true" />
-                <element signature="e#41091#41092#0" expanded="true" />
-                <element signature="e#41201#41202#0" expanded="true" />
-                <element signature="e#41236#41237#0" expanded="true" />
-                <element signature="e#41346#41347#0" expanded="true" />
-                <element signature="e#41376#41377#0" expanded="true" />
-                <element signature="e#41485#41486#0" expanded="true" />
-                <element signature="e#41520#41521#0" expanded="true" />
-                <element signature="e#41647#41648#0" expanded="true" />
-                <element signature="e#41689#41690#0" expanded="true" />
-                <element signature="e#43729#43730#0" expanded="true" />
-                <element signature="e#43764#43765#0" expanded="true" />
-                <element signature="e#43876#43877#0" expanded="true" />
-                <element signature="e#43908#43909#0" expanded="true" />
-                <element signature="e#44170#44171#0" expanded="true" />
-                <element signature="e#44223#44224#0" expanded="true" />
-                <element signature="e#46398#46399#0" expanded="true" />
-                <element signature="e#46469#46470#0" expanded="true" />
-                <element signature="e#46957#46958#0" expanded="true" />
-                <element signature="e#47026#47027#0" expanded="true" />
-                <element signature="e#47277#47278#0" expanded="true" />
-                <element signature="e#47365#47366#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CameraPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/ui/panel/CameraPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+            <state relative-caret-position="518">
+              <caret line="321" column="24" lean-forward="true" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-124">
-              <caret line="205" column="47" lean-forward="false" selection-start-line="205" selection-start-column="47" selection-end-line="205" selection-end-column="47" />
+            <state relative-caret-position="90">
+              <caret line="8" column="79" lean-forward="false" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="1145" column="48" lean-forward="true" selection-start-line="1145" selection-start-column="48" selection-end-line="1145" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IDroneCommander.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -132,6 +102,7 @@
       <find>getdr</find>
       <find>max</find>
       <find>min</find>
+      <find>altitude</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/cdio/cv</dir>
@@ -153,8 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/state/StatePanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/statistics/StatisticsPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/plugins/video/VideoCanvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/controlcenter/ICCPlugin.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/DroneController.java" />
@@ -199,11 +168,13 @@
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/RejeHopTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" />
         <option value="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdio/main/Main.java" />
       </list>
     </option>
   </component>
@@ -270,6 +241,11 @@
             <path>
               <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
               <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -309,6 +285,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cdio" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cdio" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cdio" type="462c0819:PsiDirectoryNode" />
               <item name="cv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -319,25 +314,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cdio" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cdio" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CDIO_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CDIO_3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cdio" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="panel" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -369,6 +345,170 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="cdio.computervision" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVHelper.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemo.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemoWebcam.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/WebcamDemo.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/demo.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/ContourTree.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/Main.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainLand.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/MainFrame.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/CameraPanel.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/DroneStatusPanel.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/HoopStatusPanel.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/StatusPanel.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/interfaces/IQRDetector.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/AltitudeTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/CenterFromQRTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/GUIAngleTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/HoverOffsetFix.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/MainOpenCVTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/MainQRCodeTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/RejeHopTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/RingTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/TestDis.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/mainTestcenterfromQR.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/rotTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/testSpinToQR.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/testafstand.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/model/QRImg.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/model/RingImg.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/interfaces/ICV.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/CenterFromQRTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainOpenCVTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainQRCodeTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/RejeHopTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/RingTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/mainTestcenterfromQR.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/testafstand.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -657,7 +797,7 @@
       <workItem from="1528878468627" duration="17496000" />
       <workItem from="1529157957892" duration="1254000" />
       <workItem from="1529227102480" duration="14301000" />
-      <workItem from="1529243070603" duration="1709000" />
+      <workItem from="1529243070603" duration="4695000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -904,11 +1044,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529244769753</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="oprydning små ændringer">
+      <created>1529244795791</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1529244795791</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156062000" />
+    <option name="totallyTimeSpent" value="159048000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="877" extended-state="0" />
@@ -1030,17 +1177,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java</url>
-          <line>55</line>
+          <line>56</line>
           <properties />
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/cdio/main/mainTestcenterfromQR.java</url>
-          <line>11</line>
-          <properties class="cdio.main.mainTestcenterfromQR">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java</url>
@@ -1058,41 +1197,12 @@
           </properties>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java</url>
-          <line>10</line>
-          <properties class="cdio.main.HoverOffsetFix" method="main">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/altitude/AltitudeChartPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/connection/ConnectionState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/attitudechart/AttitudeChartPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="61" lean-forward="false" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/yadrone/controlcenter/plugins/keyboard/KeyboardCommandManagerAlternative.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1290">
@@ -1222,13 +1332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yadankdrone.jar!/yadankdrone/command/CommandManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="153" column="26" lean-forward="false" selection-start-line="153" selection-start-column="26" selection-end-line="153" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1241,9 +1344,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,17 +1364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="e#295#296#0" expanded="false" />
-            <element signature="e#344#345#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1286,14 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="728">
           <caret line="198" column="23" lean-forward="false" selection-start-line="198" selection-start-column="23" selection-end-line="198" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1384,6 +1466,147 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/yadankdrone.jar!/yadankdrone/command/CommandManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="153" column="26" lean-forward="false" selection-start-line="153" selection-start-column="26" selection-end-line="153" selection-end-column="26" />
+          <folding>
+            <marker date="1528380899931" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1528380899931" expanded="false" signature="143:734" ph="..." />
+            <marker date="1528380899931" expanded="true" signature="1462:1534" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="1580:1591" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="1626:1632" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="1681:1692" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="1731:1737" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="1807:1818" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="1862:1868" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="1942:2005" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="2051:2062" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="2090:2096" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="2142:2153" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="2181:2187" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="2236:2405" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="2470:2637" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="2500:2566" ph="run() → { " />
+            <marker date="1528380899931" expanded="false" signature="2597:2621" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="2675:2742" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="2781:2852" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="2927:3016" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="3054:3149" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="3189:3261" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="3307:3318" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3378:3384" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="3431:3442" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3501:3507" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="3555:3566" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3625:3631" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="3678:3689" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3749:3755" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="3796:3807" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3866:3872" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="3915:3926" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="3986:3992" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="4038:4049" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="4108:4114" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="4159:4170" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="4230:4236" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="4372:4865" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="4954:5258" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="5342:5482" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="5519:5588" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="5624:5692" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="5734:5801" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="5842:5853" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="5882:5888" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="5941:6198" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="6248:6357" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="6411:6544" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="6618:6734" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="6788:6925" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="6982:7123" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="7179:7284" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="7337:7451" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="7505:7602" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="7658:7761" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="7851:7946" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="8012:8127" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="8184:8291" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="8350:8477" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="8566:8725" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="8919:9106" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="9162:9243" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="9451:9636" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="9710:9797" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="9857:10034" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="10093:10202" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="10258:10361" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="10419:10503" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="10573:10901" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="10958:11043" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="11112:11413" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="11470:11555" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="11624:11842" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="11890:11966" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="12026:12325" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="12376:12453" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="12516:12734" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="12792:12849" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="12934:13258" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="13313:13392" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="13484:13718" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="13792:13899" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="13960:14066" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14126:14231" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14286:14393" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14445:14541" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14607:14741" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14794:14913" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="14964:15081" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="15155:15398" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="15457:15468" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="15512:15518" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="15556:15567" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="15602:15608" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="15645:17898" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="17931:18234" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="18332:19109" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="19157:19168" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="19211:19217" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="19273:19284" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="19327:19333" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="19386:19593" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="19669:20332" ph="{...}" />
+            <marker date="1528380899931" expanded="true" signature="20345:20428" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/yadankdrone.jar!/yadankdrone/command/ConfigureCommand.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <marker date="1528380899931" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1528380899931" expanded="true" signature="297:358" ph="{...}" />
+            <marker date="1528380899931" expanded="false" signature="411:422" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="456:462" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="512:523" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="553:559" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="611:622" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="661:667" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="720:731" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="761:767" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="797:808" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="824:830" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="870:881" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="924:930" ph=" }" />
+            <marker date="1528380899931" expanded="false" signature="967:978" ph=" { " />
+            <marker date="1528380899931" expanded="false" signature="990:996" ph=" }" />
+            <marker date="1528380899931" expanded="true" signature="1027:1383" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/ui/panel/CameraPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -1394,59 +1617,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-          <folding>
-            <element signature="e#36791#36792#0" expanded="true" />
-            <element signature="e#36827#36828#0" expanded="true" />
-            <element signature="e#37464#37465#0" expanded="true" />
-            <element signature="e#37503#37504#0" expanded="true" />
-            <element signature="e#38458#38459#0" expanded="true" />
-            <element signature="e#38504#38505#0" expanded="true" />
-            <element signature="e#38954#38955#0" expanded="true" />
-            <element signature="e#38998#38999#0" expanded="true" />
-            <element signature="e#39373#39374#0" expanded="true" />
-            <element signature="e#39422#39423#0" expanded="true" />
-            <element signature="e#39561#39562#0" expanded="true" />
-            <element signature="e#39612#39613#0" expanded="true" />
-            <element signature="e#39720#39721#0" expanded="true" />
-            <element signature="e#39748#39749#0" expanded="true" />
-            <element signature="e#39854#39855#0" expanded="true" />
-            <element signature="e#39881#39882#0" expanded="true" />
-            <element signature="e#40775#40776#0" expanded="true" />
-            <element signature="e#40801#40802#0" expanded="true" />
-            <element signature="e#40915#40916#0" expanded="true" />
-            <element signature="e#40946#40947#0" expanded="true" />
-            <element signature="e#41056#41057#0" expanded="true" />
-            <element signature="e#41091#41092#0" expanded="true" />
-            <element signature="e#41201#41202#0" expanded="true" />
-            <element signature="e#41236#41237#0" expanded="true" />
-            <element signature="e#41346#41347#0" expanded="true" />
-            <element signature="e#41376#41377#0" expanded="true" />
-            <element signature="e#41485#41486#0" expanded="true" />
-            <element signature="e#41520#41521#0" expanded="true" />
-            <element signature="e#41647#41648#0" expanded="true" />
-            <element signature="e#41689#41690#0" expanded="true" />
-            <element signature="e#43729#43730#0" expanded="true" />
-            <element signature="e#43764#43765#0" expanded="true" />
-            <element signature="e#43876#43877#0" expanded="true" />
-            <element signature="e#43908#43909#0" expanded="true" />
-            <element signature="e#44170#44171#0" expanded="true" />
-            <element signature="e#44223#44224#0" expanded="true" />
-            <element signature="e#46398#46399#0" expanded="true" />
-            <element signature="e#46469#46470#0" expanded="true" />
-            <element signature="e#46957#46958#0" expanded="true" />
-            <element signature="e#47026#47027#0" expanded="true" />
-            <element signature="e#47277#47278#0" expanded="true" />
-            <element signature="e#47365#47366#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="197">
+          <caret line="1732" column="29" lean-forward="false" selection-start-line="1732" selection-start-column="16" selection-end-line="1732" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="1145" column="48" lean-forward="true" selection-start-line="1145" selection-start-column="48" selection-end-line="1145" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="205" column="47" lean-forward="false" selection-start-line="205" selection-start-column="47" selection-end-line="205" selection-end-column="47" />
+        <state relative-caret-position="518">
+          <caret line="321" column="24" lean-forward="true" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdio/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="79" lean-forward="false" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
           <folding />
         </state>
       </provider>
