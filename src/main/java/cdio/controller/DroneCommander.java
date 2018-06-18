@@ -30,7 +30,7 @@ public final class DroneCommander implements IDroneCommander {
     /*
      * Global fields for the DroneCommander.
      */
-    private final int MAX_ALTITUDE = 1100;            /* millimeters. */
+    private final int MAX_ALTITUDE = 1250;            /* millimeters. */
     private final int MIN_ALTITUDE = 400;            /* millimeters. */
 
     private final int MAX_SPEED = 100;                /* percentage (%) */
@@ -527,25 +527,33 @@ public final class DroneCommander implements IDroneCommander {
 
         while ((yaw = (getCorrectYaw(yaw) - targetYaw)) < negativeBound
                 || yaw > positiveBound) { // default -8 og 8 :) // -23 og 23 virker fint.
+            int foundCount = 0;
+            for (int i = 0; i < 10; i++) {
+                BufferedImage image = null;
+                while (image == null) {
+                    image = latestReceivedImage;
+                    sleep(10);
+                }
 
-            BufferedImage image = null;
-            while (image == null) {
-                image = latestReceivedImage;
-                sleep(10);
+
+                QRImg qrImg;
+                try {
+                    qrImg = qrCodeHandler.scanImageForBest(image, this);
+                } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
+                    qrImg = null;
+                }
+
+                if (qrImg != null) {
+                    addMessage("Search for QR: QR found");
+                    foundCount++;
+
+                } else {
+                    addMessage("Search for QR: No QR found");
+                }
             }
 
-            QRImg qrImg;
-            try {
-                qrImg = qrCodeHandler.scanImageForBest(image, this);
-            } catch (IQRCodeHandler.QRCodeHandlerException ignored) {
-                qrImg = null;
-            }
-
-            if (qrImg != null) {
-                addMessage("Search for QR: QR found");
-                return qrImg;
-            } else {
-                addMessage("Search for QR: No QR found");
+            if (foundCount > 5) {
+                return null;
             }
 
 
@@ -560,7 +568,7 @@ public final class DroneCommander implements IDroneCommander {
                 commandManager.spinRight(80).doFor(10);
             }
 
-            hoverDrone(4000);
+            hoverDrone(2000);
         }
 
         addMessage("Did not detect any QR code.");
@@ -939,10 +947,7 @@ public final class DroneCommander implements IDroneCommander {
                 addMessage("spin --> Left");
             }
 
-            commandManager.hover().doFor(100);
-            commandManager.hover();
-            sleep(20);
-
+            commandManager.hover().doFor(1000);
         }
     }
 
@@ -1055,11 +1060,11 @@ public final class DroneCommander implements IDroneCommander {
         //int accept_range = 10;
 
         // When to enter slow-mode
-        int slow_range = 70;
+        int slow_range = 80;
 
         // The speeds for fast and slow mode
-        int fast_speed = 800;
-        int slow_speed = 400;
+        int fast_speed = 900;
+        int slow_speed = 500;
 
         QRImg qrImg = null;
         int count = 0;
@@ -1163,11 +1168,11 @@ public final class DroneCommander implements IDroneCommander {
         //commandManager.forward(80).doFor(600);
         //sleep(900);
 
-        float downAltitude = altitude - 120;
-        commandManager.move(40, 0, -70, 0).doFor(1060);
+        int downAltitude = (int) (altitude - 120);
+        commandManager.move(40, 0, -70, 0).doFor(1200);
         commandManager.move(-80, 0, 0, 0).doFor(400);
 
-        flyDownToAltitude(downAltitude);
+        flyToAltitude(downAltitude);
         hoverDrone(1500);
     }
 
@@ -1731,7 +1736,7 @@ public final class DroneCommander implements IDroneCommander {
     }
 
     public void flyToAltitude(int altitude) {
-        while (this.altitude - 20 >= altitude && this.altitude + 20 <= altitude) {
+        while (this.altitude >= altitude + 20 || this.altitude <= altitude - 20) {
             if (this.altitude < altitude) {
                 flyUp(20);
             } else {

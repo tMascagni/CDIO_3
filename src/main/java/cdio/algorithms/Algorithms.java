@@ -286,7 +286,7 @@ public final class Algorithms {
             droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
             while (true) {
 
-                droneCommander.hoverDrone(5000);
+                droneCommander.hoverDrone(2000);
 
                 droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
                 if (droneCommander.getTargetQRCode() == 5) {
@@ -294,16 +294,17 @@ public final class Algorithms {
                 } else if (droneCommander.getTargetQRCode() == 1) {
                     droneCommander.adjustHeightToCenterFromQR();
                 } else {
-                    droneCommander.flyDownToAltitude(1020);
+                    droneCommander.flyToAltitude(1020);
                 }
 
                 droneCommander.flyToTargetQRCode(true, 80, 15); // fly hen til ring
-                droneCommander.adjustToCenterFromQR(40);
+                droneCommander.adjustToCenterFromQR(35);
                 droneCommander.rejeHop();
                 droneCommander.incQRCodeTarget();
                 droneCommander.hoverDrone(5000);
 
                 if (droneCommander.getTargetQRCode() == 1) {
+                    droneCommander.flyToAltitude(1100);
                     droneCommander.searchForQRCodeDetect(false);
                     droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
                 } else if (droneCommander.getTargetQRCode() == 2) {
@@ -327,8 +328,32 @@ public final class Algorithms {
                 }
 
                 droneCommander.hoverDrone(4000);
-                droneCommander.pointToQRSpin(40);
+                droneCommander.pointToQRSpin(80);
             }
+
+        } catch (IDroneCommander.DroneCommanderException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void altitudeTest(IDroneCommander droneCommander) {
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame(droneCommander);
+        });
+
+        try {
+            droneCommander.startDrone();
+            droneCommander.initDrone();
+            droneCommander.takeOffDrone();
+            droneCommander.hoverDrone(6500);
+
+            droneCommander.addMessage("Start altitude: " + droneCommander.getAltitude());
+            droneCommander.flyToAltitude(1020);
+            droneCommander.addMessage("End altitude: " + droneCommander.getAltitude());
+
+            droneCommander.hoverDrone(5000);
+            droneCommander.landDrone();
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
