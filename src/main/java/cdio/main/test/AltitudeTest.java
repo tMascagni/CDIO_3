@@ -19,7 +19,7 @@ public class AltitudeTest {
             // droneCommander.adjustHeightToCenterFromQR();
 
 
-            while (true){
+            while (true) {
                 System.out.println(droneCommander.getAltitude());
                 try {
                     Thread.sleep(500);
@@ -27,7 +27,6 @@ public class AltitudeTest {
                     e.printStackTrace();
                 }
             }
-
 
         } catch (IDroneCommander.DroneCommanderException e) {
             e.printStackTrace();
