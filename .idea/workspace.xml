@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="ny algo">
+    <list default="true" id="8f694da1-3140-4619-826d-858b6d4a49e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" afterPath="$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="294" column="64" lean-forward="true" selection-start-line="294" selection-start-column="64" selection-end-line="294" selection-end-column="64" />
+            <state relative-caret-position="360">
+              <caret line="330" column="17" lean-forward="false" selection-start-line="330" selection-start-column="17" selection-end-line="330" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -50,8 +49,8 @@
       <file leaf-file-name="DroneCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="1168" column="0" lean-forward="true" selection-start-line="1168" selection-start-column="0" selection-end-line="1168" selection-end-column="0" />
+            <state relative-caret-position="385">
+              <caret line="1173" column="0" lean-forward="true" selection-start-line="1173" selection-start-column="0" selection-end-line="1173" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -359,24 +358,7 @@
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVHelper.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/RingDemoWebcam.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/WebcamDemo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/CVTest/demo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/ContourTree.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/QRDetector.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/RingDetector.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/QRCodeHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/handler/interfaces/IQRCodeHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/Main.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainGUI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainLand.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/MainFrame.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/CameraPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/DroneStatusPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/HoopStatusPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/ui/panel/StatusPanel.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -384,24 +366,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/controller/interfaces/IDroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/interfaces/IQRDetector.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/AltitudeTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/CenterFromQRTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/GUIAngleTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/HoverOffsetFix.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/MainOpenCVTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/MainQRCodeTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/RejeHopTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/RingTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/TestDis.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/mainTestcenterfromQR.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/rotTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/testSpinToQR.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/test/testafstand.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/model/QRImg.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/model/RingImg.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -409,24 +373,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/QRImg.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/RingImg.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/cv/interfaces/ICV.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/DroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/drone/interfaces/IDroneCommander.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/AltitudeTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/CenterFromQRTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/GUIAngleTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/HoverOffsetFix.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainOpenCVTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/MainQRCodeTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/RejeHopTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/RingTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/TestDis.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/mainTestcenterfromQR.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/rotTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/testSpinToQR.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/cdio/main/testafstand.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -795,7 +741,7 @@
       <workItem from="1528878468627" duration="17496000" />
       <workItem from="1529157957892" duration="1254000" />
       <workItem from="1529227102480" duration="14301000" />
-      <workItem from="1529243070603" duration="5400000" />
+      <workItem from="1529243070603" duration="6357000" />
     </task>
     <task id="LOCAL-00001" summary="Added development branch.">
       <created>1517994780595</created>
@@ -1056,11 +1002,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529304611117</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="ny algo2">
+      <created>1529305559429</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1529305559429</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159753000" />
+    <option name="totallyTimeSpent" value="160710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="877" extended-state="0" />
@@ -1141,7 +1094,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="Added log4j library via Maven." />
     <MESSAGE value="Correction of Trolle." />
     <MESSAGE value="Attempting to fix merge conflict." />
     <MESSAGE value="test vinkel" />
@@ -1166,7 +1118,8 @@
     <MESSAGE value="oprydning" />
     <MESSAGE value="oprydning små ændringer" />
     <MESSAGE value="ny algo" />
-    <option name="LAST_COMMIT_MESSAGE" value="ny algo" />
+    <MESSAGE value="ny algo2" />
+    <option name="LAST_COMMIT_MESSAGE" value="ny algo2" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1654,16 +1607,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/controller/DroneCommander.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="1168" column="0" lean-forward="true" selection-start-line="1168" selection-start-column="0" selection-end-line="1168" selection-end-column="0" />
+        <state relative-caret-position="385">
+          <caret line="1173" column="0" lean-forward="true" selection-start-line="1173" selection-start-column="0" selection-end-line="1173" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdio/algorithms/Algorithms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="294" column="64" lean-forward="true" selection-start-line="294" selection-start-column="64" selection-end-line="294" selection-end-column="64" />
+        <state relative-caret-position="360">
+          <caret line="330" column="17" lean-forward="false" selection-start-line="330" selection-start-column="17" selection-end-line="330" selection-end-column="17" />
           <folding />
         </state>
       </provider>

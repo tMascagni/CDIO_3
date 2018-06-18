@@ -328,7 +328,7 @@ public final class Algorithms {
                 }
 
                 droneCommander.hoverDrone(4000);
-                droneCommander.pointToQRSpin(80);
+                // droneCommander.pointToQRSpin(80);
             }
 
         } catch (IDroneCommander.DroneCommanderException e) {
