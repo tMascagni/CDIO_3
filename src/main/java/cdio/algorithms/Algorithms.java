@@ -206,7 +206,6 @@ public final class Algorithms {
             //droneCommander.pointToQRSpin(50);
             droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
             while (true) {
-
                 droneCommander.hoverDrone(5000);
 
                 droneCommander.flyToTargetQRCode(true, 100, 25); // fly hen til ring
@@ -273,7 +272,7 @@ public final class Algorithms {
         }
     }
 
-    public static void testAl2(IDroneCommander droneCommander) {
+    public static void finalAlgorithm(IDroneCommander droneCommander) {
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame(droneCommander);
         });
@@ -283,6 +282,9 @@ public final class Algorithms {
             droneCommander.initDrone();
             droneCommander.takeOffDrone();
             droneCommander.hoverDrone(6500);
+            droneCommander.incQRCodeTarget();
+            droneCommander.incQRCodeTarget();
+            droneCommander.incQRCodeTarget();
             droneCommander.addMessage("Target Ring --> " + droneCommander.getTargetQRCode());
             while (true) {
 

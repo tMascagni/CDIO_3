@@ -200,8 +200,7 @@ public class QRCodeHandler implements IQRCodeHandler {
             return null;
         }
 
-        CVHelper cvHelper = new CVHelper();
-        Mat img = cvHelper.buf2mat(image);
+        Mat img = helper.buf2mat(image);
         RingDetector ringDetector = new RingDetector(img);
 
         return ringDetector.findFromQR(img, qr);
